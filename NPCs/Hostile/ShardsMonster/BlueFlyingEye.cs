@@ -2,7 +2,7 @@
 using Terraria.ModLoader;
 using Terraria.ID;
 
-namespace VinesMod.NPCs.Hostile
+namespace VinesMod.NPCs.Hostile.ShardsMonster
 {
     public class BlueFlyingEye : ModNPC
     {

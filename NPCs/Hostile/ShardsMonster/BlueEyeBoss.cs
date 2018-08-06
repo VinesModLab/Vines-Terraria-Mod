@@ -9,13 +9,21 @@ using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace VinesMod.NPCs.Hostile
+namespace VinesMod.NPCs.Hostile.ShardsMonster
 {
     [AutoloadBossHead]
     public class BlueEyeBoss : ModNPC
     {
         private Player player;
         private float speed;
+
+        public override string HeadTexture
+		{
+			get
+			{
+				return "VinesMod/NPCs/Hostile/ShardsMonster/BlueEyeBoss_Head_Boss";
+			}
+		}
 
         public override void SetStaticDefaults()
         {
