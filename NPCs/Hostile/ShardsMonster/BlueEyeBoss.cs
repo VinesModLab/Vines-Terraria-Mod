@@ -17,6 +17,14 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
         private Player player;
         private float speed;
 
+        public override string Texture
+		{
+			get
+			{
+				return "VinesMod/NPCs/Hostile/ShardsMonster/BlueEyeBoss";
+			}
+		}
+
         public override string HeadTexture
 		{
 			get

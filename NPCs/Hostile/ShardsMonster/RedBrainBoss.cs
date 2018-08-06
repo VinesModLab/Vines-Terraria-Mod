@@ -1,0 +1,95 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Terraria;
+using Terraria.ModLoader;
+using Terraria.ID;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace VinesMod.NPCs.Hostile.ShardMonster
+{
+    [AutoloadBossHead]
+    public class RedBrainBoss : ModNPC
+    {
+        private Player player;
+        private float speed;
+
+        public override string Texture
+		{
+			get
+			{
+				return "VinesMod/NPCs/Hostile/ShardsMonster/RedBrainBoss";
+			}
+		}
+
+        public override string HeadTexture
+		{
+			get
+			{
+				return "VinesMod/NPCs/Hostile/ShardsMonster/RedBrainBoss_Head_Boss";
+			}
+		}
+
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Red Brain");
+            Main.npcFrameCount[npc.type] = 8;
+        }
+
+        public override void SetDefaults()
+        {
+            npc.CloneDefaults(NPCID.BrainofCthulhu);
+            npc.aiStyle = 54; // Brain
+            npc.lifeMax = 3500; 
+            npc.damage = 35; 
+            npc.defense = 20; 
+            npc.knockBackResist = 4f;
+            npc.value = 10000;
+            npc.boss = true; // Is a boss
+            npc.lavaImmune = true;
+            npc.noGravity = true; 
+            npc.noTileCollide = true;
+            //bossBag = mod.ItemType("RedBrainBossBag"); // Needed for the NPC to drop loot bag.
+        }
+
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        {
+            npc.lifeMax = (int)(npc.lifeMax * 0.625f * bossLifeScale);
+            npc.damage = (int)(npc.damage * 0.6f);
+            npc.defense = (int)(npc.defense + numPlayers);
+        }
+        
+        public override void AI()
+        {
+        }
+
+        public override void NPCLoot()
+        {
+            if (Main.expertMode)
+            {
+            npc.DropBossBags();
+            }
+            
+
+            if (Main.rand.Next(5) == 0)
+            {
+                Item.NewItem(npc.getRect(), ItemID.BoneRattle, 1);
+            }
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardRed"), Main.rand.Next(3, 5));
+            Item.NewItem(npc.getRect(), ItemID.Lens, Main.rand.Next(3, 5));
+
+            // For settings if the boss has been downed
+            //VinesWorld.downedRedBrainBoss = true;
+        }
+
+        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
+        {
+            scale = 1.5f;
+            return null;
+        }
+        
+    }
+}
