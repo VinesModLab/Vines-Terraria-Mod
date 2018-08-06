@@ -18,7 +18,7 @@ namespace VinesMod.Projectiles
             aiType = ProjectileID.TerraBeam;
 			//projectile.tileCollide = false;
             projectile.scale = 1.5f;
-			projectile.light = 1f; 
+			projectile.light = 0.7f; 
         }
 
             public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)

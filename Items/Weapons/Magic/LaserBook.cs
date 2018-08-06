@@ -18,7 +18,7 @@ namespace VinesMod.Items.Weapons.Magic
 			item.noMelee = true;
 			item.magic = true;
 			item.channel = true; //Channel so that you can held the weapon [Important]
-			item.mana = 5;
+			item.mana = 7;
 			item.rare = 5;
 			item.width = 28;
 			item.height = 30;

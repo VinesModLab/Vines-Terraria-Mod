@@ -44,7 +44,7 @@ namespace VinesMod.Items.Weapons.Gun
 				// perturbedSpeed = perturbedSpeed * scale; 
 				Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
 			}
-			return false; // return false because we don't want tmodloader to shoot projectile
+			return false;
 		}
 
 		public override bool ConsumeAmmo(Player player)
