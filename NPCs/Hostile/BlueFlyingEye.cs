@@ -17,7 +17,7 @@ namespace VinesMod.NPCs.Hostile
             npc.height = 24;
             npc.damage = 12;
             npc.defense = 5;
-            npc.lifeMax = 10;
+            npc.lifeMax = 75;
             npc.HitSound = SoundID.NPCHit2;
             npc.DeathSound = SoundID.NPCDeath2;
             npc.value = 150f;
@@ -35,7 +35,18 @@ namespace VinesMod.NPCs.Hostile
 
         public override void NPCLoot()
         {
-            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardBlue"), Main.rand.Next(1, 2));
+                if (Main.rand.Next(3) == 0)
+                {
+                    Item.NewItem(npc.getRect(), mod.ItemType("BlueEyeBossSummonItem"), 1);
+                }
+
+                if (Main.rand.Next(20) == 0)
+                {
+                    Item.NewItem(npc.getRect(), ItemID.BlackLens, 1);
+                }
+
+            Item.NewItem(npc.getRect(), mod.ItemType("ShardBlue"), Main.rand.Next(1, 2));
+            Item.NewItem(npc.getRect(), ItemID.Lens, Main.rand.Next(1, 3));
         }
     }
 }

@@ -45,8 +45,14 @@ namespace VinesMod.Items.TreasureBags
             {
                 player.QuickSpawnItem(ItemID.LifeFruit, 1);
             }
-            player.QuickSpawnItem(ItemID.HallowedBar, 5);
-            player.QuickSpawnItem(mod.ItemType("ShardBlue"), 1);
+
+            if(Main.rand.Next(7) == 0)
+            {
+                player.QuickSpawnItem(ItemID.BlackLens, 1);
+            }
+            player.QuickSpawnItem(ItemID.GoldBar, 5);
+            player.QuickSpawnItem(ItemID.IronBar, 7);
+            player.QuickSpawnItem(mod.ItemType("ShardBlue"), Main.rand.Next(3,5));
             player.QuickSpawnItem(ItemID.ManaCrystal, 1);
         }
     }

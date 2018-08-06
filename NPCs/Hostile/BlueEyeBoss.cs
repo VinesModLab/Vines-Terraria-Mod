@@ -150,19 +150,18 @@ namespace VinesMod.NPCs.Hostile
 
         public override void NPCLoot()
         {
-            /*
             if (Main.expertMode)
             {
-                npc.DropBossBags();
-            } else */
-            {
-                if (Main.rand.Next(3) == 0)
-                {
-                    //Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardBlue"));
-                }
-                //Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardBlue"));
-                npc.DropBossBags();
+            npc.DropBossBags();
             }
+            
+
+            if (Main.rand.Next(10) == 0)
+            {
+                Item.NewItem(npc.getRect(), ItemID.BlackLens, 1);
+            }
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardBlue"), Main.rand.Next(3, 5));
+            Item.NewItem(npc.getRect(), ItemID.Lens, Main.rand.Next(3, 5));
 
             // For settings if the boss has been downed
             VinesWorld.downedBlueEyeBoss = true;

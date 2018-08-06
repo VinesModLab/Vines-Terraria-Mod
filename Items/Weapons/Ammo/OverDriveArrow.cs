@@ -38,6 +38,7 @@ namespace VinesMod.Items.Weapons.Ammo
 			ModRecipe recipe = new ModRecipe(mod);
 	
 			recipe.AddIngredient(ItemID.Ruby, 10);
+            recipe.AddRecipeGroup("Wood", 30);
 			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this, 333);
 			recipe.AddRecipe();
@@ -46,6 +47,7 @@ namespace VinesMod.Items.Weapons.Ammo
             recipe = new ModRecipe(mod);
 	
 			recipe.AddIngredient(ItemID.Ruby, 10);
+            recipe.AddRecipeGroup("Wood", 30);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this, 333);
 			recipe.AddRecipe();
