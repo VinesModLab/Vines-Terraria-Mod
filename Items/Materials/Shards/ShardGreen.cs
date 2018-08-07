@@ -19,15 +19,5 @@ namespace VinesMod.Items.Materials.Shards
 			item.value = 100;
 			item.rare = 1;
 		}
-
-		public override void AddRecipes()
-		{
-			/*
-			ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddTile(TileID.AdamantiteForge);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-			*/
-		}
 	}
 }

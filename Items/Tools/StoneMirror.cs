@@ -9,6 +9,12 @@ namespace VinesMod.Items.Tools
 	// It may prove a useful guide for ModItems with similar behaviors.
 	class StoneMirror : ModItem
 	{
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Stone Mirror");
+			Tooltip.SetDefault("return home safely!");
+		}
+
 		public override void SetDefaults()
 		{
 			item.CloneDefaults(ItemID.IceMirror);
