@@ -5,22 +5,22 @@ using Terraria.ModLoader;
 
 namespace VinesMod.Items.Tools
 {
-	public class ExamplePickaxe : ModItem
+	public class ManaBluePickaxe : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("This is a modded pickaxe.");
+			DisplayName.SetDefault("ManaBlue Pickaxe");
 		}
 
 		public override void SetDefaults()
 		{
-			item.damage = 70;
+			item.damage = 35;
 			item.melee = true;
 			item.width = 40;
 			item.height = 40;
-			item.useTime = 10;
-			item.useAnimation = 10;
-			item.pick = 300;
+			item.useTime = 20;
+			item.useAnimation = 20;
+			item.pick = 80;
 			item.useStyle = 1;
 			item.knockBack = 6;
 			item.value = 10000;
@@ -31,11 +31,13 @@ namespace VinesMod.Items.Tools
 
 		public override void AddRecipes()
 		{
-			/*
 			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.ManaCrystal, 3);
+			recipe.AddRecipeGroup("IronBar", 7);
+			recipe.AddRecipeGroup("Wood", 40);
+			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
-			*/
 		}
 
 		public override void MeleeEffects(Player player, Rectangle hitbox)

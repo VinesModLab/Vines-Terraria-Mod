@@ -5,23 +5,23 @@ using Terraria.ModLoader;
 
 namespace VinesMod.Items.Tools
 {
-	public class ExampleHamaxe : ModItem
+	public class ManaBlueHamaxe : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("This is a modded hamaxe.");
+			DisplayName.SetDefault("ManaBlue Hamaxe");
 		}
 
 		public override void SetDefaults()
 		{
-			item.damage = 70;
+			item.damage = 35;
 			item.melee = true;
 			item.width = 40;
 			item.height = 40;
-			item.useTime = 15;
-			item.useAnimation = 15;
-			item.axe = 60;	// 60*5 = 300
-			item.hammer = 250;
+			item.useTime = 20;
+			item.useAnimation = 20;
+			item.axe = 30;
+			item.hammer = 70;
 			item.useStyle = 1;
 			item.knockBack = 6;
 			item.value = 10000;
@@ -32,11 +32,13 @@ namespace VinesMod.Items.Tools
 
 		public override void AddRecipes()
 		{
-			/*
 			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.ManaCrystal, 3);
+			recipe.AddRecipeGroup("IronBar", 7);
+			recipe.AddRecipeGroup("Wood", 40);
+			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
-			*/
 		}
 
 		public override void MeleeEffects(Player player, Rectangle hitbox)

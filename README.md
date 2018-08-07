@@ -1,4 +1,4 @@
-# Vines' Mod v0.0.1 Alpha
+# Vines' Mod v0.0.3 Alpha
 A mod for the game [Terraria](https://en.wikipedia.org/wiki/Terraria) 1.3.5.2
 
 ## How To Use:
