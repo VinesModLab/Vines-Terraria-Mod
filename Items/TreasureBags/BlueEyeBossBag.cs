@@ -54,9 +54,11 @@ namespace VinesMod.Items.TreasureBags
             player.QuickSpawnItem(ItemID.IronBar, 7);
             player.QuickSpawnItem(mod.ItemType("ShardBlue"), Main.rand.Next(5,10));
             player.QuickSpawnItem(ItemID.ManaCrystal, 1);
-            
+
             player.QuickSpawnItem(ItemID.DemoniteOre, Main.rand.Next(20, 40));
             player.QuickSpawnItem(ItemID.CrimtaneOre, Main.rand.Next(20, 40));
+
+            player.QuickSpawnItem(ItemID.Sapphire, Main.rand.Next(3, 5));
         }
     }
 }

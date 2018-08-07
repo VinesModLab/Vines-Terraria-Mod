@@ -57,6 +57,7 @@ namespace VinesMod.Items.TreasureBags
 
             player.QuickSpawnItem(ItemID.DemoniteOre, Main.rand.Next(40, 60));
             player.QuickSpawnItem(ItemID.ShadowScale, Main.rand.Next(10, 20));
+            player.QuickSpawnItem(ItemID.Amethyst, Main.rand.Next(3, 5));
         }
     }
 }

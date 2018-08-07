@@ -57,6 +57,7 @@ namespace VinesMod.Items.TreasureBags
 
             player.QuickSpawnItem(ItemID.CrimtaneOre, Main.rand.Next(40, 60));
             player.QuickSpawnItem(ItemID.TissueSample, Main.rand.Next(10, 20));
+            player.QuickSpawnItem(ItemID.Ruby, Main.rand.Next(3, 5));
         }
     }
 }

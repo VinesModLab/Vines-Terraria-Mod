@@ -74,7 +74,7 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             Target();
             DespawnHandler();
 
-            Move(new Vector2(Main.rand.Next(-150, 150), -Main.rand.Next(100, 250))); // Calls the Move Method
+            Move(new Vector2(Main.rand.Next(-200, 200), -Main.rand.Next(100, 250))); // Calls the Move Method
             //Attacking
             npc.ai[1] -= 1f; // Subtracts 1 from the ai.
             if(npc.ai[1] <= 0f)
@@ -213,6 +213,7 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             Item.NewItem(npc.getRect(), ItemID.CorruptSeeds, Main.rand.Next(1, 2));
             Item.NewItem(npc.getRect(), ItemID.DemoniteOre, Main.rand.Next(20, 40));
             Item.NewItem(npc.getRect(), ItemID.CrimtaneOre, Main.rand.Next(20, 40));
+            Item.NewItem(npc.getRect(), ItemID.Sapphire, Main.rand.Next(1, 2));
 
             // For settings if the boss has been downed
             VinesWorld.downedBlueEyeBoss = true;

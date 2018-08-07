@@ -14,9 +14,10 @@ A mod for the game [Terraria](https://en.wikipedia.org/wiki/Terraria) 1.3.5.2
 * 3+ New Accessories
 * 1+ New Armor
 * 10+ New Materials
-* 3+ New Bosses
+* 5+ New Bosses
 * 1+ New NPCs
 
 ## Mod Authors
 * Codes were written by Vines
 * Sprites were drawn by Vines & Namm
+* Mod Idea was from Vines

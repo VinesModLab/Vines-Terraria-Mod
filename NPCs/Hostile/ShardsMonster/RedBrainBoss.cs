@@ -108,6 +108,7 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
 
             Item.NewItem(npc.getRect(), ItemID.CrimtaneOre, Main.rand.Next(40, 60));
             Item.NewItem(npc.getRect(), ItemID.TissueSample, Main.rand.Next(10, 20));
+            Item.NewItem(npc.getRect(), ItemID.Ruby, Main.rand.Next(1, 2));
             
 
             // For settings if the boss has been downed

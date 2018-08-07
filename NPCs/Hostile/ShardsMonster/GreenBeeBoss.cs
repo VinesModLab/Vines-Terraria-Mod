@@ -112,6 +112,7 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
             Item.NewItem(npc.getRect(), ItemID.BottledHoney, Main.rand.Next(15, 30));
             Item.NewItem(npc.getRect(), ItemID.BeeWax, Main.rand.Next(10, 20));
             Item.NewItem(npc.getRect(), ItemID.Beenade, Main.rand.Next(30, 45));
+            Item.NewItem(npc.getRect(), ItemID.Emerald, Main.rand.Next(1, 2));
             
             
 

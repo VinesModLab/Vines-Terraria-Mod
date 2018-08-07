@@ -64,6 +64,7 @@ namespace VinesMod.Items.TreasureBags
             player.QuickSpawnItem(ItemID.HiveBackpack, 1);
             player.QuickSpawnItem(ItemID.BottledHoney, Main.rand.Next(40, 60));
             player.QuickSpawnItem(ItemID.BeeWax, Main.rand.Next(10, 20));
+            player.QuickSpawnItem(ItemID.Emerald, Main.rand.Next(3, 5));
         }
     }
 }

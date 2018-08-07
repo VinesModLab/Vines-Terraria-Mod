@@ -68,7 +68,7 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
             Target();
             DespawnHandler();
 
-            Move(new Vector2(Main.rand.Next(-300, 300), -Main.rand.Next(75, 250))); // Calls the Move Method
+            Move(new Vector2(Main.rand.Next(-300, 300), -Main.rand.Next(45, 250))); // Calls the Move Method
             //Attacking
             npc.ai[1] -= 1f; // Subtracts 1 from the ai.
             if(npc.ai[1] <= 0f)
@@ -158,36 +158,12 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
             npc.DropBossBags();
             }
             
-            if (Main.rand.Next(10) == 0)
-            {
-                Item.NewItem(npc.getRect(), ItemID.HoneyedGoggles, 1);
-            }
-
-            if (Main.rand.Next(9) == 0)
-            {
-                Item.NewItem(npc.getRect(), ItemID.Nectar, 1);
-            }
-
-            switch (Main.rand.Next(3))
-            {
-                case 0:
-                Item.NewItem(npc.getRect(), ItemID.BeeKeeper, 1);
-                break;
-
-                case 1:
-                Item.NewItem(npc.getRect(), ItemID.BeeGun, 1);
-                break;
-
-                case 2:
-                Item.NewItem(npc.getRect(), ItemID.BeesKnees, 1);
-                break;
-
-            }
 
             if (Main.rand.Next(3) == 0)
             {
-                Item.NewItem(npc.getRect(), ItemID.HoneyComb, 1);
+                Item.NewItem(npc.getRect(), ItemID.EatersBone, 1);
             }
+
             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardYellow"), Main.rand.Next(3, 5));
             Item.NewItem(npc.getRect(), ItemID.GoldBar, Main.rand.Next(5, 8));
             Item.NewItem(npc.getRect(), ItemID.IronBar, Main.rand.Next(5, 10));
@@ -195,9 +171,10 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
             Item.NewItem(npc.getRect(), ItemID.ManaCrystal, Main.rand.Next(1, 2));
             Item.NewItem(npc.getRect(), ItemID.LifeCrystal, Main.rand.Next(1, 2));
 
-            //Item.NewItem(npc.getRect(), ItemID.BottledHoney, Main.rand.Next(15, 30));
-            //Item.NewItem(npc.getRect(), ItemID.BeeWax, Main.rand.Next(10, 20));
-            //Item.NewItem(npc.getRect(), ItemID.Beenade, Main.rand.Next(30, 45));
+            Item.NewItem(npc.getRect(), ItemID.PlatinumOre, Main.rand.Next(30, 50));
+            Item.NewItem(npc.getRect(), ItemID.GoldOre, Main.rand.Next(30, 50));
+            Item.NewItem(npc.getRect(), ItemID.Amber, Main.rand.Next(3, 5));
+            Item.NewItem(npc.getRect(), ItemID.Topaz, Main.rand.Next(1, 2));
             
             
 
