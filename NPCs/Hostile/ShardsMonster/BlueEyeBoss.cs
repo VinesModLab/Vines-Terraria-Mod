@@ -41,11 +41,11 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
 
         public override void SetDefaults()
         {
+            npc.CloneDefaults(NPCID.EyeofCthulhu);
             npc.aiStyle = -1; // Will not have any AI from any existing AI styles. 
             npc.lifeMax = 3500; 
             npc.damage = 20; 
             npc.defense = 25; 
-            npc.knockBackResist = 4f;
             npc.width = 120;
             npc.height = 120;
             npc.value = 10000;
@@ -176,8 +176,23 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             {
                 Item.NewItem(npc.getRect(), ItemID.BlackLens, 1);
             }
+
+            if (Main.rand.Next(50) == 0)
+            {
+                Item.NewItem(npc.getRect(), ItemID.Binoculars, 1);
+            }
+
             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardBlue"), Main.rand.Next(3, 5));
             Item.NewItem(npc.getRect(), ItemID.Lens, Main.rand.Next(3, 5));
+            Item.NewItem(npc.getRect(), ItemID.GoldBar, Main.rand.Next(3, 5));
+            Item.NewItem(npc.getRect(), ItemID.SilverOre, Main.rand.Next(10, 20));
+            Item.NewItem(npc.getRect(), ItemID.IronBar, Main.rand.Next(3, 7));
+            Item.NewItem(npc.getRect(), ItemID.ManaCrystal, Main.rand.Next(1, 2));
+
+            Item.NewItem(npc.getRect(), ItemID.CrimsonSeeds, Main.rand.Next(1, 2));
+            Item.NewItem(npc.getRect(), ItemID.CorruptSeeds, Main.rand.Next(1, 2));
+            Item.NewItem(npc.getRect(), ItemID.DemoniteOre, Main.rand.Next(20, 40));
+            Item.NewItem(npc.getRect(), ItemID.CrimtaneOre, Main.rand.Next(20, 40));
 
             // For settings if the boss has been downed
             VinesWorld.downedBlueEyeBoss = true;

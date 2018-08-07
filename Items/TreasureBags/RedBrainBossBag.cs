@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 namespace VinesMod.Items.TreasureBags
 {
-    public class BlueEyeBossBag : ModItem
+    public class RedBrainBossBag : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -24,7 +24,7 @@ namespace VinesMod.Items.TreasureBags
             item.height = 24;
             item.rare = 9;
             item.expert = false;
-            bossBagNPC = mod.NPCType("BlueEyeBoss"); // The NPC this bag drops from
+            bossBagNPC = mod.NPCType("RedBrainBoss"); // The NPC this bag drops from
         }
 
         public override bool CanRightClick()
@@ -48,15 +48,15 @@ namespace VinesMod.Items.TreasureBags
 
             if(Main.rand.Next(7) == 0)
             {
-                player.QuickSpawnItem(ItemID.BlackLens, 1);
+                player.QuickSpawnItem(ItemID.BoneRattle, 1);
             }
             player.QuickSpawnItem(ItemID.GoldBar, 5);
             player.QuickSpawnItem(ItemID.IronBar, 7);
-            player.QuickSpawnItem(mod.ItemType("ShardBlue"), Main.rand.Next(5,10));
-            player.QuickSpawnItem(ItemID.ManaCrystal, 1);
-            
-            player.QuickSpawnItem(ItemID.DemoniteOre, Main.rand.Next(20, 40));
-            player.QuickSpawnItem(ItemID.CrimtaneOre, Main.rand.Next(20, 40));
+            player.QuickSpawnItem(mod.ItemType("ShardRed"), Main.rand.Next(5,10));
+            player.QuickSpawnItem(ItemID.LifeCrystal, 1);
+
+            player.QuickSpawnItem(ItemID.CrimtaneOre, Main.rand.Next(40, 60));
+            player.QuickSpawnItem(ItemID.TissueSample, Main.rand.Next(10, 20));
         }
     }
 }

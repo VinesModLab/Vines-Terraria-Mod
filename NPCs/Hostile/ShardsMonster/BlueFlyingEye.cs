@@ -35,6 +35,11 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
 
         public override void NPCLoot()
         {
+                if (Main.rand.Next(2) == 0)
+                {
+                    Item.NewItem(npc.getRect(), mod.ItemType("ShardBlue"), Main.rand.Next(1, 2));
+                }
+                
                 if (Main.rand.Next(3) == 0)
                 {
                     Item.NewItem(npc.getRect(), mod.ItemType("BlueEyeBossSummonItem"), 1);
@@ -45,7 +50,6 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
                     Item.NewItem(npc.getRect(), ItemID.BlackLens, 1);
                 }
 
-            Item.NewItem(npc.getRect(), mod.ItemType("ShardBlue"), Main.rand.Next(1, 2));
             Item.NewItem(npc.getRect(), ItemID.Lens, Main.rand.Next(1, 3));
         }
     }

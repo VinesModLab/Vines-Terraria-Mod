@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,12 +9,12 @@ using Terraria;
 
 namespace VinesMod.Items.Summon
 {
-    public class BlueEyeBossSummonItem : ModItem
+    public class GreenBeeBossSummonItem : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Summoner : Blue Eye Boss");
-            Tooltip.SetDefault("Summons the Blue Eye Boss." + "\nDifferent fightstyle between day and light.");
+            DisplayName.SetDefault("Summoner : Green Bee Boss");
+            Tooltip.SetDefault("Summons the Green Bee Boss.");
         }
 
         public override void SetDefaults()
@@ -34,14 +34,14 @@ namespace VinesMod.Items.Summon
         public override bool CanUseItem(Player player)
         {
             // Does NPC Exist
-            bool alreadySpawned = NPC.AnyNPCs(mod.NPCType("BlueEyeBoss"));
+            bool alreadySpawned = NPC.AnyNPCs(mod.NPCType("GreenBeeBoss"));
 
             return !alreadySpawned;
         }
 
         public override bool UseItem(Player player)
         {
-            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("BlueEyeBoss")); // Spawn the boss within a range of the player. 
+            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("GreenBeeBoss")); // Spawn the boss within a range of the player. 
             Main.PlaySound(SoundID.Roar, player.position, 0); 
             return true;
         }

@@ -15,17 +15,23 @@ namespace VinesMod
     {
         public static int biomeTiles = 0;
         // Stuff added with the Boss
-        public static bool downedBlueEyeBoss = false; // Downed Tutorial Boss
+        public static bool downedBlueEyeBoss = false;
+        public static bool downedRedBrainBoss = false;
+        public static bool downedGreenBeeBoss = false;
 
         public override void Initialize()
         {
             downedBlueEyeBoss = false;
+            downedRedBrainBoss = false;
+            downedGreenBeeBoss = false;
         }
 
         public override TagCompound Save()
         {
             var downed = new List<string>();
             if (downedBlueEyeBoss) downed.Add("BlueEye");
+            if (downedRedBrainBoss) downed.Add("RedBrain");
+            if (downedGreenBeeBoss) downed.Add("GreenBee");
 
             return new TagCompound
             {
@@ -37,6 +43,8 @@ namespace VinesMod
         {
             var downed = tag.GetList<string>("downed");
             downedBlueEyeBoss = downed.Contains("BlueEye");
+            downedRedBrainBoss = downed.Contains("RedBrain");
+            downedGreenBeeBoss = downed.Contains("GreenBee");
         }
 
         public override void LoadLegacy(BinaryReader reader)
@@ -46,6 +54,8 @@ namespace VinesMod
             {
                 BitsByte flags = reader.ReadByte();
                 downedBlueEyeBoss = flags[0];
+                downedRedBrainBoss = flags[1];
+                downedGreenBeeBoss = flags[2];
             }
         }
 
@@ -53,6 +63,8 @@ namespace VinesMod
         {
             BitsByte flags = new BitsByte();
             flags[0] = downedBlueEyeBoss;
+            flags[1] = downedRedBrainBoss;
+            flags[2] = downedGreenBeeBoss;
             writer.Write(flags);
         }
 
@@ -60,6 +72,8 @@ namespace VinesMod
         {
             BitsByte flags = reader.ReadByte();
             downedBlueEyeBoss = flags[0];
+            downedRedBrainBoss = flags[1];
+            downedGreenBeeBoss = flags[2];
         }
 
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
