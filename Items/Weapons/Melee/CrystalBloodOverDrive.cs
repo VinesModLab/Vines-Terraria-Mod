@@ -36,7 +36,7 @@ namespace VinesMod.Items.Weapons.Melee
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(mod, "CrystalBlood", 1);
 			recipe.AddIngredient(mod, "OverDrivePurple", 1);
-			recipe.AddIngredient(ItemID.LargeAmethyst, 1);
+			recipe.AddIngredient(ItemID.LargeAmethyst, 5);
 			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

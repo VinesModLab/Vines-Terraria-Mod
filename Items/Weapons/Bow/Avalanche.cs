@@ -25,7 +25,7 @@ namespace VinesMod.Items.Weapons.Bow
             item.height = 24;
             item.useTime = 20;
             item.useAnimation = 20;
-            item.damage = 60;
+            item.damage = 40;
             item.useStyle = 5; 
             item.noMelee = true; 
             item.value = Item.buyPrice(0, 0, 30, 0);
@@ -55,17 +55,23 @@ namespace VinesMod.Items.Weapons.Bow
 		
         public override void AddRecipes()
 		{
-            /*
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddTile(TileID.Anvils);
+            recipe.AddIngredient(mod, "ShardWhite", 50);
+            recipe.AddIngredient(ItemID.SnowBlock, 400);
+            recipe.AddIngredient(ItemID.Cobweb, 15);
+            recipe.AddIngredient(ItemID.SnowballCannon, 1);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 
             recipe = new ModRecipe(mod);
             recipe.AddTile(TileID.MythrilAnvil);
+            recipe.AddIngredient(mod, "ShardWhite", 50);
+            recipe.AddIngredient(ItemID.SnowBlock, 400);
+            recipe.AddIngredient(ItemID.Cobweb, 15);
+            recipe.AddIngredient(ItemID.SnowballCannon, 1);
             recipe.SetResult(this);
 			recipe.AddRecipe();
-            */
 		}
 
     }

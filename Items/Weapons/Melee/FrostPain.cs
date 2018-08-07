@@ -48,6 +48,7 @@ namespace VinesMod.Items.Weapons.Melee
 			recipe.AddIngredient(ItemID.IceBrick, 800);
 			recipe.AddIngredient(ItemID.SoulofMight, 20);
 			recipe.AddIngredient(ItemID.SoulofFright, 20);
+			recipe.AddIngredient(mod, "OverDriveBlue", 1);
 			recipe.AddTile(TileID.IceMachine);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

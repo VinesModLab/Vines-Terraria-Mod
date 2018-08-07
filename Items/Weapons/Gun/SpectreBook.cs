@@ -38,6 +38,7 @@ namespace VinesMod.Items.Weapons.Gun
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.Book, 1);
 			recipe.AddIngredient(ItemID.Ectoplasm, 8);
+			recipe.AddIngredient(mod, "ShardPurple", 30);
 			recipe.AddTile(TileID.Bookcases);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
@@ -45,6 +46,7 @@ namespace VinesMod.Items.Weapons.Gun
 			recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.Book, 1);
 			recipe.AddIngredient(ItemID.Ectoplasm, 8);
+			recipe.AddIngredient(mod, "ShardPurple", 30);
 			recipe.AddTile(TileID.Books);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

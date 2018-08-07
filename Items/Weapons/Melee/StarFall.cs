@@ -15,8 +15,8 @@ namespace VinesMod.Items.Weapons.Melee
 		public override void SetDefaults()
 		{
 			item.CloneDefaults(ItemID.Starfury);
-			item.shootSpeed *= 0.75f;
-			item.damage = (int)(item.damage * 2);
+			item.shootSpeed *= 1.1f;
+			item.damage = 89;
 			item.autoReuse = true;
 			item.scale = 1.7f;
 		}
@@ -35,6 +35,7 @@ namespace VinesMod.Items.Weapons.Melee
 			recipe.AddRecipeGroup("IronBar", 10);
 			recipe.AddIngredient(ItemID.GoldBar, 5);
 			recipe.AddIngredient(ItemID.FallenStar, 7);
+			recipe.AddIngredient(mod, "StarForceYellow", 1);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
@@ -44,6 +45,7 @@ namespace VinesMod.Items.Weapons.Melee
 			recipe.AddRecipeGroup("IronBar", 10);
 			recipe.AddIngredient(ItemID.GoldBar, 5);
 			recipe.AddIngredient(ItemID.FallenStar, 7);
+			recipe.AddIngredient(mod, "StarForceYellow", 1);
 			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
@@ -53,6 +55,7 @@ namespace VinesMod.Items.Weapons.Melee
 			recipe.AddRecipeGroup("IronBar", 10);
 			recipe.AddIngredient(ItemID.GoldBar, 5);
 			recipe.AddIngredient(ItemID.FallenStar, 7);
+			recipe.AddIngredient(mod, "StarForceYellow", 1);
 			recipe.AddTile(TileID.FireflyinaBottle);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

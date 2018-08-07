@@ -28,7 +28,7 @@ namespace VinesMod.Items.Weapons.Yoyo
             item.shoot = mod.ProjectileType<Projectiles.RektU3000>(); 
             item.shootSpeed = 30f; 
             item.knockBack = 2.5f;
-            item.damage = 50;
+            item.damage = 76;
             item.value = 10000;
             item.rare = 4;
         }
@@ -52,9 +52,10 @@ namespace VinesMod.Items.Weapons.Yoyo
 	
 			recipe.AddIngredient(ItemID.SoulofMight, 3);
             recipe.AddRecipeGroup("IronBar", 10);
-            recipe.AddIngredient(ItemID.Amber, 3);
-            recipe.AddIngredient(ItemID.Cobweb, 5);
+            recipe.AddIngredient(ItemID.Amber, 30);
+            recipe.AddIngredient(ItemID.Cobweb, 15);
             recipe.AddIngredient(ItemID.Spike, 4);
+            recipe.AddIngredient(mod, "StarForceGreen", 1);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
@@ -62,9 +63,10 @@ namespace VinesMod.Items.Weapons.Yoyo
             recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.SoulofMight, 3);
             recipe.AddRecipeGroup("IronBar", 10);
-            recipe.AddIngredient(ItemID.Amber, 3);
-            recipe.AddIngredient(ItemID.Cobweb, 5);
+            recipe.AddIngredient(ItemID.Amber, 30);
+            recipe.AddIngredient(ItemID.Cobweb, 15);
             recipe.AddIngredient(ItemID.Spike, 4);
+            recipe.AddIngredient(mod, "StarForceGreen", 1);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
 			recipe.AddRecipe();

@@ -1,14 +1,14 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace VinesMod.Items.Materials.OverDrive
+namespace VinesMod.Items.Materials.StarForce
 {
-	public class OverDriveYellow : ModItem
+	public class StarForceBlue : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("OverDrive Core (Topaz)");
-			Tooltip.SetDefault("it stores unknown power.");
+			DisplayName.SetDefault("Blue Star");
+			Tooltip.SetDefault("Stored the shard power.");
 		}
 
 		public override void SetDefaults()
@@ -23,9 +23,9 @@ namespace VinesMod.Items.Materials.OverDrive
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod, "OverDriveCore", 1);
-			recipe.AddIngredient(mod, "StarForceYellow", 5);
-            recipe.AddIngredient(ItemID.LargeTopaz, 5);
+			recipe.AddIngredient(mod, "ShardBlue", 100);
+            recipe.AddIngredient(ItemID.LargeSapphire, 1);
+			recipe.AddIngredient(ItemID.FallenStar, 10);
             recipe.AddTile(TileID.AdamantiteForge);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

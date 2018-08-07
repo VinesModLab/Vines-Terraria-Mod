@@ -10,7 +10,7 @@ namespace VinesMod.Items.Accessories.Shield
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Shield of Flag");
-			Tooltip.SetDefault("A Shield used in army." + "\n Liferegen + 3" +"\n slightly increase all stats");
+			Tooltip.SetDefault("A Shield used in army." + "\n small healthregen" +"\n slightly increase all stats");
 		}
 
 		public override void SetDefaults()

@@ -37,6 +37,7 @@ namespace VinesMod.Items.Weapons.Melee
 			recipe.AddIngredient(ItemID.LifeCrystal, 5);
 			recipe.AddIngredient(ItemID.ManaCrystal, 7);
 			recipe.AddIngredient(ItemID.CrystalShard, 30);
+			recipe.AddIngredient(mod, "StarForcePurple", 1);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
@@ -45,6 +46,7 @@ namespace VinesMod.Items.Weapons.Melee
 			recipe.AddIngredient(ItemID.LifeCrystal, 5);
 			recipe.AddIngredient(ItemID.ManaCrystal, 7);
 			recipe.AddIngredient(ItemID.CrystalShard, 30);
+			recipe.AddIngredient(mod, "StarForcePurple", 1);
 			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

@@ -57,16 +57,7 @@ namespace VinesMod.Items.Weapons.Bow
 			ModRecipe recipe = new ModRecipe(mod);
 	        recipe.AddIngredient(ItemID.DaedalusStormbow);
             recipe.AddIngredient(ItemID.LifeCrystal, 10);
-			recipe.AddIngredient(ItemID.LargeRuby, 1);
-            recipe.AddIngredient(mod, "OverDriveRed", 1);
-			recipe.AddTile(TileID.Anvils);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-
-            recipe = new ModRecipe(mod);
-	        recipe.AddIngredient(ItemID.DaedalusStormbow);
-            recipe.AddIngredient(ItemID.LifeCrystal, 10);
-			recipe.AddIngredient(ItemID.LargeRuby, 1);
+			recipe.AddIngredient(ItemID.LargeRuby, 5);
             recipe.AddIngredient(mod, "OverDriveRed", 1);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);

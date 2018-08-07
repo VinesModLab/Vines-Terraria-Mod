@@ -24,7 +24,8 @@ namespace VinesMod.Items.Materials.OverDrive
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(mod, "OverDriveCore", 1);
-            recipe.AddIngredient(ItemID.LargeSapphire, 1);
+			recipe.AddIngredient(mod, "StarForceBlue", 5);
+            recipe.AddIngredient(ItemID.LargeSapphire, 5);
             recipe.AddTile(TileID.AdamantiteForge);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
