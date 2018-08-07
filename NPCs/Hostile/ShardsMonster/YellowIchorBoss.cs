@@ -9,10 +9,10 @@ using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace VinesMod.NPCs.Hostile.ShardsMonster
+namespace VinesMod.NPCs.Hostile.ShardMonster
 {
     [AutoloadBossHead]
-    public class BlueEyeBoss : ModNPC
+    public class YellowIchorBoss : ModNPC
     {
         private Player player;
         private float speed;
@@ -21,7 +21,7 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
 		{
 			get
 			{
-				return "VinesMod/NPCs/Hostile/ShardsMonster/BlueEyeBoss";
+				return "VinesMod/NPCs/Hostile/ShardsMonster/YellowIchorBoss";
 			}
 		}
 
@@ -29,37 +29,30 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
 		{
 			get
 			{
-				return "VinesMod/NPCs/Hostile/ShardsMonster/BlueEyeBoss_Head_Boss";
+				return "VinesMod/NPCs/Hostile/ShardsMonster/YellowIchor_Head_Boss";
 			}
 		}
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Blue Eye");
-            Main.npcFrameCount[npc.type] = 3;
+            DisplayName.SetDefault("Yellow Ichor");
+            Main.npcFrameCount[npc.type] = 4;
         }
 
         public override void SetDefaults()
         {
-            npc.CloneDefaults(NPCID.EyeofCthulhu);
-            npc.aiStyle = -1; // Will not have any AI from any existing AI styles. 
-            npc.lifeMax = 3500; 
-            npc.damage = 20; 
+            npc.CloneDefaults(NPCID.IchorSticker);
+            npc.aiStyle = -1; 
+            npc.lifeMax = 4000; 
+            npc.damage = 30; 
             npc.defense = 10; 
-            //npc.width = 120;
-            //npc.height = 120;
-            npc.scale = 1.2f;
+            npc.scale = 2f;
             npc.value = 10000;
-            npc.npcSlots = 1f; // The higher the number, the more NPC slots this NPC takes.
             npc.boss = true; // Is a boss
             npc.lavaImmune = true;
             npc.noGravity = true; 
             npc.noTileCollide = true;
-            npc.HitSound = SoundID.NPCHit1;
-            npc.DeathSound = SoundID.NPCDeath1;
-            music = MusicID.Boss1;
-            bossBag = mod.ItemType("BlueEyeBossBag"); // Needed for the NPC to drop loot bag.
-            aiType = 2; // Different Movement at Night
+            bossBag = mod.ItemType("YellowIchorBossBag"); // Needed for the NPC to drop loot bag.
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -69,12 +62,13 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             npc.defense = (int)(npc.defense + numPlayers);
         }
         
+
         public override void AI()
         {
             Target();
             DespawnHandler();
 
-            Move(new Vector2(Main.rand.Next(-150, 150), -Main.rand.Next(100, 250))); // Calls the Move Method
+            Move(new Vector2(Main.rand.Next(-300, 300), -Main.rand.Next(75, 250))); // Calls the Move Method
             //Attacking
             npc.ai[1] -= 1f; // Subtracts 1 from the ai.
             if(npc.ai[1] <= 0f)
@@ -90,7 +84,7 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
 
         private void Move(Vector2 offset)
         {
-            speed = 15f; // Sets the max speed of the npc.
+            speed = 7f; // Sets the max speed of the npc.
             Vector2 moveTo = player.Center + offset; // Gets the point that the npc will be moving to.
             Vector2 move = moveTo - npc.Center;
             float magnitude = Magnitude(move);
@@ -128,7 +122,7 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
 
         private void Shoot()
         {
-            int type = mod.ProjectileType("BlueEyeBossProjectile");
+            int type = mod.ProjectileType("YellowIchorBossProjectile");
             Vector2 velocity = player.Center - npc.Center; // Get the distance between target and npc.
             float magnitude = Magnitude(velocity);
             if(magnitude > 0) {
@@ -138,7 +132,7 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
                 velocity = new Vector2(0f, 5f);
             }
             Projectile.NewProjectile(npc.Center, velocity, type, npc.damage, 2f);
-            npc.ai[1] = (float) Main.rand.Next(75 , 100);
+            npc.ai[1] = 100f;
         }
 
         private float Magnitude(Vector2 mag)
@@ -154,16 +148,8 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             if (frame >= Main.npcFrameCount[npc.type]) frame = 0;
             npc.frame.Y = frame * frameHeight;
 
-            RotateNPCToTarget();
         }
 
-        private void RotateNPCToTarget()
-        {
-            if (player == null) return;
-            Vector2 direction = npc.Center - player.Center;
-            float rotation = (float)Math.Atan2(direction.Y, direction.X);
-            npc.rotation = rotation + ((float)Math.PI * 0.5f);
-        }
 
         public override void NPCLoot()
         {
@@ -172,50 +158,51 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             npc.DropBossBags();
             }
             
-
             if (Main.rand.Next(10) == 0)
             {
-                Item.NewItem(npc.getRect(), ItemID.BlackLens, 1);
+                Item.NewItem(npc.getRect(), ItemID.HoneyedGoggles, 1);
             }
 
-            if (Main.rand.Next(50) == 0)
+            if (Main.rand.Next(9) == 0)
             {
-                Item.NewItem(npc.getRect(), ItemID.Binoculars, 1);
+                Item.NewItem(npc.getRect(), ItemID.Nectar, 1);
             }
 
-            switch (Main.rand.Next(5))
+            switch (Main.rand.Next(3))
             {
                 case 0:
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BlueEyeBossSummonItem"), 1);
+                Item.NewItem(npc.getRect(), ItemID.BeeKeeper, 1);
                 break;
+
                 case 1:
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GreenBeeBossSummonItem"), 1);
+                Item.NewItem(npc.getRect(), ItemID.BeeGun, 1);
                 break;
+
                 case 2:
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("PurpleSlimeBossSummonItem"), 1);
+                Item.NewItem(npc.getRect(), ItemID.BeesKnees, 1);
                 break;
-                case 3:
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RedBrainBossSummonItem"), 1);
-                break;
-                case 4:
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("YellowIchorBossSummonItem"), 1);
-                break;
+
             }
 
-            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardBlue"), Main.rand.Next(3, 5));
-            Item.NewItem(npc.getRect(), ItemID.Lens, Main.rand.Next(3, 5));
-            Item.NewItem(npc.getRect(), ItemID.GoldBar, Main.rand.Next(3, 5));
-            Item.NewItem(npc.getRect(), ItemID.SilverOre, Main.rand.Next(10, 20));
-            Item.NewItem(npc.getRect(), ItemID.IronBar, Main.rand.Next(3, 7));
+            if (Main.rand.Next(3) == 0)
+            {
+                Item.NewItem(npc.getRect(), ItemID.HoneyComb, 1);
+            }
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardYellow"), Main.rand.Next(3, 5));
+            Item.NewItem(npc.getRect(), ItemID.GoldBar, Main.rand.Next(5, 8));
+            Item.NewItem(npc.getRect(), ItemID.IronBar, Main.rand.Next(5, 10));
+            Item.NewItem(npc.getRect(), ItemID.SilverOre, Main.rand.Next(15, 20));
             Item.NewItem(npc.getRect(), ItemID.ManaCrystal, Main.rand.Next(1, 2));
+            Item.NewItem(npc.getRect(), ItemID.LifeCrystal, Main.rand.Next(1, 2));
 
-            Item.NewItem(npc.getRect(), ItemID.CrimsonSeeds, Main.rand.Next(1, 2));
-            Item.NewItem(npc.getRect(), ItemID.CorruptSeeds, Main.rand.Next(1, 2));
-            Item.NewItem(npc.getRect(), ItemID.DemoniteOre, Main.rand.Next(20, 40));
-            Item.NewItem(npc.getRect(), ItemID.CrimtaneOre, Main.rand.Next(20, 40));
+            //Item.NewItem(npc.getRect(), ItemID.BottledHoney, Main.rand.Next(15, 30));
+            //Item.NewItem(npc.getRect(), ItemID.BeeWax, Main.rand.Next(10, 20));
+            //Item.NewItem(npc.getRect(), ItemID.Beenade, Main.rand.Next(30, 45));
+            
+            
 
             // For settings if the boss has been downed
-            VinesWorld.downedBlueEyeBoss = true;
+            VinesWorld.downedYellowIchorBoss = true;
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)

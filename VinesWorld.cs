@@ -18,12 +18,16 @@ namespace VinesMod
         public static bool downedBlueEyeBoss = false;
         public static bool downedRedBrainBoss = false;
         public static bool downedGreenBeeBoss = false;
+        public static bool downedPurpleSlimeBoss = false;
+        public static bool downedYellowIchorBoss = false;
 
         public override void Initialize()
         {
             downedBlueEyeBoss = false;
             downedRedBrainBoss = false;
             downedGreenBeeBoss = false;
+            downedPurpleSlimeBoss = false;
+            downedYellowIchorBoss = false;
         }
 
         public override TagCompound Save()
@@ -32,6 +36,8 @@ namespace VinesMod
             if (downedBlueEyeBoss) downed.Add("BlueEye");
             if (downedRedBrainBoss) downed.Add("RedBrain");
             if (downedGreenBeeBoss) downed.Add("GreenBee");
+            if (downedPurpleSlimeBoss) downed.Add("PurpleSlime");
+            if (downedYellowIchorBoss) downed.Add("YellowIchor");
 
             return new TagCompound
             {
@@ -45,6 +51,8 @@ namespace VinesMod
             downedBlueEyeBoss = downed.Contains("BlueEye");
             downedRedBrainBoss = downed.Contains("RedBrain");
             downedGreenBeeBoss = downed.Contains("GreenBee");
+            downedPurpleSlimeBoss = downed.Contains("PurpleSlime");
+            downedYellowIchorBoss = downed.Contains("YellowIchor");
         }
 
         public override void LoadLegacy(BinaryReader reader)
@@ -56,6 +64,8 @@ namespace VinesMod
                 downedBlueEyeBoss = flags[0];
                 downedRedBrainBoss = flags[1];
                 downedGreenBeeBoss = flags[2];
+                downedPurpleSlimeBoss = flags[3];
+                downedYellowIchorBoss = flags[4];
             }
         }
 
@@ -65,6 +75,8 @@ namespace VinesMod
             flags[0] = downedBlueEyeBoss;
             flags[1] = downedRedBrainBoss;
             flags[2] = downedGreenBeeBoss;
+            flags[3] = downedPurpleSlimeBoss;
+            flags[4] = downedYellowIchorBoss;
             writer.Write(flags);
         }
 
@@ -74,6 +86,8 @@ namespace VinesMod
             downedBlueEyeBoss = flags[0];
             downedRedBrainBoss = flags[1];
             downedGreenBeeBoss = flags[2];
+            downedPurpleSlimeBoss = flags[3];
+            downedYellowIchorBoss = flags[4];
         }
 
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)

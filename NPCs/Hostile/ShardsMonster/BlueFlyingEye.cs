@@ -30,7 +30,7 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return SpawnCondition.OverworldNightMonster.Chance * 0.1f;
+            return SpawnCondition.OverworldNightMonster.Chance * 0.05f;
         }
 
         public override void NPCLoot()
@@ -39,7 +39,7 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
                 {
                     Item.NewItem(npc.getRect(), mod.ItemType("ShardBlue"), Main.rand.Next(1, 2));
                 }
-                
+
                 if (Main.rand.Next(3) == 0)
                 {
                     Item.NewItem(npc.getRect(), mod.ItemType("BlueEyeBossSummonItem"), 1);
