@@ -22,7 +22,7 @@ namespace VinesMod.Items.Weapons.Melee
 			item.useTime = 10;          
 			item.useAnimation = 10; 
 			item.useStyle = 1;  
-			item.knockBack = 6;         
+			item.knockBack = 4;         
 			item.value = Item.buyPrice(gold: 30);         
 			item.rare = 10;      
 			item.UseSound = SoundID.Item1; 
