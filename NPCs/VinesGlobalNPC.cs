@@ -81,32 +81,65 @@ namespace VinesMod.NPCs
 					//Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BossItem"));
 				}
 			}
-			if (((npc.type == NPCID.Pumpking && Main.pumpkinMoon) || (npc.type == NPCID.IceQueen && Main.snowMoon)) && NPC.waveNumber > 10)
+			*/
+
+			if (npc.lifeMax > 10 && npc.value > 0f)
 			{
-				int chance = NPC.waveNumber - 10;
-				if (Main.expertMode)
+				if (Main.rand.Next(6) == 0)
 				{
-					chance++;
-				}
-				if (Main.rand.Next(5) < chance)
-				{
-					int stack = 1;
-					if (NPC.waveNumber >= 15)
+					switch (Main.rand.Next(6))
 					{
-						stack = Main.rand.Next(4, 7);
-						if (Main.expertMode)
-						{
-							stack++;
-						}
+						case 0:
+						Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardBlue"), Main.rand.Next(1,3));
+						break;
+						case 1:
+						Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardRed"), Main.rand.Next(1,3));
+						break;
+						case 2:
+						Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardGreen"), Main.rand.Next(1,3));
+						break;
+						case 3:
+						Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardPurple"), Main.rand.Next(1,3));
+						break;
+						case 4:
+						Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardYellow"), Main.rand.Next(1,3));
+						break;
+						case 5:
+						Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardWhite"), Main.rand.Next(1,3));
+						break;
 					}
-					else if (Main.rand.Next(2) == 0)
-					{
-						stack++;
-					}
-					string type = npc.type == NPCID.Pumpking ? "ScytheBlade" : "Icicle";
-					Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType(type), stack);
 				}
+				
 			}
+
+			if (npc.lifeMax > 100 && npc.value > 0f)
+			{
+				if (Main.rand.Next(5) == 0)
+				{
+					switch (Main.rand.Next(5))
+            		{
+                	case 0:
+                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BlueEyeBossSummonItem"), 1);
+                	break;
+                	case 1:
+                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GreenBeeBossSummonItem"), 1);
+                	break;
+                	case 2:
+                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("PurpleSlimeBossSummonItem"), 1);
+                	break;
+                	case 3:
+                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RedBrainBossSummonItem"), 1);
+               		break;
+                	case 4:
+                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("YellowIchorBossSummonItem"), 1);
+                	break;
+            		}
+				}
+				
+			}
+
+
+			/*
 			if (npc.type == NPCID.DukeFishron && !Main.expertMode)
 			{
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Bubble"), Main.rand.Next(5, 8));
@@ -203,6 +236,8 @@ namespace VinesMod.NPCs
 				shop.item[nextSlot].shopSpecialCurrency = ExampleMod.FaceCustomCurrencyID;
 				nextSlot++;
 				*/
+				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.GoodieBags.PetGoodieBag>());
+				nextSlot++;
 			}
             else if (type == NPCID.Wizard && Main.expertMode)
             {

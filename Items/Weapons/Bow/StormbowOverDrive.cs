@@ -28,7 +28,7 @@ namespace VinesMod.Items.Weapons.Bow
             item.damage = 500;
             item.useStyle = 5; 
             item.noMelee = true; 
-            item.value = Item.buyPrice(0, 3, 0, 0);
+            item.value = Item.buyPrice(gold: 30);
             item.rare = 10;
             item.UseSound = SoundID.Item5; 
             item.useAmmo = mod.ItemType("OverDriveArrow");

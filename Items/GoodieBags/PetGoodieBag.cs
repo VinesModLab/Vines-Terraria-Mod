@@ -16,6 +16,7 @@ namespace VinesMod.Items.GoodieBags
 		{
 			item.maxStack = 999;
             item.consumable = true;
+			item.value = 50000;
 			item.width = 20;
 			item.height = 20;
 			item.rare = 2;

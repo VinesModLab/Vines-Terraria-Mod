@@ -183,25 +183,6 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
                 Item.NewItem(npc.getRect(), ItemID.Binoculars, 1);
             }
 
-            switch (Main.rand.Next(5))
-            {
-                case 0:
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BlueEyeBossSummonItem"), 1);
-                break;
-                case 1:
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GreenBeeBossSummonItem"), 1);
-                break;
-                case 2:
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("PurpleSlimeBossSummonItem"), 1);
-                break;
-                case 3:
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RedBrainBossSummonItem"), 1);
-                break;
-                case 4:
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("YellowIchorBossSummonItem"), 1);
-                break;
-            }
-
             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardBlue"), Main.rand.Next(3, 5));
             Item.NewItem(npc.getRect(), ItemID.Lens, Main.rand.Next(3, 5));
             Item.NewItem(npc.getRect(), ItemID.GoldBar, Main.rand.Next(3, 5));
