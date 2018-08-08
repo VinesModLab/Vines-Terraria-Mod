@@ -41,7 +41,7 @@ namespace VinesMod.Items.Weapons.Melee
 				
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
-			target.AddBuff(BuffID.Venom, 15* 60);
+			target.AddBuff(BuffID.Venom, 60 * 5);
         }
 
 		public override void MeleeEffects(Player player, Rectangle hitbox)

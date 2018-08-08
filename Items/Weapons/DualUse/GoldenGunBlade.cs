@@ -38,6 +38,7 @@ namespace VinesMod.Items.Weapons.DualUse
 			recipe.AddIngredient(ItemID.GoldBow, 1);
 			recipe.AddRecipeGroup("IronBar", 5);
 			recipe.AddIngredient(mod, "ShardYellow", 3);
+			recipe.AddIngredient(mod, "ShardRed", 3);
 			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
@@ -47,6 +48,7 @@ namespace VinesMod.Items.Weapons.DualUse
 			recipe.AddIngredient(ItemID.GoldBow, 1);
 			recipe.AddRecipeGroup("IronBar", 5);
 			recipe.AddIngredient(mod, "ShardYellow", 3);
+			recipe.AddIngredient(mod, "ShardRed", 3);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
@@ -64,7 +66,7 @@ namespace VinesMod.Items.Weapons.DualUse
 				item.useStyle = 3;
 				item.useTime = 20;
 				item.useAnimation = 20;
-				item.damage = 50;
+				item.damage = 25;
 				item.shoot = ProjectileID.GoldenBullet;
 			}
 			else
@@ -72,7 +74,7 @@ namespace VinesMod.Items.Weapons.DualUse
 				item.useStyle = 1;
 				item.useTime = 40;
 				item.useAnimation = 40;
-				item.damage = 100;
+				item.damage = 25;
 				item.shoot = 0;
 			}
 			return base.CanUseItem(player);
@@ -82,11 +84,11 @@ namespace VinesMod.Items.Weapons.DualUse
 		{
 			if (player.altFunctionUse == 2)
 			{
-				target.AddBuff(BuffID.Ichor, 60);
+				target.AddBuff(BuffID.Ichor, 60 * 5);
 			}
 			else
 			{
-				target.AddBuff(BuffID.OnFire, 60);
+				target.AddBuff(BuffID.OnFire, 60 * 5);
 			}
 		}
 
@@ -118,7 +120,7 @@ namespace VinesMod.Items.Weapons.DualUse
 			Vector2 speed = new Vector2(speedX, speedY);
 			speed = speed.RotatedByRandom(MathHelper.ToRadians(30));
 			// Change the damage since it is based off the weapons damage and is too high
-			damage = (int)(damage * .1f);
+			damage = (int)(damage * .8f);
 			speedX = speed.X;
 			speedY = speed.Y;
 			return true;

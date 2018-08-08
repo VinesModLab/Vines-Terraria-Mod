@@ -59,11 +59,23 @@ namespace VinesMod.Items.Weapons.Melee
 			recipe.AddRecipe();
 		}
 
+		public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+        {
+            target.AddBuff(BuffID.OnFire, 15 * 5);
+			target.AddBuff(BuffID.Bleeding, 15 * 5);
+			target.AddBuff(BuffID.Chilled, 15 * 5);
+			target.AddBuff(BuffID.ShadowFlame, 15* 5);
+			target.AddBuff(BuffID.Poisoned, 15* 5);
+			target.AddBuff(BuffID.Venom, 15* 5);
+			target.AddBuff(BuffID.Confused, 15* 5);
+			target.AddBuff(BuffID.Ichor, 15* 5);
+        }
+
 		public override void MeleeEffects(Player player, Rectangle hitbox)
 		{
-			if (Main.rand.Next(15) == 0)
+			if (Main.rand.Next(9) == 0)
 			{
-				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, mod.DustType("SparkleYellow"));
+				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, mod.DustType("Sparkle"));
 			}
 		}
 	}
