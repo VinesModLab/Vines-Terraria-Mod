@@ -16,6 +16,10 @@ I made this mod because I noticed gems (ruby, topaz etc) are seldom used at craf
 
 I designed a overdrive system which allows weapons upgrade, to make the original weapons can catch up in late modded game (500+ atks).
 
+## Background Story
+The world collided with other dimension, lead to a new power resource, "overdrive" spawn in the world. This lead to apocalypse, but the god of world break it down into pieces called "shards". Living things who hold them will became stronger, so people start hunting for shards...
+
+
 ## Things Contained in Mod:
 * 20+ New Weapons
 * 3+ New Accessories
