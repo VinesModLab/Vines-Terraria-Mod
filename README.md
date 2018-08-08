@@ -1,5 +1,6 @@
 # Vines' Mod v0.0.3 Alpha
 A mod for the game [Terraria](https://en.wikipedia.org/wiki/Terraria) 1.3.5.2
+Still trying to balancing the mod.
 
 ## How To Use:
 * Install the latest [tModLoader](https://forums.terraria.org/index.php?threads/1-3-tmodloader-a-modding-api.23726/) (Current Version v0.10.1.5)

@@ -23,7 +23,7 @@ namespace VinesMod.Items.Materials.StarForce
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod, "ShardBlue", 100);
+			recipe.AddIngredient(mod, "ShardBlue", 250);
             recipe.AddIngredient(ItemID.LargeSapphire, 1);
 			recipe.AddIngredient(ItemID.FallenStar, 10);
             recipe.AddTile(TileID.AdamantiteForge);
