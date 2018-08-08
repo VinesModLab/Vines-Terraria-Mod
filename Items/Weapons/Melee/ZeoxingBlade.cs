@@ -59,6 +59,10 @@ namespace VinesMod.Items.Weapons.Melee
 			target.AddBuff(BuffID.Frozen, 15 * 60);
 			target.AddBuff(BuffID.Chilled, 15 * 60);
 			target.AddBuff(BuffID.ShadowFlame, 15* 60);
+			target.AddBuff(BuffID.Poisoned, 15* 60);
+			target.AddBuff(BuffID.Venom, 15* 60);
+			target.AddBuff(BuffID.Confused, 15* 60);
+			target.AddBuff(BuffID.Ichor, 15* 60);
         }
 
 		public override void AddRecipes()

@@ -95,14 +95,12 @@ namespace VinesMod.Items.Weapons.Melee
 			}
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
-		{
-			// Add Onfire buff to the NPC for 1 second
-			// 60 frames = 1 second
-			target.AddBuff(BuffID.OnFire, 15 * 60);
-			target.AddBuff(BuffID.Bleeding, 15 * 60);
-			target.AddBuff(BuffID.Frozen, 15 * 60);
+		public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+        {
 			target.AddBuff(BuffID.Chilled, 15 * 60);
-		}
+			target.AddBuff(BuffID.Venom, 15* 60);
+			target.AddBuff(BuffID.Confused, 15* 60);
+			target.AddBuff(BuffID.Ichor, 15* 60);
+        }
 	}
 }

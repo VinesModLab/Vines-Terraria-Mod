@@ -20,7 +20,7 @@ namespace VinesMod.Items.Armor.PurpleManaSet
 			item.height = 18;
 			item.value = 10000;
 			item.rare = 1;
-			item.defense = 10;
+			item.defense = 11;
 		}
 
 		public override void UpdateEquip(Player player)

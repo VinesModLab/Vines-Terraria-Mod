@@ -38,6 +38,11 @@ namespace VinesMod.Items.Weapons.Melee
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
+				
+		public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+        {
+			target.AddBuff(BuffID.Venom, 15* 60);
+        }
 
 		public override void MeleeEffects(Player player, Rectangle hitbox)
 		{

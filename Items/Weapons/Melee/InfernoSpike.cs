@@ -48,6 +48,16 @@ namespace VinesMod.Items.Weapons.Melee
 			return player.ownedProjectileCounts[item.shoot] < 1; 
 		}
 
+		public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+        {
+            target.AddBuff(BuffID.OnFire, 15 * 60);
+			target.AddBuff(BuffID.Bleeding, 15 * 60);
+			target.AddBuff(BuffID.ShadowFlame, 15* 60);
+			target.AddBuff(BuffID.Venom, 15* 60);
+			target.AddBuff(BuffID.Confused, 15* 60);
+			target.AddBuff(BuffID.Ichor, 15* 60);
+        }
+
 		public override void AddRecipes()
         {
 			ModRecipe recipe = new ModRecipe(mod);
