@@ -100,7 +100,7 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
             {
                 Item.NewItem(npc.getRect(), ItemID.BoneRattle, 1);
             }
-            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardRed"), Main.rand.Next(3, 5));
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardRed"), Main.rand.Next(5, 10));
             Item.NewItem(npc.getRect(), ItemID.GoldBar, Main.rand.Next(3, 5));
             Item.NewItem(npc.getRect(), ItemID.IronBar, Main.rand.Next(3, 7));
             Item.NewItem(npc.getRect(), ItemID.SilverOre, Main.rand.Next(10, 20));

@@ -83,7 +83,7 @@ namespace VinesMod.NPCs
 			}
 			*/
 
-			if (npc.lifeMax > 10 && npc.value > 0f)
+			if (npc.lifeMax > 10 && npc.value > 0f && npc.lifeMax < 2000)
 			{
 				if (Main.rand.Next(6) == 0)
 				{

@@ -55,7 +55,8 @@ namespace VinesMod.Items.Weapons.Gun
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.Bed, 1);
+			recipe.AddIngredient(ItemID.Bed, 3);
+			recipe.AddIngredient(ItemID.GoldBar, 5);
 			recipe.AddRecipeGroup("IronBar", 10);
 			recipe.AddIngredient(ItemID.IllegalGunParts, 1);
 			recipe.AddTile(TileID.Anvils);
@@ -63,7 +64,8 @@ namespace VinesMod.Items.Weapons.Gun
 			recipe.AddRecipe();
 
 			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.Bed, 1);
+			recipe.AddIngredient(ItemID.Bed, 3);
+			recipe.AddIngredient(ItemID.GoldBar, 5);
 			recipe.AddRecipeGroup("IronBar", 10);
 			recipe.AddIngredient(ItemID.IllegalGunParts, 1);
 			recipe.AddTile(TileID.MythrilAnvil);

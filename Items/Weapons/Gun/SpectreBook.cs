@@ -24,8 +24,8 @@ namespace VinesMod.Items.Weapons.Gun
 			item.useStyle = 5;
 			item.noMelee = true;
 			item.knockBack = 4f;
-			item.value = Item.sellPrice(0, 10, 0, 0);
-			item.rare = 8;
+			item.value = Item.sellPrice(0, 5, 0, 0);
+			item.rare = 6;
 			item.UseSound = mod.GetLegacySoundSlot(SoundType.Item, "Sounds/Item/Wooo");
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("Wisp");

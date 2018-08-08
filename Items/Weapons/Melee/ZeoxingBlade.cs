@@ -31,14 +31,14 @@ namespace VinesMod.Items.Weapons.Melee
 			item.scale = 0.75f;
 		}
 
-		//	Shooting 1 Projectile (Testing)
-		/*
+				/*
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 			type = mod.ProjectileType("ZeoxingProjectile");
 			return base.Shoot(player, ref position, ref speedX, ref speedY, ref type, ref damage, ref knockBack);
 		}
 		*/
+
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 			float numberProjectiles = 7;
