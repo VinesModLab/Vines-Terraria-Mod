@@ -56,19 +56,8 @@ namespace VinesMod.Items.Weapons.Yoyo
             recipe.AddIngredient(ItemID.Cobweb, 15);
             recipe.AddIngredient(ItemID.Spike, 4);
             recipe.AddIngredient(mod, "StarForceGreen", 1);
-			recipe.AddTile(TileID.Anvils);
+			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
-			recipe.AddRecipe();
-
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.SoulofMight, 3);
-            recipe.AddRecipeGroup("IronBar", 10);
-            recipe.AddIngredient(ItemID.Amber, 30);
-            recipe.AddIngredient(ItemID.Cobweb, 15);
-            recipe.AddIngredient(ItemID.Spike, 4);
-            recipe.AddIngredient(mod, "StarForceGreen", 1);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.SetResult(this);
 			recipe.AddRecipe();
         }
     }

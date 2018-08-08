@@ -112,7 +112,7 @@ namespace VinesMod.NPCs
 				
 			}
 
-			if (npc.lifeMax > 100 && npc.value > 0f)
+			if (npc.lifeMax > 120 && npc.value > 0f)
 			{
 				if (Main.rand.Next(5) == 0)
 				{
@@ -239,16 +239,23 @@ namespace VinesMod.NPCs
 				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.GoodieBags.PetGoodieBag>());
 				nextSlot++;
 			}
-            else if (type == NPCID.Wizard && Main.expertMode)
+            else if (type == NPCID.Wizard)
             {
-				/*
-                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Infinity>());
+                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.GoodieBags.RedShardBag>());
                 nextSlot++;
-				*/
+				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.GoodieBags.GreenShardBag>());
+                nextSlot++;
+				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.GoodieBags.BlueShardBag>());
+                nextSlot++;
+				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.GoodieBags.PurpleShardBag>());
+                nextSlot++;
+				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.GoodieBags.YellowShardBag>());
+                nextSlot++;
+				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.GoodieBags.WhiteShardBag>());
+                nextSlot++;
             }
 		}
 
-		// Make any NPC with a chat complain to the player if they have the stinky debuff.
 		public override void GetChat(NPC npc, ref string chat)
 		{
 			if (Main.LocalPlayer.HasBuff(BuffID.Stinky))

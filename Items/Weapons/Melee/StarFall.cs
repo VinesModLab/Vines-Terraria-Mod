@@ -36,30 +36,9 @@ namespace VinesMod.Items.Weapons.Melee
 			recipe.AddIngredient(ItemID.GoldBar, 5);
 			recipe.AddIngredient(ItemID.FallenStar, 7);
 			recipe.AddIngredient(mod, "ShardYellow", 30);
-			recipe.AddTile(TileID.Anvils);
+			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();
-
-			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.Starfury);
-			recipe.AddRecipeGroup("IronBar", 10);
-			recipe.AddIngredient(ItemID.GoldBar, 5);
-			recipe.AddIngredient(ItemID.FallenStar, 7);
-			recipe.AddIngredient(mod, "ShardYellow", 30);
-			recipe.AddTile(TileID.MythrilAnvil);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.Starfury);
-			recipe.AddRecipeGroup("IronBar", 10);
-			recipe.AddIngredient(ItemID.GoldBar, 5);
-			recipe.AddIngredient(ItemID.FallenStar, 7);
-			recipe.AddIngredient(mod, "ShardYellow", 30);
-			recipe.AddTile(TileID.FireflyinaBottle);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-			
 		}
 
 		

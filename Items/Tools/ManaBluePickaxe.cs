@@ -36,7 +36,7 @@ namespace VinesMod.Items.Tools
 			recipe.AddRecipeGroup("IronBar", 7);
 			recipe.AddRecipeGroup("Wood", 40);
 			recipe.AddIngredient(mod, "ShardBlue", 15);
-			recipe.AddTile(TileID.Anvils);
+			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

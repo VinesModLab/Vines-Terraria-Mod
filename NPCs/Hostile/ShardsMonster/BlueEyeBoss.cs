@@ -44,7 +44,7 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             npc.CloneDefaults(NPCID.EyeofCthulhu);
             npc.aiStyle = -1; // Will not have any AI from any existing AI styles. 
             npc.lifeMax = 3500; 
-            npc.damage = 20; 
+            npc.damage = 5; 
             npc.defense = 5; 
             //npc.width = 120;
             //npc.height = 120;

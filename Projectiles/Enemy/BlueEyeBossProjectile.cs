@@ -100,7 +100,7 @@ namespace VinesMod.Projectiles.Enemy
         }
 
         // End Optional Section 
-
+        
         private const float maxTicks = 45f;
         private const int alphaReducation = 25;
 
@@ -131,6 +131,7 @@ namespace VinesMod.Projectiles.Enemy
                 projectile.rotation = projectile.velocity.ToRotation() + MathHelper.ToRadians(90f);
             }
             // Optional Section 
+
             if (projectile.ai[0] == 1f)
             {
                 projectile.ignoreWater = true;
@@ -168,7 +169,7 @@ namespace VinesMod.Projectiles.Enemy
                     projectile.Kill();
                 }
             }
-            // End Optional Section 
+            
 
         }
     }

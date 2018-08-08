@@ -56,21 +56,12 @@ namespace VinesMod.Items.Weapons.Bow
         public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddTile(TileID.Anvils);
             recipe.AddIngredient(mod, "ShardWhite", 50);
             recipe.AddIngredient(ItemID.SnowBlock, 400);
             recipe.AddIngredient(ItemID.Cobweb, 15);
             recipe.AddIngredient(ItemID.SnowballCannon, 1);
+            recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
-			recipe.AddRecipe();
-
-            recipe = new ModRecipe(mod);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.AddIngredient(mod, "ShardWhite", 50);
-            recipe.AddIngredient(ItemID.SnowBlock, 400);
-            recipe.AddIngredient(ItemID.Cobweb, 15);
-            recipe.AddIngredient(ItemID.SnowballCannon, 1);
-            recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
 

@@ -59,7 +59,7 @@ namespace VinesMod.Items.Weapons.Bow
             recipe.AddIngredient(ItemID.LifeCrystal, 10);
 			recipe.AddIngredient(ItemID.LargeRuby, 5);
             recipe.AddIngredient(mod, "OverDriveRed", 1);
-            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.AddTile(mod.TileType("StarForge"));
             recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

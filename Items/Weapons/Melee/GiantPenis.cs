@@ -33,13 +33,7 @@ namespace VinesMod.Items.Weapons.Melee
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.GuideVoodooDoll, 2);
-			recipe.AddTile(TileID.Anvils);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.GuideVoodooDoll, 2);
-			recipe.AddTile(TileID.MythrilAnvil);
+			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

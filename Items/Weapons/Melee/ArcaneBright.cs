@@ -53,7 +53,7 @@ namespace VinesMod.Items.Weapons.Melee
 			recipe.AddIngredient(ItemID.TrueExcalibur, 1);
 			recipe.AddIngredient(ItemID.TerraBlade, 1);
 			recipe.AddIngredient(mod, "OverDriveGreen", 1);
-			recipe.AddTile(TileID.MythrilAnvil);
+			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

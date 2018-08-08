@@ -44,7 +44,7 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
             npc.CloneDefaults(NPCID.IchorSticker);
             npc.aiStyle = -1; 
             npc.lifeMax = 4000; 
-            npc.damage = 30; 
+            npc.damage = 5; 
             npc.defense = 5; 
             npc.scale = 2f;
             npc.value = 10000;

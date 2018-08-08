@@ -39,17 +39,7 @@ namespace VinesMod.Items.Weapons.DualUse
 			recipe.AddRecipeGroup("IronBar", 5);
 			recipe.AddIngredient(mod, "ShardYellow", 3);
 			recipe.AddIngredient(mod, "ShardRed", 3);
-			recipe.AddTile(TileID.MythrilAnvil);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.GoldBroadsword, 1);
-			recipe.AddIngredient(ItemID.GoldBow, 1);
-			recipe.AddRecipeGroup("IronBar", 5);
-			recipe.AddIngredient(mod, "ShardYellow", 3);
-			recipe.AddIngredient(mod, "ShardRed", 3);
-			recipe.AddTile(TileID.Anvils);
+			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

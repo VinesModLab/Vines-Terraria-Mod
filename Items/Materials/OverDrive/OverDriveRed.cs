@@ -26,7 +26,7 @@ namespace VinesMod.Items.Materials.OverDrive
 			recipe.AddIngredient(mod, "OverDriveCore", 1);
 			recipe.AddIngredient(mod, "StarForceRed", 5);
             recipe.AddIngredient(ItemID.LargeRuby, 5);
-            recipe.AddTile(TileID.AdamantiteForge);
+            recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

@@ -63,14 +63,7 @@ namespace VinesMod.Items.Weapons.Melee
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.HellstoneBar, 40);
 			recipe.AddIngredient(ItemID.Obsidian, 40);
-			recipe.AddTile(TileID.MythrilAnvil);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.HellstoneBar, 40);
-			recipe.AddIngredient(ItemID.Obsidian, 40);
-			recipe.AddTile(TileID.Anvils);
+			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();
         }

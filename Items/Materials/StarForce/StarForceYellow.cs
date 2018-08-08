@@ -26,7 +26,7 @@ namespace VinesMod.Items.Materials.StarForce
 			recipe.AddIngredient(mod, "ShardYellow", 250);
             recipe.AddIngredient(ItemID.LargeTopaz, 1);
 			recipe.AddIngredient(ItemID.FallenStar, 10);
-            recipe.AddTile(TileID.AdamantiteForge);
+            recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

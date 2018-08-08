@@ -68,23 +68,7 @@ namespace VinesMod.Items.Tools
 			recipe.AddIngredient(ItemID.StoneBlock, 40);
 			recipe.AddIngredient(ItemID.SandBlock, 40);
 			recipe.AddRecipeGroup("Wood", 40);
-			recipe.AddTile(TileID.Furnaces);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.StoneBlock, 40);
-			recipe.AddIngredient(ItemID.SandBlock, 40);
-			recipe.AddRecipeGroup("Wood", 40);
-			recipe.AddTile(TileID.Hellforge);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.StoneBlock, 40);
-			recipe.AddIngredient(ItemID.SandBlock, 40);
-			recipe.AddRecipeGroup("Wood", 40);
-			recipe.AddTile(TileID.AdamantiteForge);
+			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

@@ -40,18 +40,8 @@ namespace VinesMod.Items.Weapons.Ammo
 			recipe.AddIngredient(ItemID.Ruby, 10);
             recipe.AddRecipeGroup("Wood", 30);
             recipe.AddIngredient(mod, "ShardRed", 3);
-			recipe.AddTile(TileID.MythrilAnvil);
+			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this, 333);
-			recipe.AddRecipe();
-
-
-            recipe = new ModRecipe(mod);
-	
-			recipe.AddIngredient(ItemID.Ruby, 10);
-            recipe.AddRecipeGroup("Wood", 30);
-            recipe.AddIngredient(mod, "ShardRed", 3);
-            recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this, 333);
 			recipe.AddRecipe();
 		}
     }

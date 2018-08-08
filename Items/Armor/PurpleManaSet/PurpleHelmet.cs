@@ -42,15 +42,7 @@ namespace VinesMod.Items.Armor.PurpleManaSet
 			recipe.AddIngredient(ItemID.ManaCrystal, 3);
 			recipe.AddRecipeGroup("IronBar", 10);
 			recipe.AddIngredient(mod, "ShardPurple", 10);
-			recipe.AddTile(TileID.Anvils);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.ManaCrystal, 3);
-			recipe.AddRecipeGroup("IronBar", 10);
-			recipe.AddIngredient(mod, "ShardPurple", 10);
-			recipe.AddTile(TileID.MythrilAnvil);
+			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

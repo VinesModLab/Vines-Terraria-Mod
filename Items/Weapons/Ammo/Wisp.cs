@@ -30,13 +30,7 @@ namespace VinesMod.Items.Weapons.Ammo
 		{
 			WispRecipe recipe = new WispRecipe(mod);
 			recipe.AddIngredient(ItemID.Ectoplasm);
-			recipe.AddTile(TileID.WorkBenches);
-			recipe.SetResult(this, 50);
-			recipe.AddRecipe();
-
-			recipe = new WispRecipe(mod);
-			recipe.AddIngredient(ItemID.Ectoplasm);
-			recipe.AddTile(TileID.Bookcases);
+			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this, 50);
 			recipe.AddRecipe();
 		}
@@ -55,7 +49,7 @@ namespace VinesMod.Items.Weapons.Ammo
 
 		public override int ConsumeItem(int type, int numRequired)
 		{
-			if (type == ItemID.Ectoplasm && Main.LocalPlayer.adjTile[TileID.Bookcases])
+			if (type == ItemID.Ectoplasm)
 			{
 				Main.PlaySound(2, -1, -1, mod.GetSoundSlot(SoundType.Item, "Sounds/Item/Wooo"));
 				return Main.rand.Next(2) == 0 ? 0 : 1; //You have half chance to not consume your materials

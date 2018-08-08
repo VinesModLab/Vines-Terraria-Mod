@@ -39,15 +39,7 @@ namespace VinesMod.Items.Weapons.Gun
 			recipe.AddIngredient(ItemID.Book, 1);
 			recipe.AddIngredient(ItemID.Ectoplasm, 8);
 			recipe.AddIngredient(mod, "ShardPurple", 30);
-			recipe.AddTile(TileID.Bookcases);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.Book, 1);
-			recipe.AddIngredient(ItemID.Ectoplasm, 8);
-			recipe.AddIngredient(mod, "ShardPurple", 30);
-			recipe.AddTile(TileID.Books);
+			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

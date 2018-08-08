@@ -29,8 +29,8 @@ namespace VinesMod.Items.Weapons.Melee
 			ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.Meowmere, 1);
 			recipe.AddIngredient(mod, "OverDriveWhite", 1);
-			recipe.AddIngredient(ItemID.LargeDiamond, 1);
-			recipe.AddTile(TileID.MythrilAnvil);
+			recipe.AddIngredient(ItemID.LargeDiamond, 5);
+			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

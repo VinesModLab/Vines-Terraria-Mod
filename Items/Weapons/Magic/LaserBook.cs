@@ -39,17 +39,7 @@ namespace VinesMod.Items.Weapons.Magic
 			recipe.AddIngredient(ItemID.Lens, 5);
 			recipe.AddIngredient(ItemID.CrystalShard, 3);
 			recipe.AddIngredient(mod, "ShardBlue", 7);
-			recipe.AddTile(TileID.Bookcases);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.Book, 1);
-			recipe.AddIngredient(ItemID.SoulofLight, 8);
-			recipe.AddIngredient(ItemID.Lens, 5);
-			recipe.AddIngredient(ItemID.CrystalShard, 3);
-			recipe.AddIngredient(mod, "ShardBlue", 7);
-			recipe.AddTile(TileID.Books);
+			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

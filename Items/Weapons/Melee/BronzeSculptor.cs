@@ -34,7 +34,7 @@ namespace VinesMod.Items.Weapons.Melee
 			recipe.AddRecipeGroup("IronBar", 5);
 			recipe.AddIngredient(ItemID.GoldBar, 2);
 			recipe.AddIngredient(mod, "ShardYellow", 5);
-			recipe.AddTile(TileID.Anvils);
+			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

@@ -46,19 +46,7 @@ namespace VinesMod.Items.Accessories.Wings
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.Feather, 7);
-			recipe.AddTile(TileID.SkyMill);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-
-            recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.Feather, 7);
-			recipe.AddTile(TileID.Anvils);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-
-            recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.Feather, 7);
-			recipe.AddTile(TileID.MythrilAnvil);
+			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

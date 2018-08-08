@@ -36,15 +36,8 @@ namespace VinesMod.Items.Weapons.Magic
 			recipe.AddIngredient(ItemID.RubyStaff, 1);
 			recipe.AddIngredient(ItemID.Fireblossom, 5);
 			recipe.AddIngredient(ItemID.GoldBar, 3);
-			recipe.AddTile(TileID.Anvils);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-
-			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.RubyStaff, 1);
-			recipe.AddIngredient(ItemID.Fireblossom, 5);
-			recipe.AddIngredient(ItemID.GoldBar, 3);
-			recipe.AddTile(TileID.MythrilAnvil);
+			recipe.AddIngredient(mod, "ShardRed", 3);
+			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

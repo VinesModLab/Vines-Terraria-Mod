@@ -54,7 +54,7 @@ namespace VinesMod.Items.Weapons.Melee
 			recipe.AddIngredient(mod, "LilacGuardian", 1);
 			recipe.AddIngredient(mod, "SteelWarblade", 1);
 			recipe.AddIngredient(mod, "ThunderBleu", 1);
-			recipe.AddTile(TileID.Anvils);
+			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
