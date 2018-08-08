@@ -157,6 +157,11 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
             {
             npc.DropBossBags();
             }
+
+            if (Main.rand.Next(5) == 0)
+            {
+                Item.NewItem(npc.getRect(), mod.ItemType("ShieldOfFlag"), 1);
+            }
             
 
             if (Main.rand.Next(3) == 0)

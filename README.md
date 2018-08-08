@@ -9,11 +9,16 @@ A mod for the game [Terraria](https://en.wikipedia.org/wiki/Terraria) 1.3.5.2
 * Start Terraria and Click into "Mod Source", Click "Build and Reload"
 * Enjoy the mod
 
+## Mod Idea
+I made this mod because I noticed gems (ruby, topaz etc) are seldom used at crafting in game. I want to make a mod that can greatly consume those unused gems.
+
+I designed a overdrive system which allows weapons upgrade, to make the original weapons can catch up in late modded game (500+ atks).
+
 ## Things Contained in Mod:
 * 15+ New Weapons
 * 3+ New Accessories
-* 1+ New Armor
-* 10+ New Materials
+* 1+ New Set of Armor
+* 20+ New Materials
 * 5+ New Bosses
 * 1+ New NPCs
 

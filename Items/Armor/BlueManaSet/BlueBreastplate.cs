@@ -20,7 +20,7 @@ namespace VinesMod.Items.Armor.BlueManaSet
 			item.width = 18;
 			item.height = 18;
 			item.value = 10000;
-			item.rare = 2;
+			item.rare = 1;
 			item.defense = 10;
 		}
 
@@ -35,6 +35,7 @@ namespace VinesMod.Items.Armor.BlueManaSet
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.ManaCrystal, 5);
+			recipe.AddIngredient(mod, "ShardBlue", 15);
 			recipe.AddRecipeGroup("IronBar", 15);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
@@ -42,6 +43,7 @@ namespace VinesMod.Items.Armor.BlueManaSet
 
 			recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.ManaCrystal, 5);
+			recipe.AddIngredient(mod, "ShardBlue", 15);
 			recipe.AddRecipeGroup("IronBar", 15);
 			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);

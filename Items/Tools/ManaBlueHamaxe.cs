@@ -20,7 +20,7 @@ namespace VinesMod.Items.Tools
 			item.height = 40;
 			item.useTime = 20;
 			item.useAnimation = 20;
-			item.axe = 30;
+			item.axe = 20;
 			item.hammer = 70;
 			item.useStyle = 1;
 			item.knockBack = 6;
@@ -36,6 +36,7 @@ namespace VinesMod.Items.Tools
 			recipe.AddIngredient(ItemID.ManaCrystal, 3);
 			recipe.AddRecipeGroup("IronBar", 7);
 			recipe.AddRecipeGroup("Wood", 40);
+			recipe.AddIngredient(mod, "ShardBlue", 15);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
