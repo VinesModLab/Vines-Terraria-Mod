@@ -17,7 +17,7 @@ I made this mod because I noticed gems (ruby, topaz etc) are seldom used at craf
 I designed a overdrive system which allows weapons upgrade, to make the original weapons can catch up in late modded game (500+ atks).
 
 ## Things Contained in Mod:
-* 15+ New Weapons
+* 20+ New Weapons
 * 3+ New Accessories
 * 1+ New Set of Armor
 * 20+ New Materials

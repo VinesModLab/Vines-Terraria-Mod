@@ -45,7 +45,7 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             npc.aiStyle = -1; // Will not have any AI from any existing AI styles. 
             npc.lifeMax = 3500; 
             npc.damage = 20; 
-            npc.defense = 10; 
+            npc.defense = 5; 
             //npc.width = 120;
             //npc.height = 120;
             npc.scale = 1.2f;

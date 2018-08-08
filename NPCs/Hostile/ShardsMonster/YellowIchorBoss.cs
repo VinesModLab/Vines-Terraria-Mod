@@ -45,7 +45,7 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
             npc.aiStyle = -1; 
             npc.lifeMax = 4000; 
             npc.damage = 30; 
-            npc.defense = 10; 
+            npc.defense = 5; 
             npc.scale = 2f;
             npc.value = 10000;
             npc.boss = true; // Is a boss

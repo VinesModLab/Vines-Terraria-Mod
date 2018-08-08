@@ -47,7 +47,7 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
             npc.width = 122;
             npc.height = 115;
             npc.damage = 25; 
-            npc.defense = 10; 
+            npc.defense = 5; 
             npc.value = 10000;
             npc.boss = true; // Is a boss
             npc.lavaImmune = true;

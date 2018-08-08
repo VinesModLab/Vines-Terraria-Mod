@@ -11,7 +11,6 @@ namespace VinesMod.Projectiles.Enemy
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("BlueEyeBoss Projectile");
-            //DisplayName.SetDefault("Tutorial Javelin Projectile");
         }
 
         public override void SetDefaults()
