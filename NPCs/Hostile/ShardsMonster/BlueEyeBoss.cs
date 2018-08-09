@@ -171,30 +171,29 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             {
             npc.DropBossBags();
             }
-            
-
-            if (Main.rand.Next(10) == 0)
-            {
+            else{
+                    if (Main.rand.Next(10) == 0)
+                {
                 Item.NewItem(npc.getRect(), ItemID.BlackLens, 1);
-            }
+                }
 
-            if (Main.rand.Next(50) == 0)
-            {
+                    if (Main.rand.Next(30) == 0)
+                {
                 Item.NewItem(npc.getRect(), ItemID.Binoculars, 1);
+                }
+
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardBlue"), Main.rand.Next(5, 10));
+                Item.NewItem(npc.getRect(), ItemID.Lens, Main.rand.Next(3, 5));
+                Item.NewItem(npc.getRect(), ItemID.GoldBar, Main.rand.Next(3, 5));
+                Item.NewItem(npc.getRect(), ItemID.SilverOre, Main.rand.Next(10, 20));
+                Item.NewItem(npc.getRect(), ItemID.IronBar, Main.rand.Next(3, 7));
+                Item.NewItem(npc.getRect(), ItemID.ManaCrystal, Main.rand.Next(1, 2));
+                Item.NewItem(npc.getRect(), ItemID.CrimsonSeeds, Main.rand.Next(1, 2));
+                Item.NewItem(npc.getRect(), ItemID.CorruptSeeds, Main.rand.Next(1, 2));
+                Item.NewItem(npc.getRect(), ItemID.DemoniteOre, Main.rand.Next(20, 40));
+                Item.NewItem(npc.getRect(), ItemID.CrimtaneOre, Main.rand.Next(20, 40));
+                Item.NewItem(npc.getRect(), ItemID.Sapphire, Main.rand.Next(1, 2));   
             }
-
-            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardBlue"), Main.rand.Next(5, 10));
-            Item.NewItem(npc.getRect(), ItemID.Lens, Main.rand.Next(3, 5));
-            Item.NewItem(npc.getRect(), ItemID.GoldBar, Main.rand.Next(3, 5));
-            Item.NewItem(npc.getRect(), ItemID.SilverOre, Main.rand.Next(10, 20));
-            Item.NewItem(npc.getRect(), ItemID.IronBar, Main.rand.Next(3, 7));
-            Item.NewItem(npc.getRect(), ItemID.ManaCrystal, Main.rand.Next(1, 2));
-
-            Item.NewItem(npc.getRect(), ItemID.CrimsonSeeds, Main.rand.Next(1, 2));
-            Item.NewItem(npc.getRect(), ItemID.CorruptSeeds, Main.rand.Next(1, 2));
-            Item.NewItem(npc.getRect(), ItemID.DemoniteOre, Main.rand.Next(20, 40));
-            Item.NewItem(npc.getRect(), ItemID.CrimtaneOre, Main.rand.Next(20, 40));
-            Item.NewItem(npc.getRect(), ItemID.Sapphire, Main.rand.Next(1, 2));
 
             // For settings if the boss has been downed
             VinesWorld.downedBlueEyeBoss = true;

@@ -157,17 +157,30 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
             {
             npc.DropBossBags();
             }
-
-            if (Main.rand.Next(5) == 0)
+            else
             {
-                Item.NewItem(npc.getRect(), mod.ItemType("ShieldOfFlag"), 1);
-            }
+                
+                if (Main.rand.Next(2) == 0)
+                {
+                    switch (Main.rand.Next(3))
+                {
+                    case 0:
+                    Item.NewItem(npc.getRect(), mod.ItemType("BallisticStaff"), 1);
+                    break;
+                    case 1:
+                    Item.NewItem(npc.getRect(), mod.ItemType("GoldenGunBlade"), 1);
+                    break;
+                    case 2:
+                    Item.NewItem(npc.getRect(), mod.ItemType("ShieldOfFlag"), 1);
+                    break;
+                }
+                }
             
 
-            if (Main.rand.Next(3) == 0)
-            {
+                if (Main.rand.Next(3) == 0)
+                {
                 Item.NewItem(npc.getRect(), ItemID.EatersBone, 1);
-            }
+                }
 
             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardYellow"), Main.rand.Next(5, 10));
             Item.NewItem(npc.getRect(), ItemID.GoldBar, Main.rand.Next(5, 8));
@@ -181,6 +194,8 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
             Item.NewItem(npc.getRect(), ItemID.Amber, Main.rand.Next(3, 5));
             Item.NewItem(npc.getRect(), ItemID.Topaz, Main.rand.Next(1, 2));
             
+            }
+
             
 
             // For settings if the boss has been downed

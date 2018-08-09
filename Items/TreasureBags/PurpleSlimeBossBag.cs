@@ -39,12 +39,32 @@ namespace VinesMod.Items.TreasureBags
             {
                 player.QuickSpawnItem(ItemID.LifeCrystal, Main.rand.Next(1, 3));
 			    player.QuickSpawnItem(ItemID.ManaCrystal, Main.rand.Next(3, 5));
-            }
+            }                  
+                if (Main.rand.Next(4) == 0)
+                {
+                player.QuickSpawnItem(ItemID.BloodWater, 1);
+                player.QuickSpawnItem(ItemID.UnholyWater, 1);
+                }
 
-            if(Main.rand.Next(5) == 0)
-            {
-                player.QuickSpawnItem(ItemID.LifeFruit, 1);
-            }
+                switch (Main.rand.Next(4))
+                {
+                case 0:
+                player.QuickSpawnItem(ItemID.ShadowOrb, 1);
+                break;
+
+                case 1:
+                player.QuickSpawnItem(ItemID.Vilethorn, 1);
+                break;
+
+                case 2:
+                player.QuickSpawnItem(ItemID.BallOHurt, 1);
+                break;
+
+                case 3:
+                player.QuickSpawnItem(ItemID.BandofStarpower, 1);
+                break;
+                }
+            
 
             if(Main.rand.Next(2) == 0)
             {
@@ -54,10 +74,16 @@ namespace VinesMod.Items.TreasureBags
             player.QuickSpawnItem(ItemID.IronBar, 7);
             player.QuickSpawnItem(mod.ItemType("ShardPurple"), Main.rand.Next(10,20));
             player.QuickSpawnItem(ItemID.LifeCrystal, 1);
+            player.QuickSpawnItem(ItemID.ManaCrystal, Main.rand.Next(1, 2));
 
             player.QuickSpawnItem(ItemID.DemoniteOre, Main.rand.Next(40, 60));
             player.QuickSpawnItem(ItemID.ShadowScale, Main.rand.Next(10, 20));
             player.QuickSpawnItem(ItemID.Amethyst, Main.rand.Next(3, 5));
+                            
+            player.QuickSpawnItem(ItemID.GoldBar, Main.rand.Next(3, 5));
+            player.QuickSpawnItem(ItemID.IronBar, Main.rand.Next(3, 7));
+            player.QuickSpawnItem(ItemID.SilverOre, Main.rand.Next(10, 20));
+            player.QuickSpawnItem(ItemID.Solidifier, 1);
         }
     }
 }

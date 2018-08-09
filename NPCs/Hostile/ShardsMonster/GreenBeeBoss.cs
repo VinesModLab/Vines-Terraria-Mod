@@ -71,19 +71,21 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
             {
             npc.DropBossBags();
             }
-            
-            if (Main.rand.Next(10) == 0)
+            else
             {
+                        
+                if (Main.rand.Next(10) == 0)
+                {
                 Item.NewItem(npc.getRect(), ItemID.HoneyedGoggles, 1);
-            }
+                }
 
-            if (Main.rand.Next(9) == 0)
-            {
+                if (Main.rand.Next(9) == 0)
+                {
                 Item.NewItem(npc.getRect(), ItemID.Nectar, 1);
-            }
+                }
 
-            switch (Main.rand.Next(3))
-            {
+                switch (Main.rand.Next(3))
+                {
                 case 0:
                 Item.NewItem(npc.getRect(), ItemID.BeeKeeper, 1);
                 break;
@@ -96,12 +98,12 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
                 Item.NewItem(npc.getRect(), ItemID.BeesKnees, 1);
                 break;
 
-            }
+                }
 
-            if (Main.rand.Next(3) == 0)
-            {
+                if (Main.rand.Next(3) == 0)
+                {
                 Item.NewItem(npc.getRect(), ItemID.HoneyComb, 1);
-            }
+                }
             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardGreen"), Main.rand.Next(5, 10));
             Item.NewItem(npc.getRect(), ItemID.GoldBar, Main.rand.Next(5, 8));
             Item.NewItem(npc.getRect(), ItemID.IronBar, Main.rand.Next(5, 10));
@@ -113,6 +115,7 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
             Item.NewItem(npc.getRect(), ItemID.BeeWax, Main.rand.Next(10, 20));
             Item.NewItem(npc.getRect(), ItemID.Beenade, Main.rand.Next(30, 45));
             Item.NewItem(npc.getRect(), ItemID.Emerald, Main.rand.Next(1, 2));
+            }
             
             
 

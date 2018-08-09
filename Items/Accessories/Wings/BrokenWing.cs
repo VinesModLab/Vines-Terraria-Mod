@@ -11,6 +11,7 @@ namespace VinesMod.Items.Accessories.Wings
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Broken Wing");
+            Tooltip.SetDefault("Allow flight and slow fall");
         }
 
         public override void SetDefaults()

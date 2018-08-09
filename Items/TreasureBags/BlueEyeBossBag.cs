@@ -38,25 +38,30 @@ namespace VinesMod.Items.TreasureBags
             if(Main.rand.Next(3) == 0)
             {
                 player.QuickSpawnItem(ItemID.LifeCrystal, Main.rand.Next(1, 3));
-			    player.QuickSpawnItem(ItemID.ManaCrystal, Main.rand.Next(3, 5));
             }
 
             if(Main.rand.Next(5) == 0)
             {
-                player.QuickSpawnItem(ItemID.LifeFruit, 1);
+                player.QuickSpawnItem(ItemID.BlackLens, 1);
             }
 
             if(Main.rand.Next(7) == 0)
             {
-                player.QuickSpawnItem(ItemID.BlackLens, 1);
+                player.QuickSpawnItem(ItemID.Binoculars, 1);
             }
             player.QuickSpawnItem(ItemID.GoldBar, 5);
             player.QuickSpawnItem(ItemID.IronBar, 7);
             player.QuickSpawnItem(mod.ItemType("ShardBlue"), Main.rand.Next(10,20));
-            player.QuickSpawnItem(ItemID.ManaCrystal, 1);
+            player.QuickSpawnItem(ItemID.ManaCrystal, Main.rand.Next(2, 4));
 
             player.QuickSpawnItem(ItemID.DemoniteOre, Main.rand.Next(20, 40));
             player.QuickSpawnItem(ItemID.CrimtaneOre, Main.rand.Next(20, 40));
+            player.QuickSpawnItem(ItemID.CorruptSeeds, Main.rand.Next(1, 2));
+            player.QuickSpawnItem(ItemID.CrimsonSeeds, Main.rand.Next(1, 2));
+            player.QuickSpawnItem(ItemID.Lens, Main.rand.Next(3, 5));
+            player.QuickSpawnItem(ItemID.GoldBar, Main.rand.Next(3, 5));
+            player.QuickSpawnItem(ItemID.SilverOre, Main.rand.Next(10, 20));
+            player.QuickSpawnItem(ItemID.IronBar, Main.rand.Next(3, 7));
 
             player.QuickSpawnItem(ItemID.Sapphire, Main.rand.Next(3, 5));
         }

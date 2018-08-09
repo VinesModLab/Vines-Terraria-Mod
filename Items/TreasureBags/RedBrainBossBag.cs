@@ -41,20 +41,41 @@ namespace VinesMod.Items.TreasureBags
 			    player.QuickSpawnItem(ItemID.ManaCrystal, Main.rand.Next(3, 5));
             }
 
-            if(Main.rand.Next(5) == 0)
-            {
-                player.QuickSpawnItem(ItemID.LifeFruit, 1);
-            }
-
             if(Main.rand.Next(7) == 0)
             {
                 player.QuickSpawnItem(ItemID.BoneRattle, 1);
             }
+
+            if (Main.rand.Next(4) == 0)
+                {
+                player.QuickSpawnItem(ItemID.UnholyWater, 1);
+                }
+
+                switch (Main.rand.Next(4))
+                {
+                case 0:
+                player.QuickSpawnItem(ItemID.PanicNecklace, 1);
+                break;
+
+                case 1:
+                player.QuickSpawnItem(ItemID.CrimsonHeart, 1);
+                break;
+
+                case 2:
+                player.QuickSpawnItem(ItemID.CrimsonRod, 1);
+                break;
+
+                case 3:
+                player.QuickSpawnItem(ItemID.TheRottedFork, 1);
+                break;
+                }
+
             player.QuickSpawnItem(ItemID.GoldBar, 5);
             player.QuickSpawnItem(ItemID.IronBar, 7);
+            player.QuickSpawnItem(ItemID.SilverOre, Main.rand.Next(10, 20));
             player.QuickSpawnItem(mod.ItemType("ShardRed"), Main.rand.Next(10,20));
             player.QuickSpawnItem(ItemID.LifeCrystal, 1);
-
+            player.QuickSpawnItem(ItemID.ManaCrystal, Main.rand.Next(1, 2));
             player.QuickSpawnItem(ItemID.CrimtaneOre, Main.rand.Next(40, 60));
             player.QuickSpawnItem(ItemID.TissueSample, Main.rand.Next(10, 20));
             player.QuickSpawnItem(ItemID.Ruby, Main.rand.Next(3, 5));

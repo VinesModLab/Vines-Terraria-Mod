@@ -71,14 +71,15 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
             {
             npc.DropBossBags();
             }
-            
-            if (Main.rand.Next(4) == 0)
+            else
             {
+                if (Main.rand.Next(4) == 0)
+                {
                 Item.NewItem(npc.getRect(), ItemID.UnholyWater, 1);
-            }
+                }
 
-            switch (Main.rand.Next(4))
-            {
+                switch (Main.rand.Next(4))
+                {
                 case 0:
                 Item.NewItem(npc.getRect(), ItemID.PanicNecklace, 1);
                 break;
@@ -94,12 +95,12 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
                 case 3:
                 Item.NewItem(npc.getRect(), ItemID.TheRottedFork, 1);
                 break;
-            }
+                }
 
-            if (Main.rand.Next(10) == 0)
-            {
+                if (Main.rand.Next(10) == 0)
+                {
                 Item.NewItem(npc.getRect(), ItemID.BoneRattle, 1);
-            }
+                }
             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardRed"), Main.rand.Next(5, 10));
             Item.NewItem(npc.getRect(), ItemID.GoldBar, Main.rand.Next(3, 5));
             Item.NewItem(npc.getRect(), ItemID.IronBar, Main.rand.Next(3, 7));
@@ -109,6 +110,7 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
             Item.NewItem(npc.getRect(), ItemID.CrimtaneOre, Main.rand.Next(40, 60));
             Item.NewItem(npc.getRect(), ItemID.TissueSample, Main.rand.Next(10, 20));
             Item.NewItem(npc.getRect(), ItemID.Ruby, Main.rand.Next(1, 2));
+            }
             
 
             // For settings if the boss has been downed

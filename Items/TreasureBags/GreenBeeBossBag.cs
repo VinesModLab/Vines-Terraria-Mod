@@ -41,30 +41,54 @@ namespace VinesMod.Items.TreasureBags
 			    player.QuickSpawnItem(ItemID.ManaCrystal, Main.rand.Next(3, 5));
             }
 
-            if(Main.rand.Next(5) == 0)
+            if (Main.rand.Next(7) == 0)
             {
-                player.QuickSpawnItem(ItemID.LifeFruit, 1);
+                player.QuickSpawnItem(ItemID.HoneyedGoggles, 1);
             }
 
-            if(Main.rand.Next(6) == 0)
+            if (Main.rand.Next(8) == 0)
             {
                 player.QuickSpawnItem(ItemID.Nectar, 1);
             }
 
-            if(Main.rand.Next(8) == 0)
+            switch (Main.rand.Next(3))
+            {
+                case 0:
+                player.QuickSpawnItem(ItemID.BeeKeeper, 1);
+                break;
+
+                case 1:
+                player.QuickSpawnItem(ItemID.BeeGun, 1);
+                break;
+
+                case 2:
+                player.QuickSpawnItem(ItemID.BeesKnees, 1);
+                break;
+
+            }
+
+            if(Main.rand.Next(4) == 0)
+            {
+                player.QuickSpawnItem(ItemID.Nectar, 1);
+            }
+
+            if(Main.rand.Next(6) == 0)
             {
                 player.QuickSpawnItem(ItemID.HoneyedGoggles, 1);
             }
-            player.QuickSpawnItem(ItemID.GoldBar, 5);
-            player.QuickSpawnItem(ItemID.IronBar, 7);
+            player.QuickSpawnItem(ItemID.GoldBar, Main.rand.Next(5, 8));
+            player.QuickSpawnItem(ItemID.IronBar, Main.rand.Next(5, 10));
+            player.QuickSpawnItem(ItemID.SilverOre, Main.rand.Next(15, 20));
             player.QuickSpawnItem(mod.ItemType("ShardGreen"), Main.rand.Next(10,20));
-            player.QuickSpawnItem(ItemID.LifeCrystal, 1);
+            player.QuickSpawnItem(ItemID.LifeCrystal, Main.rand.Next(1, 2));
             player.QuickSpawnItem(ItemID.ManaCrystal, Main.rand.Next(1, 3));
 
             player.QuickSpawnItem(ItemID.HiveBackpack, 1);
-            player.QuickSpawnItem(ItemID.BottledHoney, Main.rand.Next(40, 60));
+            player.QuickSpawnItem(ItemID.BottledHoney, Main.rand.Next(15, 30));
             player.QuickSpawnItem(ItemID.BeeWax, Main.rand.Next(10, 20));
             player.QuickSpawnItem(ItemID.Emerald, Main.rand.Next(3, 5));
+            player.QuickSpawnItem(ItemID.Beenade, Main.rand.Next(30, 45));
+            
         }
     }
 }
