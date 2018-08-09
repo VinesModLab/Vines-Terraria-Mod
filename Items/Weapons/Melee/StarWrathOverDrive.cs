@@ -38,6 +38,7 @@ namespace VinesMod.Items.Weapons.Melee
 		 	
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
+			damage /= 2;
 			Vector2 target = Main.screenPosition + new Vector2((float)Main.mouseX, (float)Main.mouseY);
 			float ceilingLimit = target.Y;
 			if (ceilingLimit > player.Center.Y - 200f)

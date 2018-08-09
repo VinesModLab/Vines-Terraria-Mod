@@ -64,6 +64,7 @@ namespace VinesMod.Items.Weapons.Melee
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
+			damage /= 2;
 			float numberProjectiles = 3 + Main.rand.Next(3);
 			float rotation = MathHelper.ToRadians(45);
 			position += Vector2.Normalize(new Vector2(speedX, speedY)) * 45f;
