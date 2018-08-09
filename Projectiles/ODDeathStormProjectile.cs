@@ -5,17 +5,17 @@ using Terraria.ModLoader;
 
 namespace VinesMod.Projectiles
 {
-	public class ArcaneBrightProjectile : ModProjectile
+	public class ODDeathStormProjectile : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("ArcaneBright");
+			DisplayName.SetDefault("DeathStormOverDriveProjectile");
 		}
 
         public override void SetDefaults()
         {
-            projectile.CloneDefaults(ProjectileID.TerraBeam);
-            aiType = ProjectileID.TerraBeam;
+            projectile.CloneDefaults(ProjectileID.DeathSickle);
+            aiType = ProjectileID.DeathSickle;
 			//projectile.tileCollide = false;
             projectile.scale = 1.5f;
 			projectile.light = 0.7f; 
