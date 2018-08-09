@@ -56,7 +56,7 @@ namespace VinesMod.Items.Weapons.Melee
 
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
 		{
-			target.AddBuff(BuffID.OnFire, 60 * 15);
+			target.AddBuff(BuffID.Confused, 15* 60);
 		}
 	}
 }
