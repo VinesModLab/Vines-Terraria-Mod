@@ -1,13 +1,18 @@
-Vines Mod Collection.
+VinesMod (Vines' consuming gems and fallenstars mod)
 
-The Code are written by Vines.
+The Codes are written by Vines.
 The Artworks are drawn by Nam & Vines.
 
-Background Story
+Background Story :
 The world collided with other dimension, lead to a new power resource, "overdrive" spawn in the world.
 This lead to apocalypse, but the god of world break it down into pieces called "shards".
 Living things who hold them will became stronger, so people start hunting for shards...
 
+Description :
+This mod doesn't require a new world restart,
+and the item recipes are mostly trying to consume gems(ruby,topaz etc) and fallenstars, manacrystal and lifecrystal.
+
+Note : It is still in alpha and it may cause bugs. / sorry for my bad english.
 
 Things Contained in Mod:
 * 20+ New Weapons

@@ -10,7 +10,7 @@ namespace VinesMod.Items.Weapons.Melee
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Null");
-			Tooltip.SetDefault("0");
+			Tooltip.SetDefault("Damage : 0" + "\n Too Powerful. Beware when using");
 		}
 		public override void SetDefaults()
 		{

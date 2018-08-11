@@ -4,7 +4,6 @@ using Terraria.ModLoader;
 
 namespace VinesMod.Dusts
 {
-	// This Dust will show off Dust.customData, using vanilla dust texture, and some neat movement.
 	class AdvancedDust : ModDust
 	{
 		/*
