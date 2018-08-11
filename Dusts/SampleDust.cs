@@ -7,7 +7,7 @@ namespace VinesMod.Dusts
     {
         public override void OnSpawn(Dust dust)
         {
-            dust.velocity *= 0.6f
+            dust.velocity *= 0.6f;
             dust.noGravity = true;
             dust.noLight = true;
             dust.scale *= 2f;
