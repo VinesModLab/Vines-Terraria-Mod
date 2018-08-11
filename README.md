@@ -30,6 +30,11 @@ The world collided with other dimension, lead to a new power resource, "overdriv
 
 ## Weapon Showcase
 ![weapon1](https://github.com/vinesmsuic/VinesMod/blob/master/Items/Weapons/Melee/ArcaneBright.png)
+![weapon2](https://github.com/vinesmsuic/VinesMod/blob/master/Items/Weapons/Melee/CrystalBlood.png)
+![weapon3](https://github.com/vinesmsuic/VinesMod/blob/master/Items/Weapons/Melee/DeathStorm.png)
+![weapon4](https://github.com/vinesmsuic/VinesMod/blob/master/Items/Weapons/Melee/FrostPain.png)
+![weapon5](https://github.com/vinesmsuic/VinesMod/blob/master/Items/Weapons/Melee/InfernoSpike.png)
+![weapon6](https://github.com/vinesmsuic/VinesMod/blob/master/Items/Weapons/Melee/ZeoxingBlade.png)
 
 
 ## Mod Authors
