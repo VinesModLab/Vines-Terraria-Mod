@@ -18,6 +18,7 @@ namespace VinesMod.Projectiles
 			aiType = ProjectileID.StarWrath;
 			projectile.width = 500;
 			projectile.height = 500;
+			projectile.ignoreWater = true;
 			projectile.penetrate = 999;
 			projectile.scale = 5f;
 			projectile.light = 1f; 

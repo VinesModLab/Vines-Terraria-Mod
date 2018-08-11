@@ -16,7 +16,8 @@ namespace VinesMod.Projectiles
         {
             projectile.CloneDefaults(ProjectileID.InfluxWaver);
             aiType = ProjectileID.InfluxWaver;
-            //projectile.tileCollide = false;
+            projectile.tileCollide = false;
+            projectile.ignoreWater = true;
             projectile.scale = 1.5f;
             projectile.light = 0.6f; 
         }
