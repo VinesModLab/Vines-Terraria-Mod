@@ -22,7 +22,7 @@ namespace VinesMod.Items.Placeable
 			item.useTime = 10;
 			item.useStyle = 1;
 			item.consumable = true;
-			item.value = 30000;
+			item.value = 2000;
 			item.createTile = mod.TileType("StarForge");
 		}
 
@@ -30,12 +30,12 @@ namespace VinesMod.Items.Placeable
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.WorkBench);
-			recipe.AddIngredient(mod, "ShardBlue", 5);
-			recipe.AddIngredient(mod, "ShardGreen", 5);
-			recipe.AddIngredient(mod, "ShardPurple", 5);
-			recipe.AddIngredient(mod, "ShardYellow", 5);
-			recipe.AddIngredient(mod, "ShardWhite", 5);
-			recipe.AddIngredient(mod, "ShardRed", 5);
+			recipe.AddIngredient(mod, "ShardBlue", 3);
+			recipe.AddIngredient(mod, "ShardGreen", 3);
+			recipe.AddIngredient(mod, "ShardPurple", 3);
+			recipe.AddIngredient(mod, "ShardYellow", 3);
+			recipe.AddIngredient(mod, "ShardWhite", 3);
+			recipe.AddIngredient(mod, "ShardRed", 3);
 			recipe.AddIngredient(ItemID.FallenStar, 1);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
