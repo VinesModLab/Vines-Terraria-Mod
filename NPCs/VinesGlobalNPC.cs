@@ -17,12 +17,12 @@ namespace VinesMod.NPCs
 		}
 
 		public bool eFlames = false;
-		public bool exampleJavelin = false;
+		//public bool exampleJavelin = false;
 
 		public override void ResetEffects(NPC npc)
 		{
 			eFlames = false;
-			exampleJavelin = false;
+			//exampleJavelin = false;
 		}
 
 		public override void SetDefaults(NPC npc)
@@ -112,9 +112,9 @@ namespace VinesMod.NPCs
 				
 			}
 
-			if (npc.lifeMax > 120 && npc.value > 0f)
+			if (npc.lifeMax > 120 && npc.lifeMax < 3000 && npc.value > 0f)
 			{
-				if (Main.rand.Next(5) == 0)
+				if (Main.rand.Next(10) == 0)
 				{
 					switch (Main.rand.Next(5))
             		{
@@ -222,20 +222,6 @@ namespace VinesMod.NPCs
 		{
 			if (type == NPCID.Dryad)
 			{
-				/*
-				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.CarKey>());
-				nextSlot++;
-
-				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.CarKey>());
-				shop.item[nextSlot].shopCustomPrice = new int?(2);
-				shop.item[nextSlot].shopSpecialCurrency = CustomCurrencyID.DefenderMedals;
-				nextSlot++;
-
-				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.CarKey>());
-				shop.item[nextSlot].shopCustomPrice = new int?(3);
-				shop.item[nextSlot].shopSpecialCurrency = ExampleMod.FaceCustomCurrencyID;
-				nextSlot++;
-				*/
 				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.GoodieBags.PetGoodieBag>());
 				nextSlot++;
 			}

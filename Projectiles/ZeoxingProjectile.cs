@@ -40,7 +40,7 @@ namespace VinesMod.Projectiles
 
 			for (int i = 0; i < 30; i++)
 			{
-				int a = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y - 30f, Main.rand.Next(-10, 11) * .30f, Main.rand.Next(-10, -5) * .30f, ProjectileID.Starfury, (int)(projectile.damage * .5f), 0, projectile.owner);
+				int a = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y - 30f, Main.rand.Next(-10, 11) * .30f, Main.rand.Next(-10, -5) * .30f, ProjectileID.Starfury, (int)(projectile.damage * 2f), 0, projectile.owner);
 				Main.projectile[a].aiStyle = 1;
 				Main.projectile[a].tileCollide = true;
 			}
@@ -50,7 +50,7 @@ namespace VinesMod.Projectiles
 		{
 			for (int i = 0; i < 30; i++)
 			{
-				int a = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y - 30f, Main.rand.Next(-10, 11) * .30f, Main.rand.Next(-10, -5) * .30f, ProjectileID.Starfury, (int)(projectile.damage * .5f), 0, projectile.owner);
+				int a = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y - 30f, Main.rand.Next(-10, 11) * .30f, Main.rand.Next(-10, -5) * .30f, ProjectileID.Starfury, (int)(projectile.damage * 2f), 0, projectile.owner);
 				Main.projectile[a].aiStyle = 1;
 				Main.projectile[a].tileCollide = true;
 			}

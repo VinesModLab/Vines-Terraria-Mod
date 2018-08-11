@@ -62,7 +62,6 @@ namespace VinesMod.Items.Weapons.Melee
         {
             int numberProjectiles = 2;
             float rotation = MathHelper.ToRadians(20);
-			damage /= 2;
 
             for (int i = 0; i < numberProjectiles + 1; i++)
             {
