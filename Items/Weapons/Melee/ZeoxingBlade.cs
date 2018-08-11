@@ -18,7 +18,7 @@ namespace VinesMod.Items.Weapons.Melee
 			item.melee = true;
 			item.width = 40;
 			item.height = 40;
-			item.useTime = 20;
+			item.useTime = 15;
 			item.useAnimation = 15;
 			item.useStyle = 1;
 			item.knockBack = 1f;

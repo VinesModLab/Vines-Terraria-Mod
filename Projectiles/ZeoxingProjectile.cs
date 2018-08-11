@@ -28,10 +28,15 @@ namespace VinesMod.Projectiles
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-			target.AddBuff(BuffID.OnFire, 15 * 60);
+            target.AddBuff(BuffID.OnFire, 15 * 60);
 			target.AddBuff(BuffID.Bleeding, 15 * 60);
 			target.AddBuff(BuffID.Frozen, 15 * 60);
 			target.AddBuff(BuffID.Chilled, 15 * 60);
+			target.AddBuff(BuffID.ShadowFlame, 15* 60);
+			target.AddBuff(BuffID.Poisoned, 15* 60);
+			target.AddBuff(BuffID.Venom, 15* 60);
+			target.AddBuff(BuffID.Confused, 15* 60);
+			target.AddBuff(BuffID.Ichor, 15* 60);
 
 			for (int i = 0; i < 30; i++)
 			{
