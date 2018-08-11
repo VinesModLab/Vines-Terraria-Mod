@@ -36,6 +36,7 @@ namespace VinesMod.Items.Placeable
 			recipe.AddIngredient(mod, "ShardYellow", 3);
 			recipe.AddIngredient(mod, "ShardWhite", 3);
 			recipe.AddIngredient(mod, "ShardRed", 3);
+			recipe.AddIngredient(ItemID.StoneBlock, 10);
 			recipe.AddIngredient(ItemID.FallenStar, 1);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

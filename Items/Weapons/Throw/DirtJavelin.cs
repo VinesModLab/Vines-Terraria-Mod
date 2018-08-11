@@ -27,8 +27,20 @@ namespace VinesMod.Items.Weapons.Throw
 			item.thrown = true;
 
 			item.UseSound = SoundID.Item1;
-			item.value = Item.sellPrice(silver: 5);
+			item.value = Item.sellPrice(copper: 1);
 			item.shoot = mod.ProjectileType<DirtJavelinProjectile>();
 		}
+
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.DirtBlock, 10);
+			recipe.AddIngredient(ItemID.StoneBlock, 5);
+			recipe.AddRecipeGroup("Wood", 5);
+			recipe.AddTile(mod.TileType("StarForge"));
+			recipe.SetResult(this, 30);
+			recipe.AddRecipe();
+		}
 	}
+
 }
