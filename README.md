@@ -28,6 +28,10 @@ The world collided with other dimension, lead to a new power resource, "overdriv
 * 5+ New Bosses
 * 1+ New NPCs
 
+## Weapon Showcase
+[weapon1](https://github.com/vinesmsuic/VinesMod/blob/master/Items/Weapons/Melee/ArcaneBright.png)
+
+
 ## Mod Authors
 * Codes were written by Vines
 * Sprites were drawn by Vines & Namm
