@@ -10,7 +10,7 @@ namespace VinesMod.Items.Accessories.Shield
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Shield of Flag");
-			Tooltip.SetDefault("A Shield used in army." + "\n small healthregen" +"\n slightly increase all stats");
+			Tooltip.SetDefault("A Shield used in army." + "\n +3 healthregen" +"\n slightly increase in all stats");
 		}
 
 		public override void SetDefaults()
@@ -31,8 +31,6 @@ namespace VinesMod.Items.Accessories.Shield
 				player.rangedDamage *= 1.01f;
 				player.magicDamage *= 1.01f;
 				player.minionDamage *= 1.01f;
-				//player.endurance = 1f - 0.1f * (1f - player.endurance);
-				//player.GetModPlayer<ExamplePlayer>(mod).exampleShield = true;
 		}
 
 		public override void AddRecipes()

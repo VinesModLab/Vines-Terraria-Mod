@@ -112,7 +112,7 @@ namespace VinesMod.NPCs
 
 			if (npc.lifeMax > 120 && npc.lifeMax < 3000 && npc.value > 0f)
 			{
-				if (Main.rand.Next(10) == 0)
+				if (Main.rand.Next(20) == 0)
 				{
 					switch (Main.rand.Next(5))
             		{
@@ -135,54 +135,6 @@ namespace VinesMod.NPCs
 				}
 				
 			}
-
-
-			/*
-			if (npc.type == NPCID.DukeFishron && !Main.expertMode)
-			{
-				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Bubble"), Main.rand.Next(5, 8));
-			}
-			if (npc.type == NPCID.Bunny && npc.AnyInteractions())
-			{
-				int left = (int)(npc.position.X / 16f);
-				int top = (int)(npc.position.Y / 16f);
-				int right = (int)((npc.position.X + npc.width) / 16f);
-				int bottom = (int)((npc.position.Y + npc.height) / 16f);
-				bool flag = false;
-				for (int i = left; i <= right; i++)
-				{
-					for (int j = top; j <= bottom; j++)
-					{
-						Tile tile = Main.tile[i, j];
-						if (tile.active() && tile.type == mod.TileType("ElementalPurge") && !NPC.AnyNPCs(mod.NPCType("PuritySpirit")))
-						{
-							i -= Main.tile[i, j].frameX / 18;
-							j -= Main.tile[i, j].frameY / 18;
-							i = (i * 16) + 16;
-							j = (j * 16) + 24 + 60;
-							for (int k = 0; k < 255; k++)
-							{
-								Player player = Main.player[k];
-								if (player.active && player.position.X > i - NPC.sWidth / 2 && player.position.X + player.width < i + NPC.sWidth / 2 && player.position.Y > j - NPC.sHeight / 2 && player.position.Y < j + NPC.sHeight / 2)
-								{
-									flag = true;
-									break;
-								}
-							}
-							if (flag)
-							{
-								NPC.NewNPC(i, j, mod.NPCType("PuritySpirit"));
-								break;
-							}
-						}
-					}
-					if (flag)
-					{
-						break;
-					}
-				}
-			}
-			*/
 		}
 
 		public override void DrawEffects(NPC npc, ref Color drawColor)
@@ -221,6 +173,8 @@ namespace VinesMod.NPCs
 			if (type == NPCID.Dryad)
 			{
 				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.GoodieBags.PetGoodieBag>());
+				nextSlot++;
+				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Vanity.Lenny>());
 				nextSlot++;
 			}
             else if (type == NPCID.Wizard)

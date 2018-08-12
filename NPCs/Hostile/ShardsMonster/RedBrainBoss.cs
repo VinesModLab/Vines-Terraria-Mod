@@ -78,7 +78,7 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
                 Item.NewItem(npc.getRect(), ItemID.UnholyWater, 1);
                 }
 
-                switch (Main.rand.Next(4))
+                switch (Main.rand.Next(5))
                 {
                 case 0:
                 Item.NewItem(npc.getRect(), ItemID.PanicNecklace, 1);
@@ -94,6 +94,10 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
 
                 case 3:
                 Item.NewItem(npc.getRect(), ItemID.TheRottedFork, 1);
+                break;
+
+                case 4:
+                Item.NewItem(npc.getRect(), mod.ItemType("RedEyeBall"), 1);
                 break;
                 }
 

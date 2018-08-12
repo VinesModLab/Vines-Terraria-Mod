@@ -162,7 +162,7 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
                 
                 if (Main.rand.Next(2) == 0)
                 {
-                    switch (Main.rand.Next(3))
+                    switch (Main.rand.Next(4))
                 {
                     case 0:
                     Item.NewItem(npc.getRect(), mod.ItemType("BallisticStaff"), 1);
@@ -172,6 +172,9 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
                     break;
                     case 2:
                     Item.NewItem(npc.getRect(), mod.ItemType("ShieldOfFlag"), 1);
+                    break;
+                    case 3:
+                    Item.NewItem(npc.getRect(), mod.ItemType("PizzaBadge"), 1);
                     break;
                 }
                 }

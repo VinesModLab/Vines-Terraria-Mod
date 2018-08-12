@@ -51,7 +51,7 @@ namespace VinesMod.Items.TreasureBags
                 player.QuickSpawnItem(ItemID.UnholyWater, 1);
                 }
 
-                switch (Main.rand.Next(4))
+                switch (Main.rand.Next(5))
                 {
                 case 0:
                 player.QuickSpawnItem(ItemID.PanicNecklace, 1);
@@ -67,6 +67,10 @@ namespace VinesMod.Items.TreasureBags
 
                 case 3:
                 player.QuickSpawnItem(ItemID.TheRottedFork, 1);
+                break;
+
+                case 4:
+                player.QuickSpawnItem(mod.ItemType("RedEyeBall"), 1);
                 break;
                 }
 

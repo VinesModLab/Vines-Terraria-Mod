@@ -28,7 +28,7 @@ namespace VinesMod.Items.Weapons.Melee
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 			item.shoot = ProjectileID.TerrarianBeam;
-			item.shootSpeed = 8f;
+			item.shootSpeed = 10f;
 		}
 
 		public override void AddRecipes()

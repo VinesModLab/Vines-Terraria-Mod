@@ -46,7 +46,7 @@ namespace VinesMod.Items.TreasureBags
                 player.QuickSpawnItem(ItemID.AmberMosquito, 1);
             }
 
-                switch (Main.rand.Next(3))
+                switch (Main.rand.Next(4))
                 {
                     case 0:
                     player.QuickSpawnItem(mod.ItemType("BallisticStaff"), 1);
@@ -56,6 +56,9 @@ namespace VinesMod.Items.TreasureBags
                     break;
                     case 2:
                     player.QuickSpawnItem(mod.ItemType("ShieldOfFlag"), 1);
+                    break;
+                    case 3:
+                    player.QuickSpawnItem(mod.ItemType("PizzaBadge"), 1);
                     break;
                 }
 
