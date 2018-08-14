@@ -5,12 +5,12 @@ using Terraria.ModLoader;
 namespace VinesMod.Items.Accessories.HandsOff
 {
 	[AutoloadEquip(EquipType.HandsOff)]
-	public class Robot3000 : ModItem
+	public class GoldenEye : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Robot3000");
-			Tooltip.SetDefault("calculated."+"\nincrease 20% minion damage");
+			DisplayName.SetDefault("GoldenEye");
+			Tooltip.SetDefault("increase 20% damage");
 		}
 
 		public override void SetDefaults()
@@ -18,20 +18,26 @@ namespace VinesMod.Items.Accessories.HandsOff
 			item.width = 24;
 			item.height = 28;
 			item.value = 10000;
-			item.rare = 2;
+			item.rare = 4;
 			item.accessory = true;
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
+				player.meleeDamage *= 1.2f;
+				player.thrownDamage *= 1.2f;
+				player.rangedDamage *= 1.2f;
+				player.magicDamage *= 1.2f;
 				player.minionDamage *= 1.2f;
 		}
 
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.MeteoriteBar, 3);
-			recipe.AddIngredient(ItemID.GoldBar, 3);
+			recipe.AddIngredient(mod, "BlueEyeBall", 1);
+			recipe.AddIngredient(mod, "RedEyeBall", 1);
+			recipe.AddIngredient(mod, "Robot3000", 1);
+			recipe.AddIngredient(mod, "ShardYellow", 15);
 			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();
