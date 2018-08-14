@@ -35,6 +35,12 @@ namespace VinesMod.Items.TreasureBags
         public override void OpenBossBag(Player player)
         {
             player.TryGettingDevArmor(); // This will have a chance to spawn the Dev Armour.
+
+            if(Main.rand.Next(3) == 0)
+            {
+                player.QuickSpawnItem(mod.ItemType("BlueEyeBall"),1);
+            }
+
             if(Main.rand.Next(3) == 0)
             {
                 player.QuickSpawnItem(ItemID.LifeCrystal, Main.rand.Next(1, 3));
