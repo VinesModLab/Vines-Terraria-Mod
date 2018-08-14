@@ -177,6 +177,11 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
                         Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BlueEyeBall"), 1);
                     }
 
+                    if (Main.rand.Next(5) == 0)
+                    {
+                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CodeO"), 1);
+                    }
+
                     if (Main.rand.Next(10) == 0)
                 {
                 Item.NewItem(npc.getRect(), ItemID.BlackLens, 1);

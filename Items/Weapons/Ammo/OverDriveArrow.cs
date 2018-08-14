@@ -27,7 +27,7 @@ namespace VinesMod.Items.Weapons.Ammo
             item.consumable = true;
             item.knockBack = 1.5f;
             item.value = 10;
-            item.rare = 10;
+            item.rare = 6;
             item.shoot = mod.ProjectileType("OverDriveArrow");
             item.shootSpeed *= 1.1f;
             item.ammo = item.type;
@@ -37,9 +37,9 @@ namespace VinesMod.Items.Weapons.Ammo
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 	
-			recipe.AddIngredient(ItemID.Ruby, 10);
-            recipe.AddRecipeGroup("Wood", 30);
-            recipe.AddIngredient(mod, "ShardRed", 3);
+			recipe.AddIngredient(ItemID.Ruby, 5);
+            recipe.AddRecipeGroup("Wood", 15);
+            recipe.AddIngredient(mod, "ShardRed", 15);
 			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this, 333);
 			recipe.AddRecipe();

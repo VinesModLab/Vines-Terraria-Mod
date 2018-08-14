@@ -46,6 +46,11 @@ namespace VinesMod.Items.TreasureBags
                 player.QuickSpawnItem(ItemID.LifeCrystal, Main.rand.Next(1, 3));
             }
 
+            if (Main.rand.Next(4) == 0)
+            {
+                player.QuickSpawnItem(mod.ItemType("CodeO"), 1);
+            }
+
             if(Main.rand.Next(5) == 0)
             {
                 player.QuickSpawnItem(ItemID.BlackLens, 1);
