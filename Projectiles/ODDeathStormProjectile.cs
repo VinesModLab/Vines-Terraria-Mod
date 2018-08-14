@@ -60,6 +60,11 @@ namespace VinesMod.Projectiles
 			{
 				projectile.velocity = (10 * projectile.velocity + move) / 11f;
 			}
+
+			if(projectile.timeLeft % 60 == 0)
+            {
+                Projectile.NewProjectile(projectile.position.X, projectile.position.Y, MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), mod.ProjectileType("ScytheProjectile"), (int)(projectile.damage * 0.5f), projectile.knockBack, Main.myPlayer); //owner.rangedDamage is basically the damage multiplier for ranged weapons
+            }
 		}
 
 	}

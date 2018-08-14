@@ -38,6 +38,9 @@ namespace VinesMod.Projectiles
 			target.AddBuff(BuffID.Confused, 15* 60);
 			target.AddBuff(BuffID.Ichor, 15* 60);
 
+			Player owner = Main.player[projectile.owner];
+            owner.statLife += 75;
+
 			for (int i = 0; i < 30; i++)
 			{
 				int a = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y - 30f, Main.rand.Next(-10, 11) * .30f, Main.rand.Next(-10, -5) * .30f, ProjectileID.Starfury, (int)(projectile.damage * 2f), 0, projectile.owner);
