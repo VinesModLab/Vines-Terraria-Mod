@@ -10,7 +10,7 @@ namespace VinesMod.Items.Accessories.Shield
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Shield of Flag");
-			Tooltip.SetDefault("Allows Dash" + "\n +3 healthregen" +"\n slightly increase in all stats" + "\nA Shield used in army." );
+			Tooltip.SetDefault("Allows Dash" + "\n +3 healthregen" +"\n slightly increase damage" + "\nA Shield used in army." );
 		}
 
 		public override void SetDefaults()
@@ -26,11 +26,11 @@ namespace VinesMod.Items.Accessories.Shield
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-				player.meleeDamage *= 1.01f;
-				player.thrownDamage *= 1.01f;
-				player.rangedDamage *= 1.01f;
-				player.magicDamage *= 1.01f;
-				player.minionDamage *= 1.01f;
+				player.meleeDamage *= 1.05f;
+				player.thrownDamage *= 1.05f;
+				player.rangedDamage *= 1.05f;
+				player.magicDamage *= 1.05f;
+				player.minionDamage *= 1.05f;
 				player.dash = 1;
 		}
 

@@ -9,7 +9,7 @@ namespace VinesMod.Items.Accessories.HandsOff
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Precious Jewel");
-			Tooltip.SetDefault("immune most negative buffs");
+			Tooltip.SetDefault("immune most debuffs when you have less than 100 mana.");
 		}
 
 		public override void SetDefaults()
@@ -17,12 +17,14 @@ namespace VinesMod.Items.Accessories.HandsOff
 			item.width = 24;
 			item.height = 28;
 			item.value = 10000;
-			item.rare = 7;
+			item.rare = 6;
 			item.accessory = true;
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
+			if (player.statMana < 100)
+			{
 				player.buffImmune[BuffID.Frozen] = true;
 				player.buffImmune[BuffID.Chilled] = true;
 				player.buffImmune[BuffID.Frostburn] = true;
@@ -40,6 +42,7 @@ namespace VinesMod.Items.Accessories.HandsOff
 				player.buffImmune[BuffID.Venom] = true;
 				player.buffImmune[BuffID.Weak] = true;
 				player.buffImmune[BuffID.Blackout] = true;
+			}
 		}
 
 		public override void AddRecipes()
