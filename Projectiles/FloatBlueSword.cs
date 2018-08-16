@@ -8,7 +8,7 @@ namespace VinesMod.Projectiles
 {
 	public class FloatBlueSword : ModProjectile
 	{
-		const float RotationSpeed = 0.05f;
+		const float RotationSpeed = 0.065f;
 		const float Distance = 100;
 
 		float Rotation;
