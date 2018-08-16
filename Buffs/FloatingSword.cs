@@ -20,7 +20,7 @@ namespace VinesMod.Buffs
         int MinionType4 = -1;
 		int MinionID4 = -1;
 
-		const int Damage = 30;
+		const int Damage = 75;
 		const float KB = 1;
 
 		public override void SetDefaults()
