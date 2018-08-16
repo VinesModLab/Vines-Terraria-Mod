@@ -36,6 +36,7 @@ namespace VinesMod.Items.Accessories.HandsOff
 				player.meleeCrit += 25;
 				player.magicCrit += 25;
 				player.thrownCrit += 25;
+				player.AddBuff(11, 10);
 		}
 
 		public override void UpdateEquip(Player player)

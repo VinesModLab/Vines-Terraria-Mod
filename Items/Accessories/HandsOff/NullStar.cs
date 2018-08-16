@@ -28,6 +28,7 @@ namespace VinesMod.Items.Accessories.HandsOff
 			player.statLifeMax2 += 9500;
 			player.statManaMax2 += 500;
 			player.moveSpeed *= 2f;
+			player.AddBuff(11, 10);
 		}
 
 		public override void AddRecipes()
