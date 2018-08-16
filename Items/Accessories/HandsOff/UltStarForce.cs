@@ -38,6 +38,11 @@ namespace VinesMod.Items.Accessories.HandsOff
 				player.thrownCrit += 25;
 		}
 
+		public override void UpdateEquip(Player player)
+		{
+			player.AddBuff(mod.BuffType("FloatingSword"), 2);
+		}
+
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

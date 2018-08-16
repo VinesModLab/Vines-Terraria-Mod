@@ -28,6 +28,7 @@ namespace VinesMod.Items.Accessories.HandsOff
 				player.rangedDamage *= 1.2f;
 				player.magicDamage *= 1.2f;
 				player.minionDamage *= 1.2f;
+				player.AddBuff(11, 10);
 		}
 
 		public override void AddRecipes()

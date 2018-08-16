@@ -24,6 +24,7 @@ namespace VinesMod.Items.Accessories.HandsOff
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 				player.minionDamage *= 1.2f;
+				player.AddBuff(11, 10);
 		}
 
 		public override void AddRecipes()
