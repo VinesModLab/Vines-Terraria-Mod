@@ -6,17 +6,12 @@ using Terraria.ModLoader;
 
 namespace VinesMod.Projectiles
 {
-	public class FloatYellowSword : ModProjectile
+	public class FloatPurpleSword : ModProjectile
 	{
-		const float RotationSpeed = 0.08f;
+		const float RotationSpeed = 0.09f;
 		const float Distance = 100;
 
 		float Rotation;
-
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Yellow Sword");
-		}
 
 		public override void SetDefaults()
 		{
@@ -31,6 +26,11 @@ namespace VinesMod.Projectiles
             projectile.scale = 1.3f;
 		}
 
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Purple Sword");
+		}
+
 		public override Color? GetAlpha(Color lightColor)
 		{
 			return Color.White;
@@ -38,12 +38,12 @@ namespace VinesMod.Projectiles
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
-			if (Main.rand.NextBool(4))
+			if (Main.rand.NextBool(3))
 			{
-				target.AddBuff(72, 180, false);
+				target.AddBuff(31, 180, false);
 			}
 		}
-        
+
         public static Vector2 PolarPos(Vector2 Point, float Distance, float Angle, int XOffset = 0, int YOffset = 0)
 		{
 			Vector2 returnedValue = new Vector2
