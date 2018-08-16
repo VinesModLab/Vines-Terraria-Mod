@@ -10,7 +10,7 @@ namespace VinesMod.Items.Accessories.HandsOff
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Ultimate StarForce");
-			Tooltip.SetDefault("Dealt damage x3" + "\n +50 liferegen" + "\n +300 mana" + "\n +4 minions" + "\nThe power of stars.");
+			Tooltip.SetDefault("Dealt damage x3" + "\n +50 liferegen" + "\n +300 mana" + "\n +4 minions" + "\n75% increased critical strike chance" + "\nThe power of stars.");
 		}
 
 		public override void SetDefaults()
@@ -33,6 +33,10 @@ namespace VinesMod.Items.Accessories.HandsOff
 				player.statManaMax2 += 300;
 				player.moveSpeed += 0.3f;
 				player.maxMinions += 4;
+				player.rangedCrit += 25;
+				player.meleeCrit += 25;
+				player.magicCrit += 25;
+				player.thrownCrit += 25;
 		}
 
 		public override void AddRecipes()
