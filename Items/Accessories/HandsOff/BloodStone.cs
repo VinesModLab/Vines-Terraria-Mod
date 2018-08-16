@@ -4,7 +4,6 @@ using Terraria.ModLoader;
 
 namespace VinesMod.Items.Accessories.HandsOff
 {
-	[AutoloadEquip(EquipType.HandsOff)]
 	public class BloodStone : ModItem
 	{
 		public override void SetStaticDefaults()
@@ -32,6 +31,7 @@ namespace VinesMod.Items.Accessories.HandsOff
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(mod, "ShardRed", 5);
+			recipe.AddIngredient(ItemID.StoneBlock, 30);
 			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();

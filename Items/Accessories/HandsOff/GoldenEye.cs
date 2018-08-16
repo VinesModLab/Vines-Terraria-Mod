@@ -4,7 +4,6 @@ using Terraria.ModLoader;
 
 namespace VinesMod.Items.Accessories.HandsOff
 {
-	[AutoloadEquip(EquipType.HandsOff)]
 	public class GoldenEye : ModItem
 	{
 		public override void SetStaticDefaults()
@@ -37,7 +36,7 @@ namespace VinesMod.Items.Accessories.HandsOff
 			recipe.AddIngredient(mod, "BlueEyeBall", 1);
 			recipe.AddIngredient(mod, "RedEyeBall", 1);
 			recipe.AddIngredient(mod, "Robot3000", 1);
-			recipe.AddIngredient(mod, "ShardYellow", 15);
+			recipe.AddIngredient(mod, "ShardYellow", 25);
 			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();

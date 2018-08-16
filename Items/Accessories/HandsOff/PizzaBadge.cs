@@ -4,7 +4,6 @@ using Terraria.ModLoader;
 
 namespace VinesMod.Items.Accessories.HandsOff
 {
-	[AutoloadEquip(EquipType.HandsOff)]
 	public class PizzaBadge : ModItem
 	{
 		public override void SetStaticDefaults()

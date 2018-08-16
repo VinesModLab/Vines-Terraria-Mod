@@ -4,7 +4,6 @@ using Terraria.ModLoader;
 
 namespace VinesMod.Items.Accessories.HandsOff
 {
-	[AutoloadEquip(EquipType.HandsOff)]
 	public class RedEyeBall : ModItem
 	{
 		public override void SetStaticDefaults()

@@ -4,7 +4,6 @@ using Terraria.ModLoader;
 
 namespace VinesMod.Items.Accessories.HandsOff
 {
-	[AutoloadEquip(EquipType.HandsOff)]
 	public class NullStar : ModItem
 	{
 		public override void SetStaticDefaults()
@@ -18,7 +17,7 @@ namespace VinesMod.Items.Accessories.HandsOff
 			item.width = 24;
 			item.height = 28;
 			item.value = 10000;
-			item.rare = 10;
+			item.rare = 11;
 			item.accessory = true;
 			item.lifeRegen = 1000;
 			item.defense = 10000;
