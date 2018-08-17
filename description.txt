@@ -16,7 +16,7 @@ Note : It is still in alpha and it may cause bugs. / sorry for my bad english.
 
 Things Contained in Mod:
 * 20+ New Weapons
-* 3+ New Accessories
+* 15+ New Accessories
 * 2+ New Set of Armor
 * 20+ New Materials
 * 5+ New Bosses
