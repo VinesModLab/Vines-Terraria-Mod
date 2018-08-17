@@ -11,6 +11,7 @@ namespace VinesMod
     {
         public VinesMod()
         {
+            // Default is all true
             /*
             Properties = new ModProperties()
             {

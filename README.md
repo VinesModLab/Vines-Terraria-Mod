@@ -21,7 +21,7 @@ The world collided with other dimension, lead to a new power resource, "overdriv
 
 
 ## Things Contained in Mod:
-see [Description](https://github.com/vinesmsuic/VinesMod/blob/master/description.txt)
+* see [Description](https://github.com/vinesmsuic/VinesMod/blob/master/description.txt)
 
 ## Weapon Showcase
 ![weapon1](https://github.com/vinesmsuic/VinesMod/blob/master/Items/Weapons/Melee/ArcaneBright.png)
