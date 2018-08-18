@@ -17,13 +17,14 @@ namespace VinesMod.Items.Accessories.HandsOff
 			item.width = 24;
 			item.height = 28;
 			item.value = 300000;
-			item.rare = 10;
+			item.rare = 11;
 			item.accessory = true;
 			item.lifeRegen = 50;
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
+				player.meleeSpeed *= 1.5f;
 				player.meleeDamage *= 3f;
 				player.thrownDamage *= 3f;
 				player.rangedDamage *= 3f;
@@ -53,7 +54,7 @@ namespace VinesMod.Items.Accessories.HandsOff
 			recipe.AddIngredient(mod, "StarForceGreen", 1);
 			recipe.AddIngredient(mod, "StarForceRed", 1);
 			recipe.AddIngredient(mod, "StarForceWhite", 1);
-			recipe.AddIngredient(mod, "OverDriveCore", 5);
+			recipe.AddIngredient(mod, "OverDriveCore", 6);
 			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();

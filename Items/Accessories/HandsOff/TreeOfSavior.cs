@@ -4,12 +4,12 @@ using Terraria.ModLoader;
 
 namespace VinesMod.Items.Accessories.HandsOff
 {
-	public class PreciousJewel : ModItem
+	public class TreeOfSavior : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Precious Jewel");
-			Tooltip.SetDefault("immune most debuffs when you have less than 100 mana.");
+			DisplayName.SetDefault("Tree Of Savior");
+			Tooltip.SetDefault("immune to most debuffs" + "\n +100 Life and Mana" + "\n +15 Life regen");
 		}
 
 		public override void SetDefaults()
@@ -17,14 +17,15 @@ namespace VinesMod.Items.Accessories.HandsOff
 			item.width = 24;
 			item.height = 28;
 			item.value = 10000;
-			item.rare = 6;
+			item.rare = 8;
+			item.lifeRegen = 15;
 			item.accessory = true;
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			if (player.statMana < 100)
-			{
+				player.statLifeMax2 += 100;
+				player.statManaMax2 += 100;
 				player.buffImmune[BuffID.Frozen] = true;
 				player.buffImmune[BuffID.Chilled] = true;
 				player.buffImmune[BuffID.Frostburn] = true;
@@ -42,17 +43,16 @@ namespace VinesMod.Items.Accessories.HandsOff
 				player.buffImmune[BuffID.Venom] = true;
 				player.buffImmune[BuffID.Weak] = true;
 				player.buffImmune[BuffID.Blackout] = true;
-			}
 		}
 
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod, "BloodStone", 1);
-			recipe.AddIngredient(mod, "IcySteel", 1);
-			recipe.AddIngredient(mod, "ShardWhite", 20);
-			recipe.AddIngredient(mod, "ShardRed", 40);
-			recipe.AddIngredient(mod, "ShardBlue", 40);
+			recipe.AddIngredient(mod, "MaliHeart", 1);
+			recipe.AddIngredient(mod, "StarForceGreen", 1);
+			recipe.AddIngredient(mod, "PreciousJewel", 1);
+			recipe.AddIngredient(ItemID.LifeCrystal, 5);
+			recipe.AddIngredient(ItemID.ManaCrystal, 5);
 			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();

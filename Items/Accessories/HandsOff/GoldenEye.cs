@@ -37,7 +37,7 @@ namespace VinesMod.Items.Accessories.HandsOff
 			recipe.AddIngredient(mod, "BlueEyeBall", 1);
 			recipe.AddIngredient(mod, "RedEyeBall", 1);
 			recipe.AddIngredient(mod, "Robot3000", 1);
-			recipe.AddIngredient(mod, "ShardYellow", 25);
+			recipe.AddIngredient(mod, "ShardYellow", 40);
 			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();
