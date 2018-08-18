@@ -5,12 +5,12 @@ using Terraria.ModLoader;
 namespace VinesMod.Items.Accessories.Shield
 {
 	[AutoloadEquip(EquipType.Shield)]
-	public class ShieldOfDeadPinky : ModItem
+	public class ShieldOfLime : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shield Of Dead Pinky");
-			Tooltip.SetDefault("+5 healthregen" + "\n more defense when above 70% health");
+			DisplayName.SetDefault("Shield Of Lime");
+			Tooltip.SetDefault("+10 healthregen" + "\nslightly increase damage when above 50% health");
 		}
 
 		public override void SetDefaults()
@@ -20,16 +20,20 @@ namespace VinesMod.Items.Accessories.Shield
 			item.value = 10000;
 			item.rare = 4;
 			item.accessory = true;
-			item.defense = 12;
-			item.lifeRegen = 5;
+			item.defense = 8;
+			item.lifeRegen = 10;
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			if (player.statLife >= (player.statLifeMax2 * 0.7f))
+			if (player.statLife >= (player.statLifeMax2 * 0.5f))
 			{
-				player.statDefense += 4;
-				player.moveSpeed += 0.1f;
+				player.meleeSpeed *= 1.2f;
+				player.meleeDamage *= 1.15f;
+				player.thrownDamage *= 1.15f;
+				player.rangedDamage *= 1.15f;
+				player.magicDamage *= 1.15f;
+				player.minionDamage *= 1.15f;
 			}
 		}
 
@@ -37,8 +41,7 @@ namespace VinesMod.Items.Accessories.Shield
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddRecipeGroup("IronBar", 10);
-			recipe.AddIngredient(ItemID.PinkGel, 5);
-			recipe.AddIngredient(mod, "ShardRed", 25);
+			recipe.AddIngredient(mod, "ShardGreen", 25);
 			recipe.AddRecipeGroup("Wood", 15);
 			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
