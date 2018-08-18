@@ -39,7 +39,7 @@ namespace VinesMod.Items.Accessories.Shield
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddRecipeGroup("IronBar", 8);
 			recipe.AddIngredient(ItemID.LifeCrystal, 2);
-			recipe.AddIngredient(mod, "ShardYellow", 10);
+			recipe.AddIngredient(mod, "ShardYellow", 25);
 			recipe.AddRecipeGroup("Wood", 15);
 			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);

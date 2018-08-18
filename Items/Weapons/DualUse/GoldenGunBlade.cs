@@ -37,8 +37,8 @@ namespace VinesMod.Items.Weapons.DualUse
 			recipe.AddIngredient(ItemID.GoldBroadsword, 1);
 			recipe.AddIngredient(ItemID.GoldBow, 1);
 			recipe.AddRecipeGroup("IronBar", 5);
-			recipe.AddIngredient(mod, "ShardYellow", 3);
-			recipe.AddIngredient(mod, "ShardRed", 3);
+			recipe.AddIngredient(mod, "ShardYellow", 15);
+			recipe.AddIngredient(mod, "ShardRed", 15);
 			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();

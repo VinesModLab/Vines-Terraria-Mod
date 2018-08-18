@@ -43,6 +43,7 @@ namespace VinesMod.Items.Accessories.HandsOff
 				player.buffImmune[BuffID.Venom] = true;
 				player.buffImmune[BuffID.Weak] = true;
 				player.buffImmune[BuffID.Blackout] = true;
+				player.AddBuff(11, 10);
 		}
 
 		public override void AddRecipes()

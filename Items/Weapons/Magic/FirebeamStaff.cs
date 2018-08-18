@@ -36,7 +36,7 @@ namespace VinesMod.Items.Weapons.Magic
 			recipe.AddIngredient(ItemID.RubyStaff, 1);
 			recipe.AddIngredient(ItemID.Fireblossom, 5);
 			recipe.AddIngredient(ItemID.GoldBar, 3);
-			recipe.AddIngredient(mod, "ShardRed", 3);
+			recipe.AddIngredient(mod, "ShardRed", 10);
 			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();

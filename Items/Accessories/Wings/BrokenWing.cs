@@ -19,7 +19,7 @@ namespace VinesMod.Items.Accessories.Wings
             item.width = 22;
             item.height = 22;
             item.value = 10000;
-            item.rare = 1;
+            item.rare = 3;
             item.accessory = true;
         }
 
@@ -47,6 +47,7 @@ namespace VinesMod.Items.Accessories.Wings
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.Feather, 7);
+            recipe.AddIngredient(mod, "ShardWhite", 25);
 			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();

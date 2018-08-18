@@ -39,7 +39,7 @@ namespace VinesMod.Items.Weapons.Magic
 			recipe.AddIngredient(ItemID.DiamondStaff, 1);
 			recipe.AddIngredient(ItemID.Lens, 5);
 			recipe.AddIngredient(ItemID.Boulder, 5);
-			recipe.AddIngredient(mod, "ShardWhite", 3);
+			recipe.AddIngredient(mod, "ShardWhite", 10);
 			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();

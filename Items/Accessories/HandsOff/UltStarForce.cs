@@ -48,13 +48,24 @@ namespace VinesMod.Items.Accessories.HandsOff
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod, "StarForceBlue", 1);
-			recipe.AddIngredient(mod, "StarForceYellow", 1);
-			recipe.AddIngredient(mod, "StarForcePurple", 1);
-			recipe.AddIngredient(mod, "StarForceGreen", 1);
-			recipe.AddIngredient(mod, "StarForceRed", 1);
-			recipe.AddIngredient(mod, "StarForceWhite", 1);
+			recipe.AddIngredient(mod, "StarForceBlue", 5);
+			recipe.AddIngredient(mod, "StarForceYellow", 5);
+			recipe.AddIngredient(mod, "StarForcePurple", 5);
+			recipe.AddIngredient(mod, "StarForceGreen", 5);
+			recipe.AddIngredient(mod, "StarForceRed", 5);
+			recipe.AddIngredient(mod, "StarForceWhite", 5);
 			recipe.AddIngredient(mod, "OverDriveCore", 6);
+			recipe.AddTile(mod.TileType("StarForge"));
+			recipe.SetResult(this);
+			recipe.AddRecipe();
+
+			recipe = new ModRecipe(mod);
+			recipe.AddIngredient(mod, "OverDriveBlue", 1);
+			recipe.AddIngredient(mod, "OverDriveYellow", 1);
+			recipe.AddIngredient(mod, "OverDrivePurple", 1);
+			recipe.AddIngredient(mod, "OverDriveGreen", 1);
+			recipe.AddIngredient(mod, "OverDriveRed", 1);
+			recipe.AddIngredient(mod, "OverDriveWhite", 1);
 			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();

@@ -58,7 +58,7 @@ namespace VinesMod.Items.Weapons.Gun
 			recipe.AddIngredient(ItemID.Bed, 3);
 			recipe.AddIngredient(ItemID.GoldBar, 5);
 			recipe.AddRecipeGroup("IronBar", 10);
-			recipe.AddIngredient(ItemID.IllegalGunParts, 1);
+			recipe.AddIngredient(ItemID.IllegalGunParts, 2);
 			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();
