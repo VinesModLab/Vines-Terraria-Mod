@@ -20,7 +20,7 @@ namespace VinesMod.Items.Accessories.Shield
 			item.value = 10000;
 			item.rare = 8;
 			item.accessory = true;
-			item.defense = 45;
+			item.defense = 15;
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
@@ -58,7 +58,7 @@ namespace VinesMod.Items.Accessories.Shield
 				player.statDefense += 8;
 				player.moveSpeed += 0.7f;
 			}
-			else if (player.statLife <= (player.statLifeMax2 * 0.15f))
+			else if (player.statLife <= (player.statLifeMax2 * 0.2f))
 			{
 				player.meleeSpeed *= 1.8f;
 				player.meleeDamage *= 1.3f;

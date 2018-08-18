@@ -24,7 +24,7 @@ namespace VinesMod.Items.Weapons.DualUse
 			item.useStyle = 1;
 			item.knockBack = 6;
 			item.value = 3000;
-			item.rare = 0;
+			item.rare = 2;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 			item.shoot = ProjectileID.GoldenBullet;
