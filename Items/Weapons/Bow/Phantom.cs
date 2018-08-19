@@ -25,7 +25,7 @@ namespace VinesMod.Items.Weapons.Bow
             item.height = 24;
             item.useTime = 20;
             item.useAnimation = 20;
-            item.damage = 80;
+            item.damage = 140;
             item.useStyle = 5; 
             item.noMelee = true; 
             item.value = Item.buyPrice(0, 0, 30, 0);
@@ -34,7 +34,7 @@ namespace VinesMod.Items.Weapons.Bow
             item.UseSound = mod.GetLegacySoundSlot(SoundType.Item, "Sounds/Item/Wooo");
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("Wisp");
-			item.shootSpeed = 9f;
+			item.shootSpeed = 22f;
 			item.useAmmo = mod.ItemType("Wisp");
         }
         
