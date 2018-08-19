@@ -16,7 +16,7 @@ namespace VinesMod.Items.Weapons.Bow
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Avalanche OverDrive");
-            Tooltip.SetDefault("33% not consume ammo." + "\n Anger of Snow");
+            Tooltip.SetDefault("66% not consume ammo." + "\n Anger of Snow");
         }
 
         public override void SetDefaults()
@@ -55,7 +55,7 @@ namespace VinesMod.Items.Weapons.Bow
 
         public override bool ConsumeAmmo(Player player)
 		{
-			return Main.rand.NextFloat() >= .33f;
+			return Main.rand.NextFloat() >= .66f;
 		}
 
 		
