@@ -29,7 +29,7 @@ namespace VinesMod.Items.Weapons.Bow
             item.useStyle = 5; 
             item.noMelee = true; 
             item.value = Item.buyPrice(0, 0, 30, 0);
-            item.rare = 5;
+            item.rare = 8;
             item.UseSound = SoundID.Item5; 
             item.useAmmo = AmmoID.Snowball;
             item.shoot = ProjectileID.SnowBallFriendly;
