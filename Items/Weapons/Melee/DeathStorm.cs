@@ -15,7 +15,7 @@ namespace VinesMod.Items.Weapons.Melee
 		public override void SetDefaults()
 		{
             item.CloneDefaults(ItemID.DeathSickle);
-			item.damage = 100;
+			item.damage = 101;
 			item.value = Item.buyPrice(gold: 10); 
 			item.rare = 8;
             item.shoot = 274;
