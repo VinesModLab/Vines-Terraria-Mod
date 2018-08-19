@@ -61,9 +61,9 @@ namespace VinesMod.Items.Weapons.Melee
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 	
-			recipe.AddIngredient(ItemID.FallenStar, 300);
+			recipe.AddIngredient(ItemID.FallenStar, 999);
 			recipe.AddIngredient(ItemID.LunarBar, 90);
-			recipe.AddIngredient(ItemID.Cloud, 900);
+			recipe.AddIngredient(ItemID.Cloud, 999);
 			recipe.AddIngredient(ItemID.RainCloud, 100);
 			recipe.AddIngredient(mod, "StarForceCannonOverDrive", 1);
 			recipe.AddIngredient(mod, "StarWrathOverDrive", 1);

@@ -10,7 +10,7 @@ namespace VinesMod.Items.Weapons.Gun
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("StarForce Cannon");
-			Tooltip.SetDefault("Shooting Stars. 66% not consume ammo");
+			Tooltip.SetDefault("Shooting Stars. 33% not consume ammo");
 		}
 
 		public override void SetDefaults()
@@ -44,7 +44,7 @@ namespace VinesMod.Items.Weapons.Gun
 
 		public override bool ConsumeAmmo(Player player)
 		{
-			return Main.rand.NextFloat() >= .66f;
+			return Main.rand.NextFloat() >= .33f;
 		}
 
 		public override void AddRecipes()

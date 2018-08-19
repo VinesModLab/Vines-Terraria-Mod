@@ -11,25 +11,25 @@ using Terraria.ModLoader;
 
 namespace VinesMod.Items.Weapons.Bow
 {
-    public class Avalanche : ModItem
+    public class AvalancheOverDrive : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Avalanche");
-            Tooltip.SetDefault("It use snowball as ammo.");
+            DisplayName.SetDefault("Avalanche OverDrive");
+            Tooltip.SetDefault("33% not consume ammo." + "\n Anger of Snow");
         }
 
         public override void SetDefaults()
         {
             item.width = 16;
             item.height = 24;
-            item.useTime = 20;
-            item.useAnimation = 20;
-            item.damage = 40;
+            item.useTime = 5;
+            item.useAnimation = 5;
+            item.damage = 500;
             item.useStyle = 5; 
             item.noMelee = true; 
-            item.value = Item.buyPrice(0, 0, 30, 0);
-            item.rare = 5;
+            item.value = Item.buyPrice(0, 30, 0, 0);
+            item.rare = 10;
             item.UseSound = SoundID.Item5; 
             item.useAmmo = AmmoID.Snowball;
             item.shoot = ProjectileID.SnowBallFriendly;
@@ -52,14 +52,19 @@ namespace VinesMod.Items.Weapons.Bow
 			}
 			return false;
 		}
+
+        public override bool ConsumeAmmo(Player player)
+		{
+			return Main.rand.NextFloat() >= .33f;
+		}
+
 		
         public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod, "ShardWhite", 50);
-            recipe.AddIngredient(ItemID.SnowBlock, 400);
-            recipe.AddIngredient(ItemID.Cobweb, 15);
-            recipe.AddIngredient(ItemID.SnowballCannon, 1);
+            recipe.AddIngredient(mod, "AvalancheEx", 1);
+            recipe.AddIngredient(mod, "OverDriveWhite", 1);
+			recipe.AddIngredient(ItemID.LargeDiamond, 5);
             recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();
