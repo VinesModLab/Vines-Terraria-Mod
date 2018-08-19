@@ -65,9 +65,7 @@ namespace VinesMod.Items.Weapons.Melee
 			recipe.AddIngredient(ItemID.LunarBar, 90);
 			recipe.AddIngredient(ItemID.Cloud, 900);
 			recipe.AddIngredient(ItemID.RainCloud, 100);
-			recipe.AddIngredient(mod, "ArcaneBright", 1);
-			recipe.AddIngredient(mod, "FrostPain", 1);
-			recipe.AddIngredient(mod, "StarFall", 1);
+			recipe.AddIngredient(mod, "StarForceCannon", 1);
 			recipe.AddIngredient(mod, "OverDrivePurple", 1);
 			recipe.AddIngredient(mod, "OverDriveRed", 1);
 			recipe.AddIngredient(mod, "OverDriveBlue", 1);

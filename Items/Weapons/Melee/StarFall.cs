@@ -18,7 +18,7 @@ namespace VinesMod.Items.Weapons.Melee
 			item.shootSpeed *= 1.1f;
 			item.damage = 89;
 			item.value = Item.sellPrice(gold: 3);
-			item.rare = 4;
+			item.rare = 6;
 			item.autoReuse = true;
 			item.scale = 1.7f;
 		}

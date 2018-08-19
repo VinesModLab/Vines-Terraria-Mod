@@ -23,7 +23,7 @@ namespace VinesMod.Items.Weapons.Melee
 			item.useStyle = 1;
 			item.knockBack = 10f;
 			item.value = 10000;
-			item.rare = 0;
+			item.rare = 2;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 			//item.shoot = mod.ProjectileType<Projectiles.???>();
