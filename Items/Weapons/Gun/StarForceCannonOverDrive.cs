@@ -20,8 +20,8 @@ namespace VinesMod.Items.Weapons.Gun
 			item.ranged = true;
 			item.width = 40;
 			item.height = 20;
-			item.useTime = 5;
-			item.useAnimation = 5;
+			item.useTime = 20;
+			item.useAnimation = 20;
 			item.useStyle = 5;
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 16f;
@@ -37,7 +37,7 @@ namespace VinesMod.Items.Weapons.Gun
 			for (int i = 0; i < numberProjectiles; i++)
 			{
 				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(22));
-				Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+				Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage*2, knockBack, player.whoAmI);
 			}
 			return false;
 		}
@@ -56,6 +56,12 @@ namespace VinesMod.Items.Weapons.Gun
 			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();
+		}
+
+		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		{
+			target.AddBuff(BuffID.OnFire, 15* 60);
+			target.AddBuff(BuffID.ShadowFlame, 15* 60);
 		}
 	}
 }
