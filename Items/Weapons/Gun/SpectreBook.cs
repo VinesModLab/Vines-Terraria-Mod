@@ -19,8 +19,8 @@ namespace VinesMod.Items.Weapons.Gun
 			item.ranged = true;
 			item.width = 42;
 			item.height = 30;
-			item.useTime = 35;
-			item.useAnimation = 35;
+			item.useTime = 20;
+			item.useAnimation = 20;
 			item.useStyle = 5;
 			item.noMelee = true;
 			item.knockBack = 4f;
@@ -36,7 +36,7 @@ namespace VinesMod.Items.Weapons.Gun
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.Book, 1);
+			recipe.AddIngredient(ItemID.SpellTome, 1);
 			recipe.AddIngredient(ItemID.Ectoplasm, 8);
 			recipe.AddIngredient(mod, "ShardPurple", 30);
 			recipe.AddTile(mod.TileType("StarForge"));

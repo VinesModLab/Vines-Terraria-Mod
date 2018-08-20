@@ -34,7 +34,7 @@ namespace VinesMod.Items.Weapons.Magic
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.Book, 1);
+			recipe.AddIngredient(ItemID.SpellTome, 1);
 			recipe.AddIngredient(ItemID.SoulofLight, 8);
 			recipe.AddIngredient(ItemID.Lens, 5);
 			recipe.AddIngredient(ItemID.CrystalShard, 3);
