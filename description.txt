@@ -13,6 +13,7 @@ This mod doesn't require a new world restart,
 and the item recipes are mostly trying to consume gems(ruby,topaz etc) and fallenstars, manacrystal and lifecrystal.
 
 Note : It is still in alpha and it may cause bugs. / sorry for my bad english.
+Note : Pics are gonna reskin when I finally found someone who can draw.
 
 Things Contained in Mod:
 * 20+ New Weapons

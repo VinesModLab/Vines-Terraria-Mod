@@ -23,6 +23,7 @@ The world collided with other dimension, lead to a new power resource, "overdriv
 ## Things Contained in Mod:
 * see [Description](https://github.com/vinesmsuic/VinesMod/blob/master/description.txt)
 
+
 ## Weapon Showcase
 ![weapon1](https://github.com/vinesmsuic/VinesMod/blob/master/Items/Weapons/Melee/ArcaneBright.png)
 ![weapon2](https://github.com/vinesmsuic/VinesMod/blob/master/Items/Weapons/Melee/CrystalBlood.png)
@@ -31,6 +32,7 @@ The world collided with other dimension, lead to a new power resource, "overdriv
 ![weapon5](https://github.com/vinesmsuic/VinesMod/blob/master/Items/Weapons/Melee/InfernoSpike.png)
 ![weapon6](https://github.com/vinesmsuic/VinesMod/blob/master/Items/Weapons/Melee/ZeoxingBlade.png)
 
+Note : Pics are gonna reskin when I finally found someone who can draw.
 
 ## Mod Authors
 * Codes were written by Vines
