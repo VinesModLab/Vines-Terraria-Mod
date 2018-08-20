@@ -23,8 +23,8 @@ namespace VinesMod.Items.Weapons.Bow
             item.CloneDefaults(ItemID.DaedalusStormbow);
             item.width = 16;
             item.height = 24;
-            item.useTime = 20;
-            item.useAnimation = 20;
+            item.useTime = 10;
+            item.useAnimation = 10;
             item.damage = 500;
             item.useStyle = 5; 
             item.noMelee = true; 

@@ -18,8 +18,8 @@ namespace VinesMod.Items.Accessories.Wings
         {
             item.width = 22;
             item.height = 22;
-            item.value = 10000;
-            item.rare = 3;
+            item.value = Item.buyPrice(0,30,0,0);
+            item.rare = 5;
             item.accessory = true;
         }
 
@@ -31,7 +31,7 @@ namespace VinesMod.Items.Accessories.Wings
         public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising, ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)
         {
             ascentWhenFalling = 0.9f;
-            ascentWhenRising = 0.1f;
+            ascentWhenRising = 0.15f;
             maxCanAscendMultiplier = 1.2f;
             maxAscentMultiplier = 3.5f;
             constantAscend = 0.125f;
@@ -39,7 +39,7 @@ namespace VinesMod.Items.Accessories.Wings
 
         public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration)
         {
-            speed = 10f;
+            speed = 11f;
             acceleration *= 2.75f;
         }
 

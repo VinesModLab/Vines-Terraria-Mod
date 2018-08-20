@@ -176,6 +176,8 @@ namespace VinesMod.NPCs
 				nextSlot++;
 				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Vanity.Lenny>());
 				nextSlot++;
+				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Accessories.Wings.BeautiflyWing>());
+				nextSlot++;
 			}
             else if (type == NPCID.Wizard)
             {
