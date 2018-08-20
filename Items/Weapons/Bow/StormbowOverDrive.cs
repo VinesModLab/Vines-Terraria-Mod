@@ -43,7 +43,6 @@ namespace VinesMod.Items.Weapons.Bow
 			float numberProjectiles = 10 + Main.rand.Next(15);
 			float rotation = MathHelper.ToRadians(45);
 			position += Vector2.Normalize(new Vector2(speedX, speedY)) * 45f;
-            damage /= 2;
 			for (int i = 0; i < numberProjectiles; i++)
 			{
 				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
