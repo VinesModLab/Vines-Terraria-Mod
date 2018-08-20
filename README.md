@@ -32,9 +32,9 @@ The world collided with other dimension, lead to a new power resource, "overdriv
 ![weapon5](https://github.com/vinesmsuic/VinesMod/blob/master/Items/Weapons/Melee/InfernoSpike.png)
 ![weapon6](https://github.com/vinesmsuic/VinesMod/blob/master/Items/Weapons/Melee/ZeoxingBlade.png)
 
-Note : Pics are gonna reskin when I finally found someone who can draw.
+Note : It maybe released to mod browser after ALL the original terraria sprites have been reskined. that will be when I finally found someone who can draw...
 
 ## Mod Authors
 * Codes were written by Vines
-* Sprites were drawn by Vines & Namm
+* Sprites were drawn/tuned by Vines & Namm
 * Mod Idea was from Vines
