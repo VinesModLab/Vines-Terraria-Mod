@@ -18,7 +18,7 @@ namespace VinesMod.Items.Weapons.Melee
             item.CloneDefaults(ItemID.DeathSickle);
 			item.damage = 500;
 			item.value = Item.buyPrice(gold: 10); 
-			item.rare = 10;
+			item.rare = 11;
             item.shoot = mod.ProjectileType<Projectiles.ODDeathStormProjectile>();
             item.shootSpeed *= 1.5f;
 			item.autoReuse = true;          //Whether the weapon can use automatically by pressing mousebutton

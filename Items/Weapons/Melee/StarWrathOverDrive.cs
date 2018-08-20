@@ -18,7 +18,7 @@ namespace VinesMod.Items.Weapons.Melee
             item.CloneDefaults(ItemID.StarWrath);
 			item.damage = 500;
 			item.value = Item.buyPrice(gold: 30); 
-			item.rare = 10;
+			item.rare = 11;
             item.shoot = 503;
 			item.shootSpeed = 8f;
             item.shootSpeed *= 1.05f;

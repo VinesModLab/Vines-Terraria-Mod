@@ -24,7 +24,7 @@ namespace VinesMod.Items.Weapons.Melee
 			item.useStyle = 1;  
 			item.knockBack = 4;         
 			item.value = Item.buyPrice(gold: 30);         
-			item.rare = 10;      
+			item.rare = 11;      
 			item.UseSound = SoundID.Item1; 
 			item.autoReuse = true;         
             item.shoot = 661;

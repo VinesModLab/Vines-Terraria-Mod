@@ -22,7 +22,7 @@ namespace VinesMod.Items.Weapons.Magic
 		public override void SetDefaults()
 		{
 			item.CloneDefaults(ItemID.RainbowGun);
-			item.rare = 10;
+			item.rare = 11;
 			item.damage = 465;
 			item.value = Item.buyPrice(gold: 30);
 			item.mana = 40;

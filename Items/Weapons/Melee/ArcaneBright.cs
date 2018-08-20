@@ -30,7 +30,7 @@ namespace VinesMod.Items.Weapons.Melee
 			item.useStyle = 1;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
 			item.knockBack = 6f;         //The force of knockback of the weapon. Maximum is 20
 			item.value = Item.buyPrice(gold: 30);          
-			item.rare = 10;              
+			item.rare = 11;              
 			item.UseSound = SoundID.Item1;    
 			item.autoReuse = true;       
             item.scale = 1.3f; 

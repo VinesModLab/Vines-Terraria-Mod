@@ -18,7 +18,7 @@ namespace VinesMod.Items.Weapons.Melee
             item.CloneDefaults(ItemID.Meowmere);
 			item.damage = 500;
 			item.value = Item.buyPrice(gold: 30); 
-			item.rare = 10;
+			item.rare = 11;
             item.shoot = 502;
             item.shootSpeed *= 1.05f;
 			item.autoReuse = true;          //Whether the weapon can use automatically by pressing mousebutton

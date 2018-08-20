@@ -29,7 +29,7 @@ namespace VinesMod.Items.Weapons.Bow
             item.useStyle = 5; 
             item.noMelee = true; 
             item.value = Item.buyPrice(gold: 30);
-            item.rare = 10;
+            item.rare = 11;
             item.UseSound = SoundID.Item5; 
             item.useAmmo = mod.ItemType("OverDriveArrow");
             item.shoot = 1;
