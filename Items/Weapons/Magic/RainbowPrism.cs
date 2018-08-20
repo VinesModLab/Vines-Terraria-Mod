@@ -11,7 +11,7 @@ using Terraria.ModLoader;
 
 namespace VinesMod.Items.Weapons.Magic
 {
-	class LastPrismOverDrive : ModItem
+	class RainbowPrism : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -23,9 +23,9 @@ namespace VinesMod.Items.Weapons.Magic
 		{
 			item.CloneDefaults(ItemID.LastPrism);
 			item.rare = 11;
-			item.damage = 485;
-			item.value = Item.buyPrice(silver: 30);
-			item.mana = 15;
+			item.damage = 785;
+			item.value = Item.buyPrice(gold: 30);
+			item.mana = 10;
 		}
 
 		public override void AddRecipes()
