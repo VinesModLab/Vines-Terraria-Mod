@@ -20,8 +20,8 @@ namespace VinesMod.Items.Weapons.Gun
 			item.ranged = true;
 			item.width = 40;
 			item.height = 20;
-			item.useTime = 5;
-			item.useAnimation = 5;
+			item.useTime = 10;
+			item.useAnimation = 10;
 			item.useStyle = 5;
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 16f;
@@ -51,8 +51,9 @@ namespace VinesMod.Items.Weapons.Gun
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(mod, "StarForceCannon", 1);
-			recipe.AddIngredient(ItemID.IllegalGunParts, 10);
+			recipe.AddIngredient(ItemID.IllegalGunParts, 15);
 			recipe.AddIngredient(mod, "OverDriveYellow", 1);
+			recipe.AddIngredient(mod, "OverDriveWhite", 1);
 			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();

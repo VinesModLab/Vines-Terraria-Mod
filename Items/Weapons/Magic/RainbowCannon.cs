@@ -24,7 +24,8 @@ namespace VinesMod.Items.Weapons.Magic
 			item.CloneDefaults(ItemID.RainbowGun);
 			item.rare = 9;
 			item.damage = 95;
-			item.mana = 15;
+			item.value = Item.buyPrice(silver: 30);
+			item.mana = 25;
 		}
 
 		public override void AddRecipes()

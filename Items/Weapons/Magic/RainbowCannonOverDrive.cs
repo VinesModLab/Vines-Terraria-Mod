@@ -24,7 +24,8 @@ namespace VinesMod.Items.Weapons.Magic
 			item.CloneDefaults(ItemID.RainbowGun);
 			item.rare = 10;
 			item.damage = 465;
-			item.mana = 20;
+			item.value = Item.buyPrice(gold: 30);
+			item.mana = 40;
 		}
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

@@ -23,8 +23,8 @@ namespace VinesMod.Items.Weapons.Bow
         {
             item.width = 16;
             item.height = 24;
-            item.useTime = 5;
-            item.useAnimation = 5;
+            item.useTime = 10;
+            item.useAnimation = 10;
             item.damage = 500;
             item.useStyle = 5; 
             item.noMelee = true; 

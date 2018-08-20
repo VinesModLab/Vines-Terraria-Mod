@@ -21,9 +21,9 @@ namespace VinesMod.Items.Weapons.Melee
 			item.useTime = 40;
 			item.useAnimation = 40;
 			item.useStyle = 1;
-			item.knockBack = 10f;
+			item.knockBack = 20f;
 			item.value = 10000;
-			item.rare = 2;
+			item.rare = 6;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 			//item.shoot = mod.ProjectileType<Projectiles.???>();
