@@ -4,11 +4,11 @@ using Terraria.ModLoader;
 
 namespace VinesMod.Items.Accessories.HandsOff
 {
-	public class UltStarForce : ModItem
+	public class TriForce : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ultimate StarForce");
+			DisplayName.SetDefault("TriForce");
 			Tooltip.SetDefault("Dealt damage x3" + "\n45% increased critical strike chance");
 		}
 
