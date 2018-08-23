@@ -9,7 +9,7 @@ namespace VinesMod.Items.Armor.PurpleManaSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Blue Mana Legging");
+			DisplayName.SetDefault("Purple Mana Legging");
 			Tooltip.SetDefault("5% increased movement speed");
 		}
 
