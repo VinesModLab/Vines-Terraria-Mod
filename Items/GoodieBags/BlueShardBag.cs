@@ -31,5 +31,14 @@ namespace VinesMod.Items.GoodieBags
 		{
 				player.QuickSpawnItem(mod.ItemType("ShardBlue"), Main.rand.Next(50, 100));
 		}
+
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod, "BlueEyeBossSummonItem", 3);
+			recipe.AddTile(mod.TileType("StarForge"));
+			recipe.SetResult(this);
+			recipe.AddRecipe();
+		}
 	}
 }
