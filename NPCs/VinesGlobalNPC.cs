@@ -133,7 +133,56 @@ namespace VinesMod.NPCs
                 	break;
             		}
 				}
-				
+			}
+
+			if (npc.lifeMax > 8000 && npc.value > 0f)
+			{
+				if (Main.rand.Next(7) == 0)
+				{
+					switch (Main.rand.Next(5))
+            		{
+                	case 0:
+                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BlueShardBag"), 1);
+                	break;
+                	case 1:
+                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GreenShardBag"), 1);
+                	break;
+                	case 2:
+                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("PurpleShardBag"), 1);
+                	break;
+                	case 3:
+                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RedShardBag"), 1);
+               		break;
+                	case 4:
+                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("YellowShardBag"), 1);
+                	break;
+            		}
+				}	
+			}
+
+			if (npc.lifeMax > 30000 && npc.value > 0f)
+			{
+				if (Main.rand.Next(5) == 0)
+				{
+					switch (Main.rand.Next(5))
+            		{
+                	case 0:
+                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BlueShardBag"), 1);
+                	break;
+                	case 1:
+                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GreenShardBag"), 1);
+                	break;
+                	case 2:
+                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("PurpleShardBag"), 1);
+                	break;
+                	case 3:
+                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RedShardBag"), 1);
+               		break;
+                	case 4:
+                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("YellowShardBag"), 1);
+                	break;
+            		}
+				}	
 			}
 		}
 
