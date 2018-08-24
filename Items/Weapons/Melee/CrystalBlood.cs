@@ -36,7 +36,7 @@ namespace VinesMod.Items.Weapons.Melee
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.LifeCrystal, 5);
 			recipe.AddIngredient(ItemID.ManaCrystal, 7);
-			recipe.AddIngredient(ItemID.CrystalShard, 30);
+			recipe.AddIngredient(ItemID.CrystalShard, 400);
 			recipe.AddIngredient(mod, "StarForcePurple", 1);
 			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);

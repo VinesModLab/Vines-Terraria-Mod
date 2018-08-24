@@ -58,7 +58,7 @@ namespace VinesMod.Items.Weapons.Bow
 			ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod, "Avalanche", 1);
             recipe.AddIngredient(mod, "StarForceBlue", 1);
-            recipe.AddIngredient(ItemID.IceBlock, 100);
+            recipe.AddIngredient(ItemID.IceBlock, 400);
             recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();
