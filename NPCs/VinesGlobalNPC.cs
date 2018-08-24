@@ -231,6 +231,10 @@ namespace VinesMod.NPCs
 				nextSlot++;
 				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Accessories.Wings.FairyWing>());
 				nextSlot++;
+				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Accessories.Wings.FreedomWing>());
+				nextSlot++;
+				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Accessories.Wings.FadedWing>());
+				nextSlot++;
 			}
             else if (type == NPCID.Wizard)
             {

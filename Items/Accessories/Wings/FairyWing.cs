@@ -18,7 +18,7 @@ namespace VinesMod.Items.Accessories.Wings
         {
             item.width = 22;
             item.height = 22;
-            item.value = Item.buyPrice(0,30,0,0);
+            item.value = Item.buyPrice(0,50,0,0);
             item.rare = 5;
             item.accessory = true;
         }

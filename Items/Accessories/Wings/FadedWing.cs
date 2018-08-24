@@ -6,11 +6,11 @@ using Terraria.ModLoader;
 namespace VinesMod.Items.Accessories.Wings
 {
     [AutoloadEquip(EquipType.Wings)]
-    public class PhantomWing : ModItem
+    public class FadedWing : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Phantom Wing");
+            DisplayName.SetDefault("Faded Wing");
             Tooltip.SetDefault("Allow flight and slow fall");
         }
 
