@@ -9,7 +9,6 @@ namespace VinesMod.Items.Armor.NullSet
 	{
 		public override void SetStaticDefaults()
 		{
-
 			DisplayName.SetDefault("Null (Helmet)");
 		}
 

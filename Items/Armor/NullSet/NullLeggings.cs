@@ -10,7 +10,6 @@ namespace VinesMod.Items.Armor.NullSet
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Null (Legging)");
-			Tooltip.SetDefault("5% increased movement speed");
 		}
 
 		public override void SetDefaults()
@@ -18,7 +17,7 @@ namespace VinesMod.Items.Armor.NullSet
 			item.width = 18;
 			item.height = 18;
 			item.value = 10000;
-			item.rare = 1;
+			item.rare = 11;
 			item.defense = 10000;
 		}
 
