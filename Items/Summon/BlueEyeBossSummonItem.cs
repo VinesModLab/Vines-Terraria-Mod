@@ -22,7 +22,7 @@ namespace VinesMod.Items.Summon
             item.width = 20;
             item.height = 20;
             item.maxStack = 999;
-            item.value = 100;
+            item.value = 10000;
             item.rare = 1;
             item.useAnimation = 40;
             item.useTime = 45;
