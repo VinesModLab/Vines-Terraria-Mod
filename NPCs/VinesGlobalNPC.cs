@@ -184,6 +184,22 @@ namespace VinesMod.NPCs
             		}
 				}	
 			}
+
+			if (npc.lifeMax > 50000 && npc.value > 0f)
+			{
+				if (Main.rand.Next(50) == 0)
+				{
+					switch (Main.rand.Next(2))
+            		{
+                	case 0:
+                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DarkMatter"), 1);
+                	break;
+                	case 1:
+                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("LightMatter"), 1);
+                	break;
+            		}
+				}	
+			}
 		}
 
 		public override void DrawEffects(NPC npc, ref Color drawColor)
