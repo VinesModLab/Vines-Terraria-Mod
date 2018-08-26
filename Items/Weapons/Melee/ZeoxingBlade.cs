@@ -67,12 +67,12 @@ namespace VinesMod.Items.Weapons.Melee
 			recipe.AddIngredient(ItemID.RainCloud, 100);
 			recipe.AddIngredient(mod, "StarForceCannonOverDrive", 1);
 			recipe.AddIngredient(mod, "StarWrathOverDrive", 1);
-			recipe.AddIngredient(mod, "OverDrivePurple", 1);
-			recipe.AddIngredient(mod, "OverDriveRed", 1);
-			recipe.AddIngredient(mod, "OverDriveBlue", 1);
-			recipe.AddIngredient(mod, "OverDriveWhite", 1);
-			recipe.AddIngredient(mod, "OverDriveGreen", 1);
-			recipe.AddIngredient(mod, "OverDriveYellow", 1);
+			recipe.AddIngredient(mod, "OverDrivePurple", 5);
+			recipe.AddIngredient(mod, "OverDriveRed", 5);
+			recipe.AddIngredient(mod, "OverDriveBlue", 5);
+			recipe.AddIngredient(mod, "OverDriveWhite", 5);
+			recipe.AddIngredient(mod, "OverDriveGreen", 5);
+			recipe.AddIngredient(mod, "OverDriveYellow", 5);
 			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();
