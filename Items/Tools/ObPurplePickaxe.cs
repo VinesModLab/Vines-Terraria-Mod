@@ -5,27 +5,26 @@ using Terraria.ModLoader;
 
 namespace VinesMod.Items.Tools
 {
-	public class LifeRedHamaxe : ModItem
+	public class ObPurplePickaxe : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("LifeRed Hamaxe");
+			DisplayName.SetDefault("Obsidian Purple Pickaxe");
 		}
 
 		public override void SetDefaults()
 		{
-			item.damage = 25;
+			item.damage = 35;
 			item.melee = true;
 			item.width = 40;
 			item.height = 40;
 			item.useTime = 20;
 			item.useAnimation = 20;
-			item.axe = 30;
-			item.hammer = 80;
+			item.pick = 110;
 			item.useStyle = 1;
 			item.knockBack = 6;
 			item.value = 10000;
-			item.rare = 3;
+			item.rare = 4;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 		}
@@ -33,11 +32,11 @@ namespace VinesMod.Items.Tools
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.LifeCrystal, 2);
-			recipe.AddIngredient(ItemID.Ruby, 5);
-			recipe.AddRecipeGroup("IronBar", 12);
+			recipe.AddIngredient(ItemID.Obsidian, 30);
+			recipe.AddIngredient(ItemID.Amethyst, 10);
+			recipe.AddRecipeGroup("IronBar", 15);
 			recipe.AddRecipeGroup("Wood", 40);
-			recipe.AddIngredient(mod, "ShardRed", 15);
+			recipe.AddIngredient(mod, "ShardPurple", 25);
 			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();
