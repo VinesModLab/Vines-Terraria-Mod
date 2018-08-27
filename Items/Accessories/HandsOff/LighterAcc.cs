@@ -9,7 +9,7 @@ namespace VinesMod.Items.Accessories.HandsOff
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Lighter Matter");
-			Tooltip.SetDefault("...");
+			Tooltip.SetDefault("+4 MaxMinions"+"\n+ 200 Life" + "\n+ 100 Mana" +"\n...");
 		}
 
 		public override void SetDefaults()
@@ -19,21 +19,17 @@ namespace VinesMod.Items.Accessories.HandsOff
 			item.value = 300000;
 			item.rare = 10;
 			item.accessory = true;
+			item.lifeRegen = 20;
+			item.defense = 15;
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-				player.meleeSpeed *= 1.2f;
-				player.meleeDamage *= 3f;
-				player.thrownDamage *= 2f;
-				player.rangedDamage *= 2f;
-				player.magicDamage *= 2f;
-				player.minionDamage *= 2f;
-				player.moveSpeed += 0.3f;
-				player.rangedCrit += 5;
-				player.meleeCrit += 5;
-				player.magicCrit += 5;
-				player.thrownCrit += 5;
+			player.statLifeMax2 += 200;
+			player.statManaMax2 += 100;
+			player.maxMinions += 4;
+			player.moveSpeed += +0.4f;
+			player.AddBuff(11, 10);
 		}
 
 		public override void AddRecipes()

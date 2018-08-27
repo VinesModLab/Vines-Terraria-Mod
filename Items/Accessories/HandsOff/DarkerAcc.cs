@@ -9,7 +9,7 @@ namespace VinesMod.Items.Accessories.HandsOff
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Darker Matter");
-			Tooltip.SetDefault("...");
+			Tooltip.SetDefault("+ 15% crit"+"\nDeal x2 Damage"+"\n...");
 		}
 
 		public override void SetDefaults()
@@ -24,7 +24,7 @@ namespace VinesMod.Items.Accessories.HandsOff
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 				player.meleeSpeed *= 1.2f;
-				player.meleeDamage *= 3f;
+				player.meleeDamage *= 2f;
 				player.thrownDamage *= 2f;
 				player.rangedDamage *= 2f;
 				player.magicDamage *= 2f;
