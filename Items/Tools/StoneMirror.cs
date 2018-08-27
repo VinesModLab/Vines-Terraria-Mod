@@ -5,8 +5,6 @@ using Terraria.ModLoader;
 
 namespace VinesMod.Items.Tools
 {
-	// Magic Mirror is one of the only vanilla items that does its action somewhere other than the start of its animation, which is why we use code in UseStyle NOT UseItem.
-	// It may prove a useful guide for ModItems with similar behaviors.
 	class StoneMirror : ModItem
 	{
 		public override void SetStaticDefaults()
@@ -20,10 +18,8 @@ namespace VinesMod.Items.Tools
 			item.CloneDefaults(ItemID.IceMirror);
 		}
 
-		// UseStyle is called each frame that the item is being actively used.
 		public override void UseStyle(Player player)
 		{
-			// Each frame, make some dust
 			if (Main.rand.NextBool(2))
 			{
 				Dust.NewDust(player.position, player.width, player.height, 15, 0f, 0f, 150, default(Color), 1.1f);
@@ -37,7 +33,6 @@ namespace VinesMod.Items.Tools
 			{
 				// This code runs once halfway through the useTime of the item. You'll notice with magic mirrors you are still holding the item for a little bit after you've teleported.
 
-				// Make dust 70 times for a cool effect.
 				for (int d = 0; d < 70; d++)
 				{
 					Dust.NewDust(player.position, player.width, player.height, 15, player.velocity.X * 0.5f, player.velocity.Y * 0.5f, 150, default(Color), 1.5f);
@@ -54,7 +49,6 @@ namespace VinesMod.Items.Tools
 				}
 				// The actual method that moves the player back to bed/spawn.
 				player.Spawn();
-				// Make dust 70 times for a cool effect. This dust is the dust at the destination.
 				for (int d = 0; d < 70; d++)
 				{
 					Dust.NewDust(player.position, player.width, player.height, 15, 0f, 0f, 150, default(Color), 1.5f);
