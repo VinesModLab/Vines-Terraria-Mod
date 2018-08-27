@@ -5,11 +5,11 @@ using Terraria.ModLoader;
 
 namespace VinesMod.Items.Tools
 {
-	public class ManaBluePickaxe : ModItem
+	public class FossilYellowPickaxe : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("ManaBlue Pickaxe");
+			DisplayName.SetDefault("FossilYellow Pickaxe");
 		}
 
 		public override void SetDefaults()
@@ -20,7 +20,7 @@ namespace VinesMod.Items.Tools
 			item.height = 40;
 			item.useTime = 20;
 			item.useAnimation = 20;
-			item.pick = 65;
+			item.pick = 55;
 			item.useStyle = 1;
 			item.knockBack = 6;
 			item.value = 10000;
@@ -32,11 +32,11 @@ namespace VinesMod.Items.Tools
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.ManaCrystal, 3);
-			recipe.AddIngredient(ItemID.Sapphire, 5);
-			recipe.AddRecipeGroup("IronBar", 10);
-			recipe.AddRecipeGroup("Wood", 40);
-			recipe.AddIngredient(mod, "ShardBlue", 15);
+			recipe.AddIngredient(ItemID.DesertFossil, 30);
+			recipe.AddIngredient(ItemID.Topaz, 5);
+			recipe.AddRecipeGroup("IronBar", 7);
+			recipe.AddRecipeGroup("Wood", 20);
+			recipe.AddIngredient(mod, "ShardRed", 15);
 			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();

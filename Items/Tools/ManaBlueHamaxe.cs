@@ -14,14 +14,14 @@ namespace VinesMod.Items.Tools
 
 		public override void SetDefaults()
 		{
-			item.damage = 35;
+			item.damage = 15;
 			item.melee = true;
 			item.width = 40;
 			item.height = 40;
 			item.useTime = 20;
 			item.useAnimation = 20;
 			item.axe = 20;
-			item.hammer = 70;
+			item.hammer = 65;
 			item.useStyle = 1;
 			item.knockBack = 6;
 			item.value = 10000;
@@ -34,7 +34,8 @@ namespace VinesMod.Items.Tools
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.ManaCrystal, 3);
-			recipe.AddRecipeGroup("IronBar", 7);
+			recipe.AddIngredient(ItemID.Sapphire, 5);
+			recipe.AddRecipeGroup("IronBar", 10);
 			recipe.AddRecipeGroup("Wood", 40);
 			recipe.AddIngredient(mod, "ShardBlue", 15);
 			recipe.AddTile(mod.TileType("StarForge"));
