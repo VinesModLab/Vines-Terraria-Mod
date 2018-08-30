@@ -16,13 +16,13 @@ Note : It is still in alpha and it may cause bugs. / sorry for my bad english.
 Note : Pics are gonna reskin when I finally found someone who can draw.
 
 Things Contained in Mod:
-* 20+ New Weapons
-* 15+ New Accessories
-* 2+ New Set of Armor
+* 1+ New Workbench
+* 30+ New Weapons
+* 20+ New Accessories
+* 3+ New Set of Armor
 * 20+ New Materials
 * 5+ New Bosses
-* 1+ New NPCs
-* 1+ New Workbench
+* 1+ New NPCs (WIP)
 
 Enjoy!
 --------------------------------------------------------------

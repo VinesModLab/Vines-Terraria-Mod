@@ -69,7 +69,7 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             npc.defense = (int)(npc.defense + numPlayers);
         }
         
-        public override void AI()
+        public override void AI() //Daytime movement
         {
             Target();
             DespawnHandler();
