@@ -16,8 +16,8 @@ namespace VinesMod.Items.Materials.StarForce
 			item.width = 20;
 			item.height = 20;
 			item.maxStack = 999;
-			item.value = 100;
-			item.rare = 10;
+			item.value = 10000;
+			item.rare = 7;
 		}
 
 		public override void AddRecipes()

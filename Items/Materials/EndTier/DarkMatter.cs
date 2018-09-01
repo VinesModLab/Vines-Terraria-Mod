@@ -16,7 +16,7 @@ namespace VinesMod.Items.Materials.EndTier
 			item.width = 20;
 			item.height = 20;
 			item.maxStack = 999;
-			item.value = 100;
+			item.value = 300000;
 			item.rare = 11;
 		}
 
