@@ -40,6 +40,8 @@ namespace VinesMod.Items.Accessories.HandsOff
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(mod, "DarkerAcc", 1);
+			recipe.AddIngredient(mod, "LighterAcc", 1);
 			recipe.AddIngredient(mod, "StarForceBlue", 5);
 			recipe.AddIngredient(mod, "StarForceYellow", 5);
 			recipe.AddIngredient(mod, "StarForcePurple", 5);
