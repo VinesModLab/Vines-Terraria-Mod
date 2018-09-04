@@ -17,7 +17,7 @@ namespace VinesMod.Items.Accessories.HandsOff
 			item.width = 24;
 			item.height = 28;
 			item.value = 10000;
-			item.rare = 12;
+			item.rare = 13;
 			item.accessory = true;
 			item.lifeRegen = 1000;
 			item.defense = 10000;
@@ -51,7 +51,7 @@ namespace VinesMod.Items.Accessories.HandsOff
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod, "WeaponNull", 1);
+			recipe.AddIngredient(mod, "WeaponNull", 5);
 			recipe.AddTile(mod.TileType("StarForge"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();

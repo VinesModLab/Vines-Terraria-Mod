@@ -9,7 +9,7 @@ namespace VinesMod.Items.Accessories.HandsOff
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("TriForce");
-			Tooltip.SetDefault("Dealt damage x3" + "\n45% increased critical strike chance");
+			Tooltip.SetDefault("Increase damage by 50%" + "\n45% increased critical strike chance");
 		}
 
 		public override void SetDefaults()
@@ -24,11 +24,11 @@ namespace VinesMod.Items.Accessories.HandsOff
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 				player.meleeSpeed *= 1.3f;
-				player.meleeDamage *= 3f;
-				player.thrownDamage *= 3f;
-				player.rangedDamage *= 3f;
-				player.magicDamage *= 3f;
-				player.minionDamage *= 3f;
+				player.meleeDamage *= 1.5f;
+				player.thrownDamage *= 1.5f;
+				player.rangedDamage *= 1.5f;
+				player.magicDamage *= 1.5f;
+				player.minionDamage *= 1.5f;
 				player.moveSpeed += 0.3f;
 				player.rangedCrit += 15;
 				player.meleeCrit += 15;

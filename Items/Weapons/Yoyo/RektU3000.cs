@@ -27,10 +27,10 @@ namespace VinesMod.Items.Weapons.Yoyo
             item.useTime = 25;
             item.shoot = mod.ProjectileType<Projectiles.RektU3000>(); 
             item.shootSpeed = 30f; 
-            item.knockBack = 2.5f;
-            item.damage = 76;
+            item.knockBack = 6f;
+            item.damage = 86;
             item.value = 10000;
-            item.rare = 4;
+            item.rare = 8;
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
