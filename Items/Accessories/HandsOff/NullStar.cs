@@ -17,7 +17,7 @@ namespace VinesMod.Items.Accessories.HandsOff
 			item.width = 24;
 			item.height = 28;
 			item.value = 10000;
-			item.rare = 11;
+			item.rare = 12;
 			item.accessory = true;
 			item.lifeRegen = 1000;
 			item.defense = 10000;

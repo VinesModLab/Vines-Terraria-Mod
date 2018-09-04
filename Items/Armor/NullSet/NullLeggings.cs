@@ -17,7 +17,7 @@ namespace VinesMod.Items.Armor.NullSet
 			item.width = 18;
 			item.height = 18;
 			item.value = 10000;
-			item.rare = 11;
+			item.rare = 12;
 			item.defense = 10000;
 		}
 
