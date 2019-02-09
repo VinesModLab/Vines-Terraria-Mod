@@ -261,6 +261,8 @@ namespace VinesMod.NPCs
 				nextSlot++;
 				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Summon.PurpleSlimeBossSummonItem>());
 				nextSlot++;
+				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Summon.WhiteFlyingFishBossSummonItem>());
+				nextSlot++;
 			}
             else if (type == NPCID.Wizard)
             {
