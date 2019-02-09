@@ -112,7 +112,7 @@ namespace VinesMod.NPCs
 
 			if (npc.lifeMax > 120 && npc.lifeMax < 3000 && npc.value > 0f)
 			{
-				if (Main.rand.Next(20) == 0)
+				if (Main.rand.Next(15) == 0)
 				{
 					switch (Main.rand.Next(5))
             		{
@@ -137,7 +137,7 @@ namespace VinesMod.NPCs
 
 			if (npc.lifeMax > 8000 && npc.value > 0f)
 			{
-				if (Main.rand.Next(7) == 0)
+				if (Main.rand.Next(4) == 0)
 				{
 					switch (Main.rand.Next(5))
             		{
@@ -162,7 +162,7 @@ namespace VinesMod.NPCs
 
 			if (npc.lifeMax > 30000 && npc.value > 0f)
 			{
-				if (Main.rand.Next(5) == 0)
+				if (Main.rand.Next(2) == 0)
 				{
 					switch (Main.rand.Next(5))
             		{
@@ -187,7 +187,7 @@ namespace VinesMod.NPCs
 
 			if (npc.lifeMax > 50000 && npc.value > 0f)
 			{
-				if (Main.rand.Next(50) == 0)
+				if (Main.rand.Next(2) == 0)
 				{
 					switch (Main.rand.Next(2))
             		{
@@ -250,6 +250,16 @@ namespace VinesMod.NPCs
 				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Accessories.Wings.FreedomWing>());
 				nextSlot++;
 				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Accessories.Wings.FadedWing>());
+				nextSlot++;
+				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Summon.BlueEyeBossSummonItem>());
+				nextSlot++;
+				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Summon.RedBrainBossSummonItem>());
+				nextSlot++;
+				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Summon.YellowIchorBossSummonItem>());
+				nextSlot++;
+				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Summon.GreenBeeBossSummonItem>());
+				nextSlot++;
+				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Summon.PurpleSlimeBossSummonItem>());
 				nextSlot++;
 			}
             else if (type == NPCID.Wizard)
