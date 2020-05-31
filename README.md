@@ -1,4 +1,4 @@
-# Vines' Mod v0.2.3 Alpha
+# Vines' Terraria Mod 0.2.3 Alpha
 A mod for the game [Terraria](https://en.wikipedia.org/wiki/Terraria) 1.3.5.2
 Still trying to balancing the mod.
 Recommend using with some huge mods together!
