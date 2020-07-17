@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "drp2IRqLI2wmDzOxZXPM0F+4hJMrsXlu36eaY8FuhyODifXvz16cnZj43lGC+dgl4v05jaNXI/2u+NwBND7bQA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Max\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\VinesMod\\VinesMod.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Max\\.nuget\\packages\\tmodloader.codeassist\\0.1.1\\tmodloader.codeassist.0.1.1.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -22,10 +22,12 @@ namespace VinesMod.Items.TreasureBags
             item.consumable = true;
             item.width = 24;
             item.height = 24;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             item.expert = false;
-            bossBagNPC = mod.NPCType("YellowIchorBoss"); // The NPC this bag drops from
+            //bossBagNPC = mod.NPCType("YellowIchorBoss"); // The NPC this bag drops from
         }
+
+        public override int BossBagNPC => mod.NPCType("YellowIchorBoss");
 
         public override bool CanRightClick()
         {

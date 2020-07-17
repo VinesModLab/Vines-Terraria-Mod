@@ -28,7 +28,7 @@ namespace VinesMod.Items.Weapons.Throw
 
 			item.UseSound = SoundID.Item1;
 			item.value = Item.sellPrice(copper: 1);
-			item.shoot = mod.ProjectileType<DirtJavelinProjectile>();
+			item.shoot = ModContent.ProjectileType<DirtJavelinProjectile>();
 		}
 
 		public override void AddRecipes()

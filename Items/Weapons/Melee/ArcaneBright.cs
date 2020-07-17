@@ -34,7 +34,7 @@ namespace VinesMod.Items.Weapons.Melee
 			item.UseSound = SoundID.Item1;    
 			item.autoReuse = true;       
             item.scale = 1.3f; 
-            item.shoot = mod.ProjectileType<Projectiles.ArcaneBrightProjectile>();
+            item.shoot = ModContent.ProjectileType<Projectiles.ArcaneBrightProjectile>();
             item.shootSpeed = 20f;
 		}
 

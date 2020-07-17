@@ -26,7 +26,7 @@ namespace VinesMod.Items.Weapons.Melee
 			item.rare = -12;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
-			item.shoot = mod.ProjectileType<Projectiles.ZeoxingProjectile>();
+			item.shoot = ModContent.ProjectileType<Projectiles.ZeoxingProjectile>();
 			item.shootSpeed = 60f; 
 			item.scale = 0.75f;
 		}

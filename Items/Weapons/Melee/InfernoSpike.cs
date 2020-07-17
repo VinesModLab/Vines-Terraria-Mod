@@ -39,7 +39,7 @@ namespace VinesMod.Items.Weapons.Melee
 			item.autoReuse = true; // Most spears don't autoReuse, but it's possible when used in conjunction with CanUseItem()
 
 			item.UseSound = SoundID.Item1;
-			item.shoot = mod.ProjectileType<InfernoSpikeProjectile>();
+			item.shoot = ModContent.ProjectileType<InfernoSpikeProjectile>();
 		}
 
 		public override bool CanUseItem(Player player)

@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
+using static Terraria.ModLoader.ModContent;
 namespace VinesMod.Items.TreasureBags
 {
     public class GreenBeeBossBag : ModItem
     {
+        
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Treasure Bag");
@@ -22,10 +24,12 @@ namespace VinesMod.Items.TreasureBags
             item.consumable = true;
             item.width = 24;
             item.height = 24;
-            item.rare = 9;
+            item.rare = ItemRarityID.Cyan;
             item.expert = false;
-            bossBagNPC = mod.NPCType("GreenBeeBoss"); // The NPC this bag drops from
+            //bossBagNPC = mod.NPCType("GreenBeeBoss"); // The NPC this bag drops from
         }
+
+        public override int BossBagNPC => mod.NPCType("GreenBeeBoss");
 
         public override bool CanRightClick()
         {

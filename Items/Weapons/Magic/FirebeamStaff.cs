@@ -27,7 +27,7 @@ namespace VinesMod.Items.Weapons.Magic
 			//item.color = Color.Red;
 			item.damage = 30;
 			item.mana = 1;
-			item.shoot = mod.ProjectileType<FirebeamStaffProjectile>();
+			item.shoot = ModContent.ProjectileType<FirebeamStaffProjectile>();
 		}
 
 		public override void AddRecipes()

@@ -32,7 +32,7 @@ namespace VinesMod.Items.Weapons.Melee
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 			item.scale = 1.2f;
-			item.shoot = mod.ProjectileType<Projectiles.FrostBeam>();
+			item.shoot = ModContent.ProjectileType<Projectiles.FrostBeam>();
 			item.shootSpeed = 60f;
 		}
 

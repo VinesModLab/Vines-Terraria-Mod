@@ -21,10 +21,10 @@ namespace VinesMod.Items.Weapons.Melee
 			item.height = 40;           
 			item.useTime = 20;         
 			item.useAnimation = 20; 
-			item.useStyle = 1;//The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
+			item.useStyle = ItemUseStyleID.SwingThrow;//The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
 			item.knockBack = 3;
 			item.value = Item.sellPrice(gold: 15);           //The value of the weapon
-			item.rare = 5;
+			item.rare = ItemRarityID.Pink;
 			item.shoot = ProjectileID.EnchantedBeam;
 			item.shootSpeed *= 4f;
 			item.UseSound = SoundID.Item1;

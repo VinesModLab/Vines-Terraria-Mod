@@ -26,7 +26,7 @@ namespace VinesMod.Items.Weapons.Melee
 			item.rare = 6;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
-			//item.shoot = mod.ProjectileType<Projectiles.???>();
+			//item.shoot = ModContent.ProjectileType<Projectiles.???>();
 		}
 
 		public override void AddRecipes()

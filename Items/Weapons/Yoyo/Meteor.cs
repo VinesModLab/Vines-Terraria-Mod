@@ -25,7 +25,7 @@ namespace VinesMod.Items.Weapons.Yoyo
             item.UseSound = SoundID.Item1;
             item.useAnimation = 25;
             item.useTime = 25;
-            item.shoot = mod.ProjectileType<Projectiles.MeteorYoyoProjectile>(); 
+            item.shoot = ModContent.ProjectileType<Projectiles.MeteorYoyoProjectile>(); 
             item.shootSpeed = 30f; 
             item.knockBack = 5f;
             item.damage = 26;

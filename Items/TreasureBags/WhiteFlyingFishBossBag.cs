@@ -24,7 +24,7 @@ namespace VinesMod.Items.TreasureBags
             item.height = 24;
             item.rare = 9;
             item.expert = false;
-            bossBagNPC = mod.NPCType("WhiteFlyingFishBoss"); // The NPC this bag drops from
+            //bossBagNPC = mod.NPCType("WhiteFlyingFishBoss"); // The NPC this bag drops from
         }
 
         public override bool CanRightClick()

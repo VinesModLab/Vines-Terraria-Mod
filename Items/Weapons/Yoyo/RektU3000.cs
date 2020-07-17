@@ -15,7 +15,7 @@ namespace VinesMod.Items.Weapons.Yoyo
 
         public override void SetDefaults()
         {
-            item.useStyle = 5; 
+            item.useStyle = ItemUseStyleID.HoldingOut; 
             item.width = 24;
             item.height = 24;
             item.noUseGraphic = true; 
@@ -25,12 +25,12 @@ namespace VinesMod.Items.Weapons.Yoyo
             item.UseSound = SoundID.Item1;
             item.useAnimation = 25;
             item.useTime = 25;
-            item.shoot = mod.ProjectileType<Projectiles.RektU3000>(); 
+            item.shoot = ModContent.ProjectileType<Projectiles.RektU3000>(); 
             item.shootSpeed = 30f; 
             item.knockBack = 6f;
             item.damage = 86;
             item.value = 10000;
-            item.rare = 8;
+            item.rare = ItemRarityID.Yellow;
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

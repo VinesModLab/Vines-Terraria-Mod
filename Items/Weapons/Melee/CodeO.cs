@@ -27,7 +27,7 @@ namespace VinesMod.Items.Weapons.Melee
 			item.rare = 2;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
-			item.shoot = mod.ProjectileType<Projectiles.ShurikenProjectile>();
+			item.shoot = ModContent.ProjectileType<Projectiles.ShurikenProjectile>();
             item.shootSpeed = 10f;
 		}
 

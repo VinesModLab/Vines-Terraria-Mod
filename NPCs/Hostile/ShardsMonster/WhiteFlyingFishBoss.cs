@@ -127,17 +127,6 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
             npc.frame.Y = frame * frameHeight;
         }
 
-        public override void FindFrame(int frameHeight)
-        {
-            npc.frameCounter += 1;
-            npc.frameCounter %= 20;
-            int frame = (int)(npc.frameCounter / 2.0);
-            if (frame >= Main.npcFrameCount[npc.type]) frame = 0;
-            npc.frame.Y = frame * frameHeight;
-
-        }
-
-
         public override void NPCLoot()
         {
             if (Main.expertMode)

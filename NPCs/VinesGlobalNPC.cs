@@ -27,7 +27,7 @@ namespace VinesMod.NPCs
 
 		public override void SetDefaults(NPC npc)
 		{
-			npc.buffImmune[mod.BuffType<Buffs.DirtJavelin>()] = npc.buffImmune[BuffID.BoneJavelin];
+			npc.buffImmune[ModContent.BuffType<Buffs.DirtJavelin>()] = npc.buffImmune[BuffID.BoneJavelin];
 		}
 
 		public override void UpdateLifeRegen(NPC npc, ref int damage)
@@ -42,7 +42,7 @@ namespace VinesMod.NPCs
 				for (int i = 0; i < 1000; i++)
 				{
 					Projectile p = Main.projectile[i];
-					if (p.active && p.type == mod.ProjectileType<Projectiles.DirtJavelinProjectile>() && p.ai[0] == 1f && p.ai[1] == npc.whoAmI)
+					if (p.active && p.type == ModContent.ProjectileType<Projectiles.DirtJavelinProjectile>() && p.ai[0] == 1f && p.ai[1] == npc.whoAmI)
 					{
 						DirtJavelinCount++;
 					}
@@ -237,46 +237,46 @@ namespace VinesMod.NPCs
 		{
 			if (type == NPCID.Dryad)
 			{
-				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.GoodieBags.PetGoodieBag>());
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.GoodieBags.PetGoodieBag>());
 				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Vanity.Lenny>());
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Vanity.Lenny>());
 				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Accessories.Wings.BeautiflyWing>());
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Accessories.Wings.BeautiflyWing>());
 				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Accessories.Wings.PhantomWing>());
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Accessories.Wings.PhantomWing>());
 				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Accessories.Wings.FairyWing>());
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Accessories.Wings.FairyWing>());
 				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Accessories.Wings.FreedomWing>());
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Accessories.Wings.FreedomWing>());
 				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Accessories.Wings.FadedWing>());
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Accessories.Wings.FadedWing>());
 				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Summon.BlueEyeBossSummonItem>());
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Summon.BlueEyeBossSummonItem>());
 				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Summon.RedBrainBossSummonItem>());
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Summon.RedBrainBossSummonItem>());
 				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Summon.YellowIchorBossSummonItem>());
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Summon.YellowIchorBossSummonItem>());
 				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Summon.GreenBeeBossSummonItem>());
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Summon.GreenBeeBossSummonItem>());
 				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Summon.PurpleSlimeBossSummonItem>());
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Summon.PurpleSlimeBossSummonItem>());
 				nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Summon.WhiteFlyingFishBossSummonItem>());
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Summon.WhiteFlyingFishBossSummonItem>());
 				nextSlot++;
 			}
             else if (type == NPCID.Wizard)
             {
-                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.GoodieBags.RedShardBag>());
+                shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.GoodieBags.RedShardBag>());
                 nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.GoodieBags.GreenShardBag>());
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.GoodieBags.GreenShardBag>());
                 nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.GoodieBags.BlueShardBag>());
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.GoodieBags.BlueShardBag>());
                 nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.GoodieBags.PurpleShardBag>());
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.GoodieBags.PurpleShardBag>());
                 nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.GoodieBags.YellowShardBag>());
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.GoodieBags.YellowShardBag>());
                 nextSlot++;
-				shop.item[nextSlot].SetDefaults(mod.ItemType<Items.GoodieBags.WhiteShardBag>());
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.GoodieBags.WhiteShardBag>());
                 nextSlot++;
             }
 		}

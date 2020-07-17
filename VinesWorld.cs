@@ -40,7 +40,7 @@ namespace VinesMod
             if (downedGreenBeeBoss) downed.Add("GreenBee");
             if (downedPurpleSlimeBoss) downed.Add("PurpleSlime");
             if (downedYellowIchorBoss) downed.Add("YellowIchor");
-            if (downedWhiteFlyingFishBoss) downed.Add("WhiteFlyingFish")
+            if (downedWhiteFlyingFishBoss) downed.Add("WhiteFlyingFish");
 
             return new TagCompound
             {
@@ -56,7 +56,7 @@ namespace VinesMod
             downedGreenBeeBoss = downed.Contains("GreenBee");
             downedPurpleSlimeBoss = downed.Contains("PurpleSlime");
             downedYellowIchorBoss = downed.Contains("YellowIchor");
-            downedWhiteFlyingFishBoss = downed.Contains("WhiteFlyingFish")
+            downedWhiteFlyingFishBoss = downed.Contains("WhiteFlyingFish");
         }
 
         public override void LoadLegacy(BinaryReader reader)
@@ -94,7 +94,7 @@ namespace VinesMod
             downedGreenBeeBoss = flags[2];
             downedPurpleSlimeBoss = flags[3];
             downedYellowIchorBoss = flags[4];
-            downedWhiteFlyingFishBoss = flags[5]
+            downedWhiteFlyingFishBoss = flags[5];
         }
 
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
