@@ -14,7 +14,7 @@ Recommend using with some huge mods together!
 
 ## How To Use (As Player):
 * Install the Steam tModLoader
-* Search "VinesMod" using Modbrowsing
+* Search "VinesMod" using Modbrowser
 * Enable the Mod
 * Enjoy the mod
 
