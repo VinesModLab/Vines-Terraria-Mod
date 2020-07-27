@@ -141,26 +141,20 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
                     switch (Main.rand.Next(4))
                 {
                     case 0:
-                    Item.NewItem(npc.getRect(), mod.ItemType("BallisticStaff"), 1);
+                    player.QuickSpawnItem(ItemID.StarCannon, 1);
                     break;
                     case 1:
-                    Item.NewItem(npc.getRect(), mod.ItemType("GoldenGunBlade"), 1);
+                    player.QuickSpawnItem(ItemID.LargeDiamond, 1);
                     break;
                     case 2:
-                    Item.NewItem(npc.getRect(), mod.ItemType("ShieldOfFlag"), 1);
+                    player.QuickSpawnItem(ItemID.LargeRuby, 1);
                     break;
                     case 3:
-                    Item.NewItem(npc.getRect(), mod.ItemType("PizzaBadge"), 1);
+                    player.QuickSpawnItem(ItemID.LargeSapphire, 1);
                     break;
                 }
                 }
             
-
-                if (Main.rand.Next(3) == 0)
-                {
-                Item.NewItem(npc.getRect(), ItemID.EatersBone, 1);
-                }
-
             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardWhite"), Main.rand.Next(5, 10));
             Item.NewItem(npc.getRect(), ItemID.GoldBar, Main.rand.Next(5, 8));
             Item.NewItem(npc.getRect(), ItemID.IronBar, Main.rand.Next(5, 10));

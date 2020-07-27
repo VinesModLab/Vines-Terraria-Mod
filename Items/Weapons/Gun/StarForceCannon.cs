@@ -33,7 +33,7 @@ namespace VinesMod.Items.Weapons.Gun
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
-			int numberProjectiles = 4 + Main.rand.Next(5); 
+			int numberProjectiles = 1 + Main.rand.Next(5); 
 			for (int i = 0; i < numberProjectiles; i++)
 			{
 				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(30)); // 30 degree spread.

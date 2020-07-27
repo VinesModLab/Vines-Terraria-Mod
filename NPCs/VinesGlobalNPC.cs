@@ -110,11 +110,11 @@ namespace VinesMod.NPCs
 				
 			}
 
-			if (npc.lifeMax > 120 && npc.lifeMax < 3000 && npc.value > 0f)
+			if (npc.lifeMax > 50 && npc.lifeMax < 3000 && npc.value > 0f)
 			{
 				if (Main.rand.Next(15) == 0)
 				{
-					switch (Main.rand.Next(5))
+					switch (Main.rand.Next(6))
             		{
                 	case 0:
                 	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BlueEyeBossSummonItem"), 1);
@@ -130,6 +130,9 @@ namespace VinesMod.NPCs
                		break;
                 	case 4:
                 	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("YellowIchorBossSummonItem"), 1);
+					break;
+					case 5:
+                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("WhiteFlyingFishBossSummonItem"), 1);
                 	break;
             		}
 				}

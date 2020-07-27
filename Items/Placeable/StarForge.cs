@@ -8,7 +8,7 @@ namespace VinesMod.Items.Placeable
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("StarForge");
-			Tooltip.SetDefault("Everything starts here.");
+			Tooltip.SetDefault("Everything starts from here.");
 		}
 
 		public override void SetDefaults()
@@ -30,12 +30,12 @@ namespace VinesMod.Items.Placeable
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddRecipeGroup("Wood", 30);
-			recipe.AddIngredient(mod, "ShardBlue", 3);
-			recipe.AddIngredient(mod, "ShardGreen", 3);
-			recipe.AddIngredient(mod, "ShardPurple", 3);
-			recipe.AddIngredient(mod, "ShardYellow", 3);
-			recipe.AddIngredient(mod, "ShardWhite", 3);
-			recipe.AddIngredient(mod, "ShardRed", 3);
+			//recipe.AddIngredient(mod, "ShardBlue", 3);
+			//recipe.AddIngredient(mod, "ShardGreen", 3);
+			//recipe.AddIngredient(mod, "ShardPurple", 3);
+			//recipe.AddIngredient(mod, "ShardYellow", 3);
+			//recipe.AddIngredient(mod, "ShardWhite", 3);
+			//recipe.AddIngredient(mod, "ShardRed", 3);
 			recipe.AddIngredient(ItemID.StoneBlock, 10);
 			recipe.AddIngredient(ItemID.FallenStar, 1);
 			recipe.SetResult(this);
