@@ -42,7 +42,7 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
         public override void SetDefaults()
         {
             npc.CloneDefaults(NPCID.KingSlime);
-            npc.aiStyle = 1;
+            npc.aiStyle = 15;
             npc.lifeMax = 4000; 
             npc.width = 122;
             npc.height = 115;
@@ -51,6 +51,7 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
             npc.value = 10000;
             npc.boss = true; // Is a boss
             npc.lavaImmune = true;
+            npc.knockBackResist = 0.2f;
             bossBag = mod.ItemType("PurpleSlimeBossBag"); // Needed for the NPC to drop loot bag.
         }
 

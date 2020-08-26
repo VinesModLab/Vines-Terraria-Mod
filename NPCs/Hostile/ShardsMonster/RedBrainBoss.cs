@@ -51,6 +51,7 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
             npc.lavaImmune = true;
             npc.noGravity = true; 
             npc.noTileCollide = true;
+            npc.knockBackResist = 0.5f;
             bossBag = mod.ItemType("RedBrainBossBag"); // Needed for the NPC to drop loot bag.
         }
 

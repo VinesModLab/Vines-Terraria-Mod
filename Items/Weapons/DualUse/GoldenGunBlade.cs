@@ -22,8 +22,8 @@ namespace VinesMod.Items.Weapons.DualUse
 			item.useTime = 20;
 			item.useAnimation = 20;
 			item.useStyle = 1;
-			item.knockBack = 6;
-			item.value = 3000;
+			item.knockBack = 5f;
+			item.value = Item.sellPrice(gold: 2); 
 			item.rare = 2;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;

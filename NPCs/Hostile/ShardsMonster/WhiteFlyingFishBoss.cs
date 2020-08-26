@@ -52,6 +52,7 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
             npc.lavaImmune = true;
             npc.noGravity = true; 
             npc.noTileCollide = true;
+            npc.knockBackResist = 0f;
             bossBag = mod.ItemType("WhiteFlyingFishBossBag"); // Needed for the NPC to drop loot bag.
         }
 
@@ -104,7 +105,7 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
             Vector2 velocity = player.Center - npc.Center; // Get the distance between target and npc.
             float magnitude = Magnitude(velocity);
             if(magnitude > 0) {
-                velocity *= 5f / magnitude;
+                velocity *= 7.5f / magnitude;
             } else
             {
                 velocity = new Vector2(0f, 5f);
@@ -138,29 +139,26 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
                 
                 if (Main.rand.Next(2) == 0)
                 {
-                    switch (Main.rand.Next(4))
+                    switch (Main.rand.Next(5))
                 {
                     case 0:
-                    Item.NewItem(npc.getRect(), mod.ItemType("BallisticStaff"), 1);
+                    player.QuickSpawnItem(ItemID.StarCannon, 1);
                     break;
                     case 1:
-                    Item.NewItem(npc.getRect(), mod.ItemType("GoldenGunBlade"), 1);
+                    player.QuickSpawnItem(ItemID.LargeDiamond, 1);
                     break;
                     case 2:
-                    Item.NewItem(npc.getRect(), mod.ItemType("ShieldOfFlag"), 1);
+                    player.QuickSpawnItem(ItemID.LargeRuby, 1);
                     break;
                     case 3:
-                    Item.NewItem(npc.getRect(), mod.ItemType("PizzaBadge"), 1);
+                    player.QuickSpawnItem(ItemID.LargeSapphire, 1);
+                    break;
+                    case 4:
+                    player.QuickSpawnItem(mod.ItemType("WhiteFishSword"), 1);
                     break;
                 }
                 }
             
-
-                if (Main.rand.Next(3) == 0)
-                {
-                Item.NewItem(npc.getRect(), ItemID.EatersBone, 1);
-                }
-
             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardWhite"), Main.rand.Next(5, 10));
             Item.NewItem(npc.getRect(), ItemID.GoldBar, Main.rand.Next(5, 8));
             Item.NewItem(npc.getRect(), ItemID.IronBar, Main.rand.Next(5, 10));

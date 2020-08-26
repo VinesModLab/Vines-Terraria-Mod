@@ -44,5 +44,5 @@ Note : It might be released to mod browser after ALL the original terraria sprit
 
 ## Mod Authors
 * Codes were written by Vines
-* Sprites were drawn/tuned by Vines & Namm
+* Sprites were drawn/tuned by Vines & Namm & KingC
 * Mod Idea was from Vines

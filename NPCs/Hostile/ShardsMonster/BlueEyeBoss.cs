@@ -57,6 +57,7 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             npc.noTileCollide = true;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
+            npc.knockBackResist = 0.2f;
             music = MusicID.Boss1;
             bossBag = mod.ItemType("BlueEyeBossBag"); // Needed for the NPC to drop loot bag.
             aiType = 2; // Different Movement at Night

@@ -28,7 +28,7 @@ namespace VinesMod.Items.Weapons.Melee
 			item.useTime = 20;          
 			item.useAnimation = 20;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
 			item.useStyle = 1;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
-			item.knockBack = 6f;         //The force of knockback of the weapon. Maximum is 20
+			item.knockBack = 3f;         //The force of knockback of the weapon. Maximum is 20
 			item.value = Item.buyPrice(gold: 30);          
 			item.rare = 11;              
 			item.UseSound = SoundID.Item1;    

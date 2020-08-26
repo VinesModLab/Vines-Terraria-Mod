@@ -22,7 +22,7 @@ namespace VinesMod.Items.Weapons.Melee
 			item.useTime = 30;         
 			item.useAnimation = 30; 
 			item.useStyle = 1;//The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
-			item.knockBack = 8;
+			item.knockBack = 3f;
 			item.value = Item.sellPrice(silver: 30);           //The value of the weapon
 			item.rare = 2;
 			item.UseSound = SoundID.Item1;
