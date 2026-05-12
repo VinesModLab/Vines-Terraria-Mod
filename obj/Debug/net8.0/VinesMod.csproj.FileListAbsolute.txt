@@ -1,0 +1,11 @@
+/Users/maxku/Documents/Projects/Vines-Terraria-Mod/obj/Debug/net8.0/VinesMod.csproj.AssemblyReference.cache
+/Users/maxku/Documents/Projects/Vines-Terraria-Mod/obj/Debug/net8.0/VinesMod.GeneratedMSBuildEditorConfig.editorconfig
+/Users/maxku/Documents/Projects/Vines-Terraria-Mod/obj/Debug/net8.0/VinesMod.AssemblyInfoInputs.cache
+/Users/maxku/Documents/Projects/Vines-Terraria-Mod/obj/Debug/net8.0/VinesMod.AssemblyInfo.cs
+/Users/maxku/Documents/Projects/Vines-Terraria-Mod/obj/Debug/net8.0/VinesMod.csproj.CoreCompileInputs.cache
+/Users/maxku/Documents/Projects/Vines-Terraria-Mod/obj/Debug/net8.0/VinesMod.sourcelink.json
+/Users/maxku/Documents/Projects/Vines-Terraria-Mod/bin/Debug/net8.0/VinesMod.dll
+/Users/maxku/Documents/Projects/Vines-Terraria-Mod/bin/Debug/net8.0/VinesMod.pdb
+/Users/maxku/Documents/Projects/Vines-Terraria-Mod/obj/Debug/net8.0/VinesMod.dll
+/Users/maxku/Documents/Projects/Vines-Terraria-Mod/obj/Debug/net8.0/refint/VinesMod.dll
+/Users/maxku/Documents/Projects/Vines-Terraria-Mod/obj/Debug/net8.0/VinesMod.pdb
