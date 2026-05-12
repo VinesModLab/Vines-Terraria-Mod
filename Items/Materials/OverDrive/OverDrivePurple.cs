@@ -7,28 +7,25 @@ namespace VinesMod.Items.Materials.OverDrive
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("OverDrive Core (Amethyst)");
-			Tooltip.SetDefault("it stores unknown power.");
 		}
 
 		public override void SetDefaults()
 		{
-			item.width = 20;
-			item.height = 20;
-			item.maxStack = 999;
-			item.value = 100000;
-			item.rare = 10;
+			Item.width = 20;
+			Item.height = 20;
+			Item.maxStack = 999;
+			Item.value = 100000;
+			Item.rare = 10;
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod, "OverDriveCore", 1);
-			recipe.AddIngredient(mod, "StarForcePurple", 5);
-            recipe.AddIngredient(ItemID.LargeAmethyst, 5);
-           	recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.OverDrive.OverDriveCore>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.StarForce.StarForcePurple>(), 5)
+				.AddIngredient(ItemID.LargeAmethyst, 5)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 	}
 }

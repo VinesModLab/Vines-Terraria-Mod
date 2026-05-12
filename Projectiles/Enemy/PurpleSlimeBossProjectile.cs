@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
@@ -10,18 +11,17 @@ namespace VinesMod.Projectiles.Enemy
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("PurpleSlimeBoss Projectile");
         }
 
         public override void SetDefaults()
         {
-            projectile.width = 16;
-            projectile.height = 16;
-            projectile.aiStyle = -1;
-            projectile.hostile = true;
-            projectile.friendly = false;
-            projectile.melee = true;
-            projectile.penetrate = 3;
+            Projectile.width = 16;
+            Projectile.height = 16;
+            Projectile.aiStyle = -1;
+            Projectile.hostile = true;
+            Projectile.friendly = false;
+            Projectile.DamageType = DamageClass.Melee;
+            Projectile.penetrate = 3;
         }
         
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
@@ -33,33 +33,33 @@ namespace VinesMod.Projectiles.Enemy
             return projHitbox.Intersects(targetHitbox);
         }
 
-        public override void Kill(int timeLeft)
+        public override void OnKill(int timeLeft)
         {
-            Main.PlaySound(SoundID.Dig, (int)projectile.position.X, (int)projectile.position.Y, 1, 1f, 0f);
-            Vector2 usePos = projectile.position;
-            Vector2 rotVector = (projectile.rotation - MathHelper.ToRadians(90f)).ToRotationVector2();
+            SoundEngine.PlaySound(SoundID.Dig, Projectile.position);
+            Vector2 usePos = Projectile.position;
+            Vector2 rotVector = (Projectile.rotation - MathHelper.ToRadians(90f)).ToRotationVector2();
             usePos += rotVector * 16f;
             
         }
 
         public float isStickingToTarget
         {
-            get { return projectile.ai[0]; }
-            set { projectile.ai[0] = value; }
+            get { return Projectile.ai[0]; }
+            set { Projectile.ai[0] = value; }
         }
 
         public float targetWhoAmI
         {
-            get { return projectile.ai[1]; }
-            set { projectile.ai[1] = value; }
+            get { return Projectile.ai[1]; }
+            set { Projectile.ai[1] = value; }
         }
 
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            projectile.ai[0] = 1f;
-            projectile.ai[1] = (float)target.whoAmI;
-            projectile.velocity = (target.Center - projectile.Center) * 0.75f;
-            projectile.netUpdate = true;
+            Projectile.ai[0] = 1f;
+            Projectile.ai[1] = (float)target.whoAmI;
+            Projectile.velocity = (target.Center - Projectile.Center) * 0.75f;
+            Projectile.netUpdate = true;
             target.AddBuff(169, 900, false);
 
             int maxStickingJavelins = 6;
@@ -68,10 +68,10 @@ namespace VinesMod.Projectiles.Enemy
             for (int i = 0; i < Main.maxProjectiles; i++)
             {
                 Projectile currentProjectile = Main.projectile[i];
-                if (i != projectile.whoAmI &&
+                if (i != Projectile.whoAmI &&
                     currentProjectile.active &&
                     currentProjectile.owner == Main.myPlayer &&
-                    currentProjectile.type == projectile.type &&
+                    currentProjectile.type == Projectile.type &&
                     currentProjectile.ai[0] == 1f &&
                     currentProjectile.ai[1] == (float)target.whoAmI)
                 {
@@ -102,27 +102,27 @@ namespace VinesMod.Projectiles.Enemy
 
         public override void AI()
         {
-            if (projectile.alpha > 0)
+            if (Projectile.alpha > 0)
             {
-                projectile.alpha -= alphaReducation;
+                Projectile.alpha -= alphaReducation;
             }
 
-            if (projectile.alpha < 0)
+            if (Projectile.alpha < 0)
             {
-                projectile.alpha = 0;
+                Projectile.alpha = 0;
             }
 
-            if (projectile.ai[0] == 1f)
+            if (Projectile.ai[0] == 1f)
             {
-                projectile.ignoreWater = true;
-                projectile.tileCollide = false;
+                Projectile.ignoreWater = true;
+                Projectile.tileCollide = false;
                 int aiFactor = 15;
                 bool killProj = false;
                 bool hitEffect = false;
-                projectile.localAI[0] += 1f;
-                hitEffect = projectile.localAI[0] % 30f == 0f;
-                int projTargetIndex = (int)projectile.ai[1];
-                if (projectile.localAI[0] >= (float)(60 * aiFactor))
+                Projectile.localAI[0] += 1f;
+                hitEffect = Projectile.localAI[0] % 30f == 0f;
+                int projTargetIndex = (int)Projectile.ai[1];
+                if (Projectile.localAI[0] >= (float)(60 * aiFactor))
                 {
                     killProj = true;
                 }
@@ -132,8 +132,8 @@ namespace VinesMod.Projectiles.Enemy
                 }
                 else if (Main.npc[projTargetIndex].active && !Main.npc[projTargetIndex].dontTakeDamage)
                 {
-                    projectile.Center = Main.npc[projTargetIndex].Center - projectile.velocity * 2f;
-                    projectile.gfxOffY = Main.npc[projTargetIndex].gfxOffY;
+                    Projectile.Center = Main.npc[projTargetIndex].Center - Projectile.velocity * 2f;
+                    Projectile.gfxOffY = Main.npc[projTargetIndex].gfxOffY;
                     if (hitEffect)
                     {
                         Main.npc[projTargetIndex].HitEffect(0, 1.0);
@@ -146,7 +146,7 @@ namespace VinesMod.Projectiles.Enemy
 
                 if (killProj)
                 {
-                    projectile.Kill();
+                    Projectile.Kill();
                 }
             }
 

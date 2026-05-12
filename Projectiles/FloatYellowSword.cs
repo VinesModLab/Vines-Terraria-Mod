@@ -15,20 +15,19 @@ namespace VinesMod.Projectiles
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Yellow Sword");
 		}
 
 		public override void SetDefaults()
 		{
-			projectile.width = 18;
-			projectile.height = 44;
-			projectile.timeLeft = 6;
-			projectile.melee = true;
-			projectile.aiStyle = -1;
-			projectile.penetrate = -1;
-			projectile.tileCollide = false;
-			projectile.ignoreWater = true;
-            projectile.scale = 1.3f;
+			Projectile.width = 18;
+			Projectile.height = 44;
+			Projectile.timeLeft = 6;
+			Projectile.DamageType = DamageClass.Melee;
+			Projectile.aiStyle = -1;
+			Projectile.penetrate = -1;
+			Projectile.tileCollide = false;
+			Projectile.ignoreWater = true;
+            Projectile.scale = 1.3f;
 		}
 
 		public override Color? GetAlpha(Color lightColor)
@@ -36,7 +35,7 @@ namespace VinesMod.Projectiles
 			return Color.White;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (Main.rand.NextBool(4))
 			{
@@ -62,8 +61,8 @@ namespace VinesMod.Projectiles
 		public override void AI()
 		{
 			Rotation += RotationSpeed;
-			projectile.Center = PolarPos(Main.LocalPlayer.Center, Distance, MathHelper.ToRadians(Rotation));
-			projectile.rotation = rotateBetween2Points(Main.LocalPlayer.Center, projectile.Center) - MathHelper.ToRadians(90);
+			Projectile.Center = PolarPos(Main.LocalPlayer.Center, Distance, MathHelper.ToRadians(Rotation));
+			Projectile.rotation = rotateBetween2Points(Main.LocalPlayer.Center, Projectile.Center) - MathHelper.ToRadians(90);
 		}
 
 		public override bool? CanHitNPC(NPC target)

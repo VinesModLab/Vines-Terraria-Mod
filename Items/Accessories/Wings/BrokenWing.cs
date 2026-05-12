@@ -10,17 +10,15 @@ namespace VinesMod.Items.Accessories.Wings
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Broken Wing");
-            Tooltip.SetDefault("Allow flight and slow fall");
         }
 
         public override void SetDefaults()
         {
-            item.width = 22;
-            item.height = 22;
-            item.value = Item.sellPrice(0,8,0,0);
-            item.rare = 3;
-            item.accessory = true;
+            Item.width = 22;
+            Item.height = 22;
+            Item.value = Item.sellPrice(0,8,0,0);
+            Item.rare = 3;
+            Item.accessory = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
@@ -45,12 +43,11 @@ namespace VinesMod.Items.Accessories.Wings
 
         public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.Feather, 7);
-            recipe.AddIngredient(mod, "ShardWhite", 25);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.Feather, 7)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardWhite>(), 25)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 
     }

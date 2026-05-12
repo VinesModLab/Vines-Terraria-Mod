@@ -1,0 +1,6 @@
+vgm_project.json
+bin/
+obj/
+.vs/
+*.user
+*.suo

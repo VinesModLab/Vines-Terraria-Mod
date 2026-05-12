@@ -2,6 +2,7 @@
 using VinesMod.Items.Weapons.Throw;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -11,26 +12,25 @@ namespace VinesMod.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dirt Javelin");
 		}
 
 		public override void SetDefaults()
 		{
-			projectile.width = 16;
-			projectile.height = 16;
-			projectile.aiStyle = -1;
-			projectile.friendly = true;
-			projectile.melee = true;
-			projectile.penetrate = 3;
-			projectile.hide = true;
+			Projectile.width = 16;
+			Projectile.height = 16;
+			Projectile.aiStyle = -1;
+			Projectile.friendly = true;
+			Projectile.DamageType = DamageClass.Melee;
+			Projectile.penetrate = 3;
+			Projectile.hide = true;
 		}
 
-		public override void DrawBehind(int index, List<int> drawCacheProjsBehindNPCsAndTiles, List<int> drawCacheProjsBehindNPCs, List<int> drawCacheProjsBehindProjectiles, List<int> drawCacheProjsOverWiresUI)
+		public override void DrawBehind(int index, List<int> drawCacheProjsBehindNPCsAndTiles, List<int> drawCacheProjsBehindNPCs, List<int> drawCacheProjsBehindProjectiles, List<int> drawCacheProjsOverPlayers, List<int> drawCacheProjsOverWiresUI)
 		{
 			// If attached to an NPC, draw behind tiles (and the npc) if that NPC is behind tiles, otherwise just behind the NPC.
-			if (projectile.ai[0] == 1f) // or if(isStickingToTarget) since we made that helper method.
+			if (Projectile.ai[0] == 1f) // or if(isStickingToTarget) since we made that helper method.
 			{
-				int npcIndex = (int)projectile.ai[1];
+				int npcIndex = (int)Projectile.ai[1];
 				if (npcIndex >= 0 && npcIndex < 200 && Main.npc[npcIndex].active)
 				{
 					if (Main.npc[npcIndex].behindTiles)
@@ -44,7 +44,7 @@ namespace VinesMod.Projectiles
 			drawCacheProjsBehindProjectiles.Add(index);
 		}
 
-		public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
+		public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough, ref Vector2 hitboxCenterFrac)
 		{
 			// For going through platforms and such, javelins use a tad smaller size
 			width = height = 10; // notice we set the width to the height, the height to 10. so both are 10
@@ -62,21 +62,21 @@ namespace VinesMod.Projectiles
 			return projHitbox.Intersects(targetHitbox);
 		}
 
-		public override void Kill(int timeLeft)
+		public override void OnKill(int timeLeft)
 		{
-			Main.PlaySound(SoundID.Dig, (int)projectile.position.X, (int)projectile.position.Y); // Play a death sound
-			Vector2 usePos = projectile.position; // Position to use for dusts
+			SoundEngine.PlaySound(SoundID.Dig, Projectile.position); // Play a death sound
+			Vector2 usePos = Projectile.position; // Position to use for dusts
 			// Please note the usage of MathHelper, please use this! We subtract 90 degrees as radians to the rotation vector to offset the sprite as its default rotation in the sprite isn't aligned properly.
 			Vector2 rotVector =
-				(projectile.rotation - MathHelper.ToRadians(90f)).ToRotationVector2(); // rotation vector to use for dust velocity
+				(Projectile.rotation - MathHelper.ToRadians(90f)).ToRotationVector2(); // rotation vector to use for dust velocity
 			usePos += rotVector * 16f;
 
 			// Spawn some dusts upon javelin death
 			for (int i = 0; i < 20; i++)
 			{
 				// Create a new dust
-				Dust dust = Dust.NewDustDirect(usePos, projectile.width, projectile.height, 81);
-				dust.position = (dust.position + projectile.Center) / 2f;
+				Dust dust = Dust.NewDustDirect(usePos, Projectile.width, Projectile.height, 81);
+				dust.position = (dust.position + Projectile.Center) / 2f;
 				dust.velocity += rotVector * 2f;
 				dust.velocity *= 0.5f;
 				dust.noGravity = true;
@@ -84,12 +84,12 @@ namespace VinesMod.Projectiles
 			}
 
 			// Make sure to only spawn items if you are the projectile owner.
-			if (projectile.owner == Main.myPlayer)
+			if (Projectile.owner == Main.myPlayer)
 			{
 				// Drop a javelin item, 1 in 18 chance (~5.5% chance)
 				int item =
 				Main.rand.Next(18) == 0
-					? Item.NewItem((int)projectile.position.X, (int)projectile.position.Y, projectile.width, projectile.height, ModContent.ItemType<DirtJavelin>())
+					? Item.NewItem(Projectile.GetSource_DropAsItem(), (int)Projectile.position.X, (int)Projectile.position.Y, Projectile.width, Projectile.height, ModContent.ItemType<global::VinesMod.Items.Weapons.Throw.DirtJavelin>())
 					: 0;
 
 				// Sync the drop for multiplayer
@@ -104,31 +104,30 @@ namespace VinesMod.Projectiles
 		// Are we sticking to a target?
 		public bool isStickingToTarget
 		{
-			get { return projectile.ai[0] == 1f; }
-			set { projectile.ai[0] = value ? 1f : 0f; }
+			get { return Projectile.ai[0] == 1f; }
+			set { Projectile.ai[0] = value ? 1f : 0f; }
 		}
 
 		// WhoAmI of the current target
 		public float targetWhoAmI
 		{
-			get { return projectile.ai[1]; }
-			set { projectile.ai[1] = value; }
+			get { return Projectile.ai[1]; }
+			set { Projectile.ai[1] = value; }
 		}
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit,
-			ref int hitDirection)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			// If you'd use the example above, you'd do: isStickingToTarget = 1f;
 			// and: targetWhoAmI = (float)target.whoAmI;
 			isStickingToTarget = true; // we are sticking to a target
 			targetWhoAmI = (float)target.whoAmI; // Set the target whoAmI
-			projectile.velocity =
-				(target.Center - projectile.Center) *
+			Projectile.velocity =
+				(target.Center - Projectile.Center) *
 				0.75f; // Change velocity based on delta center of targets (difference between entity centers)
-			projectile.netUpdate = true; // netUpdate this javelin
+			Projectile.netUpdate = true; // netUpdate this javelin
 			target.AddBuff(ModContent.BuffType<Buffs.DirtJavelin>(), 900); // Adds the ExampleJavelin debuff for a very small DoT
 
-			projectile.damage = 0; // Makes sure the sticking javelins do not deal damage anymore
+			Projectile.damage = 0; // Makes sure the sticking javelins do not deal damage anymore
 
 			// The following code handles the javelin sticking to the enemy hit.
 			int maxStickingJavelins = 6; // This is the max. amount of javelins being able to attach
@@ -137,10 +136,10 @@ namespace VinesMod.Projectiles
 			for (int i = 0; i < Main.maxProjectiles; i++) // Loop all projectiles
 			{
 				Projectile currentProjectile = Main.projectile[i];
-				if (i != projectile.whoAmI // Make sure the looped projectile is not the current javelin
+				if (i != Projectile.whoAmI // Make sure the looped projectile is not the current javelin
 					&& currentProjectile.active // Make sure the projectile is active
 					&& currentProjectile.owner == Main.myPlayer // Make sure the projectile's owner is the client's player
-					&& currentProjectile.type == projectile.type // Make sure the projectile is of the same type as this javelin
+					&& currentProjectile.type == Projectile.type // Make sure the projectile is of the same type as this javelin
 					&& currentProjectile.ai[0] == 1f // Make sure ai0 state is set to 1f (set earlier in ModifyHitNPC)
 					&& currentProjectile.ai[1] == (float)target.whoAmI
 				) // Make sure ai1 is set to the target whoAmI (set earlier in ModifyHitNPC)
@@ -182,14 +181,14 @@ namespace VinesMod.Projectiles
 		public override void AI()
 		{
 			// Slowly remove alpha as it is present
-			if (projectile.alpha > 0)
+			if (Projectile.alpha > 0)
 			{
-				projectile.alpha -= alphaReduction;
+				Projectile.alpha -= alphaReduction;
 			}
 			// If alpha gets lower than 0, set it to 0
-			if (projectile.alpha < 0)
+			if (Projectile.alpha < 0)
 			{
-				projectile.alpha = 0;
+				Projectile.alpha = 0;
 			}
 			// If ai0 is 0f, run this code. This is the 'movement' code for the javelin as long as it isn't sticking to a target
 			if (!isStickingToTarget)
@@ -203,28 +202,28 @@ namespace VinesMod.Projectiles
 					float
 						velYmult = 0.35f; // y velocity factor, every AI update the y velocity will be be 0.35f bigger of the original speed, causing the javelin to drop to the ground
 					targetWhoAmI = maxTicks; // set ai1 to maxTicks continuously
-					projectile.velocity.X = projectile.velocity.X * velXmult;
-					projectile.velocity.Y = projectile.velocity.Y + velYmult;
+					Projectile.velocity.X = Projectile.velocity.X * velXmult;
+					Projectile.velocity.Y = Projectile.velocity.Y + velYmult;
 				}
 				// Make sure to set the rotation accordingly to the velocity, and add some to work around the sprite's rotation
-				projectile.rotation =
-					projectile.velocity.ToRotation() +
+				Projectile.rotation =
+					Projectile.velocity.ToRotation() +
 					MathHelper.ToRadians(
 						90f); // Please notice the MathHelper usage, offset the rotation by 90 degrees (to radians because rotation uses radians) because the sprite's rotation is not aligned!
 
 				// Spawn some random dusts as the javelin travels
 				if (Main.rand.Next(3) == 0)
 				{
-					Dust dust = Dust.NewDustDirect(projectile.position, projectile.height, projectile.width, ModContent.DustType<Dusts.Sparkle>(),
-						projectile.velocity.X * .2f, projectile.velocity.Y * .2f, 200, Scale: 1.2f);
-					dust.velocity += projectile.velocity * 0.3f;
+					Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.height, Projectile.width, ModContent.DustType<global::VinesMod.Dusts.Sparkle>(),
+						Projectile.velocity.X * .2f, Projectile.velocity.Y * .2f, 200, Scale: 1.2f);
+					dust.velocity += Projectile.velocity * 0.3f;
 					dust.velocity *= 0.2f;
 				}
 				if (Main.rand.Next(4) == 0)
 				{
-					Dust dust = Dust.NewDustDirect(projectile.position, projectile.height, projectile.width, ModContent.DustType<Dusts.Sparkle>(),
+					Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.height, Projectile.width, ModContent.DustType<global::VinesMod.Dusts.Sparkle>(),
 						0, 0, 254, Scale: 0.3f);
-					dust.velocity += projectile.velocity * 0.5f;
+					dust.velocity += Projectile.velocity * 0.5f;
 					dust.velocity *= 0.5f;
 				}
 			}
@@ -232,16 +231,16 @@ namespace VinesMod.Projectiles
 			if (isStickingToTarget)
 			{
 				// These 2 could probably be moved to the ModifyNPCHit hook, but in vanilla they are present in the AI
-				projectile.ignoreWater = true; // Make sure the projectile ignores water
-				projectile.tileCollide = false; // Make sure the projectile doesn't collide with tiles anymore
+				Projectile.ignoreWater = true; // Make sure the projectile ignores water
+				Projectile.tileCollide = false; // Make sure the projectile doesn't collide with tiles anymore
 				int aiFactor = 15; // Change this factor to change the 'lifetime' of this sticking javelin
 				bool killProj = false; // if true, kill projectile at the end
 				bool hitEffect = false; // if true, perform a hit effect
-				projectile.localAI[0] += 1f;
+				Projectile.localAI[0] += 1f;
 				// Every 30 ticks, the javelin will perform a hit effect
-				hitEffect = projectile.localAI[0] % 30f == 0f;
+				hitEffect = Projectile.localAI[0] % 30f == 0f;
 				int projTargetIndex = (int)targetWhoAmI;
-				if (projectile.localAI[0] >= (float)(60 * aiFactor)// If it's time for this javelin to die, kill it
+				if (Projectile.localAI[0] >= (float)(60 * aiFactor)// If it's time for this javelin to die, kill it
 					|| (projTargetIndex < 0 || projTargetIndex >= 200)) // If the index is past its limits, kill it
 				{
 					killProj = true;
@@ -249,8 +248,8 @@ namespace VinesMod.Projectiles
 				else if (Main.npc[projTargetIndex].active && !Main.npc[projTargetIndex].dontTakeDamage) // If the target is active and can take damage
 				{
 					// Set the projectile's position relative to the target's center
-					projectile.Center = Main.npc[projTargetIndex].Center - projectile.velocity * 2f;
-					projectile.gfxOffY = Main.npc[projTargetIndex].gfxOffY;
+					Projectile.Center = Main.npc[projTargetIndex].Center - Projectile.velocity * 2f;
+					Projectile.gfxOffY = Main.npc[projTargetIndex].gfxOffY;
 					if (hitEffect) // Perform a hit effect here
 					{
 						Main.npc[projTargetIndex].HitEffect(0, 1.0);
@@ -263,7 +262,7 @@ namespace VinesMod.Projectiles
 
 				if (killProj) // Kill the projectile
 				{
-					projectile.Kill();
+					Projectile.Kill();
 				}
 			}
 		}

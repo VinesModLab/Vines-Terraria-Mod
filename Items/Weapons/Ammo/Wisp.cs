@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -8,53 +9,41 @@ namespace VinesMod.Items.Weapons.Ammo
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Chases enemies through walls");
 		}
 
 		public override void SetDefaults()
 		{
-			item.damage = 1;
-			item.ranged = true;
-			item.width = 14;
-			item.height = 14;
-			item.maxStack = 999;
-			item.consumable = true;
-			item.knockBack = 1f;
-			item.value = Item.sellPrice(0, 0, 1, 0);
-			item.rare = 8;
-			item.shoot = mod.ProjectileType("Wisp");
-			item.ammo = item.type; // The first item in an ammo class sets the AmmoID to it's type
+			Item.damage = 1;
+			Item.DamageType = DamageClass.Ranged;
+			Item.width = 14;
+			Item.height = 14;
+			Item.maxStack = 999;
+			Item.consumable = true;
+			Item.knockBack = 1f;
+			Item.value = Item.sellPrice(0, 0, 1, 0);
+			Item.rare = 8;
+			Item.shoot = ModContent.ProjectileType<global::VinesMod.Projectiles.Wisp>();
+			Item.ammo = Item.type; // The first item in an ammo class sets the AmmoID to it's type
 		}
 
 		public override void AddRecipes()
 		{
-			WispRecipe recipe = new WispRecipe(mod);
-			recipe.AddIngredient(ItemID.Ectoplasm);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this, 50);
-			recipe.AddRecipe();
-		}
-	}
-
-	public class WispRecipe : ModRecipe
-	{
-		public WispRecipe(Mod mod) : base(mod)
-		{
-		}
-
-		public override bool RecipeAvailable()
-		{
-			return Main.LocalPlayer.HasItem(mod.ItemType("SpectreBook"));
-		}
-
-		public override int ConsumeItem(int type, int numRequired)
-		{
-			if (type == ItemID.Ectoplasm)
-			{
-				Main.PlaySound(2, -1, -1, mod.GetSoundSlot(SoundType.Item, "Sounds/Item/Wooo"));
-				return Main.rand.Next(2) == 0 ? 0 : 1; //You have half chance to not consume your materials
-			}
-			return base.ConsumeItem(type, numRequired);
+			CreateRecipe(50)
+				.AddIngredient(ItemID.Ectoplasm)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.AddCondition(new Condition("Requires Spectre Book", () => Main.LocalPlayer.HasItem(ModContent.ItemType<global::VinesMod.Items.Weapons.Gun.SpectreBook>())))
+				// Restored from WispRecipe.ConsumeItem: 50% chance to not consume Ectoplasm
+				.AddConsumeIngredientCallback((Recipe recipe, int type, ref int amount, bool isDecrafting) =>
+				{
+					if (!isDecrafting && type == ItemID.Ectoplasm && Main.rand.NextBool())
+						amount = 0;
+				})
+				// Restored from WispRecipe.ConsumeItem: play Wooo sound when crafting
+				.AddOnCraftCallback((item, recipe, consumedItems, destinationStack) =>
+				{
+					SoundEngine.PlaySound(new SoundStyle("VinesMod/Sounds/Item/Wooo"));
+				})
+				.Register();
 		}
 	}
 }

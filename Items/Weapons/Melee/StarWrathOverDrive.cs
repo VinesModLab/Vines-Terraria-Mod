@@ -9,34 +9,31 @@ namespace VinesMod.Items.Weapons.Melee
 	{
 		public override void SetStaticDefaults()
 		{
-            DisplayName.SetDefault("Star Wrath OverDrive");
-			Tooltip.SetDefault("Unslash the true power of Star Wrath.");
 		}
 
 		public override void SetDefaults()
 		{
-            item.CloneDefaults(ItemID.StarWrath);
-			item.damage = 500;
-			item.value = Item.buyPrice(gold: 30); 
-			item.rare = 11;
-            item.shoot = 503;
-			item.shootSpeed = 8f;
-            item.shootSpeed *= 1.05f;
-			item.autoReuse = true;          //Whether the weapon can use automatically by pressing mousebutton
+            Item.CloneDefaults(ItemID.StarWrath);
+			Item.damage = 500;
+			Item.value = Item.buyPrice(gold: 30); 
+			Item.rare = 11;
+            Item.shoot = 503;
+			Item.shootSpeed = 8f;
+            Item.shootSpeed *= 1.05f;
+			Item.autoReuse = true;          //Whether the weapon can use automatically by pressing mousebutton
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.StarWrath, 1);
-			recipe.AddIngredient(mod, "OverDriveYellow", 1);
-			recipe.AddIngredient(ItemID.LargeTopaz, 5);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.StarWrath, 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.OverDrive.OverDriveYellow>(), 1)
+				.AddIngredient(ItemID.LargeTopaz, 5)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 		 	
-		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+		public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockBack)
 		{
 			Vector2 target = Main.screenPosition + new Vector2((float)Main.mouseX, (float)Main.mouseY);
 			float ceilingLimit = target.Y;
@@ -58,10 +55,10 @@ namespace VinesMod.Items.Weapons.Melee
 					heading.Y = 20f;
 				}
 				heading.Normalize();
-				heading *= new Vector2(speedX, speedY).Length();
-				speedX = heading.X;
-				speedY = heading.Y + Main.rand.Next(-40, 41) * 0.02f;
-				Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI, 0f, ceilingLimit);
+				heading *= velocity.Length();
+				float speedX = heading.X;
+				float speedY = heading.Y + Main.rand.Next(-40, 41) * 0.02f;
+				Projectile.NewProjectile(source, position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI, 0f, ceilingLimit);
 			}
 			return false;
 		}
@@ -71,11 +68,11 @@ namespace VinesMod.Items.Weapons.Melee
 		{
 			if (Main.rand.Next(3) == 0)
 			{
-				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, mod.DustType("SparkleYellow"));
+				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<global::VinesMod.Dusts.SparkleYellow>());
 			}
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			target.AddBuff(BuffID.OnFire, 60 * 15);
 		}

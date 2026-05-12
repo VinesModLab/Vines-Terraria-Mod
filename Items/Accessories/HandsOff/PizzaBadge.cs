@@ -8,18 +8,16 @@ namespace VinesMod.Items.Accessories.HandsOff
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("PizzaBadge");
-			Tooltip.SetDefault("Who doesn't like pizza?" +"\n +10 healthregen");
 		}
 
 		public override void SetDefaults()
 		{
-			item.width = 24;
-			item.height = 28;
-			item.value = Item.sellPrice(gold: 2); 
-			item.rare = 2;
-			item.accessory = true;
-			item.lifeRegen = 10;
+			Item.width = 24;
+			Item.height = 28;
+			Item.value = Item.sellPrice(gold: 2); 
+			Item.rare = 2;
+			Item.accessory = true;
+			Item.lifeRegen = 10;
 		}
 	}
 }

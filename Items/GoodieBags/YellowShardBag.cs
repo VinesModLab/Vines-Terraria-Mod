@@ -8,18 +8,16 @@ namespace VinesMod.Items.GoodieBags
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Yellow Shard Bag");
-			Tooltip.SetDefault("<right> to get random amount of shards!");
 		}
 
 		public override void SetDefaults()
 		{
-			item.maxStack = 999;
-            item.consumable = true;
-			item.value = Item.buyPrice(0,5,0,0);
-			item.width = 20;
-			item.height = 20;
-			item.rare = 2;
+			Item.maxStack = 999;
+            Item.consumable = true;
+			Item.value = Item.buyPrice(0,5,0,0);
+			Item.width = 20;
+			Item.height = 20;
+			Item.rare = 2;
 		}
 
 		public override bool CanRightClick()
@@ -29,16 +27,15 @@ namespace VinesMod.Items.GoodieBags
 
 		public override void RightClick(Player player)
 		{
-				player.QuickSpawnItem(mod.ItemType("ShardYellow"), Main.rand.Next(50, 100));
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardYellow>(), Main.rand.Next(50, 100));
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod, "YellowIchorBossSummonItem", 2);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Summon.YellowIchorBossSummonItem>(), 2)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 	}
 }

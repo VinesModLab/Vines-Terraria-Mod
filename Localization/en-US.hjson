@@ -1,0 +1,914 @@
+Mods: {
+	VinesMod: {
+		// ── Buffs ──────────────────────────────────────────────────────────────
+		Buffs: {
+			DirtJavelin: {
+				DisplayName: Dirt Javelin
+				Description: Losing life
+			}
+
+			EtherealFlames: {
+				DisplayName: Ethereal Flames
+				Description: Losing life
+			}
+
+			FloatingSword: {
+				DisplayName: Floating Sword
+				Description: ""
+			}
+		}
+
+		// ── Items ──────────────────────────────────────────────────────────────
+		Items: {
+			// Accessories – HandsOff
+			BloodStone: {
+				DisplayName: BloodStone
+				Tooltip: immune fire and poison
+			}
+
+			BlueEyeBall: {
+				DisplayName: BlueEyeBall
+				Tooltip: increase 10% magic damage
+			}
+
+			DarkerAcc: {
+				DisplayName: Darker Matter
+				Tooltip:
+					'''
+					+ 15% crit
+					Deal x2 Damage
+					...
+					'''
+			}
+
+			GoldenEye: {
+				DisplayName: GoldenEye
+				Tooltip: increase 20% damage
+			}
+
+			IcySteel: {
+				DisplayName: IcySteel
+				Tooltip: immune frozen and chilled
+			}
+
+			LighterAcc: {
+				DisplayName: Lighter Matter
+				Tooltip:
+					'''
+					+4 MaxMinions
+					+ 200 Life
+					+ 100 Mana
+					...
+					'''
+			}
+
+			MaliHeart: {
+				DisplayName: MaliHeart
+				Tooltip:
+					'''
+					immune to various effect
+					 +20 Life and Mana
+					'''
+			}
+
+			NullStar: {
+				DisplayName: Power of Null
+				Tooltip: It is not used to hurt people.
+			}
+
+			PaperA: {
+				DisplayName: Paper : A
+				Tooltip:
+					'''
+					good job!
+					increase 20% melee damage
+					'''
+			}
+
+			PizzaBadge: {
+				DisplayName: PizzaBadge
+				Tooltip:
+					'''
+					Who doesn't like pizza?
+					 +10 healthregen
+					'''
+			}
+
+			PreciousJewel: {
+				DisplayName: Precious Jewel
+				Tooltip: immune most debuffs when you have less than 100 mana.
+			}
+
+			ProtectionOfSword: {
+				DisplayName: Protection Of Sword
+				Tooltip: Summon 5 swords to protect you.
+			}
+
+			RedEyeBall: {
+				DisplayName: RedEyeBall
+				Tooltip: increase 10% ranaged damage
+			}
+
+			Robot3000: {
+				DisplayName: Robot3000
+				Tooltip:
+					'''
+					calculated.
+					increase 20% minion damage
+					'''
+			}
+
+			TreeOfSavior: {
+				DisplayName: Tree Of Savior
+				Tooltip:
+					'''
+					immune to most debuffs
+					 +100 Life and Mana
+					 +15 Life regen
+					'''
+			}
+
+			TriForce: {
+				DisplayName: TriForce
+				Tooltip:
+					'''
+					Increase damage by 50%
+					45% increased critical strike chance
+					'''
+			}
+
+			UltStarForce: {
+				DisplayName: Ultimate StarForce
+				Tooltip:
+					'''
+					Increase damage by 300%
+					 +50 liferegen
+					 +300 mana
+					 +4 minions
+					Increase critical strike chance by 75%
+					The power of stars.
+					'''
+			}
+
+			// Accessories – Shields
+			BlueEyeShield: {
+				DisplayName: Shield of BlueEye
+				Tooltip:
+					'''
+					Allows dash
+					+40 Max Mana
+					'''
+			}
+
+			ShieldOfBerserker: {
+				DisplayName: Shield Of Berserker
+				Tooltip:
+					'''
+					Allows Dash
+					 lower health, higher damage, defense, movingspeed
+					'''
+			}
+
+			ShieldOfDeadPinky: {
+				DisplayName: Shield Of Dead Pinky
+				Tooltip:
+					'''
+					+5 healthregen
+					 more defense when above 70% health
+					'''
+			}
+
+			ShieldOfFlag: {
+				DisplayName: Shield of Flag
+				Tooltip:
+					'''
+					Allows Dash
+					 +3 healthregen
+					 slightly increase damage
+					A Shield used in army.
+					'''
+			}
+
+			ShieldOfGuardian: {
+				DisplayName: Shield Of Guardian
+				Tooltip: Allows dash
+			}
+
+			ShieldOfLime: {
+				DisplayName: Shield Of Lime
+				Tooltip:
+					'''
+					+10 healthregen
+					slightly increase damage when above 50% health
+					'''
+			}
+
+			// Accessories – Wings
+			BeautiflyWing: {
+				DisplayName: Beautifly Wing
+				Tooltip: Allow flight and slow fall
+			}
+
+			BrokenWing: {
+				DisplayName: Broken Wing
+				Tooltip: Allow flight and slow fall
+			}
+
+			FadedWing: {
+				DisplayName: Faded Wing
+				Tooltip: Allow flight and slow fall
+			}
+
+			FairyWing: {
+				DisplayName: Fairy Queen's Wing
+				Tooltip: Allow flight and slow fall
+			}
+
+			FreedomWing: {
+				DisplayName: Freedom Wing
+				Tooltip: Allow flight and slow fall
+			}
+
+			PhantomWing: {
+				DisplayName: Phantom Wing
+				Tooltip: Allow flight and slow fall
+			}
+
+			// Armor – BlueManaSet
+			BlueBreastplate: {
+				DisplayName: Blue Mana Breastplate
+				Tooltip:
+					'''
+					Immunity to 'On Fire!'
+					+20 max mana and +1 max minions
+					'''
+			}
+
+			BlueHelmet: {
+				DisplayName: Blue Mana Helmet
+				Tooltip: ""
+			}
+
+			BlueLeggings: {
+				DisplayName: Blue Mana Legging
+				Tooltip: 5% increased movement speed
+			}
+
+			// Armor – NullSet
+			NullBreastplate: {
+				DisplayName: Null (Breastplate)
+				Tooltip: ""
+			}
+
+			NullHelmet: {
+				DisplayName: Null (Helmet)
+				Tooltip: ""
+			}
+
+			NullLeggings: {
+				DisplayName: Null (Legging)
+				Tooltip: ""
+			}
+
+			// Armor – PurpleManaSet
+			PurpleBreastplate: {
+				DisplayName: Purple Mana Breastplate
+				Tooltip: +40 max mana and +1 max minions
+			}
+
+			PurpleHelmet: {
+				DisplayName: Purple Mana Helmet
+				Tooltip: ""
+			}
+
+			PurpleLeggings: {
+				DisplayName: Purple Mana Legging
+				Tooltip: 5% increased movement speed
+			}
+
+			// Goodie Bags
+			BlueShardBag: {
+				DisplayName: Blue Shard Bag
+				Tooltip: <right> to get random amount of shards!
+			}
+
+			GreenShardBag: {
+				DisplayName: Green Shard Bag
+				Tooltip: <right> to get random amount of shards!
+			}
+
+			PetGoodieBag: {
+				DisplayName: Pets' Bag
+				Tooltip: <right> to get a random pet!
+			}
+
+			PurpleShardBag: {
+				DisplayName: Purple Shard Bag
+				Tooltip: <right> to get random amount of shards!
+			}
+
+			RedShardBag: {
+				DisplayName: Red Shard Bag
+				Tooltip: <right> to get random amount of shards!
+			}
+
+			WhiteShardBag: {
+				DisplayName: White Shard Bag
+				Tooltip: <right> to get random amount of shards!
+			}
+
+			YellowShardBag: {
+				DisplayName: Yellow Shard Bag
+				Tooltip: <right> to get random amount of shards!
+			}
+
+			// Materials – EndTier
+			DarkMatter: {
+				DisplayName: Dark Matter
+				Tooltip: it stores unknown power.
+			}
+
+			LightMatter: {
+				DisplayName: Light Matter
+				Tooltip: it stores unknown power.
+			}
+
+			// Materials – OverDrive
+			OverDriveBlue: {
+				DisplayName: OverDrive Core (Sapphire)
+				Tooltip: it stores unknown power.
+			}
+
+			OverDriveCore: {
+				DisplayName: OverDrive Core
+				Tooltip: it stores unknown power.
+			}
+
+			OverDriveGreen: {
+				DisplayName: OverDrive Core (Emerald)
+				Tooltip: it stores unknown power.
+			}
+
+			OverDrivePurple: {
+				DisplayName: OverDrive Core (Amethyst)
+				Tooltip: it stores unknown power.
+			}
+
+			OverDriveRed: {
+				DisplayName: OverDrive Core (Ruby)
+				Tooltip: it stores unknown power.
+			}
+
+			OverDriveWhite: {
+				DisplayName: OverDrive Core (Diamond)
+				Tooltip: it stores unknown power.
+			}
+
+			OverDriveYellow: {
+				DisplayName: OverDrive Core (Topaz)
+				Tooltip: it stores unknown power.
+			}
+
+			// Materials – Shards
+			ShardBlue: {
+				DisplayName: Blue Shard
+				Tooltip: A White Shard charged with sapphire energy.
+			}
+
+			ShardGreen: {
+				DisplayName: Green Shard
+				Tooltip: A White Shard charged with emerald energy.
+			}
+
+			ShardPurple: {
+				DisplayName: Purple Shard
+				Tooltip: A White Shard charged with amethyst energy.
+			}
+
+			ShardRed: {
+				DisplayName: Red Shard
+				Tooltip: A White Shard charged with ruby energy.
+			}
+
+			ShardWhite: {
+				DisplayName: White Shard
+				Tooltip: A raw shard that can be charged into colored forms.
+			}
+
+			ShardYellow: {
+				DisplayName: Yellow Shard
+				Tooltip: A White Shard charged with topaz energy.
+			}
+
+			// Materials – StarForce
+			StarForceBlue: {
+				DisplayName: Blue Star
+				Tooltip: Stored the shard power.
+			}
+
+			StarForceGreen: {
+				DisplayName: Green Star
+				Tooltip: Stored the shard power.
+			}
+
+			StarForcePurple: {
+				DisplayName: Purple Star
+				Tooltip: Stored the shard power.
+			}
+
+			StarForceRed: {
+				DisplayName: Red Star
+				Tooltip: Stored the shard power.
+			}
+
+			StarForceWhite: {
+				DisplayName: White Star
+				Tooltip: Stored the shard power.
+			}
+
+			StarForceYellow: {
+				DisplayName: Yellow Star
+				Tooltip: Stored the shard power.
+			}
+
+			// Placeable
+			StarForge: {
+				DisplayName: StarForge
+				Tooltip: Everything starts from here.
+			}
+
+			// Summon items
+			BlueEyeBossSummonItem: {
+				DisplayName: Summoner : Blue Eye Boss
+				Tooltip:
+					'''
+					Summons the Blue Eye Boss.
+					Different fightstyle between day and light.
+					'''
+			}
+
+			GreenBeeBossSummonItem: {
+				DisplayName: Summoner : Green Bee Boss
+				Tooltip: Summons the Green Bee Boss.
+			}
+
+			PurpleSlimeBossSummonItem: {
+				DisplayName: Summoner : Purple Slime Boss
+				Tooltip: Summons the Purple Slime Boss.
+			}
+
+			RedBrainBossSummonItem: {
+				DisplayName: Summoner : Red Brain Boss
+				Tooltip:
+					'''
+					Summons the Red Brain Boss.
+					Only summon it at crimson underground.
+					'''
+			}
+
+			WhiteFlyingFishBossSummonItem: {
+				DisplayName: Summoner : White FlyingFishBoss Boss
+				Tooltip: Summons the White FlyingFishBoss Boss.
+			}
+
+			YellowIchorBossSummonItem: {
+				DisplayName: Summoner : Yellow Ichor Boss
+				Tooltip: Summons the Yellow Ichor Boss.
+			}
+
+			// Tools
+			FossilYellowHamaxe: {
+				DisplayName: FossilYellow Hamaxe
+				Tooltip: ""
+			}
+
+			FossilYellowPickaxe: {
+				DisplayName: FossilYellow Pickaxe
+				Tooltip: ""
+			}
+
+			LifeGreenHamaxe: {
+				DisplayName: LifeGreen Hamaxe
+				Tooltip: ""
+			}
+
+			LifeGreenPickaxe: {
+				DisplayName: LifeGreen Pickaxe
+				Tooltip: ""
+			}
+
+			LifeRedHamaxe: {
+				DisplayName: LifeRed Hamaxe
+				Tooltip: ""
+			}
+
+			LifeRedPickaxe: {
+				DisplayName: LifeRed Pickaxe
+				Tooltip: ""
+			}
+
+			ManaBlueHamaxe: {
+				DisplayName: ManaBlue Hamaxe
+				Tooltip: ""
+			}
+
+			ManaBluePickaxe: {
+				DisplayName: ManaBlue Pickaxe
+				Tooltip: ""
+			}
+
+			ObPurpleHamaxe: {
+				DisplayName: Obsidian Purple Hamaxe
+				Tooltip: ""
+			}
+
+			ObPurplePickaxe: {
+				DisplayName: Obsidian Purple Pickaxe
+				Tooltip: ""
+			}
+
+			StoneMirror: {
+				DisplayName: Stone Mirror
+				Tooltip: return home safely!
+			}
+
+			// Treasure Bags
+			BlueEyeBossBag: {
+				DisplayName: Treasure Bag
+				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
+			}
+
+			GreenBeeBossBag: {
+				DisplayName: Treasure Bag
+				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
+			}
+
+			PurpleSlimeBossBag: {
+				DisplayName: Treasure Bag
+				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
+			}
+
+			RedBrainBossBag: {
+				DisplayName: Treasure Bag
+				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
+			}
+
+			WhiteFlyingFishBossBag: {
+				DisplayName: Treasure Bag
+				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
+			}
+
+			YellowIchorBossBag: {
+				DisplayName: Treasure Bag
+				Tooltip: "{$CommonItemTooltip.RightClickToOpen}"
+			}
+
+			// Vanity
+			Lenny: {
+				DisplayName: ( ͡° ͜ʖ ͡°)
+				Tooltip: ""
+			}
+
+			// Weapons – Ammo
+			OverDriveArrow: {
+				DisplayName: OverDrive Arrow
+				Tooltip: Provide power for OverDrive Weapons.
+			}
+
+			Wisp: {
+				DisplayName: Wisp
+				Tooltip: Chases enemies through walls
+			}
+
+			// Weapons – Bows
+			Avalanche: {
+				DisplayName: Avalanche
+				Tooltip: It use snowball as ammo.
+			}
+
+			AvalancheEx: {
+				DisplayName: AvalancheEx
+				Tooltip: It use snowball as ammo.
+			}
+
+			AvalancheOverDrive: {
+				DisplayName: Avalanche OverDrive
+				Tooltip:
+					'''
+					66% not consume ammo.
+					 Anger of Snow
+					'''
+			}
+
+			Phantom: {
+				DisplayName: Phantom
+				Tooltip: It use wasp as ammo.
+			}
+
+			StormbowOverDrive: {
+				DisplayName: Daedalus Stormbow OverDrive
+				Tooltip: Only the OverDrive Arrow can unslash the full power of Daedalus Stormbow.
+			}
+
+			// Weapons – DualUse
+			GoldenGunBlade: {
+				DisplayName: Golden Gun Blade
+				Tooltip: Left Slash, Right Shoot!
+			}
+
+			// Weapons – Guns
+			BedGun: {
+				DisplayName: Bed Gun
+				Tooltip: This is a shotgun made with bed.
+			}
+
+			SpectreBook: {
+				DisplayName: Spectre Book
+				Tooltip: call wisps out to attack. Need wisp as ammo.
+			}
+
+			StarForceCannon: {
+				DisplayName: StarForce Cannon
+				Tooltip: Shooting Stars. 33% not consume ammo
+			}
+
+			StarForceCannonOverDrive: {
+				DisplayName: StarForce Cannon OverDrive
+				Tooltip:
+					'''
+					33% not consume ammo
+					 Anger of stars
+					'''
+			}
+
+			// Weapons – Magic
+			BallisticStaff: {
+				DisplayName: Ballistic Staff
+				Tooltip: It shoots Ballistic ball.
+			}
+
+			FirebeamStaff: {
+				DisplayName: Firebeam Staff
+				Tooltip: ""
+			}
+
+			LaserBook: {
+				DisplayName: Laser Book
+				Tooltip: Shoot a laser beam that can eliminate anything...
+			}
+
+			RainbowCannon: {
+				DisplayName: Rainbow Cannon
+				Tooltip: Shoots a rainbow that does continuous damage
+			}
+
+			RainbowCannonOverDrive: {
+				DisplayName: Rainbow Cannon OverDrive
+				Tooltip: Shoots 3 rainbows that does continuous damage
+			}
+
+			RainbowPrism: {
+				DisplayName: Rainbow Prism
+				Tooltip: Fire a lifeform disintegration rainbow
+			}
+
+			// Weapons – Melee
+			ArcaneBright: {
+				DisplayName: Arcane Bright
+				Tooltip: The Unpredictable Light.
+			}
+
+			BronzeSculptor: {
+				DisplayName: Bronze Sculptor
+				Tooltip: ""
+			}
+
+			Claymore: {
+				DisplayName: Claymore
+				Tooltip: ""
+			}
+
+			CodeO: {
+				DisplayName: Code : O
+				Tooltip: ""
+			}
+
+			CodeOOverDrive: {
+				DisplayName: Code : O OverDrive
+				Tooltip: ""
+			}
+
+			CrystalBlood: {
+				DisplayName: Crystal Blood
+				Tooltip: Made of many crystals and blood
+			}
+
+			CrystalBloodOverDrive: {
+				DisplayName: Crystal Blood OverDrive
+				Tooltip: ""
+			}
+
+			DeathStorm: {
+				DisplayName: Death Storm
+				Tooltip: ""
+			}
+
+			DeathStormOverDrive: {
+				DisplayName: Death Storm OverDrive
+				Tooltip: ""
+			}
+
+			EnchantedSabre: {
+				DisplayName: Enchanted Sabre
+				Tooltip: ""
+			}
+
+			FieryWarblade: {
+				DisplayName: Fiery Warblade
+				Tooltip: ""
+			}
+
+			FrostPain: {
+				DisplayName: FrostPain
+				Tooltip: Frosty Blade that can freeze everything.
+			}
+
+			GiantPenis: {
+				DisplayName: Giant Penis
+				Tooltip: A Giant Penis made of human bodies.
+			}
+
+			GrassDefender: {
+				DisplayName: Grass Defender
+				Tooltip: ""
+			}
+
+			InfernoSpike: {
+				DisplayName: Inferno Spike
+				Tooltip: A Spike from Inferno
+			}
+
+			KendoSword: {
+				DisplayName: Kendo Sword
+				Tooltip: ""
+			}
+
+			LilacGuardian: {
+				DisplayName: Lilac Guardian
+				Tooltip: ""
+			}
+
+			MeowmereOverDrive: {
+				DisplayName: Meowmere OverDrive
+				Tooltip: Unslash the true power of Meowmere.
+			}
+
+			MoonlightGreatSword: {
+				DisplayName: Moonlight GreatSword
+				Tooltip: ""
+			}
+
+			Reboot: {
+				DisplayName: Reboot
+				Tooltip: ""
+			}
+
+			RebootOverDrive: {
+				DisplayName: Reboot OverDrive
+				Tooltip: Unslash the true power of Reboot.
+			}
+
+			Slapper: {
+				DisplayName: Slapper
+				Tooltip: Slap U
+			}
+
+			SnakeKatana: {
+				DisplayName: Snake Katana
+				Tooltip: ""
+			}
+
+			StarFall: {
+				DisplayName: StarFall
+				Tooltip: ""
+			}
+
+			StarWrathOverDrive: {
+				DisplayName: Star Wrath OverDrive
+				Tooltip: Unslash the true power of Star Wrath.
+			}
+
+			SteelWarblade: {
+				DisplayName: Steel Warblade
+				Tooltip: ""
+			}
+
+			ThunderBleu: {
+				DisplayName: Thunder Bleu
+				Tooltip: ""
+			}
+
+			WeaponNull: {
+				DisplayName: Null
+				Tooltip:
+					'''
+					Damage : 0
+					 Too Powerful. Beware when using
+					'''
+			}
+
+			WhiteFishSword: {
+				DisplayName: Fishy Sword
+				Tooltip: ""
+			}
+
+			ZeoxingBlade: {
+				DisplayName: Zeoxing Blade
+				Tooltip: A Cosmic blade that can wipe out the universe.
+			}
+
+			// Weapons – Throw
+			DirtJavelin: {
+				DisplayName: Dirt Javelin
+				Tooltip: ""
+			}
+
+			// Weapons – Yoyo
+			Dreamy: {
+				DisplayName: Dreamy
+				Tooltip: ""
+			}
+
+			Meteor: {
+				DisplayName: Meteor
+				Tooltip: ""
+			}
+
+			RektU3000: {
+				DisplayName: RektU3000
+				Tooltip: ""
+			}
+		}
+
+		// ── NPCs ──────────────────────────────────────────────────────────────
+		NPCs: {
+			BlueEyeBoss.DisplayName: Blue Eye
+			BlueFlyingEye.DisplayName: Blue Flying Eye
+			GreenBeeBoss.DisplayName: Green Bee
+			PurpleSlimeBoss.DisplayName: Purple Slime
+			RedBrainBoss.DisplayName: Red Brain
+			WhiteFlyingFishBoss.DisplayName: White FlyingFish
+			YellowIchorBoss.DisplayName: Yellow Ichor
+		}
+
+		// ── Projectiles ───────────────────────────────────────────────────────
+		Projectiles: {
+			ArcaneBrightProjectile.DisplayName: ArcaneBright
+			BallisticSparklingBall.DisplayName: ""
+			DirtJavelinProjectile.DisplayName: Dirt Javelin
+			DreamyYoyoProjectile.DisplayName: Projectile Dreamy
+			FloatBlueSword.DisplayName: Blue Sword
+			FloatGreenSword.DisplayName: Green Sword
+			FloatPurpleSword.DisplayName: Purple Sword
+			FloatRedSword.DisplayName: Red Sword
+			FloatYellowSword.DisplayName: Yellow Sword
+			FrostBeam.DisplayName: FrostBeam
+			InfernoSpikeProjectile.DisplayName: Spear
+			MeteorYoyoProjectile.DisplayName: Projectile Meteor
+			MoonlightProjectile.DisplayName: Moonlight
+			NullProjectile.DisplayName: Power of Null
+			ODDeathStormProjectile.DisplayName: DeathStormOverDriveProjectile
+			OverDriveArrow.DisplayName: OverDrive Arrow
+			RektU3000.DisplayName: Projectile RektU3000
+			ScytheProjectile.DisplayName: ScytheProjectile
+			ShurikenProjectile.DisplayName: ShurikenProjectile
+			StarFallProjectile.DisplayName: StarFall
+			Wisp.DisplayName: ""
+			ZeoxingProjectile.DisplayName: ZeoxingFall
+
+			Enemy: {
+				BlueEyeBossProjectile.DisplayName: BlueEyeBoss Projectile
+				PurpleSlimeBossProjectile.DisplayName: PurpleSlimeBoss Projectile
+				WhiteFlyingFishBossProjectile.DisplayName: WhiteFlyingFishBoss Projectile
+				YellowIchorBossProjectile.DisplayName: YellowIchorBoss Projectile
+			}
+
+			FirebeamStaffProjectile.DisplayName: Firebeam Staff Projectile
+			BlueEyeBossProjectile.DisplayName: Blue Eye Boss Projectile
+			PurpleSlimeBossProjectile.DisplayName: Purple Slime Boss Projectile
+			WhiteFlyingFishBossProjectile.DisplayName: White Flying Fish Boss Projectile
+			YellowIchorBossProjectile.DisplayName: Yellow Ichor Boss Projectile
+			LaserBeamBlue.DisplayName: Laser Beam Blue
+		}
+
+		// ── Tiles ─────────────────────────────────────────────────────────────
+		Tiles: {
+			StarForge: {
+				MapEntry: {
+					0.Name: StarForge
+					$parentVal: Star Forge
+				}
+			}
+		}
+	}
+}

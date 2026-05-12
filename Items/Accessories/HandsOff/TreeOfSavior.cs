@@ -8,18 +8,16 @@ namespace VinesMod.Items.Accessories.HandsOff
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Tree Of Savior");
-			Tooltip.SetDefault("immune to most debuffs" + "\n +100 Life and Mana" + "\n +15 Life regen");
 		}
 
 		public override void SetDefaults()
 		{
-			item.width = 24;
-			item.height = 28;
-			item.value = Item.sellPrice(gold: 2); item.value = 10000;
-			item.rare = 8;
-			item.lifeRegen = 15;
-			item.accessory = true;
+			Item.width = 24;
+			Item.height = 28;
+			Item.value = Item.sellPrice(gold: 2); Item.value = 10000;
+			Item.rare = 8;
+			Item.lifeRegen = 15;
+			Item.accessory = true;
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
@@ -48,15 +46,14 @@ namespace VinesMod.Items.Accessories.HandsOff
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod, "MaliHeart", 1);
-			recipe.AddIngredient(mod, "StarForceGreen", 1);
-			recipe.AddIngredient(mod, "PreciousJewel", 1);
-			recipe.AddIngredient(ItemID.LifeCrystal, 5);
-			recipe.AddIngredient(ItemID.ManaCrystal, 5);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Accessories.HandsOff.MaliHeart>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.StarForce.StarForceGreen>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Accessories.HandsOff.PreciousJewel>(), 1)
+				.AddIngredient(ItemID.LifeCrystal, 5)
+				.AddIngredient(ItemID.ManaCrystal, 5)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 	}
 }

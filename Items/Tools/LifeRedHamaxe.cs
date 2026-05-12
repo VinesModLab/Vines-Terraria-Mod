@@ -9,45 +9,43 @@ namespace VinesMod.Items.Tools
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("LifeRed Hamaxe");
 		}
 
 		public override void SetDefaults()
 		{
-			item.damage = 25;
-			item.melee = true;
-			item.width = 40;
-			item.height = 40;
-			item.useTime = 20;
-			item.useAnimation = 20;
-			item.axe = 30;
-			item.hammer = 80;
-			item.useStyle = 1;
-			item.knockBack = 6;
-			item.value = 10000;
-			item.rare = 3;
-			item.UseSound = SoundID.Item1;
-			item.autoReuse = true;
+			Item.damage = 25;
+			Item.DamageType = DamageClass.Melee;
+			Item.width = 40;
+			Item.height = 40;
+			Item.useTime = 20;
+			Item.useAnimation = 20;
+			Item.axe = 30;
+			Item.hammer = 80;
+			Item.useStyle = ItemUseStyleID.Swing;
+			Item.knockBack = 6;
+			Item.value = 10000;
+			Item.rare = 3;
+			Item.UseSound = SoundID.Item1;
+			Item.autoReuse = true;
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.LifeCrystal, 2);
-			recipe.AddIngredient(ItemID.Ruby, 5);
-			recipe.AddRecipeGroup("IronBar", 12);
-			recipe.AddRecipeGroup("Wood", 40);
-			recipe.AddIngredient(mod, "ShardRed", 15);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.LifeCrystal, 2)
+				.AddIngredient(ItemID.Ruby, 5)
+				.AddRecipeGroup("IronBar", 12)
+				.AddRecipeGroup("Wood", 40)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardRed>(), 15)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 
 		public override void MeleeEffects(Player player, Rectangle hitbox)
 		{
 			if (Main.rand.Next(10) == 0)
 			{
-				int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, mod.DustType("SparkleBlue"));
+				int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<global::VinesMod.Dusts.SparkleBlue>());
 			}
 		}
 	}

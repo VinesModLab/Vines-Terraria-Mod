@@ -9,37 +9,36 @@ namespace VinesMod.Items.Weapons.Throw
 	{
 		public override void SetDefaults()
 		{
-			item.shootSpeed = 10f;
-			item.damage = 10;
-			item.knockBack = 5f;
-			item.useStyle = 1;
-			item.useAnimation = 25;
-			item.useTime = 25;
-			item.width = 30;
-			item.height = 30;
-			item.maxStack = 999;
-			item.rare = 0;
+			Item.shootSpeed = 10f;
+			Item.damage = 10;
+			Item.knockBack = 5f;
+			Item.useStyle = ItemUseStyleID.Swing;
+			Item.useAnimation = 25;
+			Item.useTime = 25;
+			Item.width = 30;
+			Item.height = 30;
+			Item.maxStack = 999;
+			Item.rare = 0;
 
-			item.consumable = true;
-			item.noUseGraphic = true;
-			item.noMelee = true;
-			item.autoReuse = true;
-			item.thrown = true;
+			Item.consumable = true;
+			Item.noUseGraphic = true;
+			Item.noMelee = true;
+			Item.autoReuse = true;
+			Item.DamageType = DamageClass.Ranged;
 
-			item.UseSound = SoundID.Item1;
-			item.value = Item.sellPrice(copper: 1);
-			item.shoot = ModContent.ProjectileType<DirtJavelinProjectile>();
+			Item.UseSound = SoundID.Item1;
+			Item.value = Item.sellPrice(copper: 1);
+			Item.shoot = ModContent.ProjectileType<global::VinesMod.Projectiles.DirtJavelinProjectile>();
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.DirtBlock, 10);
-			recipe.AddIngredient(ItemID.StoneBlock, 5);
-			recipe.AddRecipeGroup("Wood", 5);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this, 30);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.DirtBlock, 10)
+				.AddIngredient(ItemID.StoneBlock, 5)
+				.AddRecipeGroup("Wood", 5)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 	}
 

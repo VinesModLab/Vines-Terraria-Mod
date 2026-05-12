@@ -15,32 +15,29 @@ namespace VinesMod.Items.Weapons.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Rainbow Prism");
-			Tooltip.SetDefault("Fire a lifeform disintegration rainbow");
 		}
 
 		public override void SetDefaults()
 		{
-			item.CloneDefaults(ItemID.LastPrism);
-			item.rare = 11;
-			item.damage = 785;
-			item.value = Item.buyPrice(gold: 30);
-			item.mana = 10;
+			Item.CloneDefaults(ItemID.LastPrism);
+			Item.rare = 11;
+			Item.damage = 785;
+			Item.value = Item.buyPrice(gold: 30);
+			Item.mana = 10;
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.LastPrism, 1);
-			recipe.AddIngredient(mod, "OverDriveWhite", 1);
-			recipe.AddIngredient(mod, "StarForceBlue", 1);
-			recipe.AddIngredient(mod, "StarForceGreen", 1);
-			recipe.AddIngredient(mod, "StarForceYellow", 1);
-			recipe.AddIngredient(mod, "StarForceRed", 1);
-			recipe.AddIngredient(mod, "StarForcePurple", 1);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.LastPrism, 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.OverDrive.OverDriveWhite>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.StarForce.StarForceBlue>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.StarForce.StarForceGreen>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.StarForce.StarForceYellow>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.StarForce.StarForceRed>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.StarForce.StarForcePurple>(), 1)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 	}
 }

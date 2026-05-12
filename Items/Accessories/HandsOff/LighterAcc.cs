@@ -8,19 +8,17 @@ namespace VinesMod.Items.Accessories.HandsOff
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Lighter Matter");
-			Tooltip.SetDefault("+4 MaxMinions"+"\n+ 200 Life" + "\n+ 100 Mana" +"\n...");
 		}
 
 		public override void SetDefaults()
 		{
-			item.width = 24;
-			item.height = 28;
-			item.value = 300000;
-			item.rare = 10;
-			item.accessory = true;
-			item.lifeRegen = 20;
-			item.defense = 15;
+			Item.width = 24;
+			Item.height = 28;
+			Item.value = 300000;
+			Item.rare = 10;
+			Item.accessory = true;
+			Item.lifeRegen = 20;
+			Item.defense = 15;
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
@@ -34,12 +32,11 @@ namespace VinesMod.Items.Accessories.HandsOff
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod, "LightMatter", 1);
-			recipe.AddIngredient(mod, "DarkMatter", 1);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.EndTier.LightMatter>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.EndTier.DarkMatter>(), 1)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 	}
 }

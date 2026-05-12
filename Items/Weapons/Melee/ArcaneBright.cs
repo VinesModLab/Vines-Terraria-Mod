@@ -14,72 +14,69 @@ namespace VinesMod.Items.Weapons.Melee
 	{
 		public override void SetStaticDefaults()
 		{
-            DisplayName.SetDefault("Arcane Bright");
-			Tooltip.SetDefault("The Unpredictable Light.");
 		}
 
 		public override void SetDefaults()
 		{
-            item.CloneDefaults(ItemID.TerraBlade);
-			item.damage = 660;           
-			item.melee = true;          
-			item.width = 40;            
-			item.height = 40;           
-			item.useTime = 20;          
-			item.useAnimation = 20;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
-			item.useStyle = 1;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
-			item.knockBack = 3f;         //The force of knockback of the weapon. Maximum is 20
-			item.value = Item.buyPrice(gold: 30);          
-			item.rare = 11;              
-			item.UseSound = SoundID.Item1;    
-			item.autoReuse = true;       
-            item.scale = 1.3f; 
-            item.shoot = ModContent.ProjectileType<Projectiles.ArcaneBrightProjectile>();
-            item.shootSpeed = 20f;
+            Item.CloneDefaults(ItemID.TerraBlade);
+			Item.damage = 660;           
+			Item.DamageType = DamageClass.Melee;          
+			Item.width = 40;            
+			Item.height = 40;           
+			Item.useTime = 20;          
+			Item.useAnimation = 20;         //The time span of the using animation of the weapon, suggest set it the same as useTime.
+			Item.useStyle = ItemUseStyleID.Swing;          //The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
+			Item.knockBack = 3f;         //The force of knockback of the weapon. Maximum is 20
+			Item.value = Item.buyPrice(gold: 30);          
+			Item.rare = 11;              
+			Item.UseSound = SoundID.Item1;    
+			Item.autoReuse = true;       
+            Item.scale = 1.3f; 
+            Item.shoot = ModContent.ProjectileType<global::VinesMod.Projectiles.ArcaneBrightProjectile>();
+            Item.shootSpeed = 20f;
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.SoulofLight, 30);
-			recipe.AddIngredient(ItemID.SoulofSight, 30);
-			recipe.AddIngredient(ItemID.SoulofFlight, 30);
-			recipe.AddIngredient(ItemID.FallenStar, 30);
-			recipe.AddIngredient(ItemID.LunarBar, 30);
-			recipe.AddIngredient(ItemID.LifeCrystal, 10);
-			recipe.AddIngredient(ItemID.ManaCrystal, 10);
-			recipe.AddIngredient(ItemID.DarkShard, 5);
-			recipe.AddIngredient(ItemID.LightShard, 5);
-			recipe.AddIngredient(ItemID.TrueExcalibur, 1);
-			recipe.AddIngredient(ItemID.TerraBlade, 1);
-			recipe.AddIngredient(mod, "OverDriveGreen", 1);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.SoulofLight, 30)
+				.AddIngredient(ItemID.SoulofSight, 30)
+				.AddIngredient(ItemID.SoulofFlight, 30)
+				.AddIngredient(ItemID.FallenStar, 30)
+				.AddIngredient(ItemID.LunarBar, 30)
+				.AddIngredient(ItemID.LifeCrystal, 10)
+				.AddIngredient(ItemID.ManaCrystal, 10)
+				.AddIngredient(ItemID.DarkShard, 5)
+				.AddIngredient(ItemID.LightShard, 5)
+				.AddIngredient(ItemID.TrueExcalibur, 1)
+				.AddIngredient(ItemID.TerraBlade, 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.OverDrive.OverDriveGreen>(), 1)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 
-         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+         public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockBack)
         {
             int numberProjectiles = 2;
             float rotation = MathHelper.ToRadians(20);
 
             for (int i = 0; i < numberProjectiles + 1; i++)
             {
-                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1)));
-                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+                Vector2 perturbedSpeed = velocity.RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1)));
+                Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
             }
 
             int numProjectiles2 = 4;
             float spread = MathHelper.ToRadians(10);
-            float baseSpeed = (float)Math.Sqrt(speedX * speedX + speedY * speedY);
-            double startAngle = Math.Atan2(speedX, speedY) - spread / 2;
+            float baseSpeed = velocity.Length();
+            double startAngle = Math.Atan2(velocity.X, velocity.Y) - spread / 2;
             double deltaAngle = spread / (float)numProjectiles2;
             double offsetAngle;
 
             for (int j = 0; j < numProjectiles2; j++)
             {
                 offsetAngle = startAngle + deltaAngle * j;
-                Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), type, damage, knockBack, player.whoAmI);
+                Projectile.NewProjectile(source, position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), type, damage, knockBack, player.whoAmI);
             }
 
             return false;
@@ -91,11 +88,11 @@ namespace VinesMod.Items.Weapons.Melee
 			if (Main.rand.Next(3) == 0)
 			{
 				//Emit dusts when swing the sword
-				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, mod.DustType("SparkleGreen"));
+				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<global::VinesMod.Dusts.SparkleGreen>());
 			}
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
 			target.AddBuff(BuffID.Chilled, 15 * 60);
 			target.AddBuff(BuffID.Venom, 15* 60);

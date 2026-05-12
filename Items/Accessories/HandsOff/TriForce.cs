@@ -8,47 +8,42 @@ namespace VinesMod.Items.Accessories.HandsOff
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("TriForce");
-			Tooltip.SetDefault("Increase damage by 50%" + "\n45% increased critical strike chance");
 		}
 
 		public override void SetDefaults()
 		{
-			item.width = 24;
-			item.height = 28;
-			item.value = 300000;
-			item.rare = 10;
-			item.accessory = true;
+			Item.width = 24;
+			Item.height = 28;
+			Item.value = 300000;
+			Item.rare = 10;
+			Item.accessory = true;
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-				player.meleeSpeed *= 1.3f;
-				player.meleeDamage *= 1.5f;
-				player.thrownDamage *= 1.5f;
-				player.rangedDamage *= 1.5f;
-				player.magicDamage *= 1.5f;
-				player.minionDamage *= 1.5f;
+				player.GetAttackSpeed(DamageClass.Melee) *= 1.3f;
+				player.GetDamage(DamageClass.Melee) *= 1.5f;
+				player.GetDamage(DamageClass.Ranged) *= 1.5f;
+				player.GetDamage(DamageClass.Magic) *= 1.5f;
+				player.GetDamage(DamageClass.Summon) *= 1.5f;
 				player.moveSpeed += 0.3f;
-				player.rangedCrit += 15;
-				player.meleeCrit += 15;
-				player.magicCrit += 15;
-				player.thrownCrit += 15;
+				player.GetCritChance(DamageClass.Ranged) += 15;
+				player.GetCritChance(DamageClass.Melee) += 15;
+				player.GetCritChance(DamageClass.Magic) += 15;
 				player.AddBuff(11, 10);
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod, "DarkerAcc", 1);
-			recipe.AddIngredient(mod, "LighterAcc", 1);
-			recipe.AddIngredient(mod, "StarForceBlue", 5);
-			recipe.AddIngredient(mod, "StarForceYellow", 5);
-			recipe.AddIngredient(mod, "StarForcePurple", 5);
-			recipe.AddIngredient(mod, "OverDriveCore", 3);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Accessories.HandsOff.DarkerAcc>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Accessories.HandsOff.LighterAcc>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.StarForce.StarForceBlue>(), 5)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.StarForce.StarForceYellow>(), 5)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.StarForce.StarForcePurple>(), 5)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.OverDrive.OverDriveCore>(), 3)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 	}
 }

@@ -10,17 +10,15 @@ namespace VinesMod.Items.Armor.PurpleManaSet
 		public override void SetStaticDefaults()
 		{
 			base.SetStaticDefaults();
-			DisplayName.SetDefault("Purple Mana Breastplate");
-			Tooltip.SetDefault("+40 max mana and +1 max minions");
 		}
 
 		public override void SetDefaults()
 		{
-			item.width = 18;
-			item.height = 18;
-			item.value = 10000;
-			item.rare = 1;
-			item.defense = 11;
+			Item.width = 18;
+			Item.height = 18;
+			Item.value = 10000;
+			Item.rare = 1;
+			Item.defense = 11;
 		}
 
 		public override void UpdateEquip(Player player)
@@ -31,13 +29,12 @@ namespace VinesMod.Items.Armor.PurpleManaSet
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.ManaCrystal, 5);
-			recipe.AddIngredient(mod, "ShardPurple", 15);
-			recipe.AddRecipeGroup("IronBar", 15);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.ManaCrystal, 5)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardPurple>(), 15)
+				.AddRecipeGroup("IronBar", 15)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 	}
 }

@@ -9,21 +9,16 @@ namespace VinesMod.Items.Vanity
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("( ͡° ͜ʖ ͡°)");
 		}
 
 		public override void SetDefaults()
 		{
-			item.width = 24;
-			item.height = 28;
-			item.value = Item.buyPrice(0,5,0,0);
-			item.rare = 10;
-			item.vanity = true;
+			Item.width = 24;
+			Item.height = 28;
+			Item.value = Item.buyPrice(0,5,0,0);
+			Item.rare = 10;
+			Item.vanity = true;
 		}
 		
-		public override bool DrawHead()
-		{
-			return false;
 		}
-	}
 }

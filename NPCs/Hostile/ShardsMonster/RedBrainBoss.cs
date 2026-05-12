@@ -9,7 +9,7 @@ using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace VinesMod.NPCs.Hostile.ShardMonster
+namespace VinesMod.NPCs.Hostile.ShardsMonster
 {
     [AutoloadBossHead]
     public class RedBrainBoss : ModNPC
@@ -35,86 +35,89 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Red Brain");
-            Main.npcFrameCount[npc.type] = 8;
+            Main.npcFrameCount[Type] = 8;
         }
 
         public override void SetDefaults()
         {
-            npc.CloneDefaults(NPCID.BrainofCthulhu);
-            npc.aiStyle = 54; // Brain
-            npc.lifeMax = 3500; 
-            npc.damage = 35; 
-            npc.defense = 3; 
-            npc.value = 10000;
-            npc.boss = true; // Is a boss
-            npc.lavaImmune = true;
-            npc.noGravity = true; 
-            npc.noTileCollide = true;
-            npc.knockBackResist = 0.5f;
-            bossBag = mod.ItemType("RedBrainBossBag"); // Needed for the NPC to drop loot bag.
+            NPC.CloneDefaults(NPCID.BrainofCthulhu);
+            NPC.aiStyle = 54; // Brain
+            NPC.lifeMax = 3500; 
+            NPC.damage = 35; 
+            NPC.defense = 3; 
+            NPC.value = 10000;
+            NPC.boss = true; // Is a boss
+            NPC.lavaImmune = true;
+            NPC.noGravity = true; 
+            NPC.noTileCollide = true;
+            NPC.knockBackResist = 0.5f;
+            if (!Main.dedServ)
+            {
+                Music = MusicID.Boss3;
+            }
+ // Needed for the NPC to drop loot bag.
         }
 
-        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)
         {
-            npc.lifeMax = (int)(npc.lifeMax * 0.625f * bossLifeScale);
-            npc.damage = (int)(npc.damage * 0.6f);
-            npc.defense = (int)(npc.defense + numPlayers);
+            NPC.lifeMax = (int)(NPC.lifeMax * 0.625f * balance);
+            NPC.damage = (int)(NPC.damage * 0.6f);
+            NPC.defense = (int)(NPC.defense + numPlayers);
         }
         
         public override void AI()
         {
         }
 
-        public override void NPCLoot()
+        public override void OnKill()
         {
             if (Main.expertMode)
             {
-            npc.DropBossBags();
+            // Boss bags now drop via ModifyNPCLoot (1.4)
             }
             else
             {
                 if (Main.rand.Next(4) == 0)
                 {
-                Item.NewItem(npc.getRect(), ItemID.UnholyWater, 1);
+                Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.UnholyWater, 1);
                 }
 
                 switch (Main.rand.Next(5))
                 {
                 case 0:
-                Item.NewItem(npc.getRect(), ItemID.PanicNecklace, 1);
+                Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.PanicNecklace, 1);
                 break;
 
                 case 1:
-                Item.NewItem(npc.getRect(), ItemID.CrimsonHeart, 1);
+                Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.CrimsonHeart, 1);
                 break;
 
                 case 2:
-                Item.NewItem(npc.getRect(), ItemID.CrimsonRod, 1);
+                Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.CrimsonRod, 1);
                 break;
 
                 case 3:
-                Item.NewItem(npc.getRect(), ItemID.TheRottedFork, 1);
+                Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.TheRottedFork, 1);
                 break;
 
                 case 4:
-                Item.NewItem(npc.getRect(), mod.ItemType("RedEyeBall"), 1);
+                Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ModContent.ItemType<global::VinesMod.Items.Accessories.HandsOff.RedEyeBall>(), 1);
                 break;
                 }
 
                 if (Main.rand.Next(10) == 0)
                 {
-                Item.NewItem(npc.getRect(), ItemID.BoneRattle, 1);
+                Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.BoneRattle, 1);
                 }
-            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardRed"), Main.rand.Next(5, 10));
-            Item.NewItem(npc.getRect(), ItemID.GoldBar, Main.rand.Next(3, 5));
-            Item.NewItem(npc.getRect(), ItemID.IronBar, Main.rand.Next(3, 7));
-            Item.NewItem(npc.getRect(), ItemID.SilverOre, Main.rand.Next(10, 20));
-            Item.NewItem(npc.getRect(), ItemID.ManaCrystal, Main.rand.Next(1, 2));
+            Item.NewItem(NPC.GetSource_Loot(), (int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardRed>(), Main.rand.Next(5, 10));
+            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.GoldBar, Main.rand.Next(3, 5));
+            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.IronBar, Main.rand.Next(3, 7));
+            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.SilverOre, Main.rand.Next(10, 20));
+            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.ManaCrystal, Main.rand.Next(1, 2));
 
-            Item.NewItem(npc.getRect(), ItemID.CrimtaneOre, Main.rand.Next(40, 60));
-            Item.NewItem(npc.getRect(), ItemID.TissueSample, Main.rand.Next(10, 20));
-            Item.NewItem(npc.getRect(), ItemID.Ruby, Main.rand.Next(1, 2));
+            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.CrimtaneOre, Main.rand.Next(40, 60));
+            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.TissueSample, Main.rand.Next(10, 20));
+            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.Ruby, Main.rand.Next(1, 2));
             }
             
 

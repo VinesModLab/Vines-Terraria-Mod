@@ -8,18 +8,16 @@ namespace VinesMod.Items.GoodieBags
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Pets' Bag");
-			Tooltip.SetDefault("<right> to get a random pet!");
 		}
 
 		public override void SetDefaults()
 		{
-			item.maxStack = 999;
-            item.consumable = true;
-			item.value = Item.buyPrice(0,10,0,0);
-			item.width = 20;
-			item.height = 20;
-			item.rare = 2;
+			Item.maxStack = 999;
+            Item.consumable = true;
+			Item.value = Item.buyPrice(0,10,0,0);
+			Item.width = 20;
+			Item.height = 20;
+			Item.rare = 2;
 		}
 
 		public override bool CanRightClick()
@@ -32,103 +30,103 @@ namespace VinesMod.Items.GoodieBags
 			switch (Main.rand.Next(33))
 			{
 				case 0:
-				player.QuickSpawnItem(ItemID.Carrot);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.Carrot);
 				break;
 				case 1:
-				player.QuickSpawnItem(ItemID.AmberMosquito);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.AmberMosquito);
 				break;
 				case 2:
-				player.QuickSpawnItem(ItemID.Fish);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.Fish);
 				break;
 				case 3:
-				player.QuickSpawnItem(ItemID.BoneRattle);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.BoneRattle);
 				break;
 				case 4:
-				player.QuickSpawnItem(ItemID.BoneKey);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.BoneKey);
 				break;
 				case 5:
-				player.QuickSpawnItem(ItemID.ParrotCracker);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.ParrotCracker);
 				break;
 				case 6:
-				player.QuickSpawnItem(ItemID.Seaweed);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.Seaweed);
 				break;
 				case 7:
-				player.QuickSpawnItem(ItemID.StrangeGlowingMushroom);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.StrangeGlowingMushroom);
 				break;
 				case 8:
-				player.QuickSpawnItem(ItemID.ToySled);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.ToySled);
 				break;
 				case 9:
-				player.QuickSpawnItem(ItemID.EatersBone);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.EatersBone);
 				break;
 				case 10:
-				player.QuickSpawnItem(ItemID.Nectar);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.Nectar);
 				break;
 				case 11:
-				player.QuickSpawnItem(ItemID.LizardEgg);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.LizardEgg);
 				break;
 				case 12:
-				player.QuickSpawnItem(ItemID.Seedling);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.Seedling);
 				break;
 				case 13:
-				player.QuickSpawnItem(ItemID.TikiTotem);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.TikiTotem);
 				break;
 				case 14:
-				player.QuickSpawnItem(ItemID.EyeSpring);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.EyeSpring);
 				break;
 				case 15:
-				player.QuickSpawnItem(ItemID.MagicalPumpkinSeed);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.MagicalPumpkinSeed);
 				break;
 				case 16:
-				player.QuickSpawnItem(ItemID.UnluckyYarn);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.UnluckyYarn);
 				break;
 				case 17:
-				player.QuickSpawnItem(ItemID.CursedSapling);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.CursedSapling);
 				break;
 				case 18:
-				player.QuickSpawnItem(ItemID.SpiderEgg);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.SpiderEgg);
 				break;
 				case 19:
-				player.QuickSpawnItem(ItemID.DogWhistle);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.DogWhistle);
 				break;
 				case 20:
-				player.QuickSpawnItem(ItemID.BabyGrinchMischiefWhistle);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.BabyGrinchMischiefWhistle);
 				break;
 				case 21:
-				player.QuickSpawnItem(ItemID.TartarSauce);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.TartarSauce);
 				break;
 				case 22:
-				player.QuickSpawnItem(ItemID.ZephyrFish);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.ZephyrFish);
 				break;
 				case 23:
-				player.QuickSpawnItem(ItemID.CompanionCube);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.CompanionCube);
 				break;
 				case 24:
-				player.QuickSpawnItem(ItemID.DD2PetGato);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.DD2PetGato);
 				break;
 				case 25:
-				player.QuickSpawnItem(ItemID.DD2PetDragon);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.DD2PetDragon);
 				break;
 				case 26:
-				player.QuickSpawnItem(ItemID.ShadowOrb);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.ShadowOrb);
 				break;
 				case 27:
-				player.QuickSpawnItem(ItemID.CrimsonHeart);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.CrimsonHeart);
 				break;
 				case 28:
-				player.QuickSpawnItem(ItemID.MagicLantern);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.MagicLantern);
 				break;
 				case 29:
-				player.QuickSpawnItem(ItemID.FairyBell);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.FairyBell);
 				break;
 				case 30:
-				player.QuickSpawnItem(ItemID.DD2PetGhost);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.DD2PetGhost);
 				break;
 				case 31:
-				player.QuickSpawnItem(ItemID.WispinaBottle);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.WispinaBottle);
 				break;
 				case 32:
-				player.QuickSpawnItem(ItemID.SuspiciousLookingTentacle);
+				player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.SuspiciousLookingTentacle);
 				break;
 			}
 

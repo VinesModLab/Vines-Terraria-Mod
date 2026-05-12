@@ -15,27 +15,24 @@ namespace VinesMod.Items.Weapons.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Rainbow Cannon");
-			Tooltip.SetDefault("Shoots a rainbow that does continuous damage");
 		}
 
 		public override void SetDefaults()
 		{
-			item.CloneDefaults(ItemID.RainbowGun);
-			item.rare = 9;
-			item.damage = 95;
-			item.value = Item.buyPrice(silver: 30);
-			item.mana = 25;
+			Item.CloneDefaults(ItemID.RainbowGun);
+			Item.rare = 9;
+			Item.damage = 95;
+			Item.value = Item.buyPrice(silver: 30);
+			Item.mana = 25;
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.RainbowGun, 1);
-			recipe.AddIngredient(mod, "StarForceWhite", 1);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.RainbowGun, 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.StarForce.StarForceWhite>(), 1)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 	}
 }

@@ -1,20 +1,19 @@
-﻿using Terraria;
-using Terraria.ID;
+using Terraria;
 using Terraria.ModLoader;
-using Terraria.GameContent.Generation;
-using Terraria.World.Generation;
-using System.Collections.Generic;
-
-using System;
 using Terraria.ModLoader.IO;
-using System.IO;
 
 namespace VinesMod
 {
-    public class VinesWorld : ModWorld
+    /// <summary>
+    /// Tracks per-world boss defeat flags for VinesMod.
+    /// Migrated from ModWorld (1.3) to ModSystem (1.4).
+    /// Save/Load use TagCompound; legacy binary save is no longer supported.
+    /// </summary>
+    public class VinesWorld : ModSystem
     {
         public static int biomeTiles = 0;
-        // Stuff added with the Boss
+
+        // Boss defeat flags
         public static bool downedBlueEyeBoss = false;
         public static bool downedRedBrainBoss = false;
         public static bool downedGreenBeeBoss = false;
@@ -22,7 +21,7 @@ namespace VinesMod
         public static bool downedYellowIchorBoss = false;
         public static bool downedWhiteFlyingFishBoss = false;
 
-        public override void Initialize()
+        public override void OnWorldLoad()
         {
             downedBlueEyeBoss = false;
             downedRedBrainBoss = false;
@@ -32,49 +31,27 @@ namespace VinesMod
             downedWhiteFlyingFishBoss = false;
         }
 
-        public override TagCompound Save()
+        public override void SaveWorldData(TagCompound tag)
         {
-            var downed = new List<string>();
-            if (downedBlueEyeBoss) downed.Add("BlueEye");
-            if (downedRedBrainBoss) downed.Add("RedBrain");
-            if (downedGreenBeeBoss) downed.Add("GreenBee");
-            if (downedPurpleSlimeBoss) downed.Add("PurpleSlime");
-            if (downedYellowIchorBoss) downed.Add("YellowIchor");
-            if (downedWhiteFlyingFishBoss) downed.Add("WhiteFlyingFish");
-
-            return new TagCompound
-            {
-                {"downed", downed }
-            };
+            if (downedBlueEyeBoss)         tag["BlueEye"] = true;
+            if (downedRedBrainBoss)         tag["RedBrain"] = true;
+            if (downedGreenBeeBoss)         tag["GreenBee"] = true;
+            if (downedPurpleSlimeBoss)      tag["PurpleSlime"] = true;
+            if (downedYellowIchorBoss)      tag["YellowIchor"] = true;
+            if (downedWhiteFlyingFishBoss)  tag["WhiteFlyingFish"] = true;
         }
 
-        public override void Load(TagCompound tag)
+        public override void LoadWorldData(TagCompound tag)
         {
-            var downed = tag.GetList<string>("downed");
-            downedBlueEyeBoss = downed.Contains("BlueEye");
-            downedRedBrainBoss = downed.Contains("RedBrain");
-            downedGreenBeeBoss = downed.Contains("GreenBee");
-            downedPurpleSlimeBoss = downed.Contains("PurpleSlime");
-            downedYellowIchorBoss = downed.Contains("YellowIchor");
-            downedWhiteFlyingFishBoss = downed.Contains("WhiteFlyingFish");
+            downedBlueEyeBoss        = tag.ContainsKey("BlueEye");
+            downedRedBrainBoss       = tag.ContainsKey("RedBrain");
+            downedGreenBeeBoss       = tag.ContainsKey("GreenBee");
+            downedPurpleSlimeBoss    = tag.ContainsKey("PurpleSlime");
+            downedYellowIchorBoss    = tag.ContainsKey("YellowIchor");
+            downedWhiteFlyingFishBoss = tag.ContainsKey("WhiteFlyingFish");
         }
 
-        public override void LoadLegacy(BinaryReader reader)
-        {
-            int loadVersion = reader.ReadInt32();
-            if(loadVersion == 0)
-            {
-                BitsByte flags = reader.ReadByte();
-                downedBlueEyeBoss = flags[0];
-                downedRedBrainBoss = flags[1];
-                downedGreenBeeBoss = flags[2];
-                downedPurpleSlimeBoss = flags[3];
-                downedYellowIchorBoss = flags[4];
-                downedWhiteFlyingFishBoss = flags[5];
-            }
-        }
-
-        public override void NetSend(BinaryWriter writer)
+        public override void NetSend(System.IO.BinaryWriter writer)
         {
             BitsByte flags = new BitsByte();
             flags[0] = downedBlueEyeBoss;
@@ -86,24 +63,15 @@ namespace VinesMod
             writer.Write(flags);
         }
 
-        public override void NetReceive(BinaryReader reader)
+        public override void NetReceive(System.IO.BinaryReader reader)
         {
             BitsByte flags = reader.ReadByte();
-            downedBlueEyeBoss = flags[0];
-            downedRedBrainBoss = flags[1];
-            downedGreenBeeBoss = flags[2];
-            downedPurpleSlimeBoss = flags[3];
-            downedYellowIchorBoss = flags[4];
+            downedBlueEyeBoss        = flags[0];
+            downedRedBrainBoss       = flags[1];
+            downedGreenBeeBoss       = flags[2];
+            downedPurpleSlimeBoss    = flags[3];
+            downedYellowIchorBoss    = flags[4];
             downedWhiteFlyingFishBoss = flags[5];
-        }
-
-        public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
-        {
-            //not going to mess with world gen
-        }
-
-        public override void TileCountsAvailable(int[] tileCounts)
-        {
         }
 
         public override void ResetNearbyTileEffects()

@@ -8,17 +8,15 @@ namespace VinesMod.Items.Accessories.HandsOff
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Precious Jewel");
-			Tooltip.SetDefault("immune most debuffs when you have less than 100 mana.");
 		}
 
 		public override void SetDefaults()
 		{
-			item.width = 24;
-			item.height = 28;
-			item.value = Item.sellPrice(gold: 2); 
-			item.rare = 6;
-			item.accessory = true;
+			Item.width = 24;
+			Item.height = 28;
+			Item.value = Item.sellPrice(gold: 2); 
+			Item.rare = 6;
+			Item.accessory = true;
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
@@ -47,15 +45,14 @@ namespace VinesMod.Items.Accessories.HandsOff
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod, "BloodStone", 1);
-			recipe.AddIngredient(mod, "IcySteel", 1);
-			recipe.AddIngredient(mod, "ShardWhite", 20);
-			recipe.AddIngredient(mod, "ShardRed", 40);
-			recipe.AddIngredient(mod, "ShardBlue", 40);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Accessories.HandsOff.BloodStone>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Accessories.HandsOff.IcySteel>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardWhite>(), 20)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardRed>(), 40)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardBlue>(), 40)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 	}
 }

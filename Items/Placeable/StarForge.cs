@@ -7,39 +7,28 @@ namespace VinesMod.Items.Placeable
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("StarForge");
-			Tooltip.SetDefault("Everything starts from here.");
 		}
 
 		public override void SetDefaults()
 		{
-			item.width = 28;
-			item.height = 14;
-			item.maxStack = 99;
-			item.useTurn = true;
-			item.autoReuse = true;
-			item.useAnimation = 15;
-			item.useTime = 10;
-			item.useStyle = 1;
-			item.consumable = true;
-			item.value = 2000;
-			item.createTile = mod.TileType("StarForge");
+			Item.width = 28;
+			Item.height = 14;
+			Item.maxStack = 99;
+			Item.useTurn = true;
+			Item.autoReuse = true;
+			Item.useAnimation = 15;
+			Item.useTime = 10;
+			Item.useStyle = ItemUseStyleID.Swing;
+			Item.consumable = true;
+			Item.value = 2000;
+			Item.createTile = ModContent.TileType<global::VinesMod.Tiles.StarForge>();
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddRecipeGroup("Wood", 30);
-			//recipe.AddIngredient(mod, "ShardBlue", 3);
-			//recipe.AddIngredient(mod, "ShardGreen", 3);
-			//recipe.AddIngredient(mod, "ShardPurple", 3);
-			//recipe.AddIngredient(mod, "ShardYellow", 3);
-			//recipe.AddIngredient(mod, "ShardWhite", 3);
-			//recipe.AddIngredient(mod, "ShardRed", 3);
-			recipe.AddIngredient(ItemID.StoneBlock, 10);
-			recipe.AddIngredient(ItemID.FallenStar, 1);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardWhite>(), 20)
+				.Register();
 		}
 	}
 }

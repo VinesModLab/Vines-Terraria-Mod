@@ -10,19 +10,18 @@ namespace VinesMod.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("DeathStormOverDriveProjectile");
 		}
 
         public override void SetDefaults()
         {
-            projectile.CloneDefaults(ProjectileID.DeathSickle);
-            aiType = ProjectileID.DeathSickle;
-			//projectile.tileCollide = false;
-            projectile.scale = 1.5f;
-			projectile.light = 0.7f; 
+            Projectile.CloneDefaults(ProjectileID.DeathSickle);
+			AIType = ProjectileID.DeathSickle;
+			//Projectile.tileCollide = false;
+            Projectile.scale = 1.5f;
+			Projectile.light = 0.7f; 
         }
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 			target.AddBuff(BuffID.Bleeding, 15 * 60);
 			target.AddBuff(BuffID.Frozen, 15 * 60);
@@ -31,12 +30,12 @@ namespace VinesMod.Projectiles
 
 		public override void AI()
 		{
-			if (projectile.alpha > 70)
+			if (Projectile.alpha > 70)
 			{
-				projectile.alpha -= 15;
-				if (projectile.alpha < 70)
+				Projectile.alpha -= 15;
+				if (Projectile.alpha < 70)
 				{
-					projectile.alpha = 70;
+					Projectile.alpha = 70;
 				}
 			}
 			Vector2 move = Vector2.Zero;
@@ -46,7 +45,7 @@ namespace VinesMod.Projectiles
 			{
 				if (Main.npc[k].active && !Main.npc[k].dontTakeDamage && !Main.npc[k].friendly && Main.npc[k].lifeMax > 5)
 				{
-					Vector2 newMove = Main.npc[k].Center - projectile.Center;
+					Vector2 newMove = Main.npc[k].Center - Projectile.Center;
 					float distanceTo = (float)Math.Sqrt(newMove.X * newMove.X + newMove.Y * newMove.Y);
 					if (distanceTo < distance)
 					{
@@ -58,12 +57,12 @@ namespace VinesMod.Projectiles
 			}
 			if (target)
 			{
-				projectile.velocity = (10 * projectile.velocity + move) / 11f;
+				Projectile.velocity = (10 * Projectile.velocity + move) / 11f;
 			}
 
-			if(projectile.timeLeft % 60 == 0)
+			if(Projectile.timeLeft % 60 == 0)
             {
-                Projectile.NewProjectile(projectile.position.X, projectile.position.Y, MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), mod.ProjectileType("ScytheProjectile"), (int)(projectile.damage * 0.5f), projectile.knockBack, Main.myPlayer); //owner.rangedDamage is basically the damage multiplier for ranged weapons
+                Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.position.X, Projectile.position.Y, MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), ModContent.ProjectileType<global::VinesMod.Projectiles.ScytheProjectile>(), (int)(Projectile.damage * 0.5f), Projectile.knockBack, Main.myPlayer); //owner.rangedDamage is basically the damage multiplier for ranged weapons
             }
 		}
 

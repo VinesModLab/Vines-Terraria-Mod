@@ -10,41 +10,38 @@ namespace VinesMod.Items.Armor.PurpleManaSet
 		public override void SetStaticDefaults()
 		{
 
-			DisplayName.SetDefault("Purple Mana Helmet");
 		}
 
 		public override void SetDefaults()
 		{
-			item.width = 18;
-			item.height = 18;
-			item.value = 10000;
-			item.rare = 1;
-			item.defense = 8;
+			Item.width = 18;
+			Item.height = 18;
+			Item.value = 10000;
+			Item.rare = 1;
+			Item.defense = 8;
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
 		{
-			return body.type == mod.ItemType("PurpleBreastplate") && legs.type == mod.ItemType("PurpleLeggings");
+			return body.type == ModContent.ItemType<global::VinesMod.Items.Armor.PurpleManaSet.PurpleBreastplate>() && legs.type == ModContent.ItemType<global::VinesMod.Items.Armor.PurpleManaSet.PurpleLeggings>();
 		}
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.meleeDamage *= 1.1f;
-			player.thrownDamage *= 1.1f;
-			player.rangedDamage *= 1.1f;
-			player.magicDamage *= 1.1f;
-			player.minionDamage *= 1.1f;
+			player.GetDamage(DamageClass.Melee) *= 1.1f;
+			player.GetDamage(DamageClass.Ranged) *= 1.1f;
+			player.GetDamage(DamageClass.Magic) *= 1.1f;
+			player.GetDamage(DamageClass.Summon) *= 1.1f;
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.ManaCrystal, 3);
-			recipe.AddRecipeGroup("IronBar", 10);
-			recipe.AddIngredient(mod, "ShardPurple", 10);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.ManaCrystal, 3)
+				.AddRecipeGroup("IronBar", 10)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardPurple>(), 10)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 	}
 }

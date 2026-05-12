@@ -9,42 +9,40 @@ namespace VinesMod.Items.Weapons.Melee
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Zeoxing Blade");
-			Tooltip.SetDefault("A Cosmic blade that can wipe out the universe.");
 		}
 		public override void SetDefaults()
 		{
-			item.damage = 1500;
-			item.melee = true;
-			item.width = 40;
-			item.height = 40;
-			item.useTime = 15;
-			item.useAnimation = 15;
-			item.useStyle = 1;
-			item.knockBack = 1f;
-			item.value = 3000000;
-			item.rare = -12;
-			item.UseSound = SoundID.Item1;
-			item.autoReuse = true;
-			item.shoot = ModContent.ProjectileType<Projectiles.ZeoxingProjectile>();
-			item.shootSpeed = 60f; 
-			item.scale = 0.75f;
+			Item.damage = 1500;
+			Item.DamageType = DamageClass.Melee;
+			Item.width = 40;
+			Item.height = 40;
+			Item.useTime = 15;
+			Item.useAnimation = 15;
+			Item.useStyle = ItemUseStyleID.Swing;
+			Item.knockBack = 1f;
+			Item.value = 3000000;
+			Item.rare = -12;
+			Item.UseSound = SoundID.Item1;
+			Item.autoReuse = true;
+			Item.shoot = ModContent.ProjectileType<global::VinesMod.Projectiles.ZeoxingProjectile>();
+			Item.shootSpeed = 60f; 
+			Item.scale = 0.75f;
 		}
 
-		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+		public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockBack)
 		{
 			float numberProjectiles = 7;
 			float rotation = MathHelper.ToRadians(45);
-			position += Vector2.Normalize(new Vector2(speedX, speedY)) * 45f;
+			position += Vector2.Normalize(velocity) * 45f;
 			for (int i = 0; i < numberProjectiles; i++)
 			{
-				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * .2f;
-				Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage*5, knockBack, player.whoAmI);
+				Vector2 perturbedSpeed = velocity.RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * .2f;
+				Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage*5, knockBack, player.whoAmI);
 			}
 			return false;
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(BuffID.OnFire, 15 * 60);
 			target.AddBuff(BuffID.Bleeding, 15 * 60);
@@ -59,32 +57,30 @@ namespace VinesMod.Items.Weapons.Melee
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-	
-			recipe.AddIngredient(ItemID.FallenStar, 999);
-			recipe.AddIngredient(ItemID.LunarBar, 90);
-			recipe.AddIngredient(ItemID.Cloud, 999);
-			recipe.AddIngredient(ItemID.RainCloud, 100);
-			recipe.AddIngredient(mod, "DarkMatter", 1);
-			recipe.AddIngredient(mod, "LightMatter", 1);
-			recipe.AddIngredient(mod, "StarForceCannonOverDrive", 1);
-			recipe.AddIngredient(mod, "StarWrathOverDrive", 1);
-			recipe.AddIngredient(mod, "OverDrivePurple", 5);
-			recipe.AddIngredient(mod, "OverDriveRed", 5);
-			recipe.AddIngredient(mod, "OverDriveBlue", 5);
-			recipe.AddIngredient(mod, "OverDriveWhite", 5);
-			recipe.AddIngredient(mod, "OverDriveGreen", 5);
-			recipe.AddIngredient(mod, "OverDriveYellow", 5);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.FallenStar, 999)
+				.AddIngredient(ItemID.LunarBar, 90)
+				.AddIngredient(ItemID.Cloud, 999)
+				.AddIngredient(ItemID.RainCloud, 100)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.EndTier.DarkMatter>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.EndTier.LightMatter>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Weapons.Gun.StarForceCannonOverDrive>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Weapons.Melee.StarWrathOverDrive>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.OverDrive.OverDrivePurple>(), 5)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.OverDrive.OverDriveRed>(), 5)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.OverDrive.OverDriveBlue>(), 5)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.OverDrive.OverDriveWhite>(), 5)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.OverDrive.OverDriveGreen>(), 5)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.OverDrive.OverDriveYellow>(), 5)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 
 		public override void MeleeEffects(Player player, Rectangle hitbox)
 		{
 			if (Main.rand.Next(3) == 0)
 			{
-				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, mod.DustType("SparkleYellow"));
+				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<global::VinesMod.Dusts.SparkleYellow>());
 			}
 		}
 	}

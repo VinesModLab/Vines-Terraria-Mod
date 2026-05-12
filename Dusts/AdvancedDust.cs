@@ -6,23 +6,18 @@ namespace VinesMod.Dusts
 {
 	class AdvancedDust : ModDust
 	{
+		public override string Texture => "VinesMod/Dusts/SampleDust";
+
 		/*
 			Spawning this dust is a little more involved because we need to assign a rotation, customData, and fix the position. 
 			Position must be fixed here because otherwise the first time the dust is drawn it'll draw in the incorrect place.
 			This dust is not used in ExampleMod yet, so you'll have to add some code somewhere. Try ExamplePlayer.DrawEffects.
 
-			Dust dust = Dust.NewDustDirect(player.Center, 0, 0, mod.DustType<Dusts.AdvancedDust>(), Scale: 2);
+			Dust dust = Dust.NewDustDirect(player.Center, 0, 0, ModContent.DustType<global::VinesMod.Dusts.AdvancedDust>(), Scale: 2);
 			dust.rotation = Main.rand.NextFloat(6.28f);
 			dust.customData = player;
 			dust.position = player.Center + Vector2.UnitX.RotatedBy(dust.rotation, Vector2.Zero) * dust.scale * 50;
 		*/
-		public override bool Autoload(ref string name, ref string texture)
-		{
-			// By setting this to null, this dust will use the vanilla dust monolithic texture
-			texture = null;
-			return base.Autoload(ref name, ref texture);
-		}
-
 		public override void OnSpawn(Dust dust)
 		{
 			dust.noGravity = true;

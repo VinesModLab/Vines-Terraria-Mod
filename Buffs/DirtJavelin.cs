@@ -6,17 +6,10 @@ namespace VinesMod.Buffs
 {
 	public class DirtJavelin : ModBuff
 	{
-		public override bool Autoload(ref string name, ref string texture)
-		{
-			// NPC only buff so we'll just assign it a useless buff icon.
-			texture = "VinesMod/Buffs/BuffTemplate";
-			return base.Autoload(ref name, ref texture);
-		}
+		public override string Texture => "VinesMod/Buffs/DebuffTemplate";
 
-		public override void SetDefaults()
+		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dirt Javelin");
-			Description.SetDefault("Losing life");
 		}
 
 		public override void Update(NPC npc, ref int buffIndex)

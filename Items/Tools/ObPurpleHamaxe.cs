@@ -9,45 +9,43 @@ namespace VinesMod.Items.Tools
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Obsidian Purple Hamaxe");
 		}
 
 		public override void SetDefaults()
 		{
-			item.damage = 35;
-			item.melee = true;
-			item.width = 40;
-			item.height = 40;
-			item.useTime = 20;
-			item.useAnimation = 20;
-			item.axe = 30;
-			item.hammer = 90;
-			item.useStyle = 1;
-			item.knockBack = 6;
-			item.value = 10000;
-			item.rare = 4;
-			item.UseSound = SoundID.Item1;
-			item.autoReuse = true;
+			Item.damage = 35;
+			Item.DamageType = DamageClass.Melee;
+			Item.width = 40;
+			Item.height = 40;
+			Item.useTime = 20;
+			Item.useAnimation = 20;
+			Item.axe = 30;
+			Item.hammer = 90;
+			Item.useStyle = ItemUseStyleID.Swing;
+			Item.knockBack = 6;
+			Item.value = 10000;
+			Item.rare = 4;
+			Item.UseSound = SoundID.Item1;
+			Item.autoReuse = true;
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.Obsidian, 30);
-			recipe.AddIngredient(ItemID.Amethyst, 10);
-			recipe.AddRecipeGroup("IronBar", 15);
-			recipe.AddRecipeGroup("Wood", 40);
-			recipe.AddIngredient(mod, "ShardPurple", 25);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.Obsidian, 30)
+				.AddIngredient(ItemID.Amethyst, 10)
+				.AddRecipeGroup("IronBar", 15)
+				.AddRecipeGroup("Wood", 40)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardPurple>(), 25)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 
 		public override void MeleeEffects(Player player, Rectangle hitbox)
 		{
 			if (Main.rand.Next(10) == 0)
 			{
-				int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, mod.DustType("SparkleBlue"));
+				int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<global::VinesMod.Dusts.SparkleBlue>());
 			}
 		}
 	}

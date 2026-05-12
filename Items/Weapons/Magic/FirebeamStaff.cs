@@ -13,33 +13,29 @@ namespace VinesMod.Items.Weapons.Magic
 {
 	class FirebeamStaff : ModItem
 	{
-		//public override string Texture { get { return "Terraria/Item_" + ItemID.ShadowbeamStaff; } }
-
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Firebeam Staff");
-			Item.staff[item.type] = true;
+			Item.staff[Type] = true;
 		}
 
 		public override void SetDefaults()
 		{
-			item.CloneDefaults(ItemID.ShadowbeamStaff);
-			//item.color = Color.Red;
-			item.damage = 30;
-			item.mana = 1;
-			item.shoot = ModContent.ProjectileType<FirebeamStaffProjectile>();
+			Item.CloneDefaults(ItemID.ShadowbeamStaff);
+			//Item.color = Color.Red;
+			Item.damage = 30;
+			Item.mana = 1;
+			Item.shoot = ModContent.ProjectileType<global::VinesMod.Items.Weapons.Magic.FirebeamStaffProjectile>();
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.RubyStaff, 1);
-			recipe.AddIngredient(ItemID.Fireblossom, 5);
-			recipe.AddIngredient(ItemID.GoldBar, 3);
-			recipe.AddIngredient(mod, "ShardRed", 10);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.RubyStaff, 1)
+				.AddIngredient(ItemID.Fireblossom, 5)
+				.AddIngredient(ItemID.GoldBar, 3)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardRed>(), 10)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 	}
 
@@ -47,47 +43,47 @@ namespace VinesMod.Items.Weapons.Magic
 	{
 		public override void SetDefaults()
 		{
-			projectile.width = 4;
-			projectile.height = 4;
-			projectile.friendly = true;
-			projectile.magic = true;
-			projectile.extraUpdates = 100;
-			projectile.timeLeft = 200;
-			projectile.penetrate = -1;
+			Projectile.width = 4;
+			Projectile.height = 4;
+			Projectile.friendly = true;
+			Projectile.DamageType = DamageClass.Magic;
+			Projectile.extraUpdates = 100;
+			Projectile.timeLeft = 200;
+			Projectile.penetrate = -1;
 		}
 
-		public override string Texture { get { return "Terraria/Projectile_" + ProjectileID.ShadowBeamFriendly; } }
+		public override string Texture { get { return "Terraria/Images/Projectile_" + ProjectileID.ShadowBeamFriendly; } }
 
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{
-			if (projectile.velocity.X != oldVelocity.X)
+			if (Projectile.velocity.X != oldVelocity.X)
 			{
-				projectile.position.X = projectile.position.X + projectile.velocity.X;
-				projectile.velocity.X = -oldVelocity.X;
+				Projectile.position.X = Projectile.position.X + Projectile.velocity.X;
+				Projectile.velocity.X = -oldVelocity.X;
 			}
-			if (projectile.velocity.Y != oldVelocity.Y)
+			if (Projectile.velocity.Y != oldVelocity.Y)
 			{
-				projectile.position.Y = projectile.position.Y + projectile.velocity.Y;
-				projectile.velocity.Y = -oldVelocity.Y;
+				Projectile.position.Y = Projectile.position.Y + Projectile.velocity.Y;
+				Projectile.velocity.Y = -oldVelocity.Y;
 			}
 			return false;
 		}
 
-		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
 		{
-			projectile.damage = (int)(projectile.damage * 0.8);
+			Projectile.damage = (int)(Projectile.damage * 0.8);
 		}
 
 		public override void AI()
 		{
-			projectile.localAI[0] += 1f;
-			if (projectile.localAI[0] > 9f)
+			Projectile.localAI[0] += 1f;
+			if (Projectile.localAI[0] > 9f)
 			{
 				for (int i = 0; i < 4; i++)
 				{
-					Vector2 projectilePosition = projectile.position;
-					projectilePosition -= projectile.velocity * ((float)i * 0.25f);
-					projectile.alpha = 255;
+					Vector2 projectilePosition = Projectile.position;
+					projectilePosition -= Projectile.velocity * ((float)i * 0.25f);
+					Projectile.alpha = 255;
 					int dust = Dust.NewDust(projectilePosition, 1, 1, 174, 0f, 0f, 0, default(Color), 1f);
 					Main.dust[dust].noGravity = true;
 					Main.dust[dust].position = projectilePosition;

@@ -8,40 +8,37 @@ namespace VinesMod.Items.Weapons.Magic
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Laser Book");
-			Tooltip.SetDefault("Shoot a laser beam that can eliminate anything...");
 		}
 
 		public override void SetDefaults()
 		{
-			item.damage = 67;
-			item.noMelee = true;
-			item.magic = true;
-			item.channel = true; //Channel so that you can held the weapon [Important]
-			item.mana = 7;
-			item.rare = 5;
-			item.width = 28;
-			item.height = 30;
-			item.useTime = 20;
-			item.UseSound = SoundID.Item13;
-			item.useStyle = 5;
-			item.shootSpeed = 14f;
-			item.useAnimation = 20;
-			item.shoot = mod.ProjectileType("LaserBeamBlue");
-			item.value = Item.sellPrice(gold: 2);
+			Item.damage = 67;
+			Item.noMelee = true;
+			Item.DamageType = DamageClass.Magic;
+			Item.channel = true; //Channel so that you can held the weapon [Important]
+			Item.mana = 7;
+			Item.rare = 5;
+			Item.width = 28;
+			Item.height = 30;
+			Item.useTime = 20;
+			Item.UseSound = SoundID.Item13;
+			Item.useStyle = ItemUseStyleID.Shoot;
+			Item.shootSpeed = 14f;
+			Item.useAnimation = 20;
+			Item.shoot = ModContent.ProjectileType<global::VinesMod.Projectiles.LaserBeamBlue>();
+			Item.value = Item.sellPrice(gold: 2);
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.SpellTome, 1);
-			recipe.AddIngredient(ItemID.SoulofLight, 8);
-			recipe.AddIngredient(ItemID.Lens, 5);
-			recipe.AddIngredient(ItemID.CrystalShard, 3);
-			recipe.AddIngredient(mod, "ShardBlue", 50);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.SpellTome, 1)
+				.AddIngredient(ItemID.SoulofLight, 8)
+				.AddIngredient(ItemID.Lens, 5)
+				.AddIngredient(ItemID.CrystalShard, 3)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardBlue>(), 50)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 	}
 }

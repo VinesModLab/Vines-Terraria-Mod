@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -9,56 +9,53 @@ namespace VinesMod.Items.Weapons.Yoyo
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("RektU3000");
 
         }
 
         public override void SetDefaults()
         {
-            item.useStyle = ItemUseStyleID.HoldingOut; 
-            item.width = 24;
-            item.height = 24;
-            item.noUseGraphic = true; 
-            item.melee = true; 
-            item.noMelee = true; 
-            item.channel = true; 
-            item.UseSound = SoundID.Item1;
-            item.useAnimation = 25;
-            item.useTime = 25;
-            item.shoot = ModContent.ProjectileType<Projectiles.RektU3000>(); 
-            item.shootSpeed = 30f; 
-            item.knockBack = 6f;
-            item.damage = 86;
-            item.value = 10000;
-            item.rare = ItemRarityID.Yellow;
+            Item.useStyle = ItemUseStyleID.Shoot; 
+            Item.width = 24;
+            Item.height = 24;
+            Item.noUseGraphic = true; 
+            Item.DamageType = DamageClass.Melee; 
+            Item.noMelee = true; 
+            Item.channel = true; 
+            Item.UseSound = SoundID.Item1;
+            Item.useAnimation = 25;
+            Item.useTime = 25;
+            Item.shoot = ModContent.ProjectileType<global::VinesMod.Projectiles.RektU3000>(); 
+            Item.shootSpeed = 30f; 
+            Item.knockBack = 6f;
+            Item.damage = 86;
+            Item.value = 10000;
+            Item.rare = ItemRarityID.Yellow;
         }
 
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockBack)
 		{
 			float numberProjectiles = 3 + Main.rand.Next(3);
 			float rotation = MathHelper.ToRadians(45);
-			position += Vector2.Normalize(new Vector2(speedX, speedY)) * 45f;
+			position += Vector2.Normalize(velocity) * 45f;
 			for (int i = 0; i < numberProjectiles; i++)
 			{
-				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * .2f;
-				Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+				Vector2 perturbedSpeed = velocity.RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * .2f;
+				Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
 			}
 			return false;
 		}
 
         public override void AddRecipes()
         {
-			ModRecipe recipe = new ModRecipe(mod);
-	
-			recipe.AddIngredient(ItemID.SoulofMight, 3);
-            recipe.AddRecipeGroup("IronBar", 10);
-            recipe.AddIngredient(ItemID.Amber, 30);
-            recipe.AddIngredient(ItemID.Cobweb, 15);
-            recipe.AddIngredient(ItemID.Spike, 4);
-            recipe.AddIngredient(mod, "StarForceGreen", 1);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.SoulofMight, 3)
+				.AddRecipeGroup("IronBar", 10)
+				.AddIngredient(ItemID.Amber, 30)
+				.AddIngredient(ItemID.Cobweb, 15)
+				.AddIngredient(ItemID.Spike, 4)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.StarForce.StarForceGreen>(), 1)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
         }
     }
 }

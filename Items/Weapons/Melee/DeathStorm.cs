@@ -9,37 +9,35 @@ namespace VinesMod.Items.Weapons.Melee
 	{
 		public override void SetStaticDefaults()
 		{
-            DisplayName.SetDefault("Death Storm");
 		}
 
 		public override void SetDefaults()
 		{
-            item.CloneDefaults(ItemID.DeathSickle);
-			item.damage = 101;
-			item.value = Item.buyPrice(gold: 10); 
-			item.rare = 8;
-            item.shoot = 274;
-            item.shootSpeed *= 2f;
-			item.autoReuse = true;          //Whether the weapon can use automatically by pressing mousebutton
+            Item.CloneDefaults(ItemID.DeathSickle);
+			Item.damage = 101;
+			Item.value = Item.buyPrice(gold: 10); 
+			Item.rare = 8;
+            Item.shoot = 274;
+            Item.shootSpeed *= 2f;
+			Item.autoReuse = true;          //Whether the weapon can use automatically by pressing mousebutton
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DeathSickle, 1);
-			recipe.AddIngredient(mod, "StarForcePurple", 1);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.DeathSickle, 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.StarForce.StarForcePurple>(), 1)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockBack)
 		{
 			int numberProjectiles = 2 + Main.rand.Next(3); 
 			for (int i = 0; i < numberProjectiles; i++)
 			{
-				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(30));
-				Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+				Vector2 perturbedSpeed = velocity.RotatedByRandom(MathHelper.ToRadians(30));
+				Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
 			}
 			return false;
 		}
@@ -48,11 +46,11 @@ namespace VinesMod.Items.Weapons.Melee
 		{
 			if (Main.rand.Next(3) == 0)
 			{
-				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, mod.DustType("Sparkle"));
+				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<global::VinesMod.Dusts.Sparkle>());
 			}
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			target.AddBuff(BuffID.ShadowFlame, 15* 60);
 		}

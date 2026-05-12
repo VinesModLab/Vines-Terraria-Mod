@@ -9,7 +9,7 @@ using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace VinesMod.NPCs.Hostile.ShardMonster
+namespace VinesMod.NPCs.Hostile.ShardsMonster
 {
     [AutoloadBossHead]
     public class WhiteFlyingFishBoss : ModNPC
@@ -35,32 +35,35 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("White FlyingFish");
-            Main.npcFrameCount[npc.type] = 4;
+            Main.npcFrameCount[Type] = 4;
         }
 
         public override void SetDefaults()
         {
-            npc.CloneDefaults(NPCID.IchorSticker);
-            npc.aiStyle = 14; 
-            npc.lifeMax = 6000; 
-            npc.damage = 50; 
-            npc.defense = 5; 
-            npc.scale = 5f;
-            npc.value = 10000;
-            npc.boss = true; // Is a boss
-            npc.lavaImmune = true;
-            npc.noGravity = true; 
-            npc.noTileCollide = true;
-            npc.knockBackResist = 0f;
-            bossBag = mod.ItemType("WhiteFlyingFishBossBag"); // Needed for the NPC to drop loot bag.
+            NPC.CloneDefaults(NPCID.IchorSticker);
+            NPC.aiStyle = 14; 
+            NPC.lifeMax = 6000; 
+            NPC.damage = 50; 
+            NPC.defense = 5; 
+            NPC.scale = 5f;
+            NPC.value = 10000;
+            NPC.boss = true; // Is a boss
+            NPC.lavaImmune = true;
+            NPC.noGravity = true; 
+            NPC.noTileCollide = true;
+            NPC.knockBackResist = 0f;
+            if (!Main.dedServ)
+            {
+                Music = MusicID.Boss2;
+            }
+ // Needed for the NPC to drop loot bag.
         }
 
-        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)
         {
-            npc.lifeMax = (int)(npc.lifeMax * 0.625f * bossLifeScale);
-            npc.damage = (int)(npc.damage * 0.6f);
-            npc.defense = (int)(npc.defense + numPlayers);
+            NPC.lifeMax = (int)(NPC.lifeMax * 0.625f * balance);
+            NPC.damage = (int)(NPC.damage * 0.6f);
+            NPC.defense = (int)(NPC.defense + numPlayers);
         }
         
         public override void AI()
@@ -69,8 +72,8 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
             DespawnHandler();
 
             //Attacking
-            npc.ai[1] -= 1f; // Subtracts 1 from the ai.
-            if(npc.ai[1] <= 0f)
+            NPC.ai[1] -= 1f; // Subtracts 1 from the ai.
+            if(NPC.ai[1] <= 0f)
             {
                 Shoot();
             }
@@ -78,21 +81,21 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
 
         private void Target()
         {
-            player = Main.player[npc.target]; // This will get the player target.
+            player = Main.player[NPC.target]; // This will get the player target.
         }
 
         private void DespawnHandler()// Handles if the NPC should despawn.
         {
             if(!player.active || player.dead)
             {
-                npc.TargetClosest(false);
-                player = Main.player[npc.target];
+                NPC.TargetClosest(false);
+                player = Main.player[NPC.target];
                 if(!player.active || player.dead)
                 {
-                    npc.velocity = new Vector2(0f, -10f);
-                    if(npc.timeLeft > 10)
+                    NPC.velocity = new Vector2(0f, -10f);
+                    if(NPC.timeLeft > 10)
                     {
-                        npc.timeLeft = 10;
+                        NPC.timeLeft = 10;
                     }
                     return;
                 }
@@ -101,8 +104,8 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
 
         private void Shoot()
         {
-            int type = mod.ProjectileType("WhiteFlyingFishBossProjectile");
-            Vector2 velocity = player.Center - npc.Center; // Get the distance between target and npc.
+            int type = ModContent.ProjectileType<global::VinesMod.Projectiles.Enemy.WhiteFlyingFishBossProjectile>();
+            Vector2 velocity = player.Center - NPC.Center; // Get the distance between target and NPC.
             float magnitude = Magnitude(velocity);
             if(magnitude > 0) {
                 velocity *= 7.5f / magnitude;
@@ -110,8 +113,8 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
             {
                 velocity = new Vector2(0f, 5f);
             }
-            Projectile.NewProjectile(npc.Center, velocity, type, npc.damage, 2f);
-            npc.ai[1] = (float) Main.rand.Next(100 , 150);
+            Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity, type, NPC.damage, 2f);
+            NPC.ai[1] = (float) Main.rand.Next(100 , 150);
         }
 
         private float Magnitude(Vector2 mag)
@@ -121,18 +124,18 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
 
         public override void FindFrame(int frameHeight)
         {
-            npc.frameCounter += 1;
-            npc.frameCounter %= 20;
-            int frame = (int)(npc.frameCounter / 2.0);
-            if (frame >= Main.npcFrameCount[npc.type]) frame = 0;
-            npc.frame.Y = frame * frameHeight;
+            NPC.frameCounter += 1;
+            NPC.frameCounter %= 20;
+            int frame = (int)(NPC.frameCounter / 2.0);
+            if (frame >= Main.npcFrameCount[Type]) frame = 0;
+            NPC.frame.Y = frame * frameHeight;
         }
 
-        public override void NPCLoot()
+        public override void OnKill()
         {
             if (Main.expertMode)
             {
-            npc.DropBossBags();
+            // Boss bags now drop via ModifyNPCLoot (1.4)
             }
             else
             {
@@ -142,33 +145,33 @@ namespace VinesMod.NPCs.Hostile.ShardMonster
                     switch (Main.rand.Next(5))
                 {
                     case 0:
-                    player.QuickSpawnItem(ItemID.StarCannon, 1);
+                    player.QuickSpawnItem(NPC.GetSource_Loot(), ItemID.StarCannon, 1);
                     break;
                     case 1:
-                    player.QuickSpawnItem(ItemID.LargeDiamond, 1);
+                    player.QuickSpawnItem(NPC.GetSource_Loot(), ItemID.LargeDiamond, 1);
                     break;
                     case 2:
-                    player.QuickSpawnItem(ItemID.LargeRuby, 1);
+                    player.QuickSpawnItem(NPC.GetSource_Loot(), ItemID.LargeRuby, 1);
                     break;
                     case 3:
-                    player.QuickSpawnItem(ItemID.LargeSapphire, 1);
+                    player.QuickSpawnItem(NPC.GetSource_Loot(), ItemID.LargeSapphire, 1);
                     break;
                     case 4:
-                    player.QuickSpawnItem(mod.ItemType("WhiteFishSword"), 1);
+                    player.QuickSpawnItem(NPC.GetSource_Loot(), ModContent.ItemType<global::VinesMod.Items.Weapons.Melee.WhiteFishSword>(), 1);
                     break;
                 }
                 }
             
-            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardWhite"), Main.rand.Next(5, 10));
-            Item.NewItem(npc.getRect(), ItemID.GoldBar, Main.rand.Next(5, 8));
-            Item.NewItem(npc.getRect(), ItemID.IronBar, Main.rand.Next(5, 10));
-            Item.NewItem(npc.getRect(), ItemID.SilverOre, Main.rand.Next(15, 20));
-            Item.NewItem(npc.getRect(), ItemID.ManaCrystal, Main.rand.Next(1, 2));
-            Item.NewItem(npc.getRect(), ItemID.LifeCrystal, Main.rand.Next(1, 2));
+            Item.NewItem(NPC.GetSource_Loot(), (int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardWhite>(), Main.rand.Next(5, 10));
+            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.GoldBar, Main.rand.Next(5, 8));
+            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.IronBar, Main.rand.Next(5, 10));
+            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.SilverOre, Main.rand.Next(15, 20));
+            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.ManaCrystal, Main.rand.Next(1, 2));
+            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.LifeCrystal, Main.rand.Next(1, 2));
 
-            Item.NewItem(npc.getRect(), ItemID.PlatinumOre, Main.rand.Next(30, 50));
-            Item.NewItem(npc.getRect(), ItemID.GoldOre, Main.rand.Next(30, 50));
-            Item.NewItem(npc.getRect(), ItemID.Diamond, Main.rand.Next(3, 5));
+            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.PlatinumOre, Main.rand.Next(30, 50));
+            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.GoldOre, Main.rand.Next(30, 50));
+            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.Diamond, Main.rand.Next(3, 5));
             
             }
 

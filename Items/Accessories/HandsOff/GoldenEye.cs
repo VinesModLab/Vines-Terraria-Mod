@@ -8,40 +8,36 @@ namespace VinesMod.Items.Accessories.HandsOff
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("GoldenEye");
-			Tooltip.SetDefault("increase 20% damage");
 		}
 
 		public override void SetDefaults()
 		{
-			item.width = 24;
-			item.height = 28;
-			item.value = 10000;
-			item.rare = ItemRarityID.LightRed;
-			item.value = Item.sellPrice(gold: 2); 
-			item.accessory = true;
+			Item.width = 24;
+			Item.height = 28;
+			Item.value = 10000;
+			Item.rare = ItemRarityID.LightRed;
+			Item.value = Item.sellPrice(gold: 2); 
+			Item.accessory = true;
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-				player.meleeDamage *= 1.2f;
-				player.thrownDamage *= 1.2f;
-				player.rangedDamage *= 1.2f;
-				player.magicDamage *= 1.2f;
-				player.minionDamage *= 1.2f;
+				player.GetDamage(DamageClass.Melee) *= 1.2f;
+				player.GetDamage(DamageClass.Ranged) *= 1.2f;
+				player.GetDamage(DamageClass.Magic) *= 1.2f;
+				player.GetDamage(DamageClass.Summon) *= 1.2f;
 				player.AddBuff(11, 10);
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod, "BlueEyeBall", 1);
-			recipe.AddIngredient(mod, "RedEyeBall", 1);
-			recipe.AddIngredient(mod, "Robot3000", 1);
-			recipe.AddIngredient(mod, "ShardYellow", 40);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Accessories.HandsOff.BlueEyeBall>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Accessories.HandsOff.RedEyeBall>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Accessories.HandsOff.Robot3000>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardYellow>(), 40)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 	}
 }

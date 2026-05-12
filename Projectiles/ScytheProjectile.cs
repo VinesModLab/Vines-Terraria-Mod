@@ -12,25 +12,24 @@ namespace VinesMod.Projectiles //We need this to basically indicate the folder w
 	{
 		public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("ScytheProjectile");
         }
 
 		public override void SetDefaults()
 		{
-			projectile.width = 16; 
-			projectile.height = 16;
-			projectile.timeLeft = 180;
-			projectile.penetrate = 8; 
-			projectile.friendly = true;
-			projectile.hostile = false;
-			projectile.tileCollide = true;
-			projectile.ignoreWater = true; 
-			projectile.ranged = true;
-			projectile.aiStyle = 18; //18 is demon scythe AI
+			Projectile.width = 16; 
+			Projectile.height = 16;
+			Projectile.timeLeft = 180;
+			Projectile.penetrate = 8; 
+			Projectile.friendly = true;
+			Projectile.hostile = false;
+			Projectile.tileCollide = true;
+			Projectile.ignoreWater = true; 
+			Projectile.DamageType = DamageClass.Ranged;
+			Projectile.aiStyle = 18; //18 is demon scythe AI
 		}
 		public override void AI()
 		{
-			projectile.type = 45; //This is the demon scythe projectile ID
+			Projectile.type = 45; //This is the demon scythe projectile ID
 		}
 	}
 }

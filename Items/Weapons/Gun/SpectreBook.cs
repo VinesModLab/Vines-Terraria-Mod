@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -9,44 +10,36 @@ namespace VinesMod.Items.Weapons.Gun
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Spectre Book");
-			Tooltip.SetDefault("call wisps out to attack. Need wisp as ammo.");
 		}
 
 		public override void SetDefaults()
 		{
-			item.damage = 80;
-			item.ranged = true;
-			item.width = 42;
-			item.height = 30;
-			item.useTime = 20;
-			item.useAnimation = 20;
-			item.useStyle = 5;
-			item.noMelee = true;
-			item.knockBack = 4f;
-			item.value = Item.sellPrice(0, 5, 0, 0);
-			item.rare = 6;
-			item.UseSound = mod.GetLegacySoundSlot(SoundType.Item, "Sounds/Item/Wooo");
-			item.autoReuse = true;
-			item.shoot = mod.ProjectileType("Wisp");
-			item.shootSpeed = 9f;
-			item.useAmmo = mod.ItemType("Wisp");
+			Item.damage = 80;
+			Item.DamageType = DamageClass.Ranged;
+			Item.width = 42;
+			Item.height = 30;
+			Item.useTime = 20;
+			Item.useAnimation = 20;
+			Item.useStyle = ItemUseStyleID.Shoot;
+			Item.noMelee = true;
+			Item.knockBack = 4f;
+			Item.value = Item.sellPrice(0, 5, 0, 0);
+			Item.rare = 6;
+			Item.UseSound = new SoundStyle("VinesMod/Sounds/Item/Wooo");
+			Item.autoReuse = true;
+			Item.shoot = ModContent.ProjectileType<global::VinesMod.Projectiles.Wisp>();
+			Item.shootSpeed = 9f;
+			Item.useAmmo = ModContent.ItemType<global::VinesMod.Items.Weapons.Ammo.Wisp>();
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.SpellTome, 1);
-			recipe.AddIngredient(ItemID.Ectoplasm, 8);
-			recipe.AddIngredient(mod, "ShardPurple", 30);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-		}
-
-		public override void GetWeaponDamage(Player player, ref int damage)
-		{
-			damage = (int)(damage * player.bulletDamage + 5E-06);
+			CreateRecipe()
+				.AddIngredient(ItemID.SpellTome, 1)
+				.AddIngredient(ItemID.Ectoplasm, 8)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardPurple>(), 30)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 
 		public override Vector2? HoldoutOffset()

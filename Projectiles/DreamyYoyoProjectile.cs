@@ -9,21 +9,20 @@ namespace VinesMod.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Projectile Dreamy");
         }
 
         public override void SetDefaults()
         {
-            projectile.width = 16;
-            projectile.height = 16;
-            projectile.aiStyle = 99;
-            projectile.friendly = true; 
-            projectile.penetrate = -1; 
-            projectile.melee = true; 
-            projectile.scale = 1f;
-            ProjectileID.Sets.YoyosLifeTimeMultiplier[projectile.type] = 3.5f;
-            ProjectileID.Sets.YoyosMaximumRange[projectile.type] = 300f;
-            ProjectileID.Sets.YoyosTopSpeed[projectile.type] = 13f;
+            Projectile.width = 16;
+            Projectile.height = 16;
+            Projectile.aiStyle = 99;
+            Projectile.friendly = true; 
+            Projectile.penetrate = -1; 
+            Projectile.DamageType = DamageClass.Melee; 
+            Projectile.scale = 1f;
+            ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = 3.5f;
+            ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 300f;
+            ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 13f;
         }
     }
 }

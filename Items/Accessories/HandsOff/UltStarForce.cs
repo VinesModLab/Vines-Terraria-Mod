@@ -8,57 +8,52 @@ namespace VinesMod.Items.Accessories.HandsOff
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Ultimate StarForce");
-			Tooltip.SetDefault("Increase damage by 300%" + "\n +50 liferegen" + "\n +300 mana" + "\n +4 minions" + "\nIncrease critical strike chance by 75%" + "\nThe power of stars.");
 		}
 
 		public override void SetDefaults()
 		{
-			item.width = 24;
-			item.height = 28;
-			item.value = 300000;
-			item.rare = 13;
-			item.accessory = true;
-			item.lifeRegen = 50;
+			Item.width = 24;
+			Item.height = 28;
+			Item.value = 300000;
+			Item.rare = 13;
+			Item.accessory = true;
+			Item.lifeRegen = 50;
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-				player.meleeSpeed *= 1.5f;
-				player.meleeDamage *= 3f;
-				player.thrownDamage *= 3f;
-				player.rangedDamage *= 3f;
-				player.magicDamage *= 3f;
-				player.minionDamage *= 3f;
+				player.GetAttackSpeed(DamageClass.Melee) *= 1.5f;
+				player.GetDamage(DamageClass.Melee) *= 3f;
+				player.GetDamage(DamageClass.Ranged) *= 3f;
+				player.GetDamage(DamageClass.Magic) *= 3f;
+				player.GetDamage(DamageClass.Summon) *= 3f;
 				player.statManaMax2 += 300;
 				player.moveSpeed += 0.3f;
 				player.maxMinions += 4;
-				player.rangedCrit += 25;
-				player.meleeCrit += 25;
-				player.magicCrit += 25;
-				player.thrownCrit += 25;
+				player.GetCritChance(DamageClass.Ranged) += 25;
+				player.GetCritChance(DamageClass.Melee) += 25;
+				player.GetCritChance(DamageClass.Magic) += 25;
 				player.AddBuff(11, 10);
 		}
 
 		public override void UpdateEquip(Player player)
 		{
-			player.AddBuff(mod.BuffType("FloatingSword"), 2);
+			player.AddBuff(ModContent.BuffType<global::VinesMod.Buffs.FloatingSword>(), 2);
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod, "TriForce", 1);
-			recipe.AddIngredient(mod, "TreeOfSavior", 1);
-			recipe.AddIngredient(mod, "OverDriveBlue", 1);
-			recipe.AddIngredient(mod, "OverDriveYellow", 1);
-			recipe.AddIngredient(mod, "OverDrivePurple", 1);
-			recipe.AddIngredient(mod, "OverDriveGreen", 1);
-			recipe.AddIngredient(mod, "OverDriveRed", 1);
-			recipe.AddIngredient(mod, "OverDriveWhite", 1);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Accessories.HandsOff.TriForce>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Accessories.HandsOff.TreeOfSavior>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.OverDrive.OverDriveBlue>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.OverDrive.OverDriveYellow>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.OverDrive.OverDrivePurple>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.OverDrive.OverDriveGreen>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.OverDrive.OverDriveRed>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.OverDrive.OverDriveWhite>(), 1)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 	}
 }

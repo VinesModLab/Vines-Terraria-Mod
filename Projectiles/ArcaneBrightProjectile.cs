@@ -9,19 +9,18 @@ namespace VinesMod.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("ArcaneBright");
 		}
 
         public override void SetDefaults()
         {
-            projectile.CloneDefaults(ProjectileID.TerraBeam);
-            aiType = ProjectileID.TerraBeam;
-			//projectile.tileCollide = false;
-            projectile.scale = 1.5f;
-			projectile.light = 0.7f; 
+            Projectile.CloneDefaults(ProjectileID.TerraBeam);
+			AIType = ProjectileID.TerraBeam;
+			//Projectile.tileCollide = false;
+            Projectile.scale = 1.5f;
+			Projectile.light = 0.7f; 
         }
 
-            public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+            public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
 			target.AddBuff(BuffID.Bleeding, 15 * 60);
 			target.AddBuff(BuffID.Frozen, 15 * 60);

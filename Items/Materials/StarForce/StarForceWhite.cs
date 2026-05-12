@@ -7,28 +7,25 @@ namespace VinesMod.Items.Materials.StarForce
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("White Star");
-			Tooltip.SetDefault("Stored the shard power.");
 		}
 
 		public override void SetDefaults()
 		{
-			item.width = 20;
-			item.height = 20;
-			item.maxStack = 999;
-			item.value = 10000;
-			item.rare = 7;
+			Item.width = 20;
+			Item.height = 20;
+			Item.maxStack = 999;
+			Item.value = 10000;
+			Item.rare = 7;
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod, "ShardWhite", 250);
-            recipe.AddIngredient(ItemID.LargeDiamond, 1);
-			recipe.AddIngredient(ItemID.FallenStar, 10);
-            recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardWhite>(), 250)
+				.AddIngredient(ItemID.LargeDiamond, 1)
+				.AddIngredient(ItemID.FallenStar, 10)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 	}
 }

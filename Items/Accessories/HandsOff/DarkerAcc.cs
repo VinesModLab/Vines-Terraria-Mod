@@ -8,42 +8,37 @@ namespace VinesMod.Items.Accessories.HandsOff
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Darker Matter");
-			Tooltip.SetDefault("+ 15% crit"+"\nDeal x2 Damage"+"\n...");
 		}
 
 		public override void SetDefaults()
 		{
-			item.width = 24;
-			item.height = 28;
-			item.value = 300000;
-			item.rare = ItemRarityID.Red;
-			item.accessory = true;
+			Item.width = 24;
+			Item.height = 28;
+			Item.value = 300000;
+			Item.rare = ItemRarityID.Red;
+			Item.accessory = true;
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-				player.meleeSpeed *= 1.2f;
-				player.meleeDamage *= 2f;
-				player.thrownDamage *= 2f;
-				player.rangedDamage *= 2f;
-				player.magicDamage *= 2f;
-				player.minionDamage *= 2f;
+				player.GetAttackSpeed(DamageClass.Melee) *= 1.2f;
+				player.GetDamage(DamageClass.Melee) *= 2f;
+				player.GetDamage(DamageClass.Ranged) *= 2f;
+				player.GetDamage(DamageClass.Magic) *= 2f;
+				player.GetDamage(DamageClass.Summon) *= 2f;
 				player.moveSpeed += 0.3f;
-				player.rangedCrit += 5;
-				player.meleeCrit += 5;
-				player.magicCrit += 5;
-				player.thrownCrit += 5;
+				player.GetCritChance(DamageClass.Ranged) += 5;
+				player.GetCritChance(DamageClass.Melee) += 5;
+				player.GetCritChance(DamageClass.Magic) += 5;
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod, "LightMatter", 1);
-			recipe.AddIngredient(mod, "DarkMatter", 1);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.EndTier.LightMatter>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.EndTier.DarkMatter>(), 1)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 	}
 }

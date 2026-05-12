@@ -9,16 +9,15 @@ namespace VinesMod.Items.Armor.NullSet
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Null (Legging)");
 		}
 
 		public override void SetDefaults()
 		{
-			item.width = 18;
-			item.height = 18;
-			item.value = 10000;
-			item.rare = -12;
-			item.defense = 10000;
+			Item.width = 18;
+			Item.height = 18;
+			Item.value = 10000;
+			Item.rare = -12;
+			Item.defense = 10000;
 		}
 
 		public override void UpdateEquip(Player player)
@@ -27,11 +26,10 @@ namespace VinesMod.Items.Armor.NullSet
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod, "NullStar", 1);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Accessories.HandsOff.NullStar>(), 1)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 	}
 }

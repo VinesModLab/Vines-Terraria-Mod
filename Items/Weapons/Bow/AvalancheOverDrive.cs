@@ -15,45 +15,43 @@ namespace VinesMod.Items.Weapons.Bow
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Avalanche OverDrive");
-            Tooltip.SetDefault("66% not consume ammo." + "\n Anger of Snow");
         }
 
         public override void SetDefaults()
         {
-            item.width = 16;
-            item.height = 24;
-            item.useTime = 10;
-            item.useAnimation = 10;
-            item.damage = 500;
-            item.useStyle = 5; 
-            item.noMelee = true; 
-            item.value = Item.buyPrice(0, 30, 0, 0);
-            item.rare = 11;
-            item.UseSound = SoundID.Item5; 
-            item.useAmmo = AmmoID.Snowball;
-            item.shoot = ProjectileID.SnowBallFriendly;
-            item.shootSpeed = 45f;
-            item.ranged = true;
-            item.autoReuse = true;
+            Item.width = 16;
+            Item.height = 24;
+            Item.useTime = 10;
+            Item.useAnimation = 10;
+            Item.damage = 500;
+            Item.useStyle = ItemUseStyleID.Shoot; 
+            Item.noMelee = true; 
+            Item.value = Item.buyPrice(0, 30, 0, 0);
+            Item.rare = 11;
+            Item.UseSound = SoundID.Item5; 
+            Item.useAmmo = AmmoID.Snowball;
+            Item.shoot = ProjectileID.SnowBallFriendly;
+            Item.shootSpeed = 45f;
+            Item.DamageType = DamageClass.Ranged;
+            Item.autoReuse = true;
         }
         
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockBack)
 		{
 			int numberProjectiles = 6 + Main.rand.Next(4); 
 			for (int i = 0; i < numberProjectiles; i++)
 			{
-				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(15));
+				Vector2 perturbedSpeed = velocity.RotatedByRandom(MathHelper.ToRadians(15));
 				//randomize the speed to stagger the projectiles
 				float scale = 1f - (Main.rand.NextFloat() * .3f);
 				perturbedSpeed = perturbedSpeed * scale; 
 
-				Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+				Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
 			}
 			return false;
 		}
 
-        public override bool ConsumeAmmo(Player player)
+        public override bool CanConsumeAmmo(Item ammo, Player player)
 		{
 			return Main.rand.NextFloat() >= .66f;
 		}
@@ -61,13 +59,12 @@ namespace VinesMod.Items.Weapons.Bow
 		
         public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod, "AvalancheEx", 1);
-            recipe.AddIngredient(mod, "OverDriveWhite", 1);
-			recipe.AddIngredient(ItemID.LargeDiamond, 5);
-            recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Weapons.Bow.AvalancheEx>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.OverDrive.OverDriveWhite>(), 1)
+				.AddIngredient(ItemID.LargeDiamond, 5)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 
     }

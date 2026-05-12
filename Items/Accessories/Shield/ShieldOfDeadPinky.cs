@@ -9,19 +9,17 @@ namespace VinesMod.Items.Accessories.Shield
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shield Of Dead Pinky");
-			Tooltip.SetDefault("+5 healthregen" + "\n more defense when above 70% health");
 		}
 
 		public override void SetDefaults()
 		{
-			item.width = 24;
-			item.height = 28;
-			item.value = 10000;
-			item.rare = 4;
-			item.accessory = true;
-			item.defense = 12;
-			item.lifeRegen = 5;
+			Item.width = 24;
+			Item.height = 28;
+			Item.value = 10000;
+			Item.rare = 4;
+			Item.accessory = true;
+			Item.defense = 12;
+			Item.lifeRegen = 5;
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
@@ -35,14 +33,13 @@ namespace VinesMod.Items.Accessories.Shield
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddRecipeGroup("IronBar", 10);
-			recipe.AddIngredient(ItemID.PinkGel, 5);
-			recipe.AddIngredient(mod, "ShardRed", 40);
-			recipe.AddRecipeGroup("Wood", 15);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddRecipeGroup("IronBar", 10)
+				.AddIngredient(ItemID.PinkGel, 5)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardRed>(), 40)
+				.AddRecipeGroup("Wood", 15)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 	}
 }

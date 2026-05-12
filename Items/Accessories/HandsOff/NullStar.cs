@@ -8,19 +8,17 @@ namespace VinesMod.Items.Accessories.HandsOff
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Power of Null");
-			Tooltip.SetDefault("It is not used to hurt people.");
 		}
 
 		public override void SetDefaults()
 		{
-			item.width = 24;
-			item.height = 28;
-			item.value = 10000;
-			item.rare = 13;
-			item.accessory = true;
-			item.lifeRegen = 1000;
-			item.defense = 10000;
+			Item.width = 24;
+			Item.height = 28;
+			Item.value = 10000;
+			Item.rare = 13;
+			Item.accessory = true;
+			Item.lifeRegen = 1000;
+			Item.defense = 10000;
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
@@ -50,11 +48,10 @@ namespace VinesMod.Items.Accessories.HandsOff
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod, "WeaponNull", 5);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Weapons.Melee.WeaponNull>(), 5)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 	}
 }

@@ -9,38 +9,36 @@ namespace VinesMod.Items.Weapons.Melee
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("StarFall");
 		}
 
 		public override void SetDefaults()
 		{
-			item.CloneDefaults(ItemID.Starfury);
-			item.shootSpeed *= 1.1f;
-			item.damage = 89;
-			item.value = Item.sellPrice(gold: 3);
-			item.rare = 6;
-			item.autoReuse = true;
-			item.scale = 1.7f;
+			Item.CloneDefaults(ItemID.Starfury);
+			Item.shootSpeed *= 1.1f;
+			Item.damage = 89;
+			Item.value = Item.sellPrice(gold: 3);
+			Item.rare = 6;
+			Item.autoReuse = true;
+			Item.scale = 1.7f;
 		}
 
-		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+		public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockBack)
 		{
-			type = mod.ProjectileType("StarFallProjectile");
-			return base.Shoot(player, ref position, ref speedX, ref speedY, ref type, ref damage, ref knockBack);
+			type = ModContent.ProjectileType<global::VinesMod.Projectiles.StarFallProjectile>();
+			Projectile.NewProjectile(source, position, velocity, type, damage, knockBack, player.whoAmI);
+			return false;
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			
-			recipe.AddIngredient(ItemID.Starfury);
-			recipe.AddRecipeGroup("IronBar", 10);
-			recipe.AddIngredient(ItemID.GoldBar, 5);
-			recipe.AddIngredient(ItemID.FallenStar, 7);
-			recipe.AddIngredient(mod, "ShardYellow", 30);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.Starfury)
+				.AddRecipeGroup("IronBar", 10)
+				.AddIngredient(ItemID.GoldBar, 5)
+				.AddIngredient(ItemID.FallenStar, 7)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardYellow>(), 30)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 	}
 	

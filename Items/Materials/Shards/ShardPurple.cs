@@ -7,17 +7,24 @@ namespace VinesMod.Items.Materials.Shards
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Purple Shard");
-			Tooltip.SetDefault("Good-looking crystal shard.");
 		}
 
 		public override void SetDefaults()
 		{
-			item.width = 20;
-			item.height = 20;
-			item.maxStack = 999;
-			item.value = 100;
-			item.rare = 1;
+			Item.width = 20;
+			Item.height = 20;
+			Item.maxStack = 999;
+			Item.value = 100;
+			Item.rare = 1;
+		}
+
+		public override void AddRecipes()
+		{
+			CreateRecipe(5)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardWhite>(), 5)
+				.AddIngredient(ItemID.Amethyst)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 	}
 }

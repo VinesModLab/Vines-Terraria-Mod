@@ -9,46 +9,45 @@ namespace VinesMod.Items.Weapons.Melee
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Reboot");
 		}
 
 		public override void SetDefaults()
 		{
-			item.damage = 47;      
-			item.melee = true; 
-			item.width = 40; 
-			item.height = 20;           
-			item.useTime = 35;         
-			item.useAnimation = 20; 
-			item.useStyle = 1;
-			item.knockBack = 5;
-			item.value = Item.sellPrice(gold: 3);
-			item.rare = 4;
-			item.scale = 1.5f;
-			item.UseSound = SoundID.Item1;
-			item.autoReuse = true;
-			item.shoot = ProjectileID.TerrarianBeam;
-			item.shootSpeed = 10f;
+			Item.damage = 47;      
+			Item.DamageType = DamageClass.Melee; 
+			Item.width = 40; 
+			Item.height = 20;           
+			Item.useTime = 35;         
+			Item.useAnimation = 20; 
+			Item.useStyle = ItemUseStyleID.Swing;
+			Item.knockBack = 5;
+			Item.value = Item.sellPrice(gold: 3);
+			Item.rare = 4;
+			Item.scale = 1.5f;
+			Item.UseSound = SoundID.Item1;
+			Item.autoReuse = true;
+			Item.shoot = ProjectileID.TerrarianBeam;
+			Item.shootSpeed = 10f;
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.FallenStar, 5);
-			recipe.AddIngredient(ItemID.GoldBar, 15);
-			recipe.AddIngredient(mod, "ShardGreen", 15);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.FallenStar, 5)
+				.AddIngredient(ItemID.GoldBar, 15)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardGreen>(), 15)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 
-		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+		public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockBack)
 		{
 			type = ProjectileID.TerrarianBeam;
-			return base.Shoot(player, ref position, ref speedX, ref speedY, ref type, ref damage, ref knockBack);
+			Projectile.NewProjectile(source, position, velocity, type, damage, knockBack, player.whoAmI);
+			return false;
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
         }
 
@@ -56,7 +55,7 @@ namespace VinesMod.Items.Weapons.Melee
 		{
 			if (Main.rand.Next(15) == 0)
 			{
-				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, mod.DustType("SparkleGreen"));
+				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<global::VinesMod.Dusts.SparkleGreen>());
 			}
 		}
 	}

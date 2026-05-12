@@ -9,39 +9,36 @@ namespace VinesMod.Items.Weapons.Melee
 	{
 		public override void SetStaticDefaults()
 		{
-            DisplayName.SetDefault("Death Storm OverDrive");
-			Tooltip.SetDefault("unslash the true power of Death Storm.");
 		}
 
 		public override void SetDefaults()
 		{
-            item.CloneDefaults(ItemID.DeathSickle);
-			item.damage = 500;
-			item.value = Item.buyPrice(gold: 10); 
-			item.rare = 11;
-            item.shoot = ModContent.ProjectileType<Projectiles.ODDeathStormProjectile>();
-            item.shootSpeed *= 1.5f;
-			item.autoReuse = true;          //Whether the weapon can use automatically by pressing mousebutton
+            Item.CloneDefaults(ItemID.DeathSickle);
+			Item.damage = 500;
+			Item.value = Item.buyPrice(gold: 10); 
+			Item.rare = 11;
+            Item.shoot = ModContent.ProjectileType<global::VinesMod.Projectiles.ODDeathStormProjectile>();
+            Item.shootSpeed *= 1.5f;
+			Item.autoReuse = true;          //Whether the weapon can use automatically by pressing mousebutton
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod, "DeathStorm", 1);
-			recipe.AddIngredient(mod, "OverDriveBlue", 1);
-			recipe.AddIngredient(ItemID.LargeSapphire, 5);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Weapons.Melee.DeathStorm>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.OverDrive.OverDriveBlue>(), 1)
+				.AddIngredient(ItemID.LargeSapphire, 5)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockBack)
 		{
 			int numberProjectiles = 1 + Main.rand.Next(2); 
 			for (int i = 0; i < numberProjectiles; i++)
 			{
-				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(50));
-				Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X * Main.rand.Next(1,3), perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+				Vector2 perturbedSpeed = velocity.RotatedByRandom(MathHelper.ToRadians(50));
+				Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X * Main.rand.Next(1,3), perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
 			}
 			return false;
 		}
@@ -50,11 +47,11 @@ namespace VinesMod.Items.Weapons.Melee
 		{
 			if (Main.rand.Next(3) == 0)
 			{
-				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, mod.DustType("Sparkle"));
+				Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<global::VinesMod.Dusts.Sparkle>());
 			}
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			target.AddBuff(BuffID.ShadowFlame, 15* 60);
 		}

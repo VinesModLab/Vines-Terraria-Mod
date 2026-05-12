@@ -8,17 +8,15 @@ namespace VinesMod.Items.Accessories.HandsOff
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("MaliHeart");
-			Tooltip.SetDefault("immune to various effect" + "\n +20 Life and Mana");
 		}
 
 		public override void SetDefaults()
 		{
-			item.width = 24;
-			item.height = 28;
-			item.value = 10000;
-			item.rare = 4;
-			item.accessory = true;
+			Item.width = 24;
+			Item.height = 28;
+			Item.value = 10000;
+			Item.rare = 4;
+			Item.accessory = true;
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
@@ -33,16 +31,15 @@ namespace VinesMod.Items.Accessories.HandsOff
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod, "ShardBlue", 40);
-			recipe.AddIngredient(mod, "ShardRed", 40);
-			recipe.AddIngredient(ItemID.LifeCrystal, 2);
-			recipe.AddIngredient(ItemID.ManaCrystal, 2);
-			recipe.AddIngredient(mod, "IcySteel", 1);
-			recipe.AddIngredient(mod, "BloodStone", 1);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardBlue>(), 40)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardRed>(), 40)
+				.AddIngredient(ItemID.LifeCrystal, 2)
+				.AddIngredient(ItemID.ManaCrystal, 2)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Accessories.HandsOff.IcySteel>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Accessories.HandsOff.BloodStone>(), 1)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 	}
 }

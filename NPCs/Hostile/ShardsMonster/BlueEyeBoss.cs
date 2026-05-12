@@ -35,39 +35,41 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Blue Eye");
-            Main.npcFrameCount[npc.type] = 3;
+            Main.npcFrameCount[Type] = 3;
         }
 
         public override void SetDefaults()
         {
-            npc.CloneDefaults(NPCID.EyeofCthulhu);
-            npc.aiStyle = -1; // Will not have any AI from any existing AI styles. 
-            npc.lifeMax = 3500; 
-            npc.damage = 5; 
-            npc.defense = 5; 
-            //npc.width = 120;
-            //npc.height = 120;
-            npc.scale = 1.2f;
-            npc.value = 10000;
-            npc.npcSlots = 1f; // The higher the number, the more NPC slots this NPC takes.
-            npc.boss = true; // Is a boss
-            npc.lavaImmune = true;
-            npc.noGravity = true; 
-            npc.noTileCollide = true;
-            npc.HitSound = SoundID.NPCHit1;
-            npc.DeathSound = SoundID.NPCDeath1;
-            npc.knockBackResist = 0.2f;
-            music = MusicID.Boss1;
-            bossBag = mod.ItemType("BlueEyeBossBag"); // Needed for the NPC to drop loot bag.
-            aiType = 2; // Different Movement at Night
+            NPC.CloneDefaults(NPCID.EyeofCthulhu);
+            NPC.aiStyle = -1; // Will not have any AI from any existing AI styles. 
+            NPC.lifeMax = 3500; 
+            NPC.damage = 5; 
+            NPC.defense = 5; 
+            //NPC.width = 120;
+            //NPC.height = 120;
+            NPC.scale = 1.2f;
+            NPC.value = 10000;
+            NPC.npcSlots = 1f; // The higher the number, the more NPC slots this NPC takes.
+            NPC.boss = true; // Is a boss
+            NPC.lavaImmune = true;
+            NPC.noGravity = true; 
+            NPC.noTileCollide = true;
+            NPC.HitSound = SoundID.NPCHit1;
+            NPC.DeathSound = SoundID.NPCDeath1;
+            NPC.knockBackResist = 0.2f;
+            if (!Main.dedServ)
+            {
+                Music = MusicID.Boss1;
+            }
+ // Needed for the NPC to drop loot bag.
+            NPC.aiStyle = 2; // aiType renamed to NPC.aiStyle // Different Movement at Night
         }
 
-        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)
         {
-            npc.lifeMax = (int)(npc.lifeMax * 0.625f * bossLifeScale);
-            npc.damage = (int)(npc.damage * 0.6f);
-            npc.defense = (int)(npc.defense + numPlayers);
+            NPC.lifeMax = (int)(NPC.lifeMax * 0.625f * balance);
+            NPC.damage = (int)(NPC.damage * 0.6f);
+            NPC.defense = (int)(NPC.defense + numPlayers);
         }
         
         public override void AI() //Daytime movement
@@ -77,8 +79,8 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
 
             Move(new Vector2(Main.rand.Next(-200, 200), -Main.rand.Next(100, 250))); // Calls the Move Method
             //Attacking
-            npc.ai[1] -= 1f; // Subtracts 1 from the ai.
-            if(npc.ai[1] <= 0f)
+            NPC.ai[1] -= 1f; // Subtracts 1 from the ai.
+            if(NPC.ai[1] <= 0f)
             {
                 Shoot();
             }
@@ -86,41 +88,41 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
 
         private void Target()
         {
-            player = Main.player[npc.target]; // This will get the player target.
+            player = Main.player[NPC.target]; // This will get the player target.
         }
 
         private void Move(Vector2 offset)
         {
-            speed = 15f; // Sets the max speed of the npc.
+            speed = 15f; // Sets the max speed of the NPC.
             Vector2 moveTo = player.Center + offset; // Gets the point that the npc will be moving to.
-            Vector2 move = moveTo - npc.Center;
+            Vector2 move = moveTo - NPC.Center;
             float magnitude = Magnitude(move);
             if(magnitude > speed)
             {
                 move *= speed / magnitude; 
             }
             float turnResistance = 25f; // The larget the number the slower the npc will turn.
-            move = (npc.velocity * turnResistance + move) / (turnResistance + 1f);
+            move = (NPC.velocity * turnResistance + move) / (turnResistance + 1f);
             magnitude = Magnitude(move);
             if(magnitude > speed)
             {
                 move *= speed / magnitude;
             }
-            npc.velocity = move;
+            NPC.velocity = move;
         }
 
         private void DespawnHandler()// Handles if the NPC should despawn.
         {
             if(!player.active || player.dead)
             {
-                npc.TargetClosest(false);
-                player = Main.player[npc.target];
+                NPC.TargetClosest(false);
+                player = Main.player[NPC.target];
                 if(!player.active || player.dead)
                 {
-                    npc.velocity = new Vector2(0f, -10f);
-                    if(npc.timeLeft > 10)
+                    NPC.velocity = new Vector2(0f, -10f);
+                    if(NPC.timeLeft > 10)
                     {
-                        npc.timeLeft = 10;
+                        NPC.timeLeft = 10;
                     }
                     return;
                 }
@@ -129,8 +131,8 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
 
         private void Shoot()
         {
-            int type = mod.ProjectileType("BlueEyeBossProjectile");
-            Vector2 velocity = player.Center - npc.Center; // Get the distance between target and npc.
+            int type = ModContent.ProjectileType<global::VinesMod.Projectiles.Enemy.BlueEyeBossProjectile>();
+            Vector2 velocity = player.Center - NPC.Center; // Get the distance between target and NPC.
             float magnitude = Magnitude(velocity);
             if(magnitude > 0) {
                 velocity *= 5f / magnitude;
@@ -138,8 +140,8 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             {
                 velocity = new Vector2(0f, 5f);
             }
-            Projectile.NewProjectile(npc.Center, velocity, type, npc.damage, 2f);
-            npc.ai[1] = (float) Main.rand.Next(75 , 100);
+            Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity, type, NPC.damage, 2f);
+            NPC.ai[1] = (float) Main.rand.Next(75 , 100);
         }
 
         private float Magnitude(Vector2 mag)
@@ -149,11 +151,11 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
 
         public override void FindFrame(int frameHeight)
         {
-            npc.frameCounter += 1;
-            npc.frameCounter %= 20;
-            int frame = (int)(npc.frameCounter / 2.0);
-            if (frame >= Main.npcFrameCount[npc.type]) frame = 0;
-            npc.frame.Y = frame * frameHeight;
+            NPC.frameCounter += 1;
+            NPC.frameCounter %= 20;
+            int frame = (int)(NPC.frameCounter / 2.0);
+            if (frame >= Main.npcFrameCount[Type]) frame = 0;
+            NPC.frame.Y = frame * frameHeight;
 
             RotateNPCToTarget();
         }
@@ -161,49 +163,49 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
         private void RotateNPCToTarget()
         {
             if (player == null) return;
-            Vector2 direction = npc.Center - player.Center;
+            Vector2 direction = NPC.Center - player.Center;
             float rotation = (float)Math.Atan2(direction.Y, direction.X);
-            npc.rotation = rotation + ((float)Math.PI * 0.5f);
+            NPC.rotation = rotation + ((float)Math.PI * 0.5f);
         }
 
-        public override void NPCLoot()
+        public override void OnKill()
         {
             if (Main.expertMode)
             {
-            npc.DropBossBags();
+            // Boss bags now drop via ModifyNPCLoot (1.4)
             }
             else{
                     if (Main.rand.Next(2) == 0)
                     {
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BlueEyeBall"), 1);
+                        Item.NewItem(NPC.GetSource_Loot(), (int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ModContent.ItemType<global::VinesMod.Items.Accessories.HandsOff.BlueEyeBall>(), 1);
                     }
 
                     if (Main.rand.Next(5) == 0)
                     {
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CodeO"), 1);
+                        Item.NewItem(NPC.GetSource_Loot(), (int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ModContent.ItemType<global::VinesMod.Items.Weapons.Melee.CodeO>(), 1);
                     }
 
                     if (Main.rand.Next(10) == 0)
                 {
-                Item.NewItem(npc.getRect(), ItemID.BlackLens, 1);
+                Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.BlackLens, 1);
                 }
 
                     if (Main.rand.Next(30) == 0)
                 {
-                Item.NewItem(npc.getRect(), ItemID.Binoculars, 1);
+                Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.Binoculars, 1);
                 }
 
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardBlue"), Main.rand.Next(5, 10));
-                Item.NewItem(npc.getRect(), ItemID.Lens, Main.rand.Next(3, 5));
-                Item.NewItem(npc.getRect(), ItemID.GoldBar, Main.rand.Next(3, 5));
-                Item.NewItem(npc.getRect(), ItemID.SilverOre, Main.rand.Next(10, 20));
-                Item.NewItem(npc.getRect(), ItemID.IronBar, Main.rand.Next(3, 7));
-                Item.NewItem(npc.getRect(), ItemID.ManaCrystal, Main.rand.Next(1, 2));
-                Item.NewItem(npc.getRect(), ItemID.CrimsonSeeds, Main.rand.Next(1, 2));
-                Item.NewItem(npc.getRect(), ItemID.CorruptSeeds, Main.rand.Next(1, 2));
-                Item.NewItem(npc.getRect(), ItemID.DemoniteOre, Main.rand.Next(20, 40));
-                Item.NewItem(npc.getRect(), ItemID.CrimtaneOre, Main.rand.Next(20, 40));
-                Item.NewItem(npc.getRect(), ItemID.Sapphire, Main.rand.Next(1, 2));   
+                Item.NewItem(NPC.GetSource_Loot(), (int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardBlue>(), Main.rand.Next(5, 10));
+                Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.Lens, Main.rand.Next(3, 5));
+                Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.GoldBar, Main.rand.Next(3, 5));
+                Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.SilverOre, Main.rand.Next(10, 20));
+                Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.IronBar, Main.rand.Next(3, 7));
+                Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.ManaCrystal, Main.rand.Next(1, 2));
+                Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.CrimsonSeeds, Main.rand.Next(1, 2));
+                Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.CorruptSeeds, Main.rand.Next(1, 2));
+                Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.DemoniteOre, Main.rand.Next(20, 40));
+                Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.CrimtaneOre, Main.rand.Next(20, 40));
+                Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.Sapphire, Main.rand.Next(1, 2));   
             }
 
             // For settings if the boss has been downed

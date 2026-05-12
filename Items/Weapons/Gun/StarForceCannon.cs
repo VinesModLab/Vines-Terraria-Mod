@@ -9,53 +9,50 @@ namespace VinesMod.Items.Weapons.Gun
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("StarForce Cannon");
-			Tooltip.SetDefault("Shooting Stars. 33% not consume ammo");
 		}
 
 		public override void SetDefaults()
 		{
-			item.CloneDefaults(ItemID.StarCannon);
-			item.damage = 116;
-			item.ranged = true;
-			item.width = 40;
-			item.height = 20;
-			item.useTime = 20;
-			item.useAnimation = 20;
-			item.useStyle = 5;
-			item.noMelee = true; //so the item's animation doesn't do damage
-			item.knockBack = 8f;
-			item.value = Item.buyPrice(silver: 30);
-			item.rare = 9;
-			item.autoReuse = true;
-			item.shootSpeed *= 1.3f;
+			Item.CloneDefaults(ItemID.StarCannon);
+			Item.damage = 116;
+			Item.DamageType = DamageClass.Ranged;
+			Item.width = 40;
+			Item.height = 20;
+			Item.useTime = 20;
+			Item.useAnimation = 20;
+			Item.useStyle = ItemUseStyleID.Shoot;
+			Item.noMelee = true; //so the item's animation doesn't do damage
+			Item.knockBack = 8f;
+			Item.value = Item.buyPrice(silver: 30);
+			Item.rare = 9;
+			Item.autoReuse = true;
+			Item.shootSpeed *= 1.3f;
 		}
 
-		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+		public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockBack)
 		{
 			int numberProjectiles = 1 + Main.rand.Next(5); 
 			for (int i = 0; i < numberProjectiles; i++)
 			{
-				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(30)); // 30 degree spread.
-				Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+				Vector2 perturbedSpeed = velocity.RotatedByRandom(MathHelper.ToRadians(30)); // 30 degree spread.
+				Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
 			}
 			return false;
 		}
 
-		public override bool ConsumeAmmo(Player player)
+		public override bool CanConsumeAmmo(Item ammo, Player player)
 		{
 			return Main.rand.NextFloat() >= .33f;
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.StarCannon, 1);
-			recipe.AddIngredient(mod, "StarForceWhite", 1);
-			recipe.AddIngredient(ItemID.IllegalGunParts, 5);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.StarCannon, 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.StarForce.StarForceWhite>(), 1)
+				.AddIngredient(ItemID.IllegalGunParts, 5)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 	}
 }

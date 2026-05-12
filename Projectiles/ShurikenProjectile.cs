@@ -12,36 +12,35 @@ namespace VinesMod.Projectiles
 	{
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("ShurikenProjectile");
         }
 
 		public override void SetDefaults()
 		{
-			projectile.width = 36;
-			projectile.height = 36;
-			projectile.timeLeft = 60;
-			projectile.penetrate = 3;
-			projectile.friendly = true;
-			projectile.hostile = false;
-			projectile.tileCollide = true;
-			projectile.ignoreWater = true;
-			projectile.ranged = true;
-			projectile.aiStyle = 0;
+			Projectile.width = 36;
+			Projectile.height = 36;
+			Projectile.timeLeft = 60;
+			Projectile.penetrate = 3;
+			Projectile.friendly = true;
+			Projectile.hostile = false;
+			Projectile.tileCollide = true;
+			Projectile.ignoreWater = true;
+			Projectile.DamageType = DamageClass.Ranged;
+			Projectile.aiStyle = 0;
 		}
 		
 		public override void AI()
         {
-            Player owner = Main.player[projectile.owner]; //Makes a player variable of owner set as the player using the projectile
-            projectile.light = 0.9f;
-            projectile.alpha = 75;
-            projectile.rotation += (float)projectile.direction * 0.8f; //Spins in a good speed
-            int DustID = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width + 4, projectile.height + 4, 36, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 120, default(Color), 0.75f);
+            Player owner = Main.player[Projectile.owner]; //Makes a player variable of owner set as the player using the projectile
+            Projectile.light = 0.9f;
+            Projectile.alpha = 75;
+            Projectile.rotation += (float)Projectile.direction * 0.8f; //Spins in a good speed
+            int DustID = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y + 2f), Projectile.width + 4, Projectile.height + 4, 36, Projectile.velocity.X * 0.2f, Projectile.velocity.Y * 0.2f, 120, default(Color), 0.75f);
             Main.dust[DustID].noGravity = true;
         }
 		
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            Player owner = Main.player[projectile.owner];
+            Player owner = Main.player[Projectile.owner];
             int rand = Main.rand.Next(2);
             if(rand == 0)
             {
@@ -56,13 +55,13 @@ namespace VinesMod.Projectiles
 		
         public override bool OnTileCollide(Vector2 velocityChange)  
         {
-            if (projectile.velocity.X != velocityChange.X)
+            if (Projectile.velocity.X != velocityChange.X)
             {
-                projectile.velocity.X = -velocityChange.X/2; //Goes in the opposite direction with half of its x velocity
+                Projectile.velocity.X = -velocityChange.X/2; //Goes in the opposite direction with half of its x velocity
             }
-            if (projectile.velocity.Y != velocityChange.Y)
+            if (Projectile.velocity.Y != velocityChange.Y)
             {
-                projectile.velocity.Y = -velocityChange.Y/2; //Goes in the opposite direction with half of its y velocity
+                Projectile.velocity.Y = -velocityChange.Y/2; //Goes in the opposite direction with half of its y velocity
             }
             return false;
         }

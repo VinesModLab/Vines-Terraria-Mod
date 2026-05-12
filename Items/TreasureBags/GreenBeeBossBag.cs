@@ -14,84 +14,80 @@ namespace VinesMod.Items.TreasureBags
         
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Treasure Bag");
-            Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
         }
 
         public override void SetDefaults()
         {
-            item.maxStack = 999;
-            item.consumable = true;
-            item.width = 24;
-            item.height = 24;
-            item.rare = ItemRarityID.Cyan;
-            item.expert = false;
-            //bossBagNPC = mod.NPCType("GreenBeeBoss"); // The NPC this bag drops from
+            Item.maxStack = 999;
+            Item.consumable = true;
+            Item.width = 24;
+            Item.height = 24;
+            Item.rare = ItemRarityID.Cyan;
+            
         }
 
-        public override int BossBagNPC => mod.NPCType("GreenBeeBoss");
 
         public override bool CanRightClick()
         {
             return true;
         }
 
-        public override void OpenBossBag(Player player)
+        public override void RightClick(Player player)
         {
-            player.TryGettingDevArmor(); // This will have a chance to spawn the Dev Armour.
+            player.TryGettingDevArmor(player.GetSource_OpenItem(Type)); // This will have a chance to spawn the Dev Armour.
             if(Main.rand.Next(3) == 0)
             {
-                player.QuickSpawnItem(ItemID.LifeCrystal, Main.rand.Next(1, 3));
-			    player.QuickSpawnItem(ItemID.ManaCrystal, Main.rand.Next(3, 5));
+                player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.LifeCrystal, Main.rand.Next(1, 3));
+			    player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.ManaCrystal, Main.rand.Next(3, 5));
             }
 
             if (Main.rand.Next(7) == 0)
             {
-                player.QuickSpawnItem(ItemID.HoneyedGoggles, 1);
+                player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.HoneyedGoggles, 1);
             }
 
             if (Main.rand.Next(8) == 0)
             {
-                player.QuickSpawnItem(ItemID.Nectar, 1);
+                player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.Nectar, 1);
             }
 
             switch (Main.rand.Next(3))
             {
                 case 0:
-                player.QuickSpawnItem(ItemID.BeeKeeper, 1);
+                player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.BeeKeeper, 1);
                 break;
 
                 case 1:
-                player.QuickSpawnItem(ItemID.BeeGun, 1);
+                player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.BeeGun, 1);
                 break;
 
                 case 2:
-                player.QuickSpawnItem(ItemID.BeesKnees, 1);
+                player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.BeesKnees, 1);
                 break;
 
             }
 
             if(Main.rand.Next(4) == 0)
             {
-                player.QuickSpawnItem(ItemID.Nectar, 1);
+                player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.Nectar, 1);
             }
 
             if(Main.rand.Next(6) == 0)
             {
-                player.QuickSpawnItem(ItemID.HoneyedGoggles, 1);
+                player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.HoneyedGoggles, 1);
             }
-            player.QuickSpawnItem(ItemID.GoldBar, Main.rand.Next(5, 8));
-            player.QuickSpawnItem(ItemID.IronBar, Main.rand.Next(5, 10));
-            player.QuickSpawnItem(ItemID.SilverOre, Main.rand.Next(15, 20));
-            player.QuickSpawnItem(mod.ItemType("ShardGreen"), Main.rand.Next(10,20));
-            player.QuickSpawnItem(ItemID.LifeCrystal, Main.rand.Next(1, 2));
-            player.QuickSpawnItem(ItemID.ManaCrystal, Main.rand.Next(1, 3));
+            player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.GoldBar, Main.rand.Next(5, 8));
+            player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.IronBar, Main.rand.Next(5, 10));
+            player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.SilverOre, Main.rand.Next(15, 20));
+            player.QuickSpawnItem(player.GetSource_OpenItem(Type), ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardGreen>(), Main.rand.Next(10,20));
+            player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.LifeCrystal, Main.rand.Next(1, 2));
+            player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.ManaCrystal, Main.rand.Next(1, 3));
 
-            player.QuickSpawnItem(ItemID.HiveBackpack, 1);
-            player.QuickSpawnItem(ItemID.BottledHoney, Main.rand.Next(15, 30));
-            player.QuickSpawnItem(ItemID.BeeWax, Main.rand.Next(10, 20));
-            player.QuickSpawnItem(ItemID.Emerald, Main.rand.Next(3, 5));
-            player.QuickSpawnItem(ItemID.Beenade, Main.rand.Next(30, 45));
+            player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.HiveBackpack, 1);
+            player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.BottledHoney, Main.rand.Next(15, 30));
+            player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.BeeWax, Main.rand.Next(10, 20));
+            player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.Emerald, Main.rand.Next(3, 5));
+            player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.Beenade, Main.rand.Next(30, 45));
             
         }
     }

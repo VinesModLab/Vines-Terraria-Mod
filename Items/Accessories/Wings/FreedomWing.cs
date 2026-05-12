@@ -10,17 +10,15 @@ namespace VinesMod.Items.Accessories.Wings
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Freedom Wing");
-            Tooltip.SetDefault("Allow flight and slow fall");
         }
 
         public override void SetDefaults()
         {
-            item.width = 22;
-            item.height = 22;
-            item.value = Item.buyPrice(0,50,0,0);
-            item.rare = 5;
-            item.accessory = true;
+            Item.width = 22;
+            Item.height = 22;
+            Item.value = Item.buyPrice(0,50,0,0);
+            Item.rare = 5;
+            Item.accessory = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

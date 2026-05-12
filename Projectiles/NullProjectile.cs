@@ -9,19 +9,18 @@ namespace VinesMod.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Power of Null");
 		}
 
 		public override void SetDefaults()
 		{
-			projectile.CloneDefaults(ProjectileID.StarWrath);
-			aiType = ProjectileID.StarWrath;
-			projectile.width = 500;
-			projectile.height = 500;
-			projectile.ignoreWater = true;
-			projectile.penetrate = 999;
-			projectile.scale = 5f;
-			projectile.light = 1f; 
+			Projectile.CloneDefaults(ProjectileID.StarWrath);
+			AIType = ProjectileID.StarWrath;
+			Projectile.width = 500;
+			Projectile.height = 500;
+			Projectile.ignoreWater = true;
+			Projectile.penetrate = 999;
+			Projectile.scale = 5f;
+			Projectile.light = 1f; 
 		}
 	}
 }

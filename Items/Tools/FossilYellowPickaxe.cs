@@ -9,44 +9,42 @@ namespace VinesMod.Items.Tools
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("FossilYellow Pickaxe");
 		}
 
 		public override void SetDefaults()
 		{
-			item.damage = 15;
-			item.melee = true;
-			item.width = 40;
-			item.height = 40;
-			item.useTime = 20;
-			item.useAnimation = 20;
-			item.pick = 55;
-			item.useStyle = 1;
-			item.knockBack = 6;
-			item.value = 10000;
-			item.rare = 2;
-			item.UseSound = SoundID.Item1;
-			item.autoReuse = true;
+			Item.damage = 15;
+			Item.DamageType = DamageClass.Melee;
+			Item.width = 40;
+			Item.height = 40;
+			Item.useTime = 20;
+			Item.useAnimation = 20;
+			Item.pick = 55;
+			Item.useStyle = ItemUseStyleID.Swing;
+			Item.knockBack = 6;
+			Item.value = 10000;
+			Item.rare = 2;
+			Item.UseSound = SoundID.Item1;
+			Item.autoReuse = true;
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.DesertFossil, 30);
-			recipe.AddIngredient(ItemID.Topaz, 5);
-			recipe.AddRecipeGroup("IronBar", 7);
-			recipe.AddRecipeGroup("Wood", 20);
-			recipe.AddIngredient(mod, "ShardRed", 15);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.DesertFossil, 30)
+				.AddIngredient(ItemID.Topaz, 5)
+				.AddRecipeGroup("IronBar", 7)
+				.AddRecipeGroup("Wood", 20)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardRed>(), 15)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 
 		public override void MeleeEffects(Player player, Rectangle hitbox)
 		{
 			if (Main.rand.Next(10) == 0)
 			{
-				int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, mod.DustType("SparkleBlue"));
+				int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<global::VinesMod.Dusts.SparkleBlue>());
 			}
 		}
 	}

@@ -15,53 +15,50 @@ namespace VinesMod.Items.Weapons.Bow
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("AvalancheEx");
-            Tooltip.SetDefault("It use snowball as ammo.");
         }
 
         public override void SetDefaults()
         {
-            item.width = 16;
-            item.height = 24;
-            item.useTime = 15;
-            item.useAnimation = 15;
-            item.damage = 100;
-            item.useStyle = 5; 
-            item.noMelee = true; 
-            item.value = Item.buyPrice(0, 0, 30, 0);
-            item.rare = 8;
-            item.UseSound = SoundID.Item5; 
-            item.useAmmo = AmmoID.Snowball;
-            item.shoot = ProjectileID.SnowBallFriendly;
-            item.shootSpeed = 45f;
-            item.ranged = true;
-            item.autoReuse = true;
+            Item.width = 16;
+            Item.height = 24;
+            Item.useTime = 15;
+            Item.useAnimation = 15;
+            Item.damage = 100;
+            Item.useStyle = ItemUseStyleID.Shoot; 
+            Item.noMelee = true; 
+            Item.value = Item.buyPrice(0, 0, 30, 0);
+            Item.rare = 8;
+            Item.UseSound = SoundID.Item5; 
+            Item.useAmmo = AmmoID.Snowball;
+            Item.shoot = ProjectileID.SnowBallFriendly;
+            Item.shootSpeed = 45f;
+            Item.DamageType = DamageClass.Ranged;
+            Item.autoReuse = true;
         }
         
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockBack)
 		{
 			int numberProjectiles = 6 + Main.rand.Next(4); 
 			for (int i = 0; i < numberProjectiles; i++)
 			{
-				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(15));
+				Vector2 perturbedSpeed = velocity.RotatedByRandom(MathHelper.ToRadians(15));
 				//randomize the speed to stagger the projectiles
 				float scale = 1f - (Main.rand.NextFloat() * .3f);
 				perturbedSpeed = perturbedSpeed * scale; 
 
-				Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+				Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
 			}
 			return false;
 		}
 		
         public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod, "Avalanche", 1);
-            recipe.AddIngredient(mod, "StarForceBlue", 1);
-            recipe.AddIngredient(ItemID.IceBlock, 400);
-            recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Weapons.Bow.Avalanche>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.StarForce.StarForceBlue>(), 1)
+				.AddIngredient(ItemID.IceBlock, 400)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 
     }

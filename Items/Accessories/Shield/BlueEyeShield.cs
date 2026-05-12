@@ -9,18 +9,16 @@ namespace VinesMod.Items.Accessories.Shield
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Shield of BlueEye");
-			Tooltip.SetDefault("Allows dash" + "\n+40 Max Mana");
 		}
 
 		public override void SetDefaults()
 		{
-			item.width = 24;
-			item.height = 28;
-			item.value = 10000;
-			item.rare = 3;
-			item.accessory = true;
-			item.defense = 4;
+			Item.width = 24;
+			Item.height = 28;
+			Item.value = 10000;
+			Item.rare = 3;
+			Item.accessory = true;
+			Item.defense = 4;
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)

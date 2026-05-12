@@ -9,20 +9,19 @@ namespace VinesMod.Projectiles
     {
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("FrostBeam");
 		}
 
         public override void SetDefaults()
         {
-            projectile.CloneDefaults(ProjectileID.InfluxWaver);
-            aiType = ProjectileID.InfluxWaver;
-            projectile.tileCollide = false;
-            projectile.ignoreWater = true;
-            projectile.scale = 1.5f;
-            projectile.light = 0.6f; 
+            Projectile.CloneDefaults(ProjectileID.InfluxWaver);
+			AIType = ProjectileID.InfluxWaver;
+            Projectile.tileCollide = false;
+            Projectile.ignoreWater = true;
+            Projectile.scale = 1.5f;
+            Projectile.light = 0.6f; 
         }
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(BuffID.Frozen, 15 * 60);
 			target.AddBuff(BuffID.Chilled, 15 * 60);

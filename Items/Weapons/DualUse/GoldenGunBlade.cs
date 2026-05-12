@@ -9,39 +9,36 @@ namespace VinesMod.Items.Weapons.DualUse
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Golden Gun Blade");
-			Tooltip.SetDefault("Left Slash, Right Shoot!");
 		}
 
 		public override void SetDefaults()
 		{
-			item.damage = 25;
-			item.melee = true;
-			item.width = 40;
-			item.height = 40;
-			item.useTime = 20;
-			item.useAnimation = 20;
-			item.useStyle = 1;
-			item.knockBack = 5f;
-			item.value = Item.sellPrice(gold: 2); 
-			item.rare = 2;
-			item.UseSound = SoundID.Item1;
-			item.autoReuse = true;
-			item.shoot = ProjectileID.GoldenBullet;
-			item.shootSpeed = 5f;
+			Item.damage = 25;
+			Item.DamageType = DamageClass.Melee;
+			Item.width = 40;
+			Item.height = 40;
+			Item.useTime = 20;
+			Item.useAnimation = 20;
+			Item.useStyle = ItemUseStyleID.Swing;
+			Item.knockBack = 5f;
+			Item.value = Item.sellPrice(gold: 2); 
+			Item.rare = 2;
+			Item.UseSound = SoundID.Item1;
+			Item.autoReuse = true;
+			Item.shoot = ProjectileID.GoldenBullet;
+			Item.shootSpeed = 5f;
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.GoldBroadsword, 1);
-			recipe.AddIngredient(ItemID.GoldBow, 1);
-			recipe.AddRecipeGroup("IronBar", 5);
-			recipe.AddIngredient(mod, "ShardYellow", 15);
-			recipe.AddIngredient(mod, "ShardRed", 15);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.GoldBroadsword, 1)
+				.AddIngredient(ItemID.GoldBow, 1)
+				.AddRecipeGroup("IronBar", 5)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardYellow>(), 15)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardRed>(), 15)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 
 		public override bool AltFunctionUse(Player player)
@@ -53,24 +50,24 @@ namespace VinesMod.Items.Weapons.DualUse
 		{
 			if (player.altFunctionUse == 2)
 			{
-				item.useStyle = 3;
-				item.useTime = 20;
-				item.useAnimation = 20;
-				item.damage = 25;
-				item.shoot = ProjectileID.GoldenBullet;
+				Item.useStyle = ItemUseStyleID.Thrust;
+				Item.useTime = 20;
+				Item.useAnimation = 20;
+				Item.damage = 25;
+				Item.shoot = ProjectileID.GoldenBullet;
 			}
 			else
 			{
-				item.useStyle = 1;
-				item.useTime = 40;
-				item.useAnimation = 40;
-				item.damage = 25;
-				item.shoot = 0;
+				Item.useStyle = ItemUseStyleID.Swing;
+				Item.useTime = 40;
+				Item.useAnimation = 40;
+				Item.damage = 25;
+				Item.shoot = 0;
 			}
 			return base.CanUseItem(player);
 		}
 
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
 			if (player.altFunctionUse == 2)
 			{
@@ -95,24 +92,19 @@ namespace VinesMod.Items.Weapons.DualUse
 				}
 				else
 				{
-					int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Fire, player.velocity.X * 0.2f + (float)(player.direction * 3), player.velocity.Y * 0.2f, 100, default(Color), 2.5f);
+					int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.Torch, player.velocity.X * 0.2f + (float)(player.direction * 3), player.velocity.Y * 0.2f, 100, default(Color), 2.5f);
 					Main.dust[dust].noGravity = true;
 				}
 			}
 		}
 
-		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+		public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockBack)
 		{
-			// Fix the speedX and Y to point them horizontally.
-			speedX = new Vector2(speedX, speedY).Length() * (speedX > 0 ? 1 : -1);
-			speedY = 0;
-			// Add random Rotation
-			Vector2 speed = new Vector2(speedX, speedY);
-			speed = speed.RotatedByRandom(MathHelper.ToRadians(30));
+			// Rotate velocity randomly for spread
+			Vector2 speed = velocity.RotatedByRandom(MathHelper.ToRadians(30));
 			// Change the damage since it is based off the weapons damage and is too high
 			damage = (int)(damage * .8f);
-			speedX = speed.X;
-			speedY = speed.Y;
+			velocity = speed;
 			return true;
 		}
 	}

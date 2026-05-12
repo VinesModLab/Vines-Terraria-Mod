@@ -8,17 +8,15 @@ namespace VinesMod.Items.Materials.EndTier
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Light Matter");
-			Tooltip.SetDefault("it stores unknown power.");
 		}
 
 		public override void SetDefaults()
 		{
-			item.width = 20;
-			item.height = 20;
-			item.maxStack = 999;
-			item.value = 300000;
-			item.rare = 11;
+			Item.width = 20;
+			Item.height = 20;
+			Item.maxStack = 999;
+			Item.value = 300000;
+			Item.rare = 11;
 		}
 
 		public override void AddRecipes()

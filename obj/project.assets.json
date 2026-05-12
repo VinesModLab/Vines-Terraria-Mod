@@ -1,60 +1,36 @@
 {
   "version": 3,
   "targets": {
-    ".NETFramework,Version=v4.5": {
-      "tModLoader.CodeAssist/0.1.1": {
-        "type": "package"
-      }
-    }
+    "net8.0": {}
   },
-  "libraries": {
-    "tModLoader.CodeAssist/0.1.1": {
-      "sha512": "bUQ4HAiRYq8Zisms7FI9ffSf4nZHwFFZU5j8Hpc/9rFB16GOGJg2ulHV0ZDErzoAAbXBeRdO8/VbSltBwmDcpA==",
-      "type": "package",
-      "path": "tmodloader.codeassist/0.1.1",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "NugetIcon.png",
-        "analyzers/dotnet/cs/tModLoader.CodeAssist.dll",
-        "tmodloader.codeassist.0.1.1.nupkg.sha512",
-        "tmodloader.codeassist.nuspec",
-        "tools/install.ps1",
-        "tools/uninstall.ps1"
-      ]
-    }
-  },
+  "libraries": {},
   "projectFileDependencyGroups": {
-    ".NETFramework,Version=v4.5": [
-      "tModLoader.CodeAssist >= 0.1.*"
-    ]
+    "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Max\\.nuget\\packages\\": {}
+    "/Users/maxku/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Max\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\VinesMod\\VinesMod.csproj",
+      "projectUniqueName": "/Users/maxku/Library/Application Support/Terraria/tModLoader/ModSources/VinesMod/VinesMod.csproj",
       "projectName": "VinesMod",
-      "projectPath": "C:\\Users\\Max\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\VinesMod\\VinesMod.csproj",
-      "packagesPath": "C:\\Users\\Max\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Max\\Documents\\My Games\\Terraria\\ModLoader\\Mod Sources\\VinesMod\\obj\\",
+      "projectPath": "/Users/maxku/Library/Application Support/Terraria/tModLoader/ModSources/VinesMod/VinesMod.csproj",
+      "packagesPath": "/Users/maxku/.nuget/packages/",
+      "outputPath": "/Users/maxku/Library/Application Support/Terraria/tModLoader/ModSources/VinesMod/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Max\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/maxku/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
-        "net45"
+        "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net45": {
+        "net8.0": {
+          "targetAlias": "net8.0",
           "projectReferences": {}
         }
       },
@@ -62,17 +38,33 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
-      "net45": {
-        "dependencies": {
-          "tModLoader.CodeAssist": {
-            "target": "Package",
-            "version": "[0.1.*, )"
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/8.0.411/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

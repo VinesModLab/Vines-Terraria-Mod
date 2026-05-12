@@ -9,28 +9,25 @@ namespace VinesMod.Items.Weapons.Melee
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Slapper");
-			Tooltip.SetDefault("Slap U");
 		}
 		public override void SetDefaults()
 		{
-			item.CloneDefaults(ItemID.SlapHand);
-			item.damage = 70;
-			item.useTime = 15;          
-			item.useAnimation = 15; 
-			item.rare = 7;
-			item.autoReuse = true;
+			Item.CloneDefaults(ItemID.SlapHand);
+			Item.damage = 70;
+			Item.useTime = 15;          
+			Item.useAnimation = 15; 
+			Item.rare = 7;
+			Item.autoReuse = true;
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.SlapHand, 1);
-			recipe.AddIngredient(mod, "ShardBlue", 30);
-			recipe.AddIngredient(mod, "ShardWhite", 30);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.SlapHand, 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardBlue>(), 30)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardWhite>(), 30)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 	}
 }

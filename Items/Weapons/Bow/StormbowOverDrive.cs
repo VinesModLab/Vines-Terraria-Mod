@@ -14,39 +14,37 @@ namespace VinesMod.Items.Weapons.Bow
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Daedalus Stormbow OverDrive");
-            Tooltip.SetDefault("Only the OverDrive Arrow can unslash the full power of Daedalus Stormbow.");
         }
 
         public override void SetDefaults()
         {
-            item.CloneDefaults(ItemID.DaedalusStormbow);
-            item.width = 16;
-            item.height = 24;
-            item.useTime = 10;
-            item.useAnimation = 10;
-            item.damage = 500;
-            item.useStyle = 5; 
-            item.noMelee = true; 
-            item.value = Item.buyPrice(gold: 30);
-            item.rare = 11;
-            item.UseSound = SoundID.Item5; 
-            item.useAmmo = mod.ItemType("OverDriveArrow");
-            item.shoot = 1;
-            item.shootSpeed = 300f;
-            item.ranged = true;
-            //item.autoReuse = true;
+            Item.CloneDefaults(ItemID.DaedalusStormbow);
+            Item.width = 16;
+            Item.height = 24;
+            Item.useTime = 10;
+            Item.useAnimation = 10;
+            Item.damage = 500;
+            Item.useStyle = ItemUseStyleID.Shoot; 
+            Item.noMelee = true; 
+            Item.value = Item.buyPrice(gold: 30);
+            Item.rare = 11;
+            Item.UseSound = SoundID.Item5; 
+            Item.useAmmo = ModContent.ItemType<global::VinesMod.Items.Weapons.Ammo.OverDriveArrow>();
+            Item.shoot = 1;
+            Item.shootSpeed = 300f;
+            Item.DamageType = DamageClass.Ranged;
+            //Item.autoReuse = true;
         }
 
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockBack)
 		{
 			float numberProjectiles = 10 + Main.rand.Next(15);
 			float rotation = MathHelper.ToRadians(45);
-			position += Vector2.Normalize(new Vector2(speedX, speedY)) * 45f;
+			position += Vector2.Normalize(velocity) * 45f;
 			for (int i = 0; i < numberProjectiles; i++)
 			{
-				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 projectile.
-				Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+				Vector2 perturbedSpeed = velocity.RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * .2f; // Watch out for dividing by 0 if there is only 1 Projectile.
+				Projectile.NewProjectile(source, position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
 			}
 			return false;
 		}
@@ -54,14 +52,13 @@ namespace VinesMod.Items.Weapons.Bow
 		
         public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-	        recipe.AddIngredient(ItemID.DaedalusStormbow);
-            recipe.AddIngredient(ItemID.LifeCrystal, 10);
-			recipe.AddIngredient(ItemID.LargeRuby, 5);
-            recipe.AddIngredient(mod, "OverDriveRed", 1);
-            recipe.AddTile(mod.TileType("StarForge"));
-            recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ItemID.DaedalusStormbow)
+				.AddIngredient(ItemID.LifeCrystal, 10)
+				.AddIngredient(ItemID.LargeRuby, 5)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.OverDrive.OverDriveRed>(), 1)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 
     }

@@ -8,17 +8,15 @@ namespace VinesMod.Items.Accessories.HandsOff
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Protection Of Sword");
-			Tooltip.SetDefault("Summon 5 swords to protect you.");
 		}
 
 		public override void SetDefaults()
 		{
-			item.width = 24;
-			item.height = 28;
-			item.value = 300000;
-			item.rare = 8;
-			item.accessory = true;
+			Item.width = 24;
+			Item.height = 28;
+			Item.value = 300000;
+			Item.rare = 8;
+			Item.accessory = true;
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
@@ -31,22 +29,21 @@ namespace VinesMod.Items.Accessories.HandsOff
 
 		public override void UpdateEquip(Player player)
 		{
-			player.AddBuff(mod.BuffType("FloatingSword"), 2);
+			player.AddBuff(ModContent.BuffType<global::VinesMod.Buffs.FloatingSword>(), 2);
 		}
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod, "EnchantedSabre", 1);
-			recipe.AddIngredient(mod, "ShardBlue", 70);
-			recipe.AddIngredient(mod, "ShardYellow", 70);
-			recipe.AddIngredient(mod, "ShardPurple", 70);
-			recipe.AddIngredient(mod, "ShardGreen", 70);
-			recipe.AddIngredient(mod, "ShardRed", 70);
-			recipe.AddIngredient(mod, "ShardWhite", 70);
-			recipe.AddTile(mod.TileType("StarForge"));
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			CreateRecipe()
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Weapons.Melee.EnchantedSabre>(), 1)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardBlue>(), 70)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardYellow>(), 70)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardPurple>(), 70)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardGreen>(), 70)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardRed>(), 70)
+				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardWhite>(), 70)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
 		}
 	}
 }

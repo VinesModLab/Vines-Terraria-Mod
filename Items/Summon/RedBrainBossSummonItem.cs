@@ -13,36 +13,34 @@ namespace VinesMod.Items.Summon
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Summoner : Red Brain Boss");
-            Tooltip.SetDefault("Summons the Red Brain Boss." + "\nOnly summon it at crimson underground.");
         }
 
         public override void SetDefaults()
         {
-            item.width = 20;
-            item.height = 20;
-            item.maxStack = 999;
-            item.value = Item.buyPrice(0,2,0,0);
-            item.rare = 1;
-            item.useAnimation = 40;
-            item.useTime = 45;
-            item.consumable = true;
+            Item.width = 20;
+            Item.height = 20;
+            Item.maxStack = 999;
+            Item.value = Item.buyPrice(0,2,0,0);
+            Item.rare = 1;
+            Item.useAnimation = 40;
+            Item.useTime = 45;
+            Item.consumable = true;
 
-            item.useStyle = 4; // Holds up like a summon item.
+            Item.useStyle = ItemUseStyleID.HoldUp; // Holds up like a summon Item.
         }
 
         public override bool CanUseItem(Player player)
         {
             // Does NPC Exist
-            bool alreadySpawned = NPC.AnyNPCs(mod.NPCType("RedBrainBoss"));
+            bool alreadySpawned = NPC.AnyNPCs(ModContent.NPCType<global::VinesMod.NPCs.Hostile.ShardsMonster.RedBrainBoss>());
 
             return !alreadySpawned;
         }
 
-        public override bool UseItem(Player player)
+        public override bool? UseItem(Player player)
         {
-            NPC.SpawnOnPlayer(player.whoAmI, mod.NPCType("RedBrainBoss")); // Spawn the boss within a range of the player. 
-            Main.PlaySound(SoundID.Roar, player.position, 0); 
+            NPC.SpawnOnPlayer(player.whoAmI, ModContent.NPCType<global::VinesMod.NPCs.Hostile.ShardsMonster.RedBrainBoss>()); // Spawn the boss within a range of the player. 
+            Terraria.Audio.SoundEngine.PlaySound(SoundID.Roar, player.position); 
             return true;
         }
     }

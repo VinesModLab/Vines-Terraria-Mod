@@ -9,24 +9,23 @@ namespace VinesMod.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("ZeoxingFall");
 		}
 
 		public override void SetDefaults()
 		{
-			projectile.CloneDefaults(ProjectileID.Starfury);
-			projectile.scale = 2f;
-			projectile.light = 1f; 
-			aiType = ProjectileID.Starfury;
+			Projectile.CloneDefaults(ProjectileID.Starfury);
+			Projectile.scale = 2f;
+			Projectile.light = 1f; 
+			AIType = ProjectileID.Starfury;
 		}
 
 		public override bool PreKill(int timeLeft)
 		{
-			projectile.type = ProjectileID.Starfury;
+			Projectile.type = ProjectileID.Starfury;
 			return true;
 		}
 
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(BuffID.OnFire, 15 * 60);
 			target.AddBuff(BuffID.Bleeding, 15 * 60);
@@ -38,12 +37,12 @@ namespace VinesMod.Projectiles
 			target.AddBuff(BuffID.Confused, 15* 60);
 			target.AddBuff(BuffID.Ichor, 15* 60);
 
-			Player owner = Main.player[projectile.owner];
+			Player owner = Main.player[Projectile.owner];
             owner.statLife += 75;
 
 			for (int i = 0; i < 30; i++)
 			{
-				int a = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y - 30f, Main.rand.Next(-10, 11) * .30f, Main.rand.Next(-10, -5) * .30f, ProjectileID.Starfury, (int)(projectile.damage * 2f), 0, projectile.owner);
+				int a = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y - 30f, Main.rand.Next(-10, 11) * .30f, Main.rand.Next(-10, -5) * .30f, ProjectileID.Starfury, (int)(Projectile.damage * 2f), 0, Projectile.owner);
 				Main.projectile[a].aiStyle = 1;
 				Main.projectile[a].tileCollide = true;
 			}
@@ -53,7 +52,7 @@ namespace VinesMod.Projectiles
 		{
 			for (int i = 0; i < 30; i++)
 			{
-				int a = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y - 30f, Main.rand.Next(-10, 11) * .30f, Main.rand.Next(-10, -5) * .30f, ProjectileID.Starfury, (int)(projectile.damage * 2f), 0, projectile.owner);
+				int a = Projectile.NewProjectile(Projectile.GetSource_FromThis(), Projectile.Center.X, Projectile.Center.Y - 30f, Main.rand.Next(-10, 11) * .30f, Main.rand.Next(-10, -5) * .30f, ProjectileID.Starfury, (int)(Projectile.damage * 2f), 0, Projectile.owner);
 				Main.projectile[a].aiStyle = 1;
 				Main.projectile[a].tileCollide = true;
 			}

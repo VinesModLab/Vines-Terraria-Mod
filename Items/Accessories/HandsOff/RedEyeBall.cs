@@ -8,22 +8,20 @@ namespace VinesMod.Items.Accessories.HandsOff
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("RedEyeBall");
-			Tooltip.SetDefault("increase 10% ranaged damage");
 		}
 
 		public override void SetDefaults()
 		{
-			item.width = 24;
-			item.height = 28;
-			item.value = Item.sellPrice(gold: 2); 
-			item.rare = 2;
-			item.accessory = true;
+			Item.width = 24;
+			Item.height = 28;
+			Item.value = Item.sellPrice(gold: 2); 
+			Item.rare = 2;
+			Item.accessory = true;
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-				player.rangedDamage *= 1.1f;
+				player.GetDamage(DamageClass.Ranged) *= 1.1f;
 		}
 
 		public override void AddRecipes()

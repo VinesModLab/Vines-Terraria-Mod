@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.GameContent.ItemDropRules;
 
 namespace VinesMod.NPCs
 {
@@ -42,7 +43,7 @@ namespace VinesMod.NPCs
 				for (int i = 0; i < 1000; i++)
 				{
 					Projectile p = Main.projectile[i];
-					if (p.active && p.type == ModContent.ProjectileType<Projectiles.DirtJavelinProjectile>() && p.ai[0] == 1f && p.ai[1] == npc.whoAmI)
+					if (p.active && p.type == ModContent.ProjectileType<global::VinesMod.Projectiles.DirtJavelinProjectile>() && p.ai[0] == 1f && p.ai[1] == npc.whoAmI)
 					{
 						DirtJavelinCount++;
 					}
@@ -68,47 +69,34 @@ namespace VinesMod.NPCs
 			}
 		}
 
-		public override void NPCLoot(NPC npc)
+		/// <summary>
+		/// Ordinary raw shard drops for weak/mid NPCs.
+		/// Boss-specific drops (summon items, goodie bags, end-tier mats) stay in OnKill
+		/// because they depend on runtime conditions not expressible as static rules.
+		/// </summary>
+		public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
+		{
+			// White Shards are the common raw material. Colored shards are charged upgrades.
+			if (npc.lifeMax > 10 && npc.value > 0f && npc.lifeMax < 2000)
+			{
+				npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardWhite>(), 3, 1, 3));
+			}
+		}
+
+		public override void OnKill(NPC npc)
 		{
 			/*
 			if (npc.lifeMax > 5 && npc.value > 0f)
 			{
-				//Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ExampleItem"));
+				//Item.NewItem(npc.GetSource_Loot(), (int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<ExampleItem>());
 				if (Main.player[(int)Player.FindClosest(npc.position, npc.width, npc.height)].GetModPlayer<ExamplePlayer>(mod).ZoneExample)
 				{
-					//Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BossItem"));
+					//Item.NewItem(npc.GetSource_Loot(), (int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<BossItem>());
 				}
 			}
 			*/
 
-			if (npc.lifeMax > 10 && npc.value > 0f && npc.lifeMax < 2000)
-			{
-				if (Main.rand.Next(6) == 0)
-				{
-					switch (Main.rand.Next(6))
-					{
-						case 0:
-						Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardBlue"), Main.rand.Next(1,3));
-						break;
-						case 1:
-						Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardRed"), Main.rand.Next(1,3));
-						break;
-						case 2:
-						Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardGreen"), Main.rand.Next(1,3));
-						break;
-						case 3:
-						Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardPurple"), Main.rand.Next(1,3));
-						break;
-						case 4:
-						Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardYellow"), Main.rand.Next(1,3));
-						break;
-						case 5:
-						Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShardWhite"), Main.rand.Next(1,3));
-						break;
-					}
-				}
-				
-			}
+			// NOTE: Common shard drops (lifeMax 10–2000) have been moved to ModifyNPCLoot above.
 
 			if (npc.lifeMax > 50 && npc.lifeMax < 3000 && npc.value > 0f)
 			{
@@ -117,22 +105,22 @@ namespace VinesMod.NPCs
 					switch (Main.rand.Next(6))
             		{
                 	case 0:
-                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BlueEyeBossSummonItem"), 1);
+                	Item.NewItem(npc.GetSource_Loot(), (int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<global::VinesMod.Items.Summon.BlueEyeBossSummonItem>(), 1);
                 	break;
                 	case 1:
-                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GreenBeeBossSummonItem"), 1);
+                	Item.NewItem(npc.GetSource_Loot(), (int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<global::VinesMod.Items.Summon.GreenBeeBossSummonItem>(), 1);
                 	break;
                 	case 2:
-                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("PurpleSlimeBossSummonItem"), 1);
+                	Item.NewItem(npc.GetSource_Loot(), (int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<global::VinesMod.Items.Summon.PurpleSlimeBossSummonItem>(), 1);
                 	break;
                 	case 3:
-                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RedBrainBossSummonItem"), 1);
+                	Item.NewItem(npc.GetSource_Loot(), (int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<global::VinesMod.Items.Summon.RedBrainBossSummonItem>(), 1);
                		break;
                 	case 4:
-                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("YellowIchorBossSummonItem"), 1);
+                	Item.NewItem(npc.GetSource_Loot(), (int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<global::VinesMod.Items.Summon.YellowIchorBossSummonItem>(), 1);
 					break;
 					case 5:
-                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("WhiteFlyingFishBossSummonItem"), 1);
+                	Item.NewItem(npc.GetSource_Loot(), (int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<global::VinesMod.Items.Summon.WhiteFlyingFishBossSummonItem>(), 1);
                 	break;
             		}
 				}
@@ -145,19 +133,19 @@ namespace VinesMod.NPCs
 					switch (Main.rand.Next(5))
             		{
                 	case 0:
-                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BlueShardBag"), 1);
+                	Item.NewItem(npc.GetSource_Loot(), (int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<global::VinesMod.Items.GoodieBags.BlueShardBag>(), 1);
                 	break;
                 	case 1:
-                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GreenShardBag"), 1);
+                	Item.NewItem(npc.GetSource_Loot(), (int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<global::VinesMod.Items.GoodieBags.GreenShardBag>(), 1);
                 	break;
                 	case 2:
-                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("PurpleShardBag"), 1);
+                	Item.NewItem(npc.GetSource_Loot(), (int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<global::VinesMod.Items.GoodieBags.PurpleShardBag>(), 1);
                 	break;
                 	case 3:
-                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RedShardBag"), 1);
+                	Item.NewItem(npc.GetSource_Loot(), (int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<global::VinesMod.Items.GoodieBags.RedShardBag>(), 1);
                		break;
                 	case 4:
-                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("YellowShardBag"), 1);
+                	Item.NewItem(npc.GetSource_Loot(), (int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<global::VinesMod.Items.GoodieBags.YellowShardBag>(), 1);
                 	break;
             		}
 				}	
@@ -170,19 +158,19 @@ namespace VinesMod.NPCs
 					switch (Main.rand.Next(5))
             		{
                 	case 0:
-                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BlueShardBag"), 2);
+                	Item.NewItem(npc.GetSource_Loot(), (int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<global::VinesMod.Items.GoodieBags.BlueShardBag>(), 2);
                 	break;
                 	case 1:
-                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GreenShardBag"), 2);
+                	Item.NewItem(npc.GetSource_Loot(), (int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<global::VinesMod.Items.GoodieBags.GreenShardBag>(), 2);
                 	break;
                 	case 2:
-                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("PurpleShardBag"), 2);
+                	Item.NewItem(npc.GetSource_Loot(), (int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<global::VinesMod.Items.GoodieBags.PurpleShardBag>(), 2);
                 	break;
                 	case 3:
-                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RedShardBag"), 2);
+                	Item.NewItem(npc.GetSource_Loot(), (int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<global::VinesMod.Items.GoodieBags.RedShardBag>(), 2);
                		break;
                 	case 4:
-                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("YellowShardBag"), 2);
+                	Item.NewItem(npc.GetSource_Loot(), (int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<global::VinesMod.Items.GoodieBags.YellowShardBag>(), 2);
                 	break;
             		}
 				}	
@@ -195,10 +183,10 @@ namespace VinesMod.NPCs
 					switch (Main.rand.Next(2))
             		{
                 	case 0:
-                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DarkMatter"), 1);
+                	Item.NewItem(npc.GetSource_Loot(), (int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<global::VinesMod.Items.Materials.EndTier.DarkMatter>(), 1);
                 	break;
                 	case 1:
-                	Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("LightMatter"), 1);
+                	Item.NewItem(npc.GetSource_Loot(), (int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<global::VinesMod.Items.Materials.EndTier.LightMatter>(), 1);
                 	break;
             		}
 				}	
@@ -211,7 +199,7 @@ namespace VinesMod.NPCs
 			{
 				if (Main.rand.Next(4) < 3)
 				{
-					int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, mod.DustType("EtherealFlame"), npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default(Color), 3.5f);
+					int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, ModContent.DustType<global::VinesMod.Dusts.EtherealFlame>(), npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default(Color), 3.5f);
 					Main.dust[dust].noGravity = true;
 					Main.dust[dust].velocity *= 1.8f;
 					Main.dust[dust].velocity.Y -= 0.5f;
@@ -236,51 +224,27 @@ namespace VinesMod.NPCs
 			*/
 		}
 
-		public override void SetupShop(int type, Chest shop, ref int nextSlot)
+		public override void ModifyShop(NPCShop shop)
 		{
-			if (type == NPCID.Dryad)
+			if (shop.NpcType == NPCID.Dryad)
 			{
-				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.GoodieBags.PetGoodieBag>());
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Vanity.Lenny>());
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Accessories.Wings.BeautiflyWing>());
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Accessories.Wings.PhantomWing>());
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Accessories.Wings.FairyWing>());
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Accessories.Wings.FreedomWing>());
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Accessories.Wings.FadedWing>());
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Summon.BlueEyeBossSummonItem>());
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Summon.RedBrainBossSummonItem>());
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Summon.YellowIchorBossSummonItem>());
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Summon.GreenBeeBossSummonItem>());
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Summon.PurpleSlimeBossSummonItem>());
-				nextSlot++;
-				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Summon.WhiteFlyingFishBossSummonItem>());
-				nextSlot++;
-			}
-            else if (type == NPCID.Wizard)
+				shop.Add<global::VinesMod.Items.GoodieBags.PetGoodieBag>();
+				shop.Add<global::VinesMod.Items.Vanity.Lenny>();
+				shop.Add<global::VinesMod.Items.Accessories.Wings.BeautiflyWing>();
+				shop.Add<global::VinesMod.Items.Accessories.Wings.PhantomWing>();
+				shop.Add<global::VinesMod.Items.Accessories.Wings.FairyWing>();
+				shop.Add<global::VinesMod.Items.Accessories.Wings.FreedomWing>();
+				shop.Add<global::VinesMod.Items.Accessories.Wings.FadedWing>();
+				shop.Add<global::VinesMod.Items.Summon.BlueEyeBossSummonItem>();
+				shop.Add<global::VinesMod.Items.Summon.RedBrainBossSummonItem>();
+				shop.Add<global::VinesMod.Items.Summon.YellowIchorBossSummonItem>();
+				shop.Add<global::VinesMod.Items.Summon.GreenBeeBossSummonItem>();
+				shop.Add<global::VinesMod.Items.Summon.PurpleSlimeBossSummonItem>();
+				shop.Add<global::VinesMod.Items.Summon.WhiteFlyingFishBossSummonItem>();
+            }
+            else if (shop.NpcType == NPCID.Wizard)
             {
-                shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.GoodieBags.RedShardBag>());
-                nextSlot++;
-				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.GoodieBags.GreenShardBag>());
-                nextSlot++;
-				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.GoodieBags.BlueShardBag>());
-                nextSlot++;
-				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.GoodieBags.PurpleShardBag>());
-                nextSlot++;
-				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.GoodieBags.YellowShardBag>());
-                nextSlot++;
-				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.GoodieBags.WhiteShardBag>());
-                nextSlot++;
+				shop.Add<global::VinesMod.Items.GoodieBags.WhiteShardBag>();
             }
 		}
 
