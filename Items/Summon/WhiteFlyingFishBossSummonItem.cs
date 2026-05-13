@@ -43,5 +43,18 @@ namespace VinesMod.Items.Summon
             Terraria.Audio.SoundEngine.PlaySound(SoundID.Roar, player.position); 
             return true;
         }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe()
+                .AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardWhite>(), 20)
+                .AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardBlue>(), 3)
+                .AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardGreen>(), 3)
+                .AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardPurple>(), 3)
+                .AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardRed>(), 3)
+                .AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardYellow>(), 3)
+                .AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+                .Register();
+        }
     }
 }

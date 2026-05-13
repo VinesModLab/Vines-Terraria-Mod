@@ -43,5 +43,14 @@ namespace VinesMod.Items.Summon
             Terraria.Audio.SoundEngine.PlaySound(SoundID.Roar, player.position); 
             return true;
         }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe()
+                .AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardWhite>(), 10)
+                .AddIngredient(ItemID.Amethyst, 1)
+                .AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+                .Register();
+        }
     }
 }

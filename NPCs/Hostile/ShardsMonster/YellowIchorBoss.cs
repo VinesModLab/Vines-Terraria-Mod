@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.GameContent.ItemDropRules;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace VinesMod.NPCs.Hostile.ShardsMonster
 {
-    [AutoloadBossHead]
     public class YellowIchorBoss : ModNPC
     {
         private Player player;
@@ -42,21 +42,16 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
         {
             NPC.CloneDefaults(NPCID.IchorSticker);
             NPC.aiStyle = -1; 
-            NPC.lifeMax = 4000; 
+            NPC.lifeMax = 2200; 
             NPC.damage = 5; 
             NPC.defense = 5; 
             NPC.scale = 2f;
-            NPC.value = 10000;
-            NPC.boss = true; // Is a boss
+            NPC.value = 5000;
+            NPC.boss = true;
             NPC.lavaImmune = true;
             NPC.noGravity = true; 
             NPC.noTileCollide = true;
             NPC.knockBackResist = 0f;
-            if (!Main.dedServ)
-            {
-                Music = MusicID.Boss2;
-            }
- // Needed for the NPC to drop loot bag.
         }
 
         public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)
@@ -64,6 +59,11 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             NPC.lifeMax = (int)(NPC.lifeMax * 0.625f * balance);
             NPC.damage = (int)(NPC.damage * 0.6f);
             NPC.defense = (int)(NPC.defense + numPlayers);
+        }
+
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
+        {
+            npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<global::VinesMod.Items.TreasureBags.YellowIchorBossBag>()));
         }
         
 
@@ -88,7 +88,7 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
 
         private void Move(Vector2 offset)
         {
-            speed = 7f; // Sets the max speed of the NPC.
+            speed = NPC.life < NPC.lifeMax / 2 ? 10f : 7f; // Sets the max speed of the NPC.
             Vector2 moveTo = player.Center + offset; // Gets the point that the npc will be moving to.
             Vector2 move = moveTo - NPC.Center;
             float magnitude = Magnitude(move);
@@ -130,13 +130,13 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             Vector2 velocity = player.Center - NPC.Center; // Get the distance between target and NPC.
             float magnitude = Magnitude(velocity);
             if(magnitude > 0) {
-                velocity *= 5f / magnitude;
+                velocity *= (NPC.life < NPC.lifeMax / 2 ? 7f : 5f) / magnitude;
             } else
             {
                 velocity = new Vector2(0f, 5f);
             }
             Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity, type, NPC.damage, 2f);
-            NPC.ai[1] = 100f;
+            NPC.ai[1] = NPC.life < NPC.lifeMax / 2 ? 70f : 100f;
         }
 
         private float Magnitude(Vector2 mag)
@@ -157,53 +157,31 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
 
         public override void OnKill()
         {
-            if (Main.expertMode)
+            if (!Main.expertMode)
             {
-            // Boss bags now drop via ModifyNPCLoot (1.4)
-            }
-            else
-            {
-                
-                if (Main.rand.Next(2) == 0)
-                {
-                    switch (Main.rand.Next(4))
+                switch (Main.rand.Next(4))
                 {
                     case 0:
-                    Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ModContent.ItemType<global::VinesMod.Items.Weapons.Magic.BallisticStaff>(), 1);
-                    break;
+                        Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ModContent.ItemType<global::VinesMod.Items.Weapons.Magic.BallisticStaff>(), 1);
+                        break;
                     case 1:
-                    Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ModContent.ItemType<global::VinesMod.Items.Weapons.DualUse.GoldenGunBlade>(), 1);
-                    break;
+                        Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ModContent.ItemType<global::VinesMod.Items.Weapons.DualUse.GoldenGunBlade>(), 1);
+                        break;
                     case 2:
-                    Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ModContent.ItemType<global::VinesMod.Items.Accessories.Shield.ShieldOfFlag>(), 1);
-                    break;
+                        Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ModContent.ItemType<global::VinesMod.Items.Accessories.Shield.ShieldOfFlag>(), 1);
+                        break;
                     case 3:
-                    Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ModContent.ItemType<global::VinesMod.Items.Accessories.HandsOff.PizzaBadge>(), 1);
-                    break;
-                }
-                }
-            
-
-                if (Main.rand.Next(3) == 0)
-                {
-                Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.EatersBone, 1);
+                        Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ModContent.ItemType<global::VinesMod.Items.Accessories.HandsOff.PizzaBadge>(), 1);
+                        break;
                 }
 
-            Item.NewItem(NPC.GetSource_Loot(), (int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardYellow>(), Main.rand.Next(5, 10));
-            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.GoldBar, Main.rand.Next(5, 8));
-            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.IronBar, Main.rand.Next(5, 10));
-            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.SilverOre, Main.rand.Next(15, 20));
-            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.ManaCrystal, Main.rand.Next(1, 2));
-            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.LifeCrystal, Main.rand.Next(1, 2));
+                if (Main.rand.Next(10) == 0)
+                    Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.AmberMosquito, 1);
 
-            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.PlatinumOre, Main.rand.Next(30, 50));
-            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.GoldOre, Main.rand.Next(30, 50));
-            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.Amber, Main.rand.Next(3, 5));
-            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.Topaz, Main.rand.Next(1, 2));
-            
+                Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardYellow>(), Main.rand.Next(8, 15));
+                Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.Amber, Main.rand.Next(2, 5));
+                Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.Topaz, Main.rand.Next(1, 4));
             }
-
-            
 
             // For settings if the boss has been downed
             VinesWorld.downedYellowIchorBoss = true;

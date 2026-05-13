@@ -439,41 +439,41 @@ Mods: {
 
 			// Summon items
 			BlueEyeBossSummonItem: {
-				DisplayName: Summoner : Blue Eye Boss
+				DisplayName: Summoner : Blue Eye
 				Tooltip:
 					'''
-					Summons the Blue Eye Boss.
-					Different fightstyle between day and light.
+					Summons the Blue Eye mini-boss.
+					Charges White Shards with blue energy.
 					'''
 			}
 
 			GreenBeeBossSummonItem: {
-				DisplayName: Summoner : Green Bee Boss
-				Tooltip: Summons the Green Bee Boss.
+				DisplayName: Summoner : Green Bee
+				Tooltip: Summons the Green Bee mini-boss.
 			}
 
 			PurpleSlimeBossSummonItem: {
-				DisplayName: Summoner : Purple Slime Boss
-				Tooltip: Summons the Purple Slime Boss.
+				DisplayName: Summoner : Purple Slime
+				Tooltip: Summons the Purple Slime mini-boss.
 			}
 
 			RedBrainBossSummonItem: {
-				DisplayName: Summoner : Red Brain Boss
+				DisplayName: Summoner : Red Brain
 				Tooltip:
 					'''
-					Summons the Red Brain Boss.
+					Summons the Red Brain mini-boss.
 					Only summon it at crimson underground.
 					'''
 			}
 
 			WhiteFlyingFishBossSummonItem: {
-				DisplayName: Summoner : White FlyingFishBoss Boss
-				Tooltip: Summons the White FlyingFishBoss Boss.
+				DisplayName: Summoner : White Flying Fish
+				Tooltip: Summons the main shard boss.
 			}
 
 			YellowIchorBossSummonItem: {
-				DisplayName: Summoner : Yellow Ichor Boss
-				Tooltip: Summons the Yellow Ichor Boss.
+				DisplayName: Summoner : Yellow Ichor
+				Tooltip: Summons the Yellow Ichor mini-boss.
 			}
 
 			// Tools
@@ -857,7 +857,7 @@ Mods: {
 			GreenBeeBoss.DisplayName: Green Bee
 			PurpleSlimeBoss.DisplayName: Purple Slime
 			RedBrainBoss.DisplayName: Red Brain
-			WhiteFlyingFishBoss.DisplayName: White FlyingFish
+			WhiteFlyingFishBoss.DisplayName: White Flying Fish
 			YellowIchorBoss.DisplayName: Yellow Ichor
 		}
 

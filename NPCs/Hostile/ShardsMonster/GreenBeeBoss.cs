@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.GameContent.ItemDropRules;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace VinesMod.NPCs.Hostile.ShardsMonster
 {
-    [AutoloadBossHead]
     public class GreenBeeBoss : ModNPC
     {
         private Player player;
@@ -42,20 +42,15 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
         {
             NPC.CloneDefaults(NPCID.QueenBee);
             NPC.aiStyle = 43; 
-            NPC.lifeMax = 4000; 
+            NPC.lifeMax = 2200; 
             NPC.damage = 45; 
             NPC.defense = 10; 
-            NPC.value = 10000;
-            NPC.boss = true; // Is a boss
+            NPC.value = 5000;
+            NPC.boss = true;
             NPC.lavaImmune = true;
             NPC.noGravity = true; 
             NPC.noTileCollide = true;
             NPC.knockBackResist = 0.2f;
-            if (!Main.dedServ)
-            {
-                Music = MusicID.Boss5;
-            }
- // Needed for the NPC to drop loot bag.
         }
 
         public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)
@@ -64,64 +59,58 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             NPC.damage = (int)(NPC.damage * 0.6f);
             NPC.defense = (int)(NPC.defense + numPlayers);
         }
+
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
+        {
+            npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<global::VinesMod.Items.TreasureBags.GreenBeeBossBag>()));
+        }
         
         public override void AI()
         {
+            NPC.ai[2]++;
+            int swarmRate = NPC.life < NPC.lifeMax / 2 ? 120 : 180;
+            if (NPC.ai[2] >= swarmRate)
+            {
+                NPC.ai[2] = 0f;
+                if (Main.netMode != NetmodeID.MultiplayerClient)
+                {
+                    int beeCount = NPC.life < NPC.lifeMax / 2 ? 3 : 2;
+                    for (int i = 0; i < beeCount; i++)
+                    {
+                        Vector2 offset = new Vector2(Main.rand.Next(-80, 81), Main.rand.Next(-60, 61));
+                        NPC.NewNPC(NPC.GetSource_FromAI(), (int)(NPC.Center.X + offset.X), (int)(NPC.Center.Y + offset.Y), NPCID.BeeSmall);
+                    }
+                }
+            }
         }
 
         public override void OnKill()
         {
-            if (Main.expertMode)
+            if (!Main.expertMode)
             {
-            // Boss bags now drop via ModifyNPCLoot (1.4)
-            }
-            else
-            {
-                        
                 if (Main.rand.Next(10) == 0)
-                {
-                Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.HoneyedGoggles, 1);
-                }
+                    Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.HoneyedGoggles, 1);
 
-                if (Main.rand.Next(9) == 0)
-                {
-                Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.Nectar, 1);
-                }
+                if (Main.rand.Next(8) == 0)
+                    Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.Nectar, 1);
 
                 switch (Main.rand.Next(3))
                 {
-                case 0:
-                Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.BeeKeeper, 1);
-                break;
-
-                case 1:
-                Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.BeeGun, 1);
-                break;
-
-                case 2:
-                Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.BeesKnees, 1);
-                break;
-
+                    case 0:
+                        Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.BeeKeeper, 1);
+                        break;
+                    case 1:
+                        Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.BeeGun, 1);
+                        break;
+                    case 2:
+                        Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.BeesKnees, 1);
+                        break;
                 }
 
-                if (Main.rand.Next(3) == 0)
-                {
-                Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.HoneyComb, 1);
-                }
-            Item.NewItem(NPC.GetSource_Loot(), (int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardGreen>(), Main.rand.Next(5, 10));
-            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.GoldBar, Main.rand.Next(5, 8));
-            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.IronBar, Main.rand.Next(5, 10));
-            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.SilverOre, Main.rand.Next(15, 20));
-            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.ManaCrystal, Main.rand.Next(1, 2));
-            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.LifeCrystal, Main.rand.Next(1, 2));
-
-            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.BottledHoney, Main.rand.Next(15, 30));
-            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.BeeWax, Main.rand.Next(10, 20));
-            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.Beenade, Main.rand.Next(30, 45));
-            Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.Emerald, Main.rand.Next(1, 2));
+                Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardGreen>(), Main.rand.Next(8, 15));
+                Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.BeeWax, Main.rand.Next(8, 17));
+                Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.Emerald, Main.rand.Next(1, 4));
             }
-            
-            
 
             // For settings if the boss has been downed
             VinesWorld.downedGreenBeeBoss = true;

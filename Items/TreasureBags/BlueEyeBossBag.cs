@@ -34,45 +34,14 @@ namespace VinesMod.Items.TreasureBags
         {
             player.TryGettingDevArmor(player.GetSource_OpenItem(Type)); // This will have a chance to spawn the Dev Armour.
 
-            if(Main.rand.Next(3) == 0)
-            {
-                player.QuickSpawnItem(player.GetSource_OpenItem(Type), ModContent.ItemType<global::VinesMod.Items.Accessories.HandsOff.BlueEyeBall>(),1);
-            }
-
-            if(Main.rand.Next(3) == 0)
-            {
-                player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.LifeCrystal, Main.rand.Next(1, 3));
-            }
-
-            if (Main.rand.Next(4) == 0)
-            {
+            if (Main.rand.Next(2) == 0)
+                player.QuickSpawnItem(player.GetSource_OpenItem(Type), ModContent.ItemType<global::VinesMod.Items.Accessories.HandsOff.BlueEyeBall>(), 1);
+            else
                 player.QuickSpawnItem(player.GetSource_OpenItem(Type), ModContent.ItemType<global::VinesMod.Items.Weapons.Melee.CodeO>(), 1);
-            }
 
-            if(Main.rand.Next(5) == 0)
-            {
-                player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.BlackLens, 1);
-            }
-
-            if(Main.rand.Next(7) == 0)
-            {
-                player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.Binoculars, 1);
-            }
-            player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.GoldBar, 5);
-            player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.IronBar, 7);
-            player.QuickSpawnItem(player.GetSource_OpenItem(Type), ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardBlue>(), Main.rand.Next(10,20));
-            player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.ManaCrystal, Main.rand.Next(2, 4));
-
-            player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.DemoniteOre, Main.rand.Next(20, 40));
-            player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.CrimtaneOre, Main.rand.Next(20, 40));
-            player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.CorruptSeeds, Main.rand.Next(1, 2));
-            player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.CrimsonSeeds, Main.rand.Next(1, 2));
+            player.QuickSpawnItem(player.GetSource_OpenItem(Type), ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardBlue>(), Main.rand.Next(12, 21));
             player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.Lens, Main.rand.Next(3, 5));
-            player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.GoldBar, Main.rand.Next(3, 5));
-            player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.SilverOre, Main.rand.Next(10, 20));
-            player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.IronBar, Main.rand.Next(3, 7));
-
-            player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.Sapphire, Main.rand.Next(3, 5));
+            player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.Sapphire, Main.rand.Next(2, 5));
         }
     }
 }
