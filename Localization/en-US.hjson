@@ -246,7 +246,7 @@ Mods: {
 
 			BlueHelmet: {
 				DisplayName: Blue Mana Helmet
-				Tooltip: ""
+				Tooltip: Channels mana through a sapphire focus.
 			}
 
 			BlueLeggings: {
@@ -257,17 +257,17 @@ Mods: {
 			// Armor – NullSet
 			NullBreastplate: {
 				DisplayName: Null (Breastplate)
-				Tooltip: ""
+				Tooltip: A void-forged chestplate with impossible defense.
 			}
 
 			NullHelmet: {
 				DisplayName: Null (Helmet)
-				Tooltip: ""
+				Tooltip: Completes the Null set and greatly amplifies all damage.
 			}
 
 			NullLeggings: {
 				DisplayName: Null (Legging)
-				Tooltip: ""
+				Tooltip: Heavy void armor that refuses to slow you down.
 			}
 
 			// Armor – PurpleManaSet
@@ -278,7 +278,7 @@ Mods: {
 
 			PurpleHelmet: {
 				DisplayName: Purple Mana Helmet
-				Tooltip: ""
+				Tooltip: Focuses amethyst mana into sharper magic.
 			}
 
 			PurpleLeggings: {
@@ -479,52 +479,52 @@ Mods: {
 			// Tools
 			FossilYellowHamaxe: {
 				DisplayName: FossilYellow Hamaxe
-				Tooltip: ""
+				Tooltip: A topaz-fossil tool for chopping and hammering.
 			}
 
 			FossilYellowPickaxe: {
 				DisplayName: FossilYellow Pickaxe
-				Tooltip: ""
+				Tooltip: A topaz-fossil pickaxe that chips through stone.
 			}
 
 			LifeGreenHamaxe: {
 				DisplayName: LifeGreen Hamaxe
-				Tooltip: ""
+				Tooltip: An emerald life-tool for shaping wood and walls.
 			}
 
 			LifeGreenPickaxe: {
 				DisplayName: LifeGreen Pickaxe
-				Tooltip: ""
+				Tooltip: An emerald pickaxe pulsing with living energy.
 			}
 
 			LifeRedHamaxe: {
 				DisplayName: LifeRed Hamaxe
-				Tooltip: ""
+				Tooltip: A ruby life-tool for heavy construction work.
 			}
 
 			LifeRedPickaxe: {
 				DisplayName: LifeRed Pickaxe
-				Tooltip: ""
+				Tooltip: A ruby pickaxe with a warm heartbeat.
 			}
 
 			ManaBlueHamaxe: {
 				DisplayName: ManaBlue Hamaxe
-				Tooltip: ""
+				Tooltip: A sapphire mana-tool for shaping blocks and wood.
 			}
 
 			ManaBluePickaxe: {
 				DisplayName: ManaBlue Pickaxe
-				Tooltip: ""
+				Tooltip: A sapphire pickaxe charged with stored mana.
 			}
 
 			ObPurpleHamaxe: {
 				DisplayName: Obsidian Purple Hamaxe
-				Tooltip: ""
+				Tooltip: An amethyst obsidian tool for hammering and chopping.
 			}
 
 			ObPurplePickaxe: {
 				DisplayName: Obsidian Purple Pickaxe
-				Tooltip: ""
+				Tooltip: An amethyst obsidian pickaxe with a dark edge.
 			}
 
 			StoneMirror: {
@@ -566,7 +566,7 @@ Mods: {
 			// Vanity
 			Lenny: {
 				DisplayName: ( ͡° ͜ʖ ͡°)
-				Tooltip: ""
+				Tooltip: A vanity face that stares bravely into the void.
 			}
 
 			// Weapons – Ammo
@@ -649,7 +649,7 @@ Mods: {
 
 			FirebeamStaff: {
 				DisplayName: Firebeam Staff
-				Tooltip: ""
+				Tooltip: Channels a focused beam of flame.
 			}
 
 			LaserBook: {
@@ -680,22 +680,22 @@ Mods: {
 
 			BronzeSculptor: {
 				DisplayName: Bronze Sculptor
-				Tooltip: ""
+				Tooltip: A heavy bronze blade shaped for careful strikes.
 			}
 
 			Claymore: {
 				DisplayName: Claymore
-				Tooltip: ""
+				Tooltip: A reliable two-handed blade with wide reach.
 			}
 
 			CodeO: {
 				DisplayName: Code : O
-				Tooltip: ""
+				Tooltip: A coded blade that launches unstable energy.
 			}
 
 			CodeOOverDrive: {
 				DisplayName: Code : O OverDrive
-				Tooltip: ""
+				Tooltip: Overloads Code : O with shard-powered force.
 			}
 
 			CrystalBlood: {
@@ -705,27 +705,27 @@ Mods: {
 
 			CrystalBloodOverDrive: {
 				DisplayName: Crystal Blood OverDrive
-				Tooltip: ""
+				Tooltip: Overdrives Crystal Blood with violent shard energy.
 			}
 
 			DeathStorm: {
 				DisplayName: Death Storm
-				Tooltip: ""
+				Tooltip: Calls a storm of cutting deathly force.
 			}
 
 			DeathStormOverDrive: {
 				DisplayName: Death Storm OverDrive
-				Tooltip: ""
+				Tooltip: Unleashes a stronger storm of deathly blades.
 			}
 
 			EnchantedSabre: {
 				DisplayName: Enchanted Sabre
-				Tooltip: ""
+				Tooltip: A quick sabre carrying a simple enchantment.
 			}
 
 			FieryWarblade: {
 				DisplayName: Fiery Warblade
-				Tooltip: ""
+				Tooltip: A warblade forged hot enough to scorch the air.
 			}
 
 			FrostPain: {
@@ -740,7 +740,7 @@ Mods: {
 
 			GrassDefender: {
 				DisplayName: Grass Defender
-				Tooltip: ""
+				Tooltip: A sturdy blade blessed by green growth.
 			}
 
 			InfernoSpike: {
@@ -750,12 +750,12 @@ Mods: {
 
 			KendoSword: {
 				DisplayName: Kendo Sword
-				Tooltip: ""
+				Tooltip: A disciplined blade for clean, direct cuts.
 			}
 
 			LilacGuardian: {
 				DisplayName: Lilac Guardian
-				Tooltip: ""
+				Tooltip: A guardian blade with a gentle lilac glow.
 			}
 
 			MeowmereOverDrive: {
@@ -765,12 +765,12 @@ Mods: {
 
 			MoonlightGreatSword: {
 				DisplayName: Moonlight GreatSword
-				Tooltip: ""
+				Tooltip: A greatsword shining with pale moonlight.
 			}
 
 			Reboot: {
 				DisplayName: Reboot
-				Tooltip: ""
+				Tooltip: Restarts the fight with raw mechanical force.
 			}
 
 			RebootOverDrive: {
@@ -785,12 +785,12 @@ Mods: {
 
 			SnakeKatana: {
 				DisplayName: Snake Katana
-				Tooltip: ""
+				Tooltip: A katana with a venomous bite.
 			}
 
 			StarFall: {
 				DisplayName: StarFall
-				Tooltip: ""
+				Tooltip: Calls falling stars down through the blade.
 			}
 
 			StarWrathOverDrive: {
@@ -800,12 +800,12 @@ Mods: {
 
 			SteelWarblade: {
 				DisplayName: Steel Warblade
-				Tooltip: ""
+				Tooltip: A plain steel warblade built for honest work.
 			}
 
 			ThunderBleu: {
 				DisplayName: Thunder Bleu
-				Tooltip: ""
+				Tooltip: A blue thunder blade crackling with charge.
 			}
 
 			WeaponNull: {
@@ -819,7 +819,7 @@ Mods: {
 
 			WhiteFishSword: {
 				DisplayName: Fishy Sword
-				Tooltip: ""
+				Tooltip: A fishy blade from the white shard boss.
 			}
 
 			ZeoxingBlade: {
@@ -830,23 +830,23 @@ Mods: {
 			// Weapons – Throw
 			DirtJavelin: {
 				DisplayName: Dirt Javelin
-				Tooltip: ""
+				Tooltip: A rough javelin that leaves dirt in the wound.
 			}
 
 			// Weapons – Yoyo
 			Dreamy: {
 				DisplayName: Dreamy
-				Tooltip: ""
+				Tooltip: A dreamy yoyo with a soft but strange pull.
 			}
 
 			Meteor: {
 				DisplayName: Meteor
-				Tooltip: ""
+				Tooltip: A yoyo burning with meteor heat.
 			}
 
 			RektU3000: {
 				DisplayName: RektU3000
-				Tooltip: ""
+				Tooltip: A brutal yoyo built to ruin whatever it reaches.
 			}
 		}
 

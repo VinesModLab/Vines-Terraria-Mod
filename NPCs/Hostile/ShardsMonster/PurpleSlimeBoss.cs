@@ -70,11 +70,27 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             Target();
             DespawnHandler();
 
-            //Attacking
-            NPC.ai[1] -= 1f; // Subtracts 1 from the ai.
-            if(NPC.ai[1] <= 0f)
+            bool secondPhase = NPC.life < NPC.lifeMax / 2;
+            NPC.ai[0]++;
+            NPC.ai[1]++;
+
+            if (NPC.collideY && NPC.ai[0] > (secondPhase ? 42f : 62f))
             {
-                Shoot();
+                Vector2 jump = player.Center - NPC.Center;
+                float horizontal = jump.X == 0f ? 0f : Math.Sign(jump.X) * (secondPhase ? 9.5f : 7f);
+                NPC.velocity = new Vector2(horizontal, secondPhase ? -11.5f : -9f);
+                NPC.ai[0] = 0f;
+                DustBurst(DustID.PurpleTorch, 12);
+            }
+
+            if (NPC.ai[1] > (secondPhase ? 95f : 135f))
+            {
+                Shoot(secondPhase);
+                if (secondPhase)
+                {
+                    RadialBurst();
+                }
+                NPC.ai[1] = 0f;
             }
         }
 
@@ -101,23 +117,40 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             }
         }
 
-        private void Shoot()
+        private void Shoot(bool secondPhase)
         {
             int type = ModContent.ProjectileType<global::VinesMod.Projectiles.Enemy.PurpleSlimeBossProjectile>();
             Vector2 velocity = player.Center - NPC.Center; // Get the distance between target and NPC.
             float magnitude = Magnitude(velocity);
             if(magnitude > 0) {
-                velocity *= 5f / magnitude;
+                velocity *= (secondPhase ? 7f : 5f) / magnitude;
             } else
             {
                 velocity = new Vector2(0f, 5f);
             }
-            int spread = NPC.life < NPC.lifeMax / 2 ? 1 : 0;
+            int spread = secondPhase ? 2 : 1;
             for (int i = -spread; i <= spread; i++)
             {
-                Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity.RotatedBy(MathHelper.ToRadians(i * 16f)), type, NPC.damage, 2f);
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity.RotatedBy(MathHelper.ToRadians(i * 14f)), type, NPC.damage, 2f);
             }
-            NPC.ai[1] = (float) Main.rand.Next(100 , 150);
+        }
+
+        private void RadialBurst()
+        {
+            int type = ModContent.ProjectileType<global::VinesMod.Projectiles.Enemy.PurpleSlimeBossProjectile>();
+            for (int i = 0; i < 8; i++)
+            {
+                Vector2 velocity = Vector2.UnitX.RotatedBy(MathHelper.TwoPi * i / 8f) * 4.5f;
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity, type, (int)(NPC.damage * 0.75f), 1f);
+            }
+        }
+
+        private void DustBurst(int dustId, int count)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                Dust.NewDust(NPC.position, NPC.width, NPC.height, dustId);
+            }
         }
 
         private float Magnitude(Vector2 mag)

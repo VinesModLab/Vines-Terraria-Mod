@@ -96,6 +96,10 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
                 {
                     RainShards();
                 }
+                else
+                {
+                    CrossingShards();
+                }
                 NPC.ai[0] = 0f;
             }
 
@@ -181,6 +185,18 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
                 Vector2 position = player.Center + new Vector2(i * 90f, -520f);
                 Vector2 velocity = new Vector2(i * 0.35f, 7.5f);
                 Projectile.NewProjectile(NPC.GetSource_FromAI(), position, velocity, type, (int)(NPC.damage * 0.75f), 1f);
+            }
+        }
+
+        private void CrossingShards()
+        {
+            int type = ModContent.ProjectileType<global::VinesMod.Projectiles.Enemy.WhiteFlyingFishBossProjectile>();
+            for (int i = -1; i <= 1; i++)
+            {
+                Vector2 leftPosition = player.Center + new Vector2(-520f, -90f + i * 80f);
+                Vector2 rightPosition = player.Center + new Vector2(520f, -90f + i * 80f);
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), leftPosition, new Vector2(7f, 0.35f * i), type, (int)(NPC.damage * 0.7f), 1f);
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), rightPosition, new Vector2(-7f, 0.35f * i), type, (int)(NPC.damage * 0.7f), 1f);
             }
         }
 

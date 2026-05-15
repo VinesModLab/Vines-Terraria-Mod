@@ -29,7 +29,7 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
 		{
 			get
 			{
-				return "VinesMod/NPCs/Hostile/ShardsMonster/YellowIchor_Head_Boss";
+				return "VinesMod/NPCs/Hostile/ShardsMonster/YellowIchorBoss_Head_Boss";
 			}
 		}
 
@@ -72,12 +72,25 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             Target();
             DespawnHandler();
 
-            Move(new Vector2(Main.rand.Next(-300, 300), -Main.rand.Next(45, 250))); // Calls the Move Method
-            //Attacking
-            NPC.ai[1] -= 1f; // Subtracts 1 from the ai.
-            if(NPC.ai[1] <= 0f)
+            bool secondPhase = NPC.life < NPC.lifeMax / 2;
+            NPC.ai[0]++;
+
+            Vector2 hoverOffset = new Vector2((float)Math.Sin(NPC.ai[0] / 20f) * 280f, -170f + (float)Math.Cos(NPC.ai[0] / 16f) * 45f);
+            Move(hoverOffset);
+
+            if (NPC.ai[0] % (secondPhase ? 65f : 95f) == 0f)
             {
-                Shoot();
+                Shoot(secondPhase ? 2 : 1, secondPhase ? 8f : 5.75f);
+            }
+
+            if (secondPhase && NPC.ai[0] % 150f == 0f)
+            {
+                IchorRain();
+            }
+
+            if (NPC.ai[0] > 360f)
+            {
+                NPC.ai[0] = 0f;
             }
         }
 
@@ -124,19 +137,32 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             }
         }
 
-        private void Shoot()
+        private void Shoot(int spread, float projectileSpeed)
         {
             int type = ModContent.ProjectileType<global::VinesMod.Projectiles.Enemy.YellowIchorBossProjectile>();
             Vector2 velocity = player.Center - NPC.Center; // Get the distance between target and NPC.
             float magnitude = Magnitude(velocity);
             if(magnitude > 0) {
-                velocity *= (NPC.life < NPC.lifeMax / 2 ? 7f : 5f) / magnitude;
+                velocity *= projectileSpeed / magnitude;
             } else
             {
                 velocity = new Vector2(0f, 5f);
             }
-            Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity, type, NPC.damage, 2f);
-            NPC.ai[1] = NPC.life < NPC.lifeMax / 2 ? 70f : 100f;
+            for (int i = -spread; i <= spread; i++)
+            {
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity.RotatedBy(MathHelper.ToRadians(i * 10f)), type, NPC.damage, 2f);
+            }
+        }
+
+        private void IchorRain()
+        {
+            int type = ModContent.ProjectileType<global::VinesMod.Projectiles.Enemy.YellowIchorBossProjectile>();
+            for (int i = -3; i <= 3; i++)
+            {
+                Vector2 position = player.Center + new Vector2(i * 80f, -500f);
+                Vector2 velocity = new Vector2(i * 0.25f, 7f);
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), position, velocity, type, (int)(NPC.damage * 0.75f), 1f);
+            }
         }
 
         private float Magnitude(Vector2 mag)

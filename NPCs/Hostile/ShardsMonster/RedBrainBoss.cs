@@ -41,7 +41,7 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
         public override void SetDefaults()
         {
             NPC.CloneDefaults(NPCID.BrainofCthulhu);
-            NPC.aiStyle = 54; // Brain
+            NPC.aiStyle = -1;
             NPC.lifeMax = 2000; 
             NPC.damage = 35; 
             NPC.defense = 3; 
@@ -67,24 +67,87 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
         
         public override void AI()
         {
-            NPC.ai[2]++;
-            int blinkRate = NPC.life < NPC.lifeMax / 2 ? 120 : 180;
-            if (NPC.ai[2] >= blinkRate)
-            {
-                NPC.ai[2] = 0f;
-                Player target = Main.player[NPC.target];
-                if (target.active && !target.dead)
-                {
-                    for (int i = 0; i < 20; i++)
-                    {
-                        Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood);
-                    }
+            Target();
+            DespawnHandler();
 
-                    Vector2 offset = new Vector2(Main.rand.Next(-260, 261), Main.rand.Next(-180, -80));
-                    NPC.Center = target.Center + offset;
-                    NPC.velocity = Vector2.Normalize(target.Center - NPC.Center) * 6f;
-                    NPC.netUpdate = true;
+            bool secondPhase = NPC.life < NPC.lifeMax / 2;
+            NPC.ai[0]++;
+
+            if (NPC.ai[0] < (secondPhase ? 85f : 120f))
+            {
+                Vector2 hoverOffset = new Vector2((float)Math.Cos(NPC.ai[0] / 22f) * 210f, -120f + (float)Math.Sin(NPC.ai[0] / 18f) * 70f);
+                Move(player.Center + hoverOffset, secondPhase ? 10f : 7f, secondPhase ? 12f : 20f);
+            }
+            else if (NPC.ai[0] == (secondPhase ? 85f : 120f))
+            {
+                BlinkNearPlayer(secondPhase);
+                PsychicBurst(secondPhase);
+            }
+            else if (NPC.ai[0] > (secondPhase ? 125f : 170f))
+            {
+                NPC.ai[0] = 0f;
+            }
+        }
+
+        private void Target()
+        {
+            NPC.TargetClosest(false);
+            player = Main.player[NPC.target];
+        }
+
+        private void DespawnHandler()
+        {
+            if (!player.active || player.dead)
+            {
+                NPC.TargetClosest(false);
+                player = Main.player[NPC.target];
+                if (!player.active || player.dead)
+                {
+                    NPC.velocity = new Vector2(0f, -10f);
+                    if (NPC.timeLeft > 10)
+                    {
+                        NPC.timeLeft = 10;
+                    }
                 }
+            }
+        }
+
+        private void Move(Vector2 destination, float maxSpeed, float turnResistance)
+        {
+            Vector2 move = destination - NPC.Center;
+            float magnitude = move.Length();
+            if (magnitude > maxSpeed)
+            {
+                move *= maxSpeed / magnitude;
+            }
+
+            NPC.velocity = (NPC.velocity * turnResistance + move) / (turnResistance + 1f);
+        }
+
+        private void BlinkNearPlayer(bool secondPhase)
+        {
+            for (int i = 0; i < 24; i++)
+            {
+                Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Blood);
+            }
+
+            Vector2 offset = new Vector2(Main.rand.Next(-260, 261), Main.rand.Next(-190, -80));
+            NPC.Center = player.Center + offset;
+            Vector2 velocity = player.Center - NPC.Center;
+            float magnitude = velocity.Length();
+            NPC.velocity = magnitude > 0f ? velocity * (secondPhase ? 9f : 6f) / magnitude : Vector2.Zero;
+            NPC.netUpdate = true;
+        }
+
+        private void PsychicBurst(bool secondPhase)
+        {
+            int spread = secondPhase ? 2 : 1;
+            Vector2 velocity = player.Center - NPC.Center;
+            float magnitude = velocity.Length();
+            velocity = magnitude > 0f ? velocity * (secondPhase ? 6f : 4.5f) / magnitude : new Vector2(0f, 4.5f);
+            for (int i = -spread; i <= spread; i++)
+            {
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity.RotatedBy(MathHelper.ToRadians(i * 18f)), ProjectileID.DemonScythe, NPC.damage, 1f);
             }
         }
 

@@ -57,7 +57,7 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             NPC.HitSound = SoundID.NPCHit1;
             NPC.DeathSound = SoundID.NPCDeath1;
             NPC.knockBackResist = 0.2f;
-            NPC.aiStyle = 2; // aiType renamed to NPC.aiStyle // Different Movement at Night
+            NPC.aiStyle = -1;
         }
 
         public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)
@@ -77,12 +77,34 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             Target();
             DespawnHandler();
 
-            Move(new Vector2(Main.rand.Next(-200, 200), -Main.rand.Next(100, 250))); // Calls the Move Method
-            //Attacking
-            NPC.ai[1] -= 1f; // Subtracts 1 from the ai.
-            if(NPC.ai[1] <= 0f)
+            bool secondPhase = NPC.life < NPC.lifeMax / 2;
+            NPC.ai[0]++;
+
+            if (NPC.ai[0] < (secondPhase ? 70f : 95f))
             {
-                Shoot();
+                Vector2 hoverOffset = new Vector2((float)Math.Sin(NPC.ai[0] / 18f) * 260f, -210f);
+                Move(hoverOffset, secondPhase ? 16f : 12f, secondPhase ? 16f : 24f);
+                if (NPC.ai[0] % 12f == 0f)
+                {
+                    Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric);
+                }
+            }
+            else if (NPC.ai[0] < (secondPhase ? 105f : 135f))
+            {
+                NPC.velocity *= 0.94f;
+                if (NPC.ai[0] % 10f == 0f)
+                {
+                    Dust.NewDust(NPC.position, NPC.width, NPC.height, DustID.Electric);
+                }
+            }
+            else if (NPC.ai[0] == (secondPhase ? 105f : 135f))
+            {
+                Shoot(secondPhase ? 2 : 1, secondPhase ? 7.5f : 5.5f);
+                CrystalDash(secondPhase ? 15f : 11f);
+            }
+            else if (NPC.ai[0] > (secondPhase ? 135f : 170f))
+            {
+                NPC.ai[0] = 0f;
             }
         }
 
@@ -91,9 +113,9 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             player = Main.player[NPC.target]; // This will get the player target.
         }
 
-        private void Move(Vector2 offset)
+        private void Move(Vector2 offset, float maxSpeed, float turnResistance)
         {
-            speed = 15f; // Sets the max speed of the NPC.
+            speed = maxSpeed; // Sets the max speed of the NPC.
             Vector2 moveTo = player.Center + offset; // Gets the point that the npc will be moving to.
             Vector2 move = moveTo - NPC.Center;
             float magnitude = Magnitude(move);
@@ -101,7 +123,6 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             {
                 move *= speed / magnitude; 
             }
-            float turnResistance = 25f; // The larget the number the slower the npc will turn.
             move = (NPC.velocity * turnResistance + move) / (turnResistance + 1f);
             magnitude = Magnitude(move);
             if(magnitude > speed)
@@ -129,23 +150,28 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             }
         }
 
-        private void Shoot()
+        private void CrystalDash(float dashSpeed)
+        {
+            Vector2 velocity = player.Center - NPC.Center;
+            float magnitude = Magnitude(velocity);
+            NPC.velocity = magnitude > 0f ? velocity * dashSpeed / magnitude : new Vector2(0f, dashSpeed);
+        }
+
+        private void Shoot(int spread, float projectileSpeed)
         {
             int type = ModContent.ProjectileType<global::VinesMod.Projectiles.Enemy.BlueEyeBossProjectile>();
             Vector2 velocity = player.Center - NPC.Center; // Get the distance between target and NPC.
             float magnitude = Magnitude(velocity);
             if(magnitude > 0) {
-                velocity *= 5f / magnitude;
+                velocity *= projectileSpeed / magnitude;
             } else
             {
                 velocity = new Vector2(0f, 5f);
             }
-            int spread = NPC.life < NPC.lifeMax / 2 ? 1 : 0;
             for (int i = -spread; i <= spread; i++)
             {
-                Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity.RotatedBy(MathHelper.ToRadians(i * 12f)), type, NPC.damage, 2f);
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity.RotatedBy(MathHelper.ToRadians(i * 11f)), type, NPC.damage, 2f);
             }
-            NPC.ai[1] = (float) Main.rand.Next(75 , 100);
         }
 
         private float Magnitude(Vector2 mag)

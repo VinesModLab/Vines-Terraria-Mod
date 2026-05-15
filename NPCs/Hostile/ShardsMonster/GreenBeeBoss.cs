@@ -41,7 +41,7 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
         public override void SetDefaults()
         {
             NPC.CloneDefaults(NPCID.QueenBee);
-            NPC.aiStyle = 43; 
+            NPC.aiStyle = -1; 
             NPC.lifeMax = 2200; 
             NPC.damage = 45; 
             NPC.defense = 10; 
@@ -67,20 +67,94 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
         
         public override void AI()
         {
-            NPC.ai[2]++;
-            int swarmRate = NPC.life < NPC.lifeMax / 2 ? 120 : 180;
-            if (NPC.ai[2] >= swarmRate)
+            Target();
+            DespawnHandler();
+
+            bool secondPhase = NPC.life < NPC.lifeMax / 2;
+            NPC.ai[0]++;
+            NPC.ai[1]++;
+
+            if (NPC.ai[0] < (secondPhase ? 65f : 90f))
             {
-                NPC.ai[2] = 0f;
+                Vector2 hoverOffset = new Vector2((float)Math.Sin(NPC.ai[0] / 14f) * 230f, -150f);
+                Move(player.Center + hoverOffset, secondPhase ? 12f : 9f, secondPhase ? 13f : 20f);
+            }
+            else if (NPC.ai[0] == (secondPhase ? 65f : 90f))
+            {
+                Dash(secondPhase ? 15f : 11f);
+                ShootStingers(secondPhase ? 2 : 1, secondPhase ? 8f : 6f);
+            }
+            else if (NPC.ai[0] > (secondPhase ? 98f : 130f))
+            {
+                NPC.ai[0] = 0f;
+            }
+
+            int swarmRate = secondPhase ? 150 : 220;
+            if (NPC.ai[1] >= swarmRate)
+            {
+                NPC.ai[1] = 0f;
                 if (Main.netMode != NetmodeID.MultiplayerClient)
                 {
-                    int beeCount = NPC.life < NPC.lifeMax / 2 ? 3 : 2;
+                    int beeCount = secondPhase ? 3 : 2;
                     for (int i = 0; i < beeCount; i++)
                     {
                         Vector2 offset = new Vector2(Main.rand.Next(-80, 81), Main.rand.Next(-60, 61));
                         NPC.NewNPC(NPC.GetSource_FromAI(), (int)(NPC.Center.X + offset.X), (int)(NPC.Center.Y + offset.Y), NPCID.BeeSmall);
                     }
                 }
+            }
+        }
+
+        private void Target()
+        {
+            NPC.TargetClosest(false);
+            player = Main.player[NPC.target];
+        }
+
+        private void DespawnHandler()
+        {
+            if (!player.active || player.dead)
+            {
+                NPC.TargetClosest(false);
+                player = Main.player[NPC.target];
+                if (!player.active || player.dead)
+                {
+                    NPC.velocity = new Vector2(0f, -10f);
+                    if (NPC.timeLeft > 10)
+                    {
+                        NPC.timeLeft = 10;
+                    }
+                }
+            }
+        }
+
+        private void Move(Vector2 destination, float maxSpeed, float turnResistance)
+        {
+            Vector2 move = destination - NPC.Center;
+            float magnitude = move.Length();
+            if (magnitude > maxSpeed)
+            {
+                move *= maxSpeed / magnitude;
+            }
+
+            NPC.velocity = (NPC.velocity * turnResistance + move) / (turnResistance + 1f);
+        }
+
+        private void Dash(float dashSpeed)
+        {
+            Vector2 velocity = player.Center - NPC.Center;
+            float magnitude = velocity.Length();
+            NPC.velocity = magnitude > 0f ? velocity * dashSpeed / magnitude : new Vector2(0f, dashSpeed);
+        }
+
+        private void ShootStingers(int spread, float speed)
+        {
+            Vector2 velocity = player.Center - NPC.Center;
+            float magnitude = velocity.Length();
+            velocity = magnitude > 0f ? velocity * speed / magnitude : new Vector2(0f, speed);
+            for (int i = -spread; i <= spread; i++)
+            {
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity.RotatedBy(MathHelper.ToRadians(i * 13f)), ProjectileID.Stinger, NPC.damage, 1f);
             }
         }
 
