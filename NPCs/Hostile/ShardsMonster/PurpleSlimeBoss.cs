@@ -41,7 +41,7 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
         public override void SetDefaults()
         {
             NPC.CloneDefaults(NPCID.KingSlime);
-            NPC.aiStyle = 15;
+            NPC.aiStyle = -1;
             NPC.lifeMax = 2200; 
             NPC.width = 122;
             NPC.height = 115;
@@ -96,6 +96,7 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
 
         private void Target()
         {
+            NPC.TargetClosest(false);
             player = Main.player[NPC.target]; // This will get the player target.
         }
 

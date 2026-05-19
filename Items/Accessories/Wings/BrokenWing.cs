@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -10,6 +11,7 @@ namespace VinesMod.Items.Accessories.Wings
     {
         public override void SetStaticDefaults()
         {
+            ArmorIDs.Wing.Sets.Stats[Item.wingSlot] = new WingStats(250, 10f, 2.75f);
         }
 
         public override void SetDefaults()
@@ -38,7 +40,7 @@ namespace VinesMod.Items.Accessories.Wings
         public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration)
         {
             speed = 10f;
-            acceleration *= 2.75f;
+            acceleration = 2.75f;
         }
 
         public override void AddRecipes()

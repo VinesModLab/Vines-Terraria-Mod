@@ -10,6 +10,7 @@ namespace VinesMod.Items.Armor.PurpleManaSet
 		public override void SetStaticDefaults()
 		{
 			base.SetStaticDefaults();
+			ArmorIDs.Body.Sets.HidesTopSkin[Item.bodySlot] = true;
 		}
 
 		public override void SetDefaults()

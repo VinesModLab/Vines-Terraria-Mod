@@ -110,6 +110,7 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
 
         private void Target()
         {
+            NPC.TargetClosest(false);
             player = Main.player[NPC.target]; // This will get the player target.
         }
 
@@ -130,6 +131,7 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
                 move *= speed / magnitude;
             }
             NPC.velocity = move;
+            NPC.direction = NPC.spriteDirection = NPC.velocity.X >= 0f ? 1 : -1;
         }
 
         private void DespawnHandler()// Handles if the NPC should despawn.

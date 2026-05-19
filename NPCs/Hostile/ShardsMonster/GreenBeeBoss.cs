@@ -138,6 +138,11 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             }
 
             NPC.velocity = (NPC.velocity * turnResistance + move) / (turnResistance + 1f);
+            if (NPC.velocity.Length() > maxSpeed)
+            {
+                NPC.velocity = Vector2.Normalize(NPC.velocity) * maxSpeed;
+            }
+            NPC.direction = NPC.spriteDirection = NPC.velocity.X >= 0f ? 1 : -1;
         }
 
         private void Dash(float dashSpeed)

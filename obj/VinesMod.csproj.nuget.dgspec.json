@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/maxku/Library/Application Support/Terraria/tModLoader/ModSources/VinesMod/VinesMod.csproj": {}
+    "C:\\Users\\kwfma\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\VinesMod\\VinesMod.csproj": {}
   },
   "projects": {
-    "/Users/maxku/Library/Application Support/Terraria/tModLoader/ModSources/VinesMod/VinesMod.csproj": {
+    "C:\\Users\\kwfma\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\VinesMod\\VinesMod.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/maxku/Library/Application Support/Terraria/tModLoader/ModSources/VinesMod/VinesMod.csproj",
+        "projectUniqueName": "C:\\Users\\kwfma\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\VinesMod\\VinesMod.csproj",
         "projectName": "VinesMod",
-        "projectPath": "/Users/maxku/Library/Application Support/Terraria/tModLoader/ModSources/VinesMod/VinesMod.csproj",
-        "packagesPath": "/Users/maxku/.nuget/packages/",
-        "outputPath": "/Users/maxku/Library/Application Support/Terraria/tModLoader/ModSources/VinesMod/obj/",
+        "projectPath": "C:\\Users\\kwfma\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\VinesMod\\VinesMod.csproj",
+        "packagesPath": "C:\\Users\\kwfma\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\kwfma\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\VinesMod\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/maxku/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\kwfma\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -58,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/8.0.411/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.421/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
