@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +22,7 @@ namespace VinesMod.Projectiles
         {
             Projectile.width = 8;
             Projectile.height = 8;
-            Projectile.aiStyle = 1;
+            Projectile.aiStyle = ProjAIStyleID.Arrow;
             Projectile.friendly = true;         
             Projectile.hostile = false;         
             Projectile.DamageType = DamageClass.Ranged;           
@@ -37,13 +37,13 @@ namespace VinesMod.Projectiles
 
         public override void AI()
 		{
-            	int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 105, 0f, 0f, 200, default(Color), 1.5f);
+            	int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.Water_BloodMoon, 0f, 0f, 200, default(Color), 1.5f);
 	            Main.dust[dust].velocity *= 0.2f;
                 Main.dust[dust].noGravity = true;
 
             if (Main.rand.Next(2) == 0)
             {
-	            int dust2 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 90, 0f, 0f, 200, default(Color), 1f);
+	            int dust2 = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GemRuby, 0f, 0f, 200, default(Color), 1f);
 	            Main.dust[dust2].velocity *= 0.3f;
                 Main.dust[dust2].noGravity = true;
             }

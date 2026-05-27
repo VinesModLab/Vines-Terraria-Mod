@@ -25,7 +25,7 @@ namespace VinesMod.Items.Weapons.Ammo
             Item.consumable = true;
             Item.knockBack = 1.5f;
             Item.value = 10;
-            Item.rare = 6;
+            Item.rare = ItemRarityID.LightPurple;
             Item.shoot = ModContent.ProjectileType<global::VinesMod.Projectiles.OverDriveArrow>();
             Item.shootSpeed *= 1.1f;
             Item.ammo = Item.type;

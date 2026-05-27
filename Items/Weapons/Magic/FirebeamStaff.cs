@@ -84,7 +84,7 @@ namespace VinesMod.Items.Weapons.Magic
 					Vector2 projectilePosition = Projectile.position;
 					projectilePosition -= Projectile.velocity * ((float)i * 0.25f);
 					Projectile.alpha = 255;
-					int dust = Dust.NewDust(projectilePosition, 1, 1, 174, 0f, 0f, 0, default(Color), 1f);
+					int dust = Dust.NewDust(projectilePosition, 1, 1, DustID.InfernoFork, 0f, 0f, 0, default(Color), 1f);
 					Main.dust[dust].noGravity = true;
 					Main.dust[dust].position = projectilePosition;
 					Main.dust[dust].scale = (float)Main.rand.Next(70, 110) * 0.013f;

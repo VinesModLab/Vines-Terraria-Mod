@@ -16,7 +16,7 @@ namespace VinesMod.Items.Accessories.Shield
 			Item.width = 24;
 			Item.height = 28;
 			Item.value = 10000;
-			Item.rare = 2;
+			Item.rare = ItemRarityID.Green;
 			Item.accessory = true;
 			Item.defense = 3;
 			Item.lifeRegen = 3;
@@ -39,6 +39,11 @@ namespace VinesMod.Items.Accessories.Shield
 				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardYellow>(), 25)
 				.AddRecipeGroup("Wood", 15)
 				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
+
+			Recipe.Create(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardYellow>(), 15)
+				.AddIngredient(Type)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarRecycler>())
 				.Register();
 		}
 	}

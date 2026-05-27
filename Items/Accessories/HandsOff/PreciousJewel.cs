@@ -15,7 +15,7 @@ namespace VinesMod.Items.Accessories.HandsOff
 			Item.width = 24;
 			Item.height = 28;
 			Item.value = Item.sellPrice(gold: 2); 
-			Item.rare = 6;
+			Item.rare = ItemRarityID.LightPurple;
 			Item.accessory = true;
 		}
 

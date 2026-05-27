@@ -1,176 +1,44 @@
-﻿using Terraria;
-using Terraria.Audio;
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using System;
 
 namespace VinesMod.Projectiles.Enemy
 {
-    public class WhiteFlyingFishBossProjectile : ModProjectile
-    {
-        public override void SetStaticDefaults()
-        {
-        }
+	public class WhiteFlyingFishBossProjectile : ModProjectile
+	{
+		public override void SetStaticDefaults()
+		{
+			ProjectileID.Sets.TrailCacheLength[Type] = 4;
+			ProjectileID.Sets.TrailingMode[Type] = 0;
+		}
 
-        public override void SetDefaults()
-        {
-            Projectile.width = 16;
-            Projectile.height = 16;
-            Projectile.aiStyle = -1;
-            Projectile.hostile = true;
-            Projectile.friendly = false;
-            Projectile.DamageType = DamageClass.Melee;
-            Projectile.penetrate = 3;
-        }
-        
-        public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
-        {
-            if (targetHitbox.Width > 8 && targetHitbox.Height > 8)
-            {
-                targetHitbox.Inflate(-targetHitbox.Width / 8, -targetHitbox.Height / 8);
-            }
-            return projHitbox.Intersects(targetHitbox);
-        }
+		public override void SetDefaults()
+		{
+			Projectile.width = 20;
+			Projectile.height = 20;
+			Projectile.aiStyle = -1;
+			Projectile.hostile = true;
+			Projectile.friendly = false;
+			Projectile.DamageType = DamageClass.Melee;
+			Projectile.penetrate = 1;
+			Projectile.timeLeft = 280;
+			Projectile.ignoreWater = true;
+		}
 
-        public override void OnKill(int timeLeft)
-        {
-            SoundEngine.PlaySound(SoundID.Dig, Projectile.position);
-            Vector2 usePos = Projectile.position;
-            Vector2 rotVector = (Projectile.rotation - MathHelper.ToRadians(90f)).ToRotationVector2();
-            usePos += rotVector * 16f;
-            
-        }
+		public override void AI()
+		{
+			Projectile.alpha = System.Math.Max(0, Projectile.alpha - 25);
+			Projectile.localAI[0]++;
+			Vector2 normal = Projectile.velocity.SafeNormalize(Vector2.UnitY).RotatedBy(MathHelper.PiOver2);
+			Projectile.position += normal * (float)System.Math.Sin(Projectile.localAI[0] * 0.22f) * 0.65f;
+			Projectile.rotation += 0.18f * Projectile.direction;
+			Lighting.AddLight(Projectile.Center, 0.35f, 0.55f, 0.65f);
 
-        // Optional Section 
-
-        public float isStickingToTarget
-        {
-            get { return Projectile.ai[0]; }
-            set { Projectile.ai[0] = value; }
-        }
-
-        public float targetWhoAmI
-        {
-            get { return Projectile.ai[1]; }
-            set { Projectile.ai[1] = value; }
-        }
-
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
-        {
-            Projectile.ai[0] = 1f;
-            Projectile.ai[1] = (float)target.whoAmI;
-            Projectile.velocity = (target.Center - Projectile.Center) * 0.75f;
-            Projectile.netUpdate = true;
-            target.AddBuff(169, 900, false);
-
-            int maxStickingJavelins = 6;
-            Point[] stickingJavelins = new Point[maxStickingJavelins];
-            int javelinIndex = 0;
-            for (int i = 0; i < Main.maxProjectiles; i++)
-            {
-                Projectile currentProjectile = Main.projectile[i];
-                if (i != Projectile.whoAmI &&
-                    currentProjectile.active &&
-                    currentProjectile.owner == Main.myPlayer &&
-                    currentProjectile.type == Projectile.type &&
-                    currentProjectile.ai[0] == 1f &&
-                    currentProjectile.ai[1] == (float)target.whoAmI)
-                {
-                    stickingJavelins[javelinIndex++] = new Point(i, currentProjectile.timeLeft);
-                    if (javelinIndex >= stickingJavelins.Length)
-                    {
-                        break;
-                    }
-                }
-            }
-
-            if (javelinIndex >= stickingJavelins.Length)
-            {
-                int oldJavelinIndex = 0;
-                for (int i = 1; i < stickingJavelins.Length; i++)
-                {
-                    if (stickingJavelins[i].Y < stickingJavelins[oldJavelinIndex].Y)
-                    {
-                        oldJavelinIndex = i;
-                    }
-                }
-                Main.projectile[stickingJavelins[oldJavelinIndex].X].Kill();
-            }
-        }
-
-        // End Optional Section 
-        
-        private const float maxTicks = 45f;
-        private const int alphaReducation = 25;
-
-        public override void AI()
-        {
-            if (Projectile.alpha > 0)
-            {
-                Projectile.alpha -= alphaReducation;
-            }
-
-            if (Projectile.alpha < 0)
-            {
-                Projectile.alpha = 0;
-            }
-
-            if (Projectile.ai[0] == 0f)
-            {
-                Projectile.ai[1] += 1f;
-                if (Projectile.ai[1] >= maxTicks)
-                {
-                    float velXmult = 0.98f;
-                    float velYmult = 0.35f;
-                    Projectile.ai[1] = maxTicks;
-                    Projectile.velocity.X = Projectile.velocity.X * velXmult;
-                    Projectile.velocity.Y = Projectile.velocity.Y + velYmult;
-                }
-
-                Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.ToRadians(90f);
-            }
-            // Optional Section 
-
-            if (Projectile.ai[0] == 1f)
-            {
-                Projectile.ignoreWater = true;
-                Projectile.tileCollide = false;
-                int aiFactor = 15;
-                bool killProj = false;
-                bool hitEffect = false;
-                Projectile.localAI[0] += 1f;
-                hitEffect = Projectile.localAI[0] % 30f == 0f;
-                int projTargetIndex = (int)Projectile.ai[1];
-                if (Projectile.localAI[0] >= (float)(60 * aiFactor))
-                {
-                    killProj = true;
-                }
-                else if (projTargetIndex < 0 || projTargetIndex >= 200)
-                {
-                    killProj = true;
-                }
-                else if (Main.npc[projTargetIndex].active && !Main.npc[projTargetIndex].dontTakeDamage)
-                {
-                    Projectile.Center = Main.npc[projTargetIndex].Center - Projectile.velocity * 2f;
-                    Projectile.gfxOffY = Main.npc[projTargetIndex].gfxOffY;
-                    if (hitEffect)
-                    {
-                        Main.npc[projTargetIndex].HitEffect(0, 1.0);
-                    }
-                }
-                else
-                {
-                    killProj = true;
-                }
-
-                if (killProj)
-                {
-                    Projectile.Kill();
-                }
-            }
-            
-
-        }
-    }
+			if (Main.rand.NextBool(4))
+			{
+				Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.GemDiamond, Projectile.velocity.X * 0.08f, Projectile.velocity.Y * 0.08f);
+			}
+		}
+	}
 }

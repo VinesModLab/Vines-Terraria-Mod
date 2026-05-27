@@ -16,7 +16,7 @@ namespace VinesMod.Items.Accessories.Shield
 			Item.width = 24;
 			Item.height = 28;
 			Item.value = 10000;
-			Item.rare = 8;
+			Item.rare = ItemRarityID.Yellow;
 			Item.accessory = true;
 			Item.defense = 15;
 		}

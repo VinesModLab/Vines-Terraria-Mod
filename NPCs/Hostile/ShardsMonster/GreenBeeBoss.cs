@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +15,6 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
     public class GreenBeeBoss : ModNPC
     {
         private Player player;
-        private float speed;
 
         public override string Texture
 		{
@@ -50,6 +49,7 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             NPC.lavaImmune = true;
             NPC.noGravity = true; 
             NPC.noTileCollide = true;
+            ShardNpcTargeting.MakeHostileTargetable(NPC);
             NPC.knockBackResist = 0.2f;
         }
 
@@ -67,6 +67,8 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
         
         public override void AI()
         {
+            ShardNpcTargeting.MakeHostileTargetable(NPC);
+
             Target();
             DespawnHandler();
 
@@ -102,6 +104,11 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
                         NPC.NewNPC(NPC.GetSource_FromAI(), (int)(NPC.Center.X + offset.X), (int)(NPC.Center.Y + offset.Y), NPCID.BeeSmall);
                     }
                 }
+            }
+
+            if (secondPhase && NPC.ai[1] == 75f)
+            {
+                SpiralStingers();
             }
         }
 
@@ -154,12 +161,33 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
 
         private void ShootStingers(int spread, float speed)
         {
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                return;
+            }
+
             Vector2 velocity = player.Center - NPC.Center;
             float magnitude = velocity.Length();
             velocity = magnitude > 0f ? velocity * speed / magnitude : new Vector2(0f, speed);
+            int type = ModContent.ProjectileType<global::VinesMod.Projectiles.Enemy.GreenBeeBossProjectile>();
             for (int i = -spread; i <= spread; i++)
             {
-                Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity.RotatedBy(MathHelper.ToRadians(i * 13f)), ProjectileID.Stinger, NPC.damage, 1f);
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity.RotatedBy(MathHelper.ToRadians(i * 13f)), type, NPC.damage, 1f);
+            }
+        }
+
+        private void SpiralStingers()
+        {
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                return;
+            }
+
+            int type = ModContent.ProjectileType<global::VinesMod.Projectiles.Enemy.GreenBeeBossProjectile>();
+            for (int i = 0; i < 8; i++)
+            {
+                Vector2 velocity = Vector2.UnitX.RotatedBy(MathHelper.TwoPi * i / 8f + NPC.ai[0] * 0.05f) * 5.5f;
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity, type, (int)(NPC.damage * 0.7f), 1f);
             }
         }
 
@@ -172,6 +200,10 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
 
                 if (Main.rand.Next(8) == 0)
                     Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.Nectar, 1);
+                if (Main.rand.Next(3) == 0)
+                    Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ModContent.ItemType<global::VinesMod.Items.Accessories.Shield.ShieldOfLime>(), 1);
+                if (Main.rand.Next(4) == 0)
+                    Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ModContent.ItemType<global::VinesMod.Items.Weapons.Magic.HivevineStaff>(), 1);
 
                 switch (Main.rand.Next(3))
                 {

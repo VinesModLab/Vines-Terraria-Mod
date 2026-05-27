@@ -29,7 +29,7 @@ namespace VinesMod.Items.Weapons.Yoyo
             Item.knockBack = 5f;
             Item.damage = 26;
             Item.value = 10000;
-            Item.rare = 3;
+            Item.rare = ItemRarityID.Orange;
         }
 
         public override void AddRecipes()

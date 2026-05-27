@@ -26,7 +26,7 @@ namespace VinesMod.Items.Accessories.HandsOff
 			player.statLifeMax2 += 9500;
 			player.statManaMax2 += 500;
 			player.moveSpeed *= 2f;
-			player.AddBuff(11, 10);
+			player.AddBuff(BuffID.Shine, 10);
 			player.buffImmune[BuffID.Frozen] = true;
 			player.buffImmune[BuffID.Chilled] = true;
 			player.buffImmune[BuffID.Frostburn] = true;

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +16,6 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
     public class WhiteFlyingFishBoss : ModNPC
     {
         private Player player;
-        private float speed;
 
         public override string Texture
 		{
@@ -46,12 +45,15 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             NPC.lifeMax = 9000; 
             NPC.damage = 55; 
             NPC.defense = 12; 
-            NPC.scale = 5f;
+            NPC.width = 150;
+            NPC.height = 78;
+            NPC.scale = 1f;
             NPC.value = 25000;
             NPC.boss = true; // Is a boss
             NPC.lavaImmune = true;
             NPC.noGravity = true; 
             NPC.noTileCollide = true;
+            ShardNpcTargeting.MakeHostileTargetable(NPC);
             NPC.knockBackResist = 0f;
             if (!Main.dedServ)
             {
@@ -74,6 +76,8 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
         
         public override void AI()
         {
+            ShardNpcTargeting.MakeHostileTargetable(NPC);
+
             Target();
             DespawnHandler();
 
@@ -95,6 +99,7 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
                 if (secondPhase)
                 {
                     RainShards();
+                    WaveVolley();
                 }
                 else
                 {
@@ -165,6 +170,11 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
 
         private void Shoot(bool secondPhase)
         {
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                return;
+            }
+
             int type = ModContent.ProjectileType<global::VinesMod.Projectiles.Enemy.WhiteFlyingFishBossProjectile>();
             Vector2 velocity = player.Center - NPC.Center; // Get the distance between target and NPC.
             float magnitude = Magnitude(velocity);
@@ -185,6 +195,11 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
 
         private void RainShards()
         {
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                return;
+            }
+
             int type = ModContent.ProjectileType<global::VinesMod.Projectiles.Enemy.WhiteFlyingFishBossProjectile>();
             for (int i = -2; i <= 2; i++)
             {
@@ -196,6 +211,11 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
 
         private void CrossingShards()
         {
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                return;
+            }
+
             int type = ModContent.ProjectileType<global::VinesMod.Projectiles.Enemy.WhiteFlyingFishBossProjectile>();
             for (int i = -1; i <= 1; i++)
             {
@@ -203,6 +223,23 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
                 Vector2 rightPosition = player.Center + new Vector2(520f, -90f + i * 80f);
                 Projectile.NewProjectile(NPC.GetSource_FromAI(), leftPosition, new Vector2(7f, 0.35f * i), type, (int)(NPC.damage * 0.7f), 1f);
                 Projectile.NewProjectile(NPC.GetSource_FromAI(), rightPosition, new Vector2(-7f, 0.35f * i), type, (int)(NPC.damage * 0.7f), 1f);
+            }
+        }
+
+        private void WaveVolley()
+        {
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                return;
+            }
+
+            int type = ModContent.ProjectileType<global::VinesMod.Projectiles.Enemy.WhiteFlyingFishBossProjectile>();
+            float direction = NPC.Center.X < player.Center.X ? 1f : -1f;
+            for (int i = -2; i <= 2; i++)
+            {
+                Vector2 position = NPC.Center + new Vector2(-direction * 60f, i * 24f);
+                Vector2 velocity = new Vector2(direction * 7.25f, i * 0.55f);
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), position, velocity, type, (int)(NPC.damage * 0.75f), 1f);
             }
         }
 

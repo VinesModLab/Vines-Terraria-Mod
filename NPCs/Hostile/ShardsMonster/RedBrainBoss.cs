@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +15,6 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
     public class RedBrainBoss : ModNPC
     {
         private Player player;
-        private float speed;
 
         public override string Texture
 		{
@@ -50,6 +49,7 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             NPC.lavaImmune = true;
             NPC.noGravity = true; 
             NPC.noTileCollide = true;
+            ShardNpcTargeting.MakeHostileTargetable(NPC);
             NPC.knockBackResist = 0.5f;
         }
 
@@ -67,6 +67,8 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
         
         public override void AI()
         {
+            ShardNpcTargeting.MakeHostileTargetable(NPC);
+
             Target();
             DespawnHandler();
 
@@ -82,6 +84,10 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             {
                 BlinkNearPlayer(secondPhase);
                 PsychicBurst(secondPhase);
+                if (secondPhase)
+                {
+                    InwardScythes();
+                }
             }
             else if (NPC.ai[0] > (secondPhase ? 125f : 170f))
             {
@@ -146,13 +152,40 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
 
         private void PsychicBurst(bool secondPhase)
         {
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                return;
+            }
+
             int spread = secondPhase ? 2 : 1;
             Vector2 velocity = player.Center - NPC.Center;
             float magnitude = velocity.Length();
             velocity = magnitude > 0f ? velocity * (secondPhase ? 6f : 4.5f) / magnitude : new Vector2(0f, 4.5f);
+            int type = ModContent.ProjectileType<global::VinesMod.Projectiles.Enemy.RedBrainBossProjectile>();
             for (int i = -spread; i <= spread; i++)
             {
-                Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity.RotatedBy(MathHelper.ToRadians(i * 18f)), ProjectileID.DemonScythe, NPC.damage, 1f);
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity.RotatedBy(MathHelper.ToRadians(i * 18f)), type, NPC.damage, 1f);
+            }
+        }
+
+        private void InwardScythes()
+        {
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                return;
+            }
+
+            for (int i = 0; i < 5; i++)
+            {
+                Vector2 spawnOffset = Vector2.UnitX.RotatedBy(MathHelper.TwoPi * i / 5f) * 330f;
+                Vector2 position = player.Center + spawnOffset;
+                Vector2 velocity = player.Center - position;
+                if (velocity.Length() > 0f)
+                {
+                    velocity = Vector2.Normalize(velocity) * 4.6f;
+                }
+
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), position, velocity, ModContent.ProjectileType<global::VinesMod.Projectiles.Enemy.RedBrainBossProjectile>(), (int)(NPC.damage * 0.75f), 1f);
             }
         }
 

@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
+using VinesMod.Systems;
 
 namespace VinesMod.NPCs.Hostile.ShardsMonster
 {
@@ -8,6 +9,7 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
     {
         public override void SetStaticDefaults()
         {
+            Main.npcFrameCount[Type] = 2;
         }
 
         public override void SetDefaults()
@@ -21,16 +23,18 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             NPC.DeathSound = SoundID.NPCDeath2;
             NPC.value = 150f;
             NPC.knockBackResist = 0.25f;
-            NPC.aiStyle = 2; // DemonEye AI
+            NPC.aiStyle = NPCAIStyleID.DemonEye; // DemonEye AI
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return spawnInfo.Player.ZoneOverworldHeight && !Main.dayTime ? 0.05f : 0f; // was OverworldNightMonster * 0.05f;
+            return 0f;
         }
 
         public override void OnKill()
         {
+                ShardInvasionSystem.CountShardEnemyKill();
+
                 if (Main.rand.Next(2) == 0)
                 {
                     Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardBlue>(), Main.rand.Next(1, 2));
@@ -47,6 +51,20 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
                 }
 
             Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.Lens, Main.rand.Next(1, 3));
+        }
+
+        public override void FindFrame(int frameHeight)
+        {
+            NPC.frameCounter++;
+            if (NPC.frameCounter >= 12)
+            {
+                NPC.frameCounter = 0;
+                NPC.frame.Y += frameHeight;
+                if (NPC.frame.Y >= frameHeight * Main.npcFrameCount[Type])
+                {
+                    NPC.frame.Y = 0;
+                }
+            }
         }
     }
 }

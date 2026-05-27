@@ -34,8 +34,8 @@ namespace VinesMod.Projectiles
             Projectile.light = 0.9f;
             Projectile.alpha = 75;
             Projectile.rotation += (float)Projectile.direction * 0.8f; //Spins in a good speed
-            int DustID = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y + 2f), Projectile.width + 4, Projectile.height + 4, 36, Projectile.velocity.X * 0.2f, Projectile.velocity.Y * 0.2f, 120, default(Color), 0.75f);
-            Main.dust[DustID].noGravity = true;
+            int dustId = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y + 2f), Projectile.width + 4, Projectile.height + 4, DustID.Ash, Projectile.velocity.X * 0.2f, Projectile.velocity.Y * 0.2f, 120, default(Color), 0.75f);
+            Main.dust[dustId].noGravity = true;
         }
 		
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

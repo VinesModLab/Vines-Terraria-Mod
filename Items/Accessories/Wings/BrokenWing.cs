@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
@@ -19,7 +19,7 @@ namespace VinesMod.Items.Accessories.Wings
             Item.width = 22;
             Item.height = 22;
             Item.value = Item.sellPrice(0,8,0,0);
-            Item.rare = 3;
+            Item.rare = ItemRarityID.Orange;
             Item.accessory = true;
         }
 

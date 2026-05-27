@@ -21,7 +21,7 @@ namespace VinesMod.Items.Weapons.Ammo
 			Item.consumable = true;
 			Item.knockBack = 1f;
 			Item.value = Item.sellPrice(0, 0, 1, 0);
-			Item.rare = 8;
+			Item.rare = ItemRarityID.Yellow;
 			Item.shoot = ModContent.ProjectileType<global::VinesMod.Projectiles.Wisp>();
 			Item.ammo = Item.type; // The first item in an ammo class sets the AmmoID to it's type
 		}

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using VinesMod.Items.Weapons.Throw;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -75,7 +75,7 @@ namespace VinesMod.Projectiles
 			for (int i = 0; i < 20; i++)
 			{
 				// Create a new dust
-				Dust dust = Dust.NewDustDirect(usePos, Projectile.width, Projectile.height, 81);
+				Dust dust = Dust.NewDustDirect(usePos, Projectile.width, Projectile.height, DustID.Tin);
 				dust.position = (dust.position + Projectile.Center) / 2f;
 				dust.velocity += rotVector * 2f;
 				dust.velocity *= 0.5f;

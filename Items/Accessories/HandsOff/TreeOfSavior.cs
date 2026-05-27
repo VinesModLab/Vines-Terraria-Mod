@@ -15,7 +15,7 @@ namespace VinesMod.Items.Accessories.HandsOff
 			Item.width = 24;
 			Item.height = 28;
 			Item.value = Item.sellPrice(gold: 2); Item.value = 10000;
-			Item.rare = 8;
+			Item.rare = ItemRarityID.Yellow;
 			Item.lifeRegen = 15;
 			Item.accessory = true;
 		}
@@ -41,7 +41,7 @@ namespace VinesMod.Items.Accessories.HandsOff
 				player.buffImmune[BuffID.Venom] = true;
 				player.buffImmune[BuffID.Weak] = true;
 				player.buffImmune[BuffID.Blackout] = true;
-				player.AddBuff(11, 10);
+				player.AddBuff(BuffID.Shine, 10);
 		}
 
 		public override void AddRecipes()

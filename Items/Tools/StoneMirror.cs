@@ -21,7 +21,7 @@ namespace VinesMod.Items.Tools
 			// Emit dust during use (visual only; teleport is handled by CloneDefaults(IceMirror))
 			if (Main.rand.NextBool(2))
 			{
-				Dust.NewDust(player.position, player.width, player.height, 15, 0f, 0f, 150, default(Color), 1.1f);
+				Dust.NewDust(player.position, player.width, player.height, DustID.MagicMirror, 0f, 0f, 150, default(Color), 1.1f);
 			}
 			return null;
 		}

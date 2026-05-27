@@ -24,7 +24,7 @@ namespace VinesMod.Items.Weapons.Gun
 			Item.noMelee = true; //so the item's animation doesn't do damage
 			Item.knockBack = 16f;
 			Item.value = Item.buyPrice(gold: 30);
-			Item.rare = 11;
+			Item.rare = ItemRarityID.Purple;
 			Item.autoReuse = true;
 			Item.shootSpeed *= 1.5f;
 		}

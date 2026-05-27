@@ -1,4 +1,4 @@
-﻿using Terraria;
+using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 
@@ -17,7 +17,7 @@ namespace VinesMod.Items.Weapons.Magic
 			Item.DamageType = DamageClass.Magic;
 			Item.channel = true; //Channel so that you can held the weapon [Important]
 			Item.mana = 7;
-			Item.rare = 5;
+			Item.rare = ItemRarityID.Pink;
 			Item.width = 28;
 			Item.height = 30;
 			Item.useTime = 20;

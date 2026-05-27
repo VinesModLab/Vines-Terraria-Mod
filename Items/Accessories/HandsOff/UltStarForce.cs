@@ -33,7 +33,7 @@ namespace VinesMod.Items.Accessories.HandsOff
 				player.GetCritChance(DamageClass.Ranged) += 25;
 				player.GetCritChance(DamageClass.Melee) += 25;
 				player.GetCritChance(DamageClass.Magic) += 25;
-				player.AddBuff(11, 10);
+				player.AddBuff(BuffID.Shine, 10);
 		}
 
 		public override void UpdateEquip(Player player)

@@ -16,7 +16,7 @@ namespace VinesMod.Items.Accessories.Shield
 			Item.width = 24;
 			Item.height = 28;
 			Item.value = 10000;
-			Item.rare = 1;
+			Item.rare = ItemRarityID.Blue;
 			Item.accessory = true;
 			Item.defense = 2;
 		}
@@ -32,6 +32,11 @@ namespace VinesMod.Items.Accessories.Shield
 				.AddRecipeGroup("IronBar", 12)
 				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardPurple>(), 10)
 				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
+
+			Recipe.Create(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardPurple>(), 8)
+				.AddIngredient(Type)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarRecycler>())
 				.Register();
 		}
 	}

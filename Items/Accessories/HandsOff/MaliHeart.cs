@@ -15,7 +15,7 @@ namespace VinesMod.Items.Accessories.HandsOff
 			Item.width = 24;
 			Item.height = 28;
 			Item.value = 10000;
-			Item.rare = 4;
+			Item.rare = ItemRarityID.LightRed;
 			Item.accessory = true;
 		}
 

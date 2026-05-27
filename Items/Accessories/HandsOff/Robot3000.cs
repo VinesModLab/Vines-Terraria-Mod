@@ -15,14 +15,14 @@ namespace VinesMod.Items.Accessories.HandsOff
 			Item.width = 24;
 			Item.height = 28;
 			Item.value = Item.sellPrice(gold: 2); 
-			Item.rare = 2;
+			Item.rare = ItemRarityID.Green;
 			Item.accessory = true;
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 				player.GetDamage(DamageClass.Summon) *= 1.2f;
-				player.AddBuff(11, 10);
+				player.AddBuff(BuffID.Shine, 10);
 		}
 
 		public override void AddRecipes()

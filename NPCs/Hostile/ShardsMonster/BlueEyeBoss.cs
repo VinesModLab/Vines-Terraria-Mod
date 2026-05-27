@@ -56,6 +56,7 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             NPC.noTileCollide = true;
             NPC.HitSound = SoundID.NPCHit1;
             NPC.DeathSound = SoundID.NPCDeath1;
+            ShardNpcTargeting.MakeHostileTargetable(NPC);
             NPC.knockBackResist = 0.2f;
             NPC.aiStyle = -1;
         }
@@ -74,6 +75,8 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
         
         public override void AI() //Daytime movement
         {
+            ShardNpcTargeting.MakeHostileTargetable(NPC);
+
             Target();
             DespawnHandler();
 
@@ -100,6 +103,10 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             else if (NPC.ai[0] == (secondPhase ? 105f : 135f))
             {
                 Shoot(secondPhase ? 2 : 1, secondPhase ? 7.5f : 5.5f);
+                if (secondPhase)
+                {
+                    FocusRing();
+                }
                 CrystalDash(secondPhase ? 15f : 11f);
             }
             else if (NPC.ai[0] > (secondPhase ? 135f : 170f))
@@ -161,6 +168,11 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
 
         private void Shoot(int spread, float projectileSpeed)
         {
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                return;
+            }
+
             int type = ModContent.ProjectileType<global::VinesMod.Projectiles.Enemy.BlueEyeBossProjectile>();
             Vector2 velocity = player.Center - NPC.Center; // Get the distance between target and NPC.
             float magnitude = Magnitude(velocity);
@@ -173,6 +185,21 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             for (int i = -spread; i <= spread; i++)
             {
                 Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity.RotatedBy(MathHelper.ToRadians(i * 11f)), type, NPC.damage, 2f);
+            }
+        }
+
+        private void FocusRing()
+        {
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                return;
+            }
+
+            int type = ModContent.ProjectileType<global::VinesMod.Projectiles.Enemy.BlueEyeBossProjectile>();
+            for (int i = 0; i < 6; i++)
+            {
+                Vector2 velocity = Vector2.UnitX.RotatedBy(MathHelper.TwoPi * i / 6f) * 4.75f;
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity, type, (int)(NPC.damage * 0.75f), 1f);
             }
         }
 

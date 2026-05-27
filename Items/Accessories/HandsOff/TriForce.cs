@@ -15,7 +15,7 @@ namespace VinesMod.Items.Accessories.HandsOff
 			Item.width = 24;
 			Item.height = 28;
 			Item.value = 300000;
-			Item.rare = 10;
+			Item.rare = ItemRarityID.Red;
 			Item.accessory = true;
 		}
 
@@ -30,7 +30,7 @@ namespace VinesMod.Items.Accessories.HandsOff
 				player.GetCritChance(DamageClass.Ranged) += 15;
 				player.GetCritChance(DamageClass.Melee) += 15;
 				player.GetCritChance(DamageClass.Magic) += 15;
-				player.AddBuff(11, 10);
+				player.AddBuff(BuffID.Shine, 10);
 		}
 
 		public override void AddRecipes()

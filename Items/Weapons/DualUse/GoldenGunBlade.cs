@@ -22,7 +22,7 @@ namespace VinesMod.Items.Weapons.DualUse
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.knockBack = 5f;
 			Item.value = Item.sellPrice(gold: 2); 
-			Item.rare = 2;
+			Item.rare = ItemRarityID.Green;
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;
 			Item.shoot = ProjectileID.GoldenBullet;
@@ -38,6 +38,11 @@ namespace VinesMod.Items.Weapons.DualUse
 				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardYellow>(), 15)
 				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardRed>(), 15)
 				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
+				.Register();
+
+			Recipe.Create(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardYellow>(), 15)
+				.AddIngredient(Type)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarRecycler>())
 				.Register();
 		}
 
@@ -62,7 +67,7 @@ namespace VinesMod.Items.Weapons.DualUse
 				Item.useTime = 40;
 				Item.useAnimation = 40;
 				Item.damage = 25;
-				Item.shoot = 0;
+				Item.shoot = ProjectileID.None;
 			}
 			return base.CanUseItem(player);
 		}
@@ -85,7 +90,7 @@ namespace VinesMod.Items.Weapons.DualUse
 			{
 				if (player.altFunctionUse == 2)
 				{
-					int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 169, 0f, 0f, 100, default(Color), 2f);
+					int dust = Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, DustID.IchorTorch, 0f, 0f, 100, default(Color), 2f);
 					Main.dust[dust].noGravity = true;
 					Main.dust[dust].velocity.X += player.direction * 2f;
 					Main.dust[dust].velocity.Y += 0.2f;

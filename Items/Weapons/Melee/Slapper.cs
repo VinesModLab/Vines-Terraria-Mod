@@ -16,7 +16,7 @@ namespace VinesMod.Items.Weapons.Melee
 			Item.damage = 70;
 			Item.useTime = 15;          
 			Item.useAnimation = 15; 
-			Item.rare = 7;
+			Item.rare = ItemRarityID.Lime;
 			Item.autoReuse = true;
 		}
 

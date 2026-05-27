@@ -22,7 +22,7 @@ namespace VinesMod.Items.Weapons.Melee
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.knockBack = 3f;
 			Item.value = Item.sellPrice(copper: 60);
-			Item.rare = 3;
+			Item.rare = ItemRarityID.Orange;
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;
 			Item.shoot = ModContent.ProjectileType<global::VinesMod.Projectiles.MoonlightProjectile>();

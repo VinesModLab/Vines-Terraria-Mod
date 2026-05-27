@@ -286,6 +286,217 @@ Mods: {
 				Tooltip: 5% increased movement speed
 			}
 
+			// Armor - RedShardSet
+			RedBreastplate: {
+				DisplayName: Red Shard Breastplate
+				Tooltip: 8% increased melee damage and immunity to On Fire!
+			}
+
+			RedHelmet: {
+				DisplayName: Red Shard Helmet
+				Tooltip: 8% increased melee critical strike chance
+			}
+
+			RedLeggings: {
+				DisplayName: Red Shard Leggings
+				Tooltip: 8% increased melee speed and 5% increased movement speed
+			}
+
+			// Armor - GreenShardSet
+			GreenBreastplate: {
+				DisplayName: Green Shard Breastplate
+				Tooltip: +1 max minions and improved life regeneration
+			}
+
+			GreenHelmet: {
+				DisplayName: Green Shard Helmet
+				Tooltip: 8% increased summon damage
+			}
+
+			GreenLeggings: {
+				DisplayName: Green Shard Leggings
+				Tooltip: 8% increased movement speed and improved life regeneration
+			}
+
+			// Armor - YellowShardSet
+			YellowBreastplate: {
+				DisplayName: Yellow Shard Breastplate
+				Tooltip: 8% increased ranged damage and 4% increased ranged critical strike chance
+			}
+
+			YellowHelmet: {
+				DisplayName: Yellow Shard Helmet
+				Tooltip: 8% increased ranged critical strike chance
+			}
+
+			YellowLeggings: {
+				DisplayName: Yellow Shard Leggings
+				Tooltip: 12% increased movement speed
+			}
+
+			// Armor - WhiteShardSet
+			WhiteBreastplate: {
+				DisplayName: White Shard Breastplate
+				Tooltip: +40 max mana and 8% reduced mana cost
+			}
+
+			WhiteHelmet: {
+				DisplayName: White Shard Helmet
+				Tooltip: 8% increased magic critical strike chance
+			}
+
+			WhiteLeggings: {
+				DisplayName: White Shard Leggings
+				Tooltip: +20 max mana and 6% increased movement speed
+			}
+
+			// Armor - StarForceSet
+			StarForceBreastplate: {
+				DisplayName: Star Force Breastplate
+				Tooltip: 8% increased all damage and +40 max mana
+			}
+
+			StarForceHelmet: {
+				DisplayName: Star Force Helmet
+				Tooltip: 6% increased melee, ranged, and magic critical strike chance
+			}
+
+			StarForceLeggings: {
+				DisplayName: Star Force Leggings
+				Tooltip: 10% increased movement speed
+			}
+
+			// Armor - OverDriveSet
+			OverDriveBreastplate: {
+				DisplayName: OverDrive Breastplate
+				Tooltip: 15% increased all damage and +1 max minions
+			}
+
+			OverDriveHelmet: {
+				DisplayName: OverDrive Helmet
+				Tooltip: 10% increased melee, ranged, and magic critical strike chance
+			}
+
+			OverDriveLeggings: {
+				DisplayName: OverDrive Leggings
+				Tooltip: Greatly increased movement speed and acceleration
+			}
+
+			// Armor - Shard OverDrive Sets
+			BlueOverDriveBreastplate: {
+				DisplayName: Blue OverDrive Breastplate
+				Tooltip: Hybrid mana armor with boosted magic, ranged, summon damage, and max mana.
+			}
+
+			BlueOverDriveHelmet: {
+				DisplayName: Blue OverDrive Helmet
+				Tooltip:
+					'''
+					Improves magic and ranged critical strike chance and max mana.
+					Set bonus: magic and ranged hits electrify enemies.
+					'''
+			}
+
+			BlueOverDriveLeggings: {
+				DisplayName: Blue OverDrive Leggings
+				Tooltip: Improves movement speed and mana regeneration.
+			}
+
+			PurpleOverDriveBreastplate: {
+				DisplayName: Purple OverDrive Breastplate
+				Tooltip: Boosts magic, summon damage, and minion capacity.
+			}
+
+			PurpleOverDriveHelmet: {
+				DisplayName: Purple OverDrive Helmet
+				Tooltip:
+					'''
+					Improves magic and summon critical focus.
+					Set bonus: magic and summon hits restore mana and inflict shadowflame.
+					'''
+			}
+
+			PurpleOverDriveLeggings: {
+				DisplayName: Purple OverDrive Leggings
+				Tooltip: Improves movement speed and reduces mana cost.
+			}
+
+			RedOverDriveBreastplate: {
+				DisplayName: Red OverDrive Breastplate
+				Tooltip: Greatly boosts melee damage and speed, and grants fire immunity.
+			}
+
+			RedOverDriveHelmet: {
+				DisplayName: Red OverDrive Helmet
+				Tooltip:
+					'''
+					Improves melee damage and critical strike chance.
+					Set bonus: melee hits ignite enemies and thorns burn attackers.
+					'''
+			}
+
+			RedOverDriveLeggings: {
+				DisplayName: Red OverDrive Leggings
+				Tooltip: Improves melee speed and movement speed.
+			}
+
+			GreenOverDriveBreastplate: {
+				DisplayName: Green OverDrive Breastplate
+				Tooltip: Boosts summon damage, minion capacity, and life regeneration.
+			}
+
+			GreenOverDriveHelmet: {
+				DisplayName: Green OverDrive Helmet
+				Tooltip:
+					'''
+					Improves summon damage and minion capacity.
+					Set bonus: summon hits periodically restore life.
+					'''
+			}
+
+			GreenOverDriveLeggings: {
+				DisplayName: Green OverDrive Leggings
+				Tooltip: Improves movement speed and life regeneration.
+			}
+
+			YellowOverDriveBreastplate: {
+				DisplayName: Yellow OverDrive Breastplate
+				Tooltip: Boosts ranged damage, critical chance, and speed.
+			}
+
+			YellowOverDriveHelmet: {
+				DisplayName: Yellow OverDrive Helmet
+				Tooltip:
+					'''
+					Improves ranged damage and critical strike chance.
+					Set bonus: ranged hits inflict ichor and grant a short speed surge.
+					'''
+			}
+
+			YellowOverDriveLeggings: {
+				DisplayName: Yellow OverDrive Leggings
+				Tooltip: Greatly improves movement speed and acceleration.
+			}
+
+			WhiteOverDriveBreastplate: {
+				DisplayName: White OverDrive Breastplate
+				Tooltip: Boosts magic damage, max mana, and mana efficiency.
+			}
+
+			WhiteOverDriveHelmet: {
+				DisplayName: White OverDrive Helmet
+				Tooltip:
+					'''
+					Improves magic critical strike chance and reduces mana cost.
+					Set bonus: magic hits inflict frostburn.
+					'''
+			}
+
+			WhiteOverDriveLeggings: {
+				DisplayName: White OverDrive Leggings
+				Tooltip: Improves max mana and movement speed.
+			}
+
 			// Goodie Bags
 			BlueShardBag: {
 				DisplayName: Blue Shard Bag
@@ -437,6 +648,15 @@ Mods: {
 				Tooltip: Everything starts from here.
 			}
 
+			StarRecycler: {
+				DisplayName: Star Recycler
+				Tooltip:
+					'''
+					Breaks boss drops back into shard energy.
+					Crafted at the StarForge with each charged shard color.
+					'''
+			}
+
 			// Summon items
 			BlueEyeBossSummonItem: {
 				DisplayName: Summoner : Blue Eye
@@ -449,12 +669,20 @@ Mods: {
 
 			GreenBeeBossSummonItem: {
 				DisplayName: Summoner : Green Bee
-				Tooltip: Summons the Green Bee mini-boss.
+				Tooltip:
+					'''
+					Summons the Green Bee mini-boss.
+					Charges White Shards with green energy.
+					'''
 			}
 
 			PurpleSlimeBossSummonItem: {
 				DisplayName: Summoner : Purple Slime
-				Tooltip: Summons the Purple Slime mini-boss.
+				Tooltip:
+					'''
+					Summons the Purple Slime mini-boss.
+					Charges White Shards with purple energy.
+					'''
 			}
 
 			RedBrainBossSummonItem: {
@@ -462,18 +690,26 @@ Mods: {
 				Tooltip:
 					'''
 					Summons the Red Brain mini-boss.
-					Only summon it at crimson underground.
+					Charges White Shards with red energy.
 					'''
 			}
 
 			WhiteFlyingFishBossSummonItem: {
 				DisplayName: Summoner : White Flying Fish
-				Tooltip: Summons the main shard boss.
+				Tooltip:
+					'''
+					Summons the main shard boss.
+					Requires every charged shard color.
+					'''
 			}
 
 			YellowIchorBossSummonItem: {
 				DisplayName: Summoner : Yellow Ichor
-				Tooltip: Summons the Yellow Ichor mini-boss.
+				Tooltip:
+					'''
+					Summons the Yellow Ichor mini-boss.
+					Charges White Shards with yellow energy.
+					'''
 			}
 
 			// Tools
@@ -652,6 +888,11 @@ Mods: {
 				Tooltip: Channels a focused beam of flame.
 			}
 
+			HivevineStaff: {
+				DisplayName: Hivevine Staff
+				Tooltip: Releases homing leaf-stingers from the Green Bee.
+			}
+
 			LaserBook: {
 				DisplayName: Laser Book
 				Tooltip: Shoot a laser beam that can eliminate anything...
@@ -670,6 +911,11 @@ Mods: {
 			RainbowPrism: {
 				DisplayName: Rainbow Prism
 				Tooltip: Fire a lifeform disintegration rainbow
+			}
+
+			SlimeHexStaff: {
+				DisplayName: Slime Hex Staff
+				Tooltip: Fires bouncing shadow slimes from the Purple Slime.
 			}
 
 			// Weapons – Melee
@@ -731,11 +977,6 @@ Mods: {
 			FrostPain: {
 				DisplayName: FrostPain
 				Tooltip: Frosty Blade that can freeze everything.
-			}
-
-			GiantPenis: {
-				DisplayName: Giant Penis
-				Tooltip: A Giant Penis made of human bodies.
 			}
 
 			GrassDefender: {
@@ -848,9 +1089,115 @@ Mods: {
 				DisplayName: RektU3000
 				Tooltip: A brutal yoyo built to ruin whatever it reaches.
 			}
+
+			FieryWarbladeOverDrive: {
+				DisplayName: Fiery Warblade Over Drive
+				Tooltip: ""
+			}
+
+			GrassDefenderOverDrive: {
+				DisplayName: Grass Defender Over Drive
+				Tooltip: ""
+			}
+
+			LilacGuardianOverDrive: {
+				DisplayName: Lilac Guardian Over Drive
+				Tooltip: ""
+			}
+
+			SnakeKatanaOverDrive: {
+				DisplayName: Snake Katana Over Drive
+				Tooltip: ""
+			}
+
+			ThunderBleuOverDrive: {
+				DisplayName: Thunder Bleu Over Drive
+				Tooltip: ""
+			}
+
+			WhiteFishSwordOverDrive: {
+				DisplayName: White Fish Sword Over Drive
+				Tooltip: ""
+			}
+
+			DreamyOverDrive: {
+				DisplayName: Dreamy Over Drive
+				Tooltip: ""
+			}
+
+			MeteorOverDrive: {
+				DisplayName: Meteor Over Drive
+				Tooltip: ""
+			}
+
+			ShardMonstersInvasionItem: {
+				DisplayName: Shard Monsters Invasion Item
+				Tooltip: ""
+			}
+
+			AstralScope: {
+				DisplayName: Astral Scope
+				Tooltip: ""
+			}
+
+			PrismRepeater: {
+				DisplayName: Prism Repeater
+				Tooltip: ""
+			}
+
+			CometCarbine: {
+				DisplayName: Comet Carbine
+				Tooltip: ""
+			}
+
+			VoidQuartzRifle: {
+				DisplayName: Void Quartz Rifle
+				Tooltip: ""
+			}
 		}
 
 		// ── NPCs ──────────────────────────────────────────────────────────────
+		// Weapons - New OverDrive upgrades
+		DreamyOverDrive: {
+			DisplayName: Dreamy OverDrive
+			Tooltip: Releases waves of homing dream motes while held out.
+		}
+
+		MeteorOverDrive: {
+			DisplayName: Meteor OverDrive
+			Tooltip: Calls repeated meteor showers while held out.
+		}
+
+		FieryWarbladeOverDrive: {
+			DisplayName: Fiery Warblade OverDrive
+			Tooltip: Launches a spread of explosive flame slashes.
+		}
+
+		GrassDefenderOverDrive: {
+			DisplayName: Grass Defender OverDrive
+			Tooltip: Releases homing overgrown leaf blades.
+		}
+
+		LilacGuardianOverDrive: {
+			DisplayName: Lilac Guardian OverDrive
+			Tooltip: Sends out twin venom guardian wisps.
+		}
+
+		SnakeKatanaOverDrive: {
+			DisplayName: Snake Katana OverDrive
+			Tooltip: Fires fast venom fang slashes.
+		}
+
+		ThunderBleuOverDrive: {
+			DisplayName: Thunder Bleu OverDrive
+			Tooltip: Launches electrified blade bolts.
+		}
+
+		WhiteFishSwordOverDrive: {
+			DisplayName: Fishy Sword OverDrive
+			Tooltip: Releases a fan of cold water arcs.
+		}
+
 		NPCs: {
 			BlueEyeBoss.DisplayName: Blue Eye
 			BlueFlyingEye.DisplayName: Blue Flying Eye
@@ -859,6 +1206,20 @@ Mods: {
 			RedBrainBoss.DisplayName: Red Brain
 			WhiteFlyingFishBoss.DisplayName: White Flying Fish
 			YellowIchorBoss.DisplayName: Yellow Ichor
+			AmethystMirror.DisplayName: Amethyst Mirror
+			AstralShardSerpent.DisplayName: Astral Shard Serpent
+			CosmicWisp.DisplayName: Cosmic Wisp
+			EmeraldShardBloom.DisplayName: Emerald Shard Bloom
+			FallenStarMite.DisplayName: Fallen Star Mite
+			NullCrystalMaw.DisplayName: Null Crystal Maw
+			PrismaticShardling.DisplayName: Prismatic Shardling
+			PrismHerald.DisplayName: Prism Herald
+			RubyShardKnight.DisplayName: Ruby Shard Knight
+			ShardComet.DisplayName: Shard Comet
+			ShardCrawler.DisplayName: Shard Crawler
+			TopazStormcaller.DisplayName: Topaz Stormcaller
+			VoidQuartzBat.DisplayName: Void Quartz Bat
+			WhitePrismSentinel.DisplayName: White Prism Sentinel
 		}
 
 		// ── Projectiles ───────────────────────────────────────────────────────
@@ -899,6 +1260,28 @@ Mods: {
 			WhiteFlyingFishBossProjectile.DisplayName: White Flying Fish Boss Projectile
 			YellowIchorBossProjectile.DisplayName: Yellow Ichor Boss Projectile
 			LaserBeamBlue.DisplayName: Laser Beam Blue
+			BladeArtProjectile.DisplayName: Blade Art Projectile
+			DreamyMoteProjectile.DisplayName: Dreamy Mote Projectile
+			DreamyOverDriveYoyoProjectile.DisplayName: Dreamy Over Drive Yoyo Projectile
+			HivevineStingerProjectile.DisplayName: Hivevine Stinger
+			MeteorOverDriveYoyoProjectile.DisplayName: Meteor Over Drive Yoyo Projectile
+			MeteorSparkProjectile.DisplayName: Meteor Spark Projectile
+			SlimeHexProjectile.DisplayName: Slime Hex
+			CometCarbineShot.DisplayName: Comet Carbine Shot
+			ShardInvasionProjectile.DisplayName: Shard Invasion Projectile
+			PrismRepeaterBolt.DisplayName: Prism Repeater Bolt
+			VoidQuartzShot.DisplayName: Void Quartz Shot
+			AmethystMirrorProjectile.DisplayName: Amethyst Mirror Projectile
+			AstralSerpentProjectile.DisplayName: Astral Serpent Projectile
+			CosmicWispProjectile.DisplayName: Cosmic Wisp Projectile
+			EmeraldBloomProjectile.DisplayName: Emerald Bloom Projectile
+			GreenBeeBossProjectile.DisplayName: Green Bee Boss Projectile
+			NullMawProjectile.DisplayName: Null Maw Projectile
+			PrismHeraldProjectile.DisplayName: Prism Herald Projectile
+			RedBrainBossProjectile.DisplayName: Red Brain Boss Projectile
+			ShardCometProjectile.DisplayName: Shard Comet Projectile
+			TopazStormProjectile.DisplayName: Topaz Storm Projectile
+			WhitePrismSentinelProjectile.DisplayName: White Prism Sentinel Projectile
 		}
 
 		// ── Tiles ─────────────────────────────────────────────────────────────
@@ -907,6 +1290,13 @@ Mods: {
 				MapEntry: {
 					0.Name: StarForge
 					$parentVal: Star Forge
+				}
+			}
+
+			StarRecycler: {
+				MapEntry: {
+					0.Name: Star Recycler
+					$parentVal: Star Recycler
 				}
 			}
 		}

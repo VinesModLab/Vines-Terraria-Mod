@@ -1,0 +1,10 @@
+Mods: {
+	VinesMod: {
+		Items: {
+			ShardMonstersInvasionItem: {
+				DisplayName: Shard Beacon
+				Tooltip: Summons the Shard Monsters Invasion
+			}
+		}
+	}
+}

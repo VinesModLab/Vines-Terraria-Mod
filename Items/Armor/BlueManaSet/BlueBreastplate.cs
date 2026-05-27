@@ -18,7 +18,7 @@ namespace VinesMod.Items.Armor.BlueManaSet
 			Item.width = 18;
 			Item.height = 18;
 			Item.value = 10000;
-			Item.rare = 1;
+			Item.rare = ItemRarityID.Blue;
 			Item.defense = 10;
 		}
 

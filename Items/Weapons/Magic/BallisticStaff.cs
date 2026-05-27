@@ -40,6 +40,11 @@ namespace VinesMod.Items.Weapons.Magic
 				.AddIngredient(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardWhite>(), 10)
 				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarForge>())
 				.Register();
+
+			Recipe.Create(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardYellow>(), 15)
+				.AddIngredient(Type)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarRecycler>())
+				.Register();
 		}
 	}
 }

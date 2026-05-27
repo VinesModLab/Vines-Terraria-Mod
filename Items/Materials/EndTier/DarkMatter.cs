@@ -15,7 +15,7 @@ namespace VinesMod.Items.Materials.EndTier
 			Item.height = 20;
 			Item.maxStack = 999;
 			Item.value = 300000;
-			Item.rare = 11;
+			Item.rare = ItemRarityID.Purple;
 		}
 
 		public override void AddRecipes()

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,7 +28,7 @@ namespace VinesMod.Items.Weapons.Melee
 			Item.width = 32;
 			Item.height = 32;
 			Item.scale = 1f;
-			Item.rare = 3;
+			Item.rare = ItemRarityID.Orange;
 			Item.value = 10000;
 
 			Item.DamageType = DamageClass.Melee;

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,10 +27,10 @@ namespace VinesMod.Items.Weapons.Bow
             Item.useStyle = ItemUseStyleID.Shoot; 
             Item.noMelee = true; 
             Item.value = Item.buyPrice(gold: 30);
-            Item.rare = 11;
+            Item.rare = ItemRarityID.Purple;
             Item.UseSound = SoundID.Item5; 
             Item.useAmmo = ModContent.ItemType<global::VinesMod.Items.Weapons.Ammo.OverDriveArrow>();
-            Item.shoot = 1;
+            Item.shoot = ProjectileID.WoodenArrowFriendly;
             Item.shootSpeed = 300f;
             Item.DamageType = DamageClass.Ranged;
             //Item.autoReuse = true;

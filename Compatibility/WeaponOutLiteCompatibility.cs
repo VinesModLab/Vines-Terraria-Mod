@@ -83,7 +83,6 @@ namespace VinesMod.Compatibility
 				ModContent.ItemType<global::VinesMod.Items.Weapons.Melee.BronzeSculptor>(),
 				ModContent.ItemType<global::VinesMod.Items.Weapons.Melee.EnchantedSabre>(),
 				ModContent.ItemType<global::VinesMod.Items.Weapons.Melee.FieryWarblade>(),
-				ModContent.ItemType<global::VinesMod.Items.Weapons.Melee.GiantPenis>(),
 				ModContent.ItemType<global::VinesMod.Items.Weapons.Melee.KendoSword>(),
 				ModContent.ItemType<global::VinesMod.Items.Weapons.Melee.LilacGuardian>(),
 				ModContent.ItemType<global::VinesMod.Items.Weapons.Melee.MoonlightGreatSword>(),

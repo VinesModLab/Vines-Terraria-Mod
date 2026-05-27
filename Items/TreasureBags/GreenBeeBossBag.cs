@@ -53,6 +53,10 @@ namespace VinesMod.Items.TreasureBags
                 player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.Nectar, 1);
             if (Main.rand.Next(6) == 0)
                 player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.HoneyedGoggles, 1);
+            if (Main.rand.Next(3) == 0)
+                player.QuickSpawnItem(player.GetSource_OpenItem(Type), ModContent.ItemType<global::VinesMod.Items.Accessories.Shield.ShieldOfLime>(), 1);
+            if (Main.rand.Next(4) == 0)
+                player.QuickSpawnItem(player.GetSource_OpenItem(Type), ModContent.ItemType<global::VinesMod.Items.Weapons.Magic.HivevineStaff>(), 1);
 
             player.QuickSpawnItem(player.GetSource_OpenItem(Type), ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardGreen>(), Main.rand.Next(12, 21));
             player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.BeeWax, Main.rand.Next(10, 21));

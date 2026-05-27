@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +15,6 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
     public class PurpleSlimeBoss : ModNPC
     {
         private Player player;
-        private float speed;
 
         public override string Texture
 		{
@@ -50,6 +49,7 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             NPC.value = 5000;
             NPC.boss = true;
             NPC.lavaImmune = true;
+            ShardNpcTargeting.MakeHostileTargetable(NPC);
             NPC.knockBackResist = 0.2f;
         }
 
@@ -67,6 +67,8 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
 
         public override void AI()
         {
+            ShardNpcTargeting.MakeHostileTargetable(NPC);
+
             Target();
             DespawnHandler();
 
@@ -81,6 +83,10 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
                 NPC.velocity = new Vector2(horizontal, secondPhase ? -11.5f : -9f);
                 NPC.ai[0] = 0f;
                 DustBurst(DustID.PurpleTorch, 12);
+                if (secondPhase)
+                {
+                    GroundSplash();
+                }
             }
 
             if (NPC.ai[1] > (secondPhase ? 95f : 135f))
@@ -120,6 +126,11 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
 
         private void Shoot(bool secondPhase)
         {
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                return;
+            }
+
             int type = ModContent.ProjectileType<global::VinesMod.Projectiles.Enemy.PurpleSlimeBossProjectile>();
             Vector2 velocity = player.Center - NPC.Center; // Get the distance between target and NPC.
             float magnitude = Magnitude(velocity);
@@ -138,11 +149,31 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
 
         private void RadialBurst()
         {
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                return;
+            }
+
             int type = ModContent.ProjectileType<global::VinesMod.Projectiles.Enemy.PurpleSlimeBossProjectile>();
             for (int i = 0; i < 8; i++)
             {
                 Vector2 velocity = Vector2.UnitX.RotatedBy(MathHelper.TwoPi * i / 8f) * 4.5f;
                 Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Center, velocity, type, (int)(NPC.damage * 0.75f), 1f);
+            }
+        }
+
+        private void GroundSplash()
+        {
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                return;
+            }
+
+            int type = ModContent.ProjectileType<global::VinesMod.Projectiles.Enemy.PurpleSlimeBossProjectile>();
+            for (int i = -2; i <= 2; i++)
+            {
+                Vector2 velocity = new Vector2(i * 1.4f, -5.5f).RotatedBy(MathHelper.ToRadians(i * 4f));
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), NPC.Bottom, velocity, type, (int)(NPC.damage * 0.7f), 1f);
             }
         }
 
@@ -190,6 +221,10 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
 
                 if (Main.rand.Next(20) == 0)
                     Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.SlimeStaff, 1);
+                if (Main.rand.Next(3) == 0)
+                    Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ModContent.ItemType<global::VinesMod.Items.Accessories.Shield.ShieldOfGuardian>(), 1);
+                if (Main.rand.Next(4) == 0)
+                    Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ModContent.ItemType<global::VinesMod.Items.Weapons.Magic.SlimeHexStaff>(), 1);
 
                 Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardPurple>(), Main.rand.Next(8, 15));
                 Item.NewItem(NPC.GetSource_Loot(), NPC.getRect(), ItemID.Amethyst, Main.rand.Next(1, 4));

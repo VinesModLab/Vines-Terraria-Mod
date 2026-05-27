@@ -15,7 +15,7 @@ namespace VinesMod.Items.Materials.StarForce
 			Item.height = 20;
 			Item.maxStack = 999;
 			Item.value = 10000;
-			Item.rare = 7;
+			Item.rare = ItemRarityID.Lime;
 		}
 
 		public override void AddRecipes()

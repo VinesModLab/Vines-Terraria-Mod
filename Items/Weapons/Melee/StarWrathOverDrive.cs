@@ -16,8 +16,8 @@ namespace VinesMod.Items.Weapons.Melee
             Item.CloneDefaults(ItemID.StarWrath);
 			Item.damage = 500;
 			Item.value = Item.buyPrice(gold: 30); 
-			Item.rare = 11;
-            Item.shoot = 503;
+			Item.rare = ItemRarityID.Purple;
+            Item.shoot = ProjectileID.StarWrath;
 			Item.shootSpeed = 8f;
             Item.shootSpeed *= 1.05f;
 			Item.autoReuse = true;          //Whether the weapon can use automatically by pressing mousebutton

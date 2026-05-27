@@ -17,7 +17,7 @@ namespace VinesMod.Items.GoodieBags
 			Item.value = Item.buyPrice(0,10,0,0);
 			Item.width = 20;
 			Item.height = 20;
-			Item.rare = 2;
+			Item.rare = ItemRarityID.Green;
 		}
 
 		public override bool CanRightClick()

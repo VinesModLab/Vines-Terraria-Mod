@@ -51,6 +51,7 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             NPC.lavaImmune = true;
             NPC.noGravity = true; 
             NPC.noTileCollide = true;
+            ShardNpcTargeting.MakeHostileTargetable(NPC);
             NPC.knockBackResist = 0f;
         }
 
@@ -69,6 +70,8 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
 
         public override void AI()
         {
+            ShardNpcTargeting.MakeHostileTargetable(NPC);
+
             Target();
             DespawnHandler();
 
@@ -86,6 +89,11 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
             if (secondPhase && NPC.ai[0] % 150f == 0f)
             {
                 IchorRain();
+            }
+
+            if (secondPhase && NPC.ai[0] % 210f == 0f)
+            {
+                IchorHalo();
             }
 
             if (NPC.ai[0] > 360f)
@@ -141,6 +149,11 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
 
         private void Shoot(int spread, float projectileSpeed)
         {
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                return;
+            }
+
             int type = ModContent.ProjectileType<global::VinesMod.Projectiles.Enemy.YellowIchorBossProjectile>();
             Vector2 velocity = player.Center - NPC.Center; // Get the distance between target and NPC.
             float magnitude = Magnitude(velocity);
@@ -158,12 +171,33 @@ namespace VinesMod.NPCs.Hostile.ShardsMonster
 
         private void IchorRain()
         {
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                return;
+            }
+
             int type = ModContent.ProjectileType<global::VinesMod.Projectiles.Enemy.YellowIchorBossProjectile>();
             for (int i = -3; i <= 3; i++)
             {
                 Vector2 position = player.Center + new Vector2(i * 80f, -500f);
                 Vector2 velocity = new Vector2(i * 0.25f, 7f);
                 Projectile.NewProjectile(NPC.GetSource_FromAI(), position, velocity, type, (int)(NPC.damage * 0.75f), 1f);
+            }
+        }
+
+        private void IchorHalo()
+        {
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                return;
+            }
+
+            int type = ModContent.ProjectileType<global::VinesMod.Projectiles.Enemy.YellowIchorBossProjectile>();
+            for (int i = 0; i < 10; i++)
+            {
+                Vector2 position = NPC.Center + Vector2.UnitX.RotatedBy(MathHelper.TwoPi * i / 10f) * 120f;
+                Vector2 velocity = NPC.Center.DirectionTo(position) * 5.25f;
+                Projectile.NewProjectile(NPC.GetSource_FromAI(), position, velocity, type, (int)(NPC.damage * 0.7f), 1f);
             }
         }
 

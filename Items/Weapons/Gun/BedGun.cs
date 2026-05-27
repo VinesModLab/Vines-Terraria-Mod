@@ -23,10 +23,10 @@ namespace VinesMod.Items.Weapons.Gun
 			Item.noMelee = true; //so the item's animation doesn't do damage
 			Item.knockBack = 4;
 			Item.value = 10000;
-			Item.rare = 1;
+			Item.rare = ItemRarityID.Blue;
 			Item.UseSound = SoundID.Item11;
 			Item.autoReuse = true;
-			Item.shoot = 10; // all the guns in the vanilla source have this
+			Item.shoot = ProjectileID.PurificationPowder; // all the guns in the vanilla source have this
 			Item.shootSpeed = 16f;
 			Item.useAmmo = AmmoID.Bullet;
 		}

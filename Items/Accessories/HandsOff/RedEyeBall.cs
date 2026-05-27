@@ -15,7 +15,7 @@ namespace VinesMod.Items.Accessories.HandsOff
 			Item.width = 24;
 			Item.height = 28;
 			Item.value = Item.sellPrice(gold: 2); 
-			Item.rare = 2;
+			Item.rare = ItemRarityID.Green;
 			Item.accessory = true;
 		}
 
@@ -26,6 +26,10 @@ namespace VinesMod.Items.Accessories.HandsOff
 
 		public override void AddRecipes()
 		{
+			Recipe.Create(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardRed>(), 12)
+				.AddIngredient(Type)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarRecycler>())
+				.Register();
 		}
 	}
 }

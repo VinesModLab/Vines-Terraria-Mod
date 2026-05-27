@@ -16,7 +16,7 @@ namespace VinesMod.Items.Vanity
 			Item.width = 24;
 			Item.height = 28;
 			Item.value = Item.buyPrice(0,5,0,0);
-			Item.rare = 10;
+			Item.rare = ItemRarityID.Red;
 			Item.vanity = true;
 		}
 		

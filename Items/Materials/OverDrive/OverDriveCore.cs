@@ -15,7 +15,7 @@ namespace VinesMod.Items.Materials.OverDrive
 			Item.height = 20;
 			Item.maxStack = 999;
 			Item.value = 100000;
-			Item.rare = 9;
+			Item.rare = ItemRarityID.Cyan;
 		}
 
 		public override void AddRecipes()

@@ -21,7 +21,7 @@ namespace VinesMod.Items.Summon
             Item.height = 20;
             Item.maxStack = 999;
             Item.value = Item.buyPrice(0,3,0,0);
-            Item.rare = 1;
+            Item.rare = ItemRarityID.Blue;
             Item.useAnimation = 40;
             Item.useTime = 45;
             Item.consumable = true;

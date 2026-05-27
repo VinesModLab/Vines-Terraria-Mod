@@ -22,10 +22,10 @@ namespace VinesMod.Items.Weapons.Melee
 			Item.useStyle = ItemUseStyleID.Swing;  
 			Item.knockBack = 3f;         
 			Item.value = Item.buyPrice(silver: 30);         
-			Item.rare = 8;      
+			Item.rare = ItemRarityID.Yellow;      
 			Item.UseSound = SoundID.Item1; 
 			Item.autoReuse = true;         
-            Item.shoot = 661;
+            Item.shoot = ProjectileID.BlackBolt;
 			Item.shootSpeed = 8f;
 		}
 

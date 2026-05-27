@@ -1,4 +1,4 @@
-﻿using VinesMod.Projectiles;
+using VinesMod.Projectiles;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -18,7 +18,7 @@ namespace VinesMod.Items.Weapons.Throw
 			Item.width = 30;
 			Item.height = 30;
 			Item.maxStack = 999;
-			Item.rare = 0;
+			Item.rare = ItemRarityID.White;
 
 			Item.consumable = true;
 			Item.noUseGraphic = true;

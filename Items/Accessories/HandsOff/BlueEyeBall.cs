@@ -27,6 +27,10 @@ namespace VinesMod.Items.Accessories.HandsOff
 
 		public override void AddRecipes()
 		{
+			Recipe.Create(ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardBlue>(), 12)
+				.AddIngredient(Type)
+				.AddTile(ModContent.TileType<global::VinesMod.Tiles.StarRecycler>())
+				.Register();
 		}
 	}
 }

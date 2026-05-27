@@ -26,7 +26,7 @@ namespace VinesMod.Items.Accessories.HandsOff
 				player.GetDamage(DamageClass.Ranged) *= 1.2f;
 				player.GetDamage(DamageClass.Magic) *= 1.2f;
 				player.GetDamage(DamageClass.Summon) *= 1.2f;
-				player.AddBuff(11, 10);
+				player.AddBuff(BuffID.Shine, 10);
 		}
 
 		public override void AddRecipes()

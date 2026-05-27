@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.GameContent.ItemDropRules;
+using VinesMod.Systems;
 
 namespace VinesMod.NPCs
 {
@@ -215,13 +216,52 @@ namespace VinesMod.NPCs
 
 		public override void EditSpawnRate(Player player, ref int spawnRate, ref int maxSpawns)
 		{
-			/*
-			if (player.GetModPlayer<ExamplePlayer>(mod).ZoneExample)
+			if (ShardInvasionSystem.Active && ShardInvasionSystem.CanSpawnFor(player))
 			{
-				spawnRate = (int)(spawnRate * 5f);
-				maxSpawns = (int)(maxSpawns * 5f);
+				spawnRate = 18;
+				maxSpawns = 12;
 			}
-			*/
+		}
+
+		public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
+		{
+			if (ShardInvasionSystem.Active && ShardInvasionSystem.CanSpawnFor(spawnInfo.Player))
+			{
+				pool.Clear();
+				pool[ModContent.NPCType<global::VinesMod.NPCs.Hostile.ShardsMonster.BlueFlyingEye>()] = 0.35f;
+				pool[ModContent.NPCType<global::VinesMod.NPCs.Hostile.ShardsMonster.PrismaticShardling>()] = 0.85f;
+				pool[ModContent.NPCType<global::VinesMod.NPCs.Hostile.ShardsMonster.FallenStarMite>()] = 0.60f;
+
+				if (ShardInvasionSystem.Defeated >= 12)
+				{
+					pool[ModContent.NPCType<global::VinesMod.NPCs.Hostile.ShardsMonster.CosmicWisp>()] = 0.32f;
+					pool[ModContent.NPCType<global::VinesMod.NPCs.Hostile.ShardsMonster.ShardCrawler>()] = 0.55f;
+					pool[ModContent.NPCType<global::VinesMod.NPCs.Hostile.ShardsMonster.VoidQuartzBat>()] = 0.35f;
+				}
+
+				if (ShardInvasionSystem.Defeated >= 24)
+				{
+					pool[ModContent.NPCType<global::VinesMod.NPCs.Hostile.ShardsMonster.RubyShardKnight>()] = 0.42f;
+					pool[ModContent.NPCType<global::VinesMod.NPCs.Hostile.ShardsMonster.EmeraldShardBloom>()] = 0.30f;
+					pool[ModContent.NPCType<global::VinesMod.NPCs.Hostile.ShardsMonster.TopazStormcaller>()] = 0.28f;
+					pool[ModContent.NPCType<global::VinesMod.NPCs.Hostile.ShardsMonster.AmethystMirror>()] = 0.24f;
+				}
+
+				if (ShardInvasionSystem.Defeated >= 45)
+				{
+					pool[ModContent.NPCType<global::VinesMod.NPCs.Hostile.ShardsMonster.WhitePrismSentinel>()] = 0.22f;
+					pool[ModContent.NPCType<global::VinesMod.NPCs.Hostile.ShardsMonster.PrismHerald>()] = 0.06f;
+					pool[ModContent.NPCType<global::VinesMod.NPCs.Hostile.ShardsMonster.ShardComet>()] = 0.04f;
+				}
+
+				if (ShardInvasionSystem.Defeated >= 70 || ShardInvasionSystem.Remaining <= 20)
+				{
+					pool[ModContent.NPCType<global::VinesMod.NPCs.Hostile.ShardsMonster.PrismHerald>()] = 0.08f;
+					pool[ModContent.NPCType<global::VinesMod.NPCs.Hostile.ShardsMonster.ShardComet>()] = 0.06f;
+					pool[ModContent.NPCType<global::VinesMod.NPCs.Hostile.ShardsMonster.NullCrystalMaw>()] = 0.05f;
+					pool[ModContent.NPCType<global::VinesMod.NPCs.Hostile.ShardsMonster.AstralShardSerpent>()] = 0.04f;
+				}
+			}
 		}
 
 		public override void ModifyShop(NPCShop shop)
@@ -235,6 +275,7 @@ namespace VinesMod.NPCs
 				shop.Add<global::VinesMod.Items.Accessories.Wings.FairyWing>();
 				shop.Add<global::VinesMod.Items.Accessories.Wings.FreedomWing>();
 				shop.Add<global::VinesMod.Items.Accessories.Wings.FadedWing>();
+				shop.Add<global::VinesMod.Items.Summon.ShardMonstersInvasionItem>();
 				shop.Add<global::VinesMod.Items.Summon.BlueEyeBossSummonItem>();
 				shop.Add<global::VinesMod.Items.Summon.RedBrainBossSummonItem>();
 				shop.Add<global::VinesMod.Items.Summon.YellowIchorBossSummonItem>();

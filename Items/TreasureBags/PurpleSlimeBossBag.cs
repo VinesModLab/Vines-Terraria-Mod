@@ -20,7 +20,7 @@ namespace VinesMod.Items.TreasureBags
             Item.consumable = true;
             Item.width = 24;
             Item.height = 24;
-            Item.rare = 9;
+            Item.rare = ItemRarityID.Cyan;
             
         }
 
@@ -52,6 +52,10 @@ namespace VinesMod.Items.TreasureBags
 
             if (Main.rand.Next(20) == 0)
                 player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.SlimeStaff, 1);
+            if (Main.rand.Next(3) == 0)
+                player.QuickSpawnItem(player.GetSource_OpenItem(Type), ModContent.ItemType<global::VinesMod.Items.Accessories.Shield.ShieldOfGuardian>(), 1);
+            if (Main.rand.Next(4) == 0)
+                player.QuickSpawnItem(player.GetSource_OpenItem(Type), ModContent.ItemType<global::VinesMod.Items.Weapons.Magic.SlimeHexStaff>(), 1);
 
             player.QuickSpawnItem(player.GetSource_OpenItem(Type), ModContent.ItemType<global::VinesMod.Items.Materials.Shards.ShardPurple>(), Main.rand.Next(12, 21));
             player.QuickSpawnItem(player.GetSource_OpenItem(Type), ItemID.Amethyst, Main.rand.Next(2, 5));

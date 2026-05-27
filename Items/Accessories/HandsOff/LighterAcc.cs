@@ -15,7 +15,7 @@ namespace VinesMod.Items.Accessories.HandsOff
 			Item.width = 24;
 			Item.height = 28;
 			Item.value = 300000;
-			Item.rare = 10;
+			Item.rare = ItemRarityID.Red;
 			Item.accessory = true;
 			Item.lifeRegen = 20;
 			Item.defense = 15;
@@ -27,7 +27,7 @@ namespace VinesMod.Items.Accessories.HandsOff
 			player.statManaMax2 += 100;
 			player.maxMinions += 4;
 			player.moveSpeed += +0.4f;
-			player.AddBuff(11, 10);
+			player.AddBuff(BuffID.Shine, 10);
 		}
 
 		public override void AddRecipes()

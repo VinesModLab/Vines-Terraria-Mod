@@ -25,11 +25,11 @@ namespace VinesMod.Projectiles //We need this to basically indicate the folder w
 			Projectile.tileCollide = true;
 			Projectile.ignoreWater = true; 
 			Projectile.DamageType = DamageClass.Ranged;
-			Projectile.aiStyle = 18; //18 is demon scythe AI
+			Projectile.aiStyle = ProjAIStyleID.Sickle; //18 is demon scythe AI
 		}
 		public override void AI()
 		{
-			Projectile.type = 45; //This is the demon scythe projectile ID
+			Projectile.type = ProjectileID.DemonScythe; //This is the demon scythe projectile ID
 		}
 	}
 }

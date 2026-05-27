@@ -21,7 +21,7 @@ namespace VinesMod.Items.Weapons.Melee
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.knockBack = 1f;
 			Item.value = 3000000;
-			Item.rare = -12;
+			Item.rare = ItemRarityID.Expert;
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;
 			Item.shoot = ModContent.ProjectileType<global::VinesMod.Projectiles.NullProjectile>();

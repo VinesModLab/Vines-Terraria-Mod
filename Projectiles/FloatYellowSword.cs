@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace VinesMod.Projectiles
@@ -39,7 +40,7 @@ namespace VinesMod.Projectiles
 		{
 			if (Main.rand.NextBool(4))
 			{
-				target.AddBuff(72, 180, false);
+				target.AddBuff(BuffID.Midas, 180, false);
 			}
 		}
         

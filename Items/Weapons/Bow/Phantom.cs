@@ -28,7 +28,7 @@ namespace VinesMod.Items.Weapons.Bow
             Item.useStyle = ItemUseStyleID.Shoot; 
             Item.noMelee = true; 
             Item.value = Item.buyPrice(0, 0, 30, 0);
-            Item.rare = 5;
+            Item.rare = ItemRarityID.Pink;
             Item.DamageType = DamageClass.Ranged;
             Item.UseSound = new SoundStyle("VinesMod/Sounds/Item/Wooo");
 			Item.autoReuse = true;

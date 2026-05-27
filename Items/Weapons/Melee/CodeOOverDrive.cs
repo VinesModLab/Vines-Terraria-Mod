@@ -23,7 +23,7 @@ namespace VinesMod.Items.Weapons.Melee
 			Item.useStyle = ItemUseStyleID.Swing;//The use style of weapon, 1 for swinging, 2 for drinking, 3 act like shortsword, 4 for use like life crystal, 5 for use staffs or guns
 			Item.knockBack = 3f;
 			Item.value = Item.sellPrice(silver: 30);           //The value of the weapon
-			Item.rare = 11;
+			Item.rare = ItemRarityID.Purple;
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;
 			Item.shoot = ModContent.ProjectileType<global::VinesMod.Projectiles.ShurikenProjectile>();

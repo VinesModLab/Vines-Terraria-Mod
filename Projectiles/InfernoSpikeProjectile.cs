@@ -1,5 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace VinesMod.Projectiles
@@ -14,7 +15,7 @@ namespace VinesMod.Projectiles
 		{
 			Projectile.width = 18;
 			Projectile.height = 18;
-			Projectile.aiStyle = 19;
+			Projectile.aiStyle = ProjAIStyleID.Spear;
 			Projectile.penetrate = -1;
 			Projectile.scale = 1.3f;
 			Projectile.alpha = 0;
@@ -92,6 +93,20 @@ namespace VinesMod.Projectiles
 					0, 0, 254, Scale: 0.3f);
 				dust.velocity += Projectile.velocity * 0.5f;
 				dust.velocity *= 0.5f;
+			}
+
+			Projectile.localAI[0]++;
+			if (Main.myPlayer == Projectile.owner && Projectile.localAI[0] == 8f)
+			{
+				Projectile.NewProjectile(
+					Projectile.GetSource_FromThis(),
+					Projectile.Center,
+					Projectile.velocity.SafeNormalize(Vector2.UnitX) * 8f,
+					ModContent.ProjectileType<global::VinesMod.Projectiles.BladeArtProjectile>(),
+					(int)(Projectile.damage * 0.6f),
+					Projectile.knockBack,
+					Projectile.owner,
+					10f);
 			}
 		}
 	}
